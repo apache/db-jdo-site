@@ -1,0 +1,206 @@
+[[index]]
+image::images/JDOx150.png[align="center"]
+image::images/jdo_text.png[align="center"]
+== JDO TEST
+
+'''''
+
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:titlepage:
+:grid: cols
+
+=== JDO 3.0 Overviewanchor:JDO_3.0_Overview[]
+
+==== Backgroundanchor:Background[]
+
+Java Data Objects (JDO) is a specification begun in 2000, with 2 major
+releases JDO1 (2002 under JSR0012) and JDO2 (2006 under JSR0243). It was
+placed under Apache in 2005 and is the rare example of a specification
+that has undergone continual improvement during its lifetime, for the
+last 4 years being developed totally in the open, accepting input from
+everyone.
+
+JDO 3.0 was started in October 2008, and encompasses additions to the
+specification in the areas of a metadata API, an enhancer API, addition
+of cancel/timeout control to queries, and addition of control to the
+locking of objects when read.
+
+==== Metadata APIanchor:Metadata_API[]
+
+To persist Java objects you need to specify which classes are
+persistable, and how they are persisted. This was traditionally handled
+using XML configuration. With the advent of JDK1.5, annotations were
+added as another possible way of defining such information. JDO 3.0
+takes this further and provides a *Metadata API*, allowing runtime
+definition. This is of particular use for systems that don't know at
+application startup which classes should be persistable, maybe because
+the class hasn't been written yet.
+
+To demonstrate the Metadata API, lets assume that we have a
+PersistenceManagerFactory created for our datastore. So we request a new
+Metadata object.
+
+....
+PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(props);
+JDOMetaData jdomd = pmf.newMetadata();
+....
+
+So we can now start defining the metadata for the package/class(es) we
+want to persist. The Metadata is structured in a similar way to the XML
+DTD/XSD. So let's add a class
+
+....
+ClassMetadata cmd = jdomd.newClassMetadata("test.Client");
+cmd.setTable("CLIENT").setDetachable(true).setIdentityType(javax.jdo.annotations.IdentityType.DATASTORE);
+cmd.setPersistenceModifier(javax.jdo.metadata.ClassPersistenceModifier.PERSISTENCE_CAPABLE);
+....
+
+So we have a class _test.Client_ using datastore-identity, that is
+detachable, and is persisted to a table _CLIENT_. As you can see, you
+can chain setters for convenient coding.
+
+....
+InheritanceMetadata inhmd = cmd.newInheritanceMetadata();
+inhmd.setStrategy(javax.jdo.annotations.InheritanceStrategy.NEW_TABLE);
+DiscriminatorMetadata dmd = inhmd.newDiscriminatorMetadata();
+dmd.setColumn("disc").setValue("Client").setStrategy(javax.jdo.annotations.DiscriminatorStrategy.VALUE_MAP);
+dmd.setIndexed(Indexed.TRUE);
+
+VersionMetadata vermd = cmd.newVersionMetadata();
+vermd.setStrategy(javax.jdo.annotations.VersionStrategy.VERSION_NUMBER).setColumn("version");
+vermd.setIndexed(Indexed.TRUE);
+....
+
+So we will use "new-table" inheritance for this class, and it will have
+a discriminator stored in column _disc_ of type "value-map". The class
+will also be versioned, using column _version_, that is indexed. All of
+this was for the class as a whole, so let's look at the
+fields/properties of the class.
+
+....
+FieldMetadata fmd = cmd.newFieldMetadata("name");
+fmd.setNullValue(javax.jdo.annotations.NullValue.DEFAULT).setColumn("name").setIndexed(true).setUnique(true);
+....
+
+So we have a field _name_ that is persisted into column _name_, and is
+unique and indexed. The API metadata components all follow the DTD as
+stated earlier, so if our field was a collection we could then define
+_CollectionMetadata_ below it.
+
+The only thing left to do is register the metadata with the
+PersistenceManagerFactory, like this
+
+....
+pmf.registerMetadata(jdomd);
+....
+
+and any contact with the class will now persist according to this API.
+
+You can similarly browse already registered metadata using
+
+....
+ComponentMetadata compmd = pmf.getMetadata("mydomain.MyClass");
+....
+
+Note that you cannot change already registered metadata with JDO 3.0.
+
+You can view the Javadocs for the Metadata API
+http://db.apache.org/jdo/api30/apidocs/javax/jdo/metadata/package-summary.adoc[here].
+
+==== Enhancer APIanchor:Enhancer_API[]
+
+JDO implementations typically (but aren't compelled to) include a
+bytecode enhancement step, allowing for efficient change detection of
+objects. While the Metadata API above is very useful, if we just define
+metadata for a class we still need to enhance the class using this
+metadata. This is where the *Enhancer API* comes in. To start we need to
+get a JDOEnhancer
+
+....
+JDOEnhancer enhancer = JDOHelper.getEnhancer();
+....
+
+and now that we have the enhancer and want to enhance our class above so
+we need to register our new metadata with it (generate the metadata as
+shown above)
+
+....
+enhancer.registerMetadata(jdomd);
+....
+
+Now we can handle the enhancement using a separate class loader if
+required (for example if the classes were defined dynamically, e.g by
+ASM)
+
+....
+enhancer.setClassLoader(myClassLoader);
+....
+
+Finally we select what to enhance, and perform the enhancement
+
+....
+String[] classes = {"test.Client"};
+enhancer.addClasses(classes);
+enhancer.enhance();
+....
+
+So the class is now enhanced and is ready for use.
+
+You can view the Javadocs for the Enhancer API
+http://db.apache.org/jdo/api30/apidocs/index.adoc[here].
+
+==== Query Cancel/Timeout APIanchor:Query_CancelTimeout_API[]
+
+On occasions a query may be inefficient, or may suffer from problems in
+the underlying datastore, and so we don't want to affect the
+application. In this case it would make sense to have control over a
+timeout for the query, or be able to cancel it. JDO 3.0 introduces the
+Query cancel/timeout control, via the following new methods to
+_javax.jdo.Query_
+
+....
+void setTimeoutMillis(Integer interval);
+Integer getTimeoutMillis();
+void cancelAll();
+void cancel(Thread thread);
+....
+
+So we have the ability to cancel a query as required, or just let it
+timeout.
+
+==== Control of read objects lockinganchor:Control_of_read_objects_locking[]
+
+When we are using datastore (pessimistic) transactions it often doesn't
+make sense to just lock all objects read in the transaction. For this
+reason JDO 3.0 introduces control over which objects are locked and
+which aren't.
+
+In metadata for each class you can specify the "serialize-read" setting.
+True will mean that objects of this type will be locked when read.
+
+On a Transaction you can override the metadata settings via the
+following method
+
+....
+void setSerializeRead(Boolean serialize);
+Boolean getSerializeRead();
+....
+
+On a Query you can override the metadata and Transaction settings via
+the following method
+
+....
+void setSerializeRead(Boolean serialize);
+Boolean getSerializeRead();
+....
+
+This concludes our simple overview of JDO3. We hope you enjoy using it
+
+'''''
+
+[[footer]]
+Copyright © 2005-2015. All Rights Reserved.
+
+'''''

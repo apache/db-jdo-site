@@ -1,0 +1,49 @@
+[[index]]
+image::images/JDOx150.png[align="center"]
+image::images/jdo_text.png[align="center"]
+== JDO TEST
+
+'''''
+
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:titlepage:
+:grid: cols
+
+=== About the Technology Compatibility Kitanchor:About_the_Technology_Compatibility_Kit[]
+
+In order to demonstrate compliance with the Java Data Objects
+specification, an implementation must pass all of the tests in the
+Technology Compatibility Kit (TCK). The TCK is released as a packaged
+Java source tree. Maven is the driver of a test run. You must download
+and install http://maven.apache.org/[Maven 2+]before running the TCK.
+
+=== Running the TCKanchor:Running_the_TCK[]
+
+To run the Technology Compatibility Kit:
+
+[arabic]
+. Check out the JDO source code from the most recent branch. See
+http://db.apache.org/jdo/svn.adoc[Source Code] for instructions on
+checking out code.
+. Follow the instructions in the Prerequisites section of
+http://svn.apache.org/viewcvs.cgi/*checkout*/db/jdo/branches/3.1/README.adoc[README.adoc].
+. Follow the procedure in
+http://svn.apache.org/viewcvs.cgi/*checkout*/db/jdo/branches/3.1/tck/RunRules.adoc[RunRules.adoc]
+in the tck directory.
+
+=== Demonstrating Complianceanchor:Demonstrating_Compliance[]
+
+Vendors must post test results on a publicly accessible web site for
+examination by the public. The posting includes the output of the test
+run, which consists of multiple log files containing configuration
+information and test results. For an example of the required posting,
+please see link:tck/final[http://db.apache.org/jdo/tck/final].
+
+'''''
+
+[[footer]]
+Copyright © 2005-2015. All Rights Reserved.
+
+'''''

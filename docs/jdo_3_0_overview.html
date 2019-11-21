@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- No caching headers -->
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="expires" content="-1"/>
+    <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
+    <meta name="description" content="Apache JDO - Java Data Objects"/>
+
+    <title>JDO TEST</title>
+
+    <link rel="icon" type="image/png" href="https://tzaeschke.github.io/test-jdo-asciidoc/images/JDO_32x32.png"/>
+
+    <!--
+        Apache JDO Documentation Template
+        ==================================
+        This template derived various aspects from Apache Deltaspike template, the Apache ISIS template and the Datanucleus template.
+        This template uses 
+        * Bootstrap v3.3.7 (https://getbootstrap.com/) for navbar.
+        * Asciidoctor "foundation" CSS
+        * Bootswatch "cosmo" theme for Bootstrap (https://bootswatch.com/cosmo).
+        * Bootstrap TOC plugin v0.4.1 (https://afeld.github.io/bootstrap-toc/) for the table of contents.
+        * jQuery (necessary for Bootstrap's JavaScript plugins)
+        * Font-Awesome for some icons used by Asciidoctor
+        NOTE: tried using Font-Awesome CSS hosted locally but then fails to work!
+    -->
+    <link href="css/bootswatch/3.3.7/bootstrap-cosmo.css" rel="stylesheet"/>
+    <link href="css/bootstrap-toc/0.4.1/bootstrap-toc.min.css" rel="stylesheet"/>
+
+    <link href="css/asciidoctor/foundation.css" rel="stylesheet"/>
+    <link href="css/datanucleus_theme.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    
+
+    
+
+    
+    
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap/3.3.7/bootstrap.min.js"></script>
+    <script src="js/bootstrap-toc/0.4.1/bootstrap-toc.min.js"></script>
+
+    <!-- Coderay syntax formatter -->
+    <style type="text/css">
+        /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
+/*pre.CodeRay {background-color:#f7f7f8;}*/
+.CodeRay .line-numbers{border-right:1px solid #d8d8d8;padding:0 0.5em 0 .25em}
+.CodeRay span.line-numbers{display:inline-block;margin-right:.5em;color:rgba(0,0,0,.3)}
+.CodeRay .line-numbers strong{color:rgba(0,0,0,.4)}
+table.CodeRay{border-collapse:separate;border-spacing:0;margin-bottom:0;border:0;background:none}
+table.CodeRay td{vertical-align: top;line-height:1.45}
+table.CodeRay td.line-numbers{text-align:right}
+table.CodeRay td.line-numbers>pre{padding:0;color:rgba(0,0,0,.3)}
+table.CodeRay td.code{padding:0 0 0 .5em}
+table.CodeRay td.code>pre{padding:0}
+.CodeRay .debug{color:#fff !important;background:#000080 !important}
+.CodeRay .annotation{color:#007}
+.CodeRay .attribute-name{color:#000080}
+.CodeRay .attribute-value{color:#700}
+.CodeRay .binary{color:#509}
+.CodeRay .comment{color:#998;font-style:italic}
+.CodeRay .char{color:#04d}
+.CodeRay .char .content{color:#04d}
+.CodeRay .char .delimiter{color:#039}
+.CodeRay .class{color:#458;font-weight:bold}
+.CodeRay .complex{color:#a08}
+.CodeRay .constant,.CodeRay .predefined-constant{color:#008080}
+.CodeRay .color{color:#099}
+.CodeRay .class-variable{color:#369}
+.CodeRay .decorator{color:#b0b}
+.CodeRay .definition{color:#099}
+.CodeRay .delimiter{color:#000}
+.CodeRay .doc{color:#970}
+.CodeRay .doctype{color:#34b}
+.CodeRay .doc-string{color:#d42}
+.CodeRay .escape{color:#666}
+.CodeRay .entity{color:#800}
+.CodeRay .error{color:#808}
+.CodeRay .exception{color:inherit}
+.CodeRay .filename{color:#099}
+.CodeRay .function{color:#900;font-weight:bold}
+.CodeRay .global-variable{color:#008080}
+.CodeRay .hex{color:#058}
+.CodeRay .integer,.CodeRay .float{color:#099}
+.CodeRay .include{color:#555}
+.CodeRay .inline{color:#000}
+.CodeRay .inline .inline{background:#ccc}
+.CodeRay .inline .inline .inline{background:#bbb}
+.CodeRay .inline .inline-delimiter{color:#d14}
+.CodeRay .inline-delimiter{color:#d14}
+.CodeRay .important{color:#555;font-weight:bold}
+.CodeRay .interpreted{color:#b2b}
+.CodeRay .instance-variable{color:#008080}
+.CodeRay .label{color:#970}
+.CodeRay .local-variable{color:#963}
+.CodeRay .octal{color:#40e}
+.CodeRay .predefined{color:#369}
+.CodeRay .preprocessor{color:#579}
+.CodeRay .pseudo-class{color:#555}
+.CodeRay .directive{font-weight:bold}
+.CodeRay .type{font-weight:bold}
+.CodeRay .predefined-type{color:inherit}
+.CodeRay .reserved,.CodeRay .keyword {color:#000;font-weight:bold}
+.CodeRay .key{color:#808}
+.CodeRay .key .delimiter{color:#606}
+.CodeRay .key .char{color:#80f}
+.CodeRay .value{color:#088}
+.CodeRay .regexp .delimiter{color:#808}
+.CodeRay .regexp .content{color:#808}
+.CodeRay .regexp .modifier{color:#808}
+.CodeRay .regexp .char{color:#d14}
+.CodeRay .regexp .function{color:#404;font-weight:bold}
+.CodeRay .string{color:#d20}
+.CodeRay .string .string .string{background:#ffd0d0}
+.CodeRay .string .content{color:#d14}
+.CodeRay .string .char{color:#d14}
+.CodeRay .string .delimiter{color:#d14}
+.CodeRay .shell{color:#d14}
+.CodeRay .shell .delimiter{color:#d14}
+.CodeRay .symbol{color:#990073}
+.CodeRay .symbol .content{color:#a60}
+.CodeRay .symbol .delimiter{color:#630}
+.CodeRay .tag{color:#008080}
+.CodeRay .tag-special{color:#d70}
+.CodeRay .variable{color:#036}
+.CodeRay .insert{background:#afa}
+.CodeRay .delete{background:#faa}
+.CodeRay .change{color:#aaf;background:#007}
+.CodeRay .head{color:#f8f;background:#505}
+.CodeRay .insert .insert{color:#080}
+.CodeRay .delete .delete{color:#800}
+.CodeRay .change .change{color:#66f}
+.CodeRay .head .head{color:#f4f}
+    </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+<!-- Navbar -->
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <!-- Three line menu button for use on mobile screens -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- 'style' added to align image with navbar. FIX THIS -->
+            <a class="navbar-brand" href="https://db.apache.org/jdo/">
+                <img style="margin-top: -12px;" alt="Brand" src="images/JDO_44x44.png"/>
+            </a>
+            <!-- TODO Any way to abstract the version from Maven? -->
+            <a class="navbar-brand" href="index.html">Apache JDO</a>
+            <!-- 'style' added to fix height of input box. FIX THIS -->
+            <form class="navbar-form navbar-left" role="search" id="search-form" action="https://www.google.com/search" method="get" style="padding: 1px 15px;">
+                <div class="form-group">
+                    <input name="sitesearch" value="db.apache.org" type="hidden">
+                    <input name="q" type="text" class="form-control" placeholder="Search" style="margin-top: 7px; padding: 1px; border-radius: 5px; height: 30px; vertical-align: middle;">
+                </div>
+            </form>
+        </div>
+        <!-- Navbar that will collapse on mobile screens -->
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">General <span class="caret"></span></a>
+                  
+                    <ul class="dropdown-menu">
+                        <li><a href="why_jdo.html">Why JDO?</a></li>
+                        <li><a href="jdo_v_jpa.html">JDO v JPA</a></li>
+                        <li><a href="jdo_v_jpa_api.html">JDO v JPA : API</a></li>
+                        <li><a href="jdo_v_jpa_orm.html">JDO v JPA : ORM</a></li>
+                        <li><a href="downloads.html">Downloads</a></li>
+                        <li><a href="http://www.apache.org/licenses/LICENSE-2.0">License</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                  
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">JDO Implementation <span class="caret"></span></a>
+                  
+                    <ul class="dropdown-menu">
+                        <li><a href="specifications.html">Specifications</a></li>
+                        <li><a href="tck.html">TCK</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                  
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">JDO Usage <span class="caret"></span></a>
+                  
+                    <ul class="dropdown-menu">
+                        <li><a href="impls.html">Implementations</a></li>
+                        <li><a href="javadoc.html">API Javadoc</a></li>
+                        <li><a href="class_types.html">Types of Classes</a></li>
+                        <li><a href="field_types.html">Types of Fields</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Metadata</li>
+                        <li><a href="metadata.html">MetaData</a></li>
+                        <li><a href="annotations.html">Annotations</a></li>
+                        <li><a href="jdo_dtd.html">jdo DTD/XSD</a></li>
+                        <li><a href="orm_dtd.html">orm DTD/XSD</a></li>
+                        <li><a href="jdoquery_dtd.html">jdoquery DTD/XSD</a></li>
+                        <li><a href="jdoconfig_dtd.html">jdoconfig DTD/XSD</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="enhancement.html">Bytecode Enhancement</a></li>
+                        <li><a href="jdohelper.html">JDO Helper</a></li>
+                    </ul>
+                </li>
+                <li><a href="jdo_3_0_overview.html">Articles</a></li>
+                <li><a href="extensions/extensions.html">Community</a></li>
+                <li><a href="extensions/extensions.html">Development</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    
+        <div class="row-fluid">
+            <div class="col-sm-9">
+                <div class="page-title">
+                    <h1>JDO TEST</h1>
+                </div>
+                <div id="doc-content">
+                    <div id="index" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/JDOx150.png" alt="JDOx150">
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/jdo_text.png" alt="jdo text">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_jdo_test">JDO TEST</h2>
+<div class="sectionbody">
+<hr>
+<div class="sect2">
+<h3 id="_jdo_3_0_overview_a_id_jdo_3_0_overview_a">JDO 3.0 Overview<a id="JDO_3.0_Overview"></a></h3>
+<div class="sect3">
+<h4 id="_background_a_id_background_a">Background<a id="Background"></a></h4>
+<div class="paragraph">
+<p>Java Data Objects (JDO) is a specification begun in 2000, with 2 major
+releases JDO1 (2002 under JSR0012) and JDO2 (2006 under JSR0243). It was
+placed under Apache in 2005 and is the rare example of a specification
+that has undergone continual improvement during its lifetime, for the
+last 4 years being developed totally in the open, accepting input from
+everyone.</p>
+</div>
+<div class="paragraph">
+<p>JDO 3.0 was started in October 2008, and encompasses additions to the
+specification in the areas of a metadata API, an enhancer API, addition
+of cancel/timeout control to queries, and addition of control to the
+locking of objects when read.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_metadata_api_a_id_metadata_api_a">Metadata API<a id="Metadata_API"></a></h4>
+<div class="paragraph">
+<p>To persist Java objects you need to specify which classes are
+persistable, and how they are persisted. This was traditionally handled
+using XML configuration. With the advent of JDK1.5, annotations were
+added as another possible way of defining such information. JDO 3.0
+takes this further and provides a <strong>Metadata API</strong>, allowing runtime
+definition. This is of particular use for systems that don&#8217;t know at
+application startup which classes should be persistable, maybe because
+the class hasn&#8217;t been written yet.</p>
+</div>
+<div class="paragraph">
+<p>To demonstrate the Metadata API, lets assume that we have a
+PersistenceManagerFactory created for our datastore. So we request a new
+Metadata object.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(props);
+JDOMetaData jdomd = pmf.newMetadata();</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So we can now start defining the metadata for the package/class(es) we
+want to persist. The Metadata is structured in a similar way to the XML
+DTD/XSD. So let&#8217;s add a class</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ClassMetadata cmd = jdomd.newClassMetadata("test.Client");
+cmd.setTable("CLIENT").setDetachable(true).setIdentityType(javax.jdo.annotations.IdentityType.DATASTORE);
+cmd.setPersistenceModifier(javax.jdo.metadata.ClassPersistenceModifier.PERSISTENCE_CAPABLE);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So we have a class <em>test.Client</em> using datastore-identity, that is
+detachable, and is persisted to a table <em>CLIENT</em>. As you can see, you
+can chain setters for convenient coding.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>InheritanceMetadata inhmd = cmd.newInheritanceMetadata();
+inhmd.setStrategy(javax.jdo.annotations.InheritanceStrategy.NEW_TABLE);
+DiscriminatorMetadata dmd = inhmd.newDiscriminatorMetadata();
+dmd.setColumn("disc").setValue("Client").setStrategy(javax.jdo.annotations.DiscriminatorStrategy.VALUE_MAP);
+dmd.setIndexed(Indexed.TRUE);
+
+VersionMetadata vermd = cmd.newVersionMetadata();
+vermd.setStrategy(javax.jdo.annotations.VersionStrategy.VERSION_NUMBER).setColumn("version");
+vermd.setIndexed(Indexed.TRUE);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So we will use "new-table" inheritance for this class, and it will have
+a discriminator stored in column <em>disc</em> of type "value-map". The class
+will also be versioned, using column <em>version</em>, that is indexed. All of
+this was for the class as a whole, so let&#8217;s look at the
+fields/properties of the class.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>FieldMetadata fmd = cmd.newFieldMetadata("name");
+fmd.setNullValue(javax.jdo.annotations.NullValue.DEFAULT).setColumn("name").setIndexed(true).setUnique(true);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So we have a field <em>name</em> that is persisted into column <em>name</em>, and is
+unique and indexed. The API metadata components all follow the DTD as
+stated earlier, so if our field was a collection we could then define
+<em>CollectionMetadata</em> below it.</p>
+</div>
+<div class="paragraph">
+<p>The only thing left to do is register the metadata with the
+PersistenceManagerFactory, like this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>pmf.registerMetadata(jdomd);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and any contact with the class will now persist according to this API.</p>
+</div>
+<div class="paragraph">
+<p>You can similarly browse already registered metadata using</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ComponentMetadata compmd = pmf.getMetadata("mydomain.MyClass");</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that you cannot change already registered metadata with JDO 3.0.</p>
+</div>
+<div class="paragraph">
+<p>You can view the Javadocs for the Metadata API
+<a href="http://db.apache.org/jdo/api30/apidocs/javax/jdo/metadata/package-summary.adoc">here</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_enhancer_api_a_id_enhancer_api_a">Enhancer API<a id="Enhancer_API"></a></h4>
+<div class="paragraph">
+<p>JDO implementations typically (but aren&#8217;t compelled to) include a
+bytecode enhancement step, allowing for efficient change detection of
+objects. While the Metadata API above is very useful, if we just define
+metadata for a class we still need to enhance the class using this
+metadata. This is where the <strong>Enhancer API</strong> comes in. To start we need to
+get a JDOEnhancer</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>JDOEnhancer enhancer = JDOHelper.getEnhancer();</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and now that we have the enhancer and want to enhance our class above so
+we need to register our new metadata with it (generate the metadata as
+shown above)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>enhancer.registerMetadata(jdomd);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we can handle the enhancement using a separate class loader if
+required (for example if the classes were defined dynamically, e.g by
+ASM)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>enhancer.setClassLoader(myClassLoader);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally we select what to enhance, and perform the enhancement</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>String[] classes = {"test.Client"};
+enhancer.addClasses(classes);
+enhancer.enhance();</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the class is now enhanced and is ready for use.</p>
+</div>
+<div class="paragraph">
+<p>You can view the Javadocs for the Enhancer API
+<a href="http://db.apache.org/jdo/api30/apidocs/index.adoc">here</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_query_cancel_timeout_api_a_id_query_canceltimeout_api_a">Query Cancel/Timeout API<a id="Query_CancelTimeout_API"></a></h4>
+<div class="paragraph">
+<p>On occasions a query may be inefficient, or may suffer from problems in
+the underlying datastore, and so we don&#8217;t want to affect the
+application. In this case it would make sense to have control over a
+timeout for the query, or be able to cancel it. JDO 3.0 introduces the
+Query cancel/timeout control, via the following new methods to
+<em>javax.jdo.Query</em></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>void setTimeoutMillis(Integer interval);
+Integer getTimeoutMillis();
+void cancelAll();
+void cancel(Thread thread);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So we have the ability to cancel a query as required, or just let it
+timeout.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_control_of_read_objects_locking_a_id_control_of_read_objects_locking_a">Control of read objects locking<a id="Control_of_read_objects_locking"></a></h4>
+<div class="paragraph">
+<p>When we are using datastore (pessimistic) transactions it often doesn&#8217;t
+make sense to just lock all objects read in the transaction. For this
+reason JDO 3.0 introduces control over which objects are locked and
+which aren&#8217;t.</p>
+</div>
+<div class="paragraph">
+<p>In metadata for each class you can specify the "serialize-read" setting.
+True will mean that objects of this type will be locked when read.</p>
+</div>
+<div class="paragraph">
+<p>On a Transaction you can override the metadata settings via the
+following method</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>void setSerializeRead(Boolean serialize);
+Boolean getSerializeRead();</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On a Query you can override the metadata and Transaction settings via
+the following method</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>void setSerializeRead(Boolean serialize);
+Boolean getSerializeRead();</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This concludes our simple overview of JDO3. We hope you enjoy using it</p>
+</div>
+<hr>
+<div id="footer" class="paragraph">
+<p>Copyright © 2005-2015. All Rights Reserved.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+            </div>
+        </div>
+    
+</div>
+<footer style="background-color:#97d5ca; padding: 5px;">
+<div class="container">
+    <hr/>
+    <div class="row">
+        <div class="col-sm-9">
+    <a href="https://www.facebook.com/JavaDataObjects" class="externalLink" title="Facebook">Facebook</a>
+            |
+                        <a href="https://twitter.com/JavaDataObjects" class="externalLink" title="Twitter">Twitter</a>
+            |
+                        <a href="https://plus.google.com/106584233526334524963" class="externalLink" title="Google+">Google+</a>
+            |
+                        <a href="http://wiki.apache.org/jdo" class="externalLink" title="Wiki">Wiki</a>
+            |
+                        <a href="http://issues.apache.org/jira/secure/BrowseProject.jspa?id=10630" class="externalLink" title="Issue Tracker">Issue Tracker</a>
+            |
+                        <a href="mail-lists.html" title="Mailing Lists">Mailing Lists</a>
+            |
+                        <a href="api30/apidocs/index.html" title="Latest Javadocs">Latest Javadocs</a>
+        </div>
+    </div>
+    <hr/>
+    <p class="text-center">&copy; 2005-2019 Apache Software Foundation. All Rights Reserved.</p>
+</div>
+</footer>
+</body>
+</html>

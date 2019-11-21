@@ -1,0 +1,200 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apache.jdo.asciidoc</groupId>
+  <artifactId>jdo-asciidoc</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+    <name>Apache JDO Asciidoc</name>
+    <description>Apache JDO Asciidoc</description>
+    <url>http://www.apache.org/jdo</url>
+    <inceptionYear>2019</inceptionYear>
+
+    <repositories>
+        <repository>
+            <id>Apache_M2_Nightly</id>
+            <url>http://repository.apache.org/snapshots/</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <asciidoctor.maven.plugin.version>1.5.3</asciidoctor.maven.plugin.version>
+        <asciidoctorj.pdf.version>1.5.0-alpha.11</asciidoctorj.pdf.version>
+        <asciidoctorj.version>1.5.4.1</asciidoctorj.version>
+        <!-- asciidoctorj.diagram.version>1.5.0</asciidoctorj.diagram.version-->
+        <!--incode-asciidoctor-extension-monotree.version>0.0.2</incode-asciidoctor-extension-monotree.version-->
+        <!--incode-asciidoctor-extension-improvethisdoc.version>0.0.1</incode-asciidoctor-extension-improvethisdoc.version-->
+        <jruby.version>1.7.26</jruby.version>
+
+        <build.dir>${project.basedir}/target/site</build.dir>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctor-maven-plugin</artifactId>
+                    <version>${asciidoctor.maven.plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoctorj-pdf</artifactId>
+                            <version>${asciidoctorj.pdf.version}</version>
+                        </dependency>
+                        <!-- Comment this section to use the default jruby artifact provided by the plugin -->
+                        <dependency>
+                            <groupId>org.jruby</groupId>
+                            <artifactId>jruby-complete</artifactId>
+                            <version>${jruby.version}</version>
+                        </dependency>
+                        <!-- Comment this section to use the default AsciidoctorJ artifact provided by the plugin -->
+                        <dependency>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoctorj</artifactId>
+                            <version>${asciidoctorj.version}</version>
+                        </dependency>
+                        <!-- dependency>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoctorj-diagram</artifactId>
+                            <version>${asciidoctorj.diagram.version}</version>
+                        </dependency-->
+                        <!-- dependency>
+                            <groupId>org.incode.asciidoctor.monotree</groupId>
+                            <artifactId>incode-asciidoctor-extension-monotree</artifactId>
+                            <version>${incode-asciidoctor-extension-monotree.version}</version>
+                        </dependency-->
+                        <!-- dependency>
+                            <groupId>org.incode.asciidoctor.improvethisdoc</groupId>
+                            <artifactId>incode-asciidoctor-extension-improvethisdoc</artifactId>
+                            <version>${incode-asciidoctor-extension-improvethisdoc.version}</version>
+                        </dependency-->
+                    </dependencies>
+                    <configuration>
+                        <!-- If you set baseDir to ${project.basedir}, top-level includes are resolved relative to the project root -->
+                        <!--
+                        <baseDir>${project.basedir}</baseDir>
+                        -->
+                        <!-- Attributes common to all output formats -->
+                        <attributes>
+                            <endpoint-url>http://www.datanucleus.org</endpoint-url>
+                            <sourcedir>${project.build.sourceDirectory}</sourcedir>
+                            <project-version>${project.version}</project-version>
+                        </attributes>
+                        <!-- requires>
+                            <require>asciidoctor-diagram</require>
+                        </requires-->
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>html</id>
+            <activation>
+                <property>
+                    <name>!skip.html</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctor-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>output-html</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>process-asciidoc</goal>
+                                </goals>
+                                <configuration>
+                                    <backend>html5</backend>
+
+                                    <sourceDirectory>src/main/asciidoc/</sourceDirectory>
+                                    <outputDirectory>${project.reporting.outputDirectory}/</outputDirectory>
+
+                                    <sourceHighlighter>coderay</sourceHighlighter>
+                                    <templateDir>src/main/template</templateDir>
+                                    <eruby>erb</eruby>
+                                    <preserveDirectories>true</preserveDirectories>
+                                    <relativeBaseDir>true</relativeBaseDir>
+
+                                    <attributes>
+                                        <sourcedir>${project.build.sourceDirectory}</sourcedir>
+                                        <imagesdir/>
+                                        <toc>left</toc>
+                                        <icons>font</icons>
+                                        <version>${project.version}</version>
+
+                                        <!-- improvethisdoc.rootDir>/</improvethisdoc.rootDir>
+                                        <improvethisdoc.srcDir>/src/main/asciidoc</improvethisdoc.srcDir>
+                                        <improvethisdoc.organisation>datanucleus</improvethisdoc.organisation>
+                                        <improvethisdoc.repo>docs-accessplatform</improvethisdoc.repo>
+                                        <improvethisdoc.branch>master</improvethisdoc.branch>
+                                        <improvethisdoc.label>Edit</improvethisdoc.label-->
+                                    </attributes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>pdf</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+<!--                 <property>
+                    <name>!skip.pdf</name>
+                </property> -->
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctor-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>generate-pdf-doc</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>process-asciidoc</goal>
+                                </goals>
+                                <configuration>
+                                    <backend>pdf</backend>
+
+                                    <sourceDirectory>src/main/asciidoc/</sourceDirectory>
+                                    <outputDirectory>${project.reporting.outputDirectory}/</outputDirectory>
+
+                                    <sourceHighlighter>rouge</sourceHighlighter>
+                                    <preserveDirectories>true</preserveDirectories>
+                                    <relativeBaseDir>true</relativeBaseDir>
+                                    <doctype>book</doctype>
+
+                                    <attributes>
+                                        <sourcedir>${project.build.sourceDirectory}</sourcedir>
+                                        <imagesdir/>
+
+                                        <icons>font</icons>
+                                        <pagenums/>
+                                        <toc/>
+                                        <idprefix/>
+                                        <idseparator>-</idseparator>
+                                        <version>${project.version}</version>
+                                        <title-logo-image>${project.reporting.outputDirectory}/images/DataNucleus16-300.jpg</title-logo-image>
+                                    </attributes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

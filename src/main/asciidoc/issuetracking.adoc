@@ -1,0 +1,53 @@
+[[index]]
+image::images/JDOx150.png[align="center"]
+image::images/jdo_text.png[align="center"]
+== JDO TEST
+
+'''''
+
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:titlepage:
+:grid: cols
+
+=== Processanchor:Process[]
+
+The JDO project uses
+http://issues.apache.org/jira/secure/BrowseProject.jspa?id=10630[JIRA]
+to track issues.
+
+We use the following workflow for our JIRA issues:
+
+____
+Open->Resolved(<->Reopened)->Closed
+____
+
+____
+When the engineer has fixed an issue, she sets the issue to resolved.
+The submitter can reopen it if there is some problem with it. When the
+release in which the issue is fixed ships, the issue is set to closed.
+____
+
+____
+If the same issue comes up again after release, another JIRA is opened,
+referring to the original issue. This accommodates fixes being
+backported (if ever necessary) to dot releases after the original
+release ships.
+____
+
+=== View Issuesanchor:View_Issues[]
+
+* http://issues.apache.org/jira/browse/JDO?report=com.atlassian.jira.plugin.system.project:openissues-panel[Open
+Issues]
+* http://issues.apache.org/jira/browse/JDO?report=com.atlassian.jira.plugin.system.project:changelog-panel[Change
+Log for released versions]
+* http://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12310830&styleName=Html&projectId=10630&Create=Create[Release
+Notes for released versions]
+
+'''''
+
+[[footer]]
+Copyright © 2005-2015. All Rights Reserved.
+
+'''''

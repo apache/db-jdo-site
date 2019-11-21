@@ -1,0 +1,96 @@
+[[index]]
+image::images/JDOx150.png[align="center"]
+image::images/jdo_text.png[align="center"]
+== JDO TEST
+
+'''''
+
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:titlepage:
+:grid: cols
+
+=== JDO Implementationsanchor:JDO_Implementations[]
+
+To build and run your JDO application, you need a JDO implementation.
+This page lists commercial and non-commercial JDO implementations. For
+information on how vendors certify compliance with the JDO
+specifications, see link:tck.adoc[TCK].
+
+==== JDO Reference Implementationsanchor:JDO_Reference_Implementations[]
+
+* *JDO 1.0* :
+http://jcp.org/aboutJava/communityprocess/final/jsr012/index2.adoc[FOStore]
+* *JDO 2.0* : https://sourceforge.net/projects/jpox/[JPOX 1.1]
+* *JDO 2.1* : https://sourceforge.net/projects/jpox/[JPOX 1.2]
+* *JDO 2.2* :
+http://www.datanucleus.org/products/accessplatform.adoc[DataNucleus
+AccessPlatform 1.0.1]
+* *JDO 3.0* :
+http://www.datanucleus.org/products/accessplatform_2_1/index.adoc[DataNucleus
+AccessPlatform 2.1.0]
+* *JDO 3.1* :
+http://www.datanucleus.org/products/accessplatform_3_2/index.adoc[DataNucleus
+AccessPlatform 3.2.0]
+
+{empty} +
+
+
+==== Implementationsanchor:Implementations[]
+
+Below is a list of known implementations of JDO, showing the level of
+JDO that the implementation tries to implement, and the type of
+datastore that the implementation supports. You should check the vendors
+website for details of whether the implementation is fully compliant
+with the specification claimed - Apache JDO simply provides visibility
+of known implementations.
+
+[cols=",,,",options="header",]
+|===
+|Name |License |JDO Spec |Datastore(s)
+|http://www.datanucleus.org[DataNucleus Access Platform] |NonCommercial
+|1.0, 2.0, 2.1, 2.2, 3.0, 3.1 |RDBMS, db4o, NeoDatis, LDAP, Excel XLS,
+Excel OOXML, ODF, XML, JSON, Google BigTable, HBase, Amazon S3, MongoDB,
+GoogleStorage, Cassandra, OrientDB, Salesforce.com, Neo4j
+
+|http://www.jdoinstruments.org/[JDOInstruments] |NonCommercial |1.0
+|JDOInstruments
+
+|http://www.jpox.org[_JPOX_] |NonCommercial |1.0, 2.0, 2.1 |RDBMS, db4o
+
+|http://www.bea.com/kodo[_Kodo_] |Commercial |1.0, 2.0 |RDBMS, XML
+
+|http://www.objectdb.com/[ObjectDB for Java/JDO] |Commercial |1.0, 2.0
+|ObjectDB
+
+|http://www.objectivity.com/pages/object-database-solutions/java-data-objects.asp[Objectivity]
+|Commercial |1.0 |ObjectivityDB
+
+|http://www.orientechnologies.com/cms/[Orient] |Commercial |1.0 |Orient
+
+|http://pejava.tripod.com/index.adoc[_hywy's PE:J_] |Commercial |1.0
+|RDBMS
+
+|http://www.signsoft.de/signsoft/en/intelliBO/[_SignSoft intelliBO_]
+|Commercial |1.0 |intelliBO
+
+|http://speedo.objectweb.org/[_Speedo_] |NonCommercial |1.0 |RDBMS
+
+|http://tjdo.sourceforge.net/[_TJDO_] |NonCommercial |1.0 |RDBMS
+
+|http://www.versant.com/en_US/products/objectdatabase/[Versant]
+|Commercial |1.0, 2.0 |Versant Object Database
+
+|http://www.xcalia.com/xdn/specs/jdo[Xcalia] |Commercial |1.0, 2.0
+|RDBMS, XML, Versant ODBMS, Jalisto, Web services, mainframe
+transactions and screens (CICS, IMS...), packaged applications (ERP,
+CRM,SFA...), components (EJB...).
+|===
+
+'''''
+
+[[footer]]
+Copyright © 2005-2015. All Rights Reserved.
+
+'''''

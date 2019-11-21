@@ -1,0 +1,42 @@
+[[index]]
+image::images/JDOx150.png[align="center"]
+image::images/jdo_text.png[align="center"]
+== JDO TEST
+
+'''''
+
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:titlepage:
+:grid: cols
+
+=== JDO .v. JPA : APIanchor:JDO_.v._JPA_:_API[]
+
+The two persistence standards in Java have very similar API's on the
+face of it. Here we give a comparison of the method calls and their
+equivalent in the other API.
+
+[width="100%",cols="34%,33%,33%",options="header",]
+|===
+|Operation |JDO |JPA
+|Persist Object |pm.makePersistent() |em.persist
+|Update Object |pm.makePersistent() |em.merge()
+|Remove Object |pm.deletePersistent() |em.remove()
+|Retrieve Object |pm.getObjectById() +
+pm.getExtent() |em.find()
+|Refresh Object |pm.refresh() |em.refresh()
+|Detach single Object |pm.detachCopy() |em.detach()
+|Flush changes |pm.flush() |em.flush()
+|Access transaction |pm.currentTransaction() |em.getTransaction()
+|New Query |pm.newQuery() |em.createQuery()
+|New Named Query |pm.newNamedQuery() |em.createNamedQuery()
+|New SQL Query |pm.newQuery() |em.createNativeQuery()
+|===
+
+'''''
+
+[[footer]]
+Copyright © 2005-2015. All Rights Reserved.
+
+'''''

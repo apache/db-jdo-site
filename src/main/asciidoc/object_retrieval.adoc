@@ -1,0 +1,88 @@
+[[index]]
+image::images/JDOx150.png[align="center"]
+image::images/jdo_text.png[align="center"]
+== JDO TEST
+
+'''''
+
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:titlepage:
+:grid: cols
+
+=== Object Retrievalanchor:Object_Retrieval[]
+
+JDO provides persistence of objects. The logical next step after
+persisting objects is to retrieve them for use in your application.
+There are several ways to do this
+
+==== Retrieve an object from its identityanchor:Retrieve_an_object_from_its_identity[]
+
+The simplest form of object retrieval is where we have the identity.
+This is simply
+
+....
+Object obj = pm.getObjectById(identity);
+                
+....
+
+If the object is in the JDO cache then it is retrieved from there,
+otherwise the JDO implementation goes to the datastore. When the object
+is retrieved its fields are populated according to its Fetch Group.
+
+==== Retrieve an object based on its Extentanchor:Retrieve_an_object_based_on_its_Extent[]
+
+A persistable class can be persisted with an *Extent* of all instances
+of that type. You can use this to retrieve objects of the required type,
+like this
+
+....
+Extent ex = pm.getExtent(MyClass.class, true);
+Iterator iter = ex.iterator();
+while (iter.hasNext())
+{
+    MyClass obj = (MyClass)iter.next();
+    ...
+}
+....
+
+The second argument in the _getExtent_ call is whether to include
+instances of subclasses.
+
+{empty} +
+
+
+==== Retrieve an object based on a criteriaanchor:Retrieve_an_object_based_on_a_criteria[]
+
+Where we want to retrieve all objects based on some criteria (e.g all
+objects of class A where field 'x' of A is a certain value) we need to
+use a query language. JDO2 provides 2 options here. JDOQL is
+object-based and allows you to express your query in terms of the
+classes and fields you are using. SQL is datastore-based and allows you
+to express your query in terms of the datastore tables and columns.
+
+To give an example of a JDOQL query
+
+....
+Query q = pm.newQuery(MyClass.class, "field1 < value");
+q.declareParameters("int value");
+List results = q.execute(205);
+Iterator iter = results.iterator();
+while (iter.hasNext())
+{
+    MyClass obj = (MyClass)iter.next();
+}
+....
+
+If the objects found by the query are in the JDO cache then they are
+retrieved from there, otherwise the JDO implementation goes to the
+datastore. When the objects are retrieved their fields are populated
+according to the Fetch Group.
+
+'''''
+
+[[footer]]
+Copyright © 2005-2015. All Rights Reserved.
+
+'''''

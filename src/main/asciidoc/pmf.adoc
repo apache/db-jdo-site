@@ -1,0 +1,400 @@
+[[index]]
+image::images/JDOx150.png[align="center"]
+image::images/jdo_text.png[align="center"]
+== JDO TEST
+
+'''''
+
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:titlepage:
+:grid: cols
+
+=== Persistence Manager Factoryanchor:Persistence_Manager_Factory[]
+
+Any JDO-enabled application will require at least one
+_PersistenceManagerFactory_. Typically applications create one per
+datastore being utilised. A _PersistenceManagerFactory_ provides access
+to __PersistenceManager__s which allow objects to be persisted, and
+retrieved. The _PersistenceManagerFactory_ can be configured to provide
+particular behaviour.
+
+The simplest way of creating a _PersistenceManagerFactory_
+link:api20/apidocs/javax/jdo/PersistenceManagerFactory.adoc[image:images/javadoc.png[image]]
+is as follows
+
+....
+Properties properties = new Properties();
+properties.setProperty("javax.jdo.PersistenceManagerFactoryClass",
+                "{my_implementation_pmf_class}");
+properties.setProperty("javax.jdo.option.ConnectionDriverName","com.mysql.jdbc.Driver");
+properties.setProperty("javax.jdo.option.ConnectionURL","jdbc:mysql://localhost/myDB");
+properties.setProperty("javax.jdo.option.ConnectionUserName","login");
+properties.setProperty("javax.jdo.option.ConnectionPassword","password");
+PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(properties);
+....
+
+A slight variation on this, is to use a file ("jdo.properties" for
+example) to specify these properties like this
+
+....
+javax.jdo.PersistenceManagerFactoryClass={my_implementation_pmf_class}
+javax.jdo.option.ConnectionDriverName=com.mysql.jdbc.Driver
+javax.jdo.option.ConnectionURL=jdbc:mysql://localhost/myDB
+javax.jdo.option.ConnectionUserName=login
+javax.jdo.option.ConnectionPassword=password
+....
+
+and then to create the _PersistenceManagerFactory_ using this file
+
+....
+PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("jdo.properties");
+....
+
+A final alternative would be to call
+_JDOHelper.getPersistenceManagerFactory(jndiLocation, context);_, hence
+accessing the properties via JNDI.
+
+Whichever way we wish to obtain the _PersistenceManagerFactory_ we have
+defined a series of properties to give the behaviour of the
+_PersistenceManagerFactory_. The first property specifies to use PMF of
+the implementation required to be used, and the following 4 properties
+define the datastore that it should connect to.
+
+{empty} +
+
+
+==== Standard JDO Propertiesanchor:Standard_JDO_Properties[]
+
+*javax.jdo.PersistenceManagerFactoryClass*
+
+Description
+
+The name of the PersistenceManager implementation
+
+{empty} +
+
+
+*javax.jdo.option.ConnectionFactory*
+
+Description
+
+Instance of a connection factory. For RBDMS, it must be an instance of
+javax.sql.DataSource. *This is for a transactional DataSource*
+
+{empty} +
+
+
+*javax.jdo.option.ConnectionFactory2*
+
+Description
+
+Instance of a connection factory. For RBDMS, it must be an instance of
+javax.sql.DataSource. *This is for a non-transactional DataSource*
+
+{empty} +
+
+
+*javax.jdo.option.ConnectionFactoryName*
+
+Description
+
+The JNDI name for a connection factory. For RBDMS, it must be a JNDI
+name that points to a javax.sql.DataSource object. *This is for a
+transactional DataSource*
+
+{empty} +
+
+
+*javax.jdo.option.ConnectionFactory2Name*
+
+Description
+
+The JNDI name for a connection factory. For RBDMS, it must be a JNDI
+name that points to a javax.sql.DataSource object. *This is for a
+non-transactional DataSource*
+
+{empty} +
+
+
+*javax.jdo.option.ConnectionDriverName*
+
+Description
+
+The name of the driver to use for the DB
+
+{empty} +
+
+
+*javax.jdo.option.ConnectionDriverURL*
+
+Description
+
+URL specifying the datastore to use for persistence
+
+{empty} +
+
+
+*javax.jdo.option.ConnectionUserName*
+
+Description
+
+Username to use for connecting to the DB
+
+{empty} +
+
+
+*javax.jdo.option.ConnectionPassword*
+
+Description
+
+Password to use for connecting to the DB
+
+{empty} +
+
+
+*javax.jdo.option.IgnoreCache*
+
+Description
+
+Whether to ignore the cache for queries
+
+Range of Values
+
+true | false
+
+{empty} +
+
+
+*javax.jdo.option.Multithreaded*
+
+Description
+
+Whether to run the PersistenceManager multithreaded
+
+Range of Values
+
+true | false
+
+{empty} +
+
+
+*javax.jdo.option.NontransactionalRead*
+
+Description
+
+Whether to allow nontransactional reads
+
+Range of Values
+
+true | false
+
+{empty} +
+
+
+*javax.jdo.option.NontransactionalWrite*
+
+Description
+
+Whether to allow nontransactional writes
+
+Range of Values
+
+true | false
+
+{empty} +
+
+
+*javax.jdo.option.Optimistic*
+
+Description
+
+Whether to use link:transactions.adoc[Optimistic transactions]
+
+Range of Values
+
+true | false
+
+{empty} +
+
+
+*javax.jdo.option.RetainValues*
+
+Description
+
+Whether to suppress the clearing of values from persistent instances on
+transaction completion
+
+Range of Values
+
+true | false
+
+{empty} +
+
+
+*javax.jdo.option.RestoreValues*
+
+Description
+
+Whether persistent object have transactional field values restored when
+transaction rollback occurs.
+
+Range of Values
+
+true | false
+
+{empty} +
+
+
+*javax.jdo.option.Mapping*
+
+Description
+
+Name for the ORM MetaData mapping files to use with this PMF. For
+example if this is set to "mysql" then the implementation looks for
+MetaData mapping files called "\{classname}-mysql.orm" or
+"package-mysql.orm". If this is not specified then the JDO
+implementation assumes that all is specified in the JDO MetaData file.
+_ORM datastores only_
+
+{empty} +
+
+
+*javax.jdo.mapping.Catalog*
+
+Description
+
+Name of the catalog to use by default for all classes persisted using
+this PMF. This can be overridden in the MetaData where required, and is
+optional. JPOX will prefix all table names with this catalog name if the
+RDBMS supports specification of catalog names in DDL. _ORM datastores
+only_
+
+{empty} +
+
+
+*javax.jdo.mapping.Schema*
+
+Description
+
+Name of the schema to use by default for all classes persisted using
+this PMF. This can be overridden in the MetaData where required, and is
+optional. JPOX will prefix all table names with this schema name if the
+RDBMS supports specification of schema names in DDL. _ORM datastores
+only_
+
+{empty} +
+
+
+*javax.jdo.option.DetachAllOnCommit*
+
+Description
+
+Allows the user to select that when a transaction is committed all
+objects enlisted in that transaction will be automatically detached.
+
+Range of Values
+
+true | *false*
+
+{empty} +
+
+
+*javax.jdo.option.CopyOnAttach*
+
+Description
+
+Whether, when attaching a detached object, we create an attached copy or
+simply migrate the detached object to attached state. This is from JDO
+2.1
+
+Range of Values
+
+*true* | false
+
+{empty} +
+
+
+*javax.jdo.option.TransactionType*
+
+Description
+
+Type of transaction to use. If running under J2SE the default is
+RESOURCE_LOCAL, and if running under J2EE the default is JTA.
+
+Range of Values
+
+RESOURCE_LOCAL | JTA
+
+{empty} +
+
+
+*javax.jdo.option.PersistenceUnitName*
+
+Description
+
+Name of the "persistence-unit" to use with this PMF. This borrows the
+"persistence-unit" concept from JPA for use with JDO 2.1.
+
+{empty} +
+
+
+*javax.jdo.option.ServerTimeZoneID*
+
+Description
+
+Id of the TimeZone under which the datastore server is running. If this
+is not specified or is set to null it is assumed that the datastore
+server is running in the same timezone as the JVM under which the
+implementation is running.
+
+{empty} +
+
+
+*javax.jdo.option.Name*
+
+Description
+
+Name of the PMF. This is for use with "named PMF" functionality in JDO
+2.1
+
+{empty} +
+
+
+*javax.jdo.option.ReadOnly*
+
+Description
+
+Whether this datastore should be treated as read only. Added in JDO 2.2
+
+Range of Values
+
+true | *false*
+
+{empty} +
+
+
+*javax.jdo.option.TransactionIsolationLevel*
+
+Description
+
+Isolation level to use for connections in the current transaction. Added
+in JDO 2.2
+
+Range of Values
+
+none | read-committed | read-uncommitted | repeatable-read | snapshot |
+serializable
+
+{empty} +
+
+{empty} +
+
+
+'''''
+
+[[footer]]
+Copyright © 2005-2015. All Rights Reserved.
+
+'''''

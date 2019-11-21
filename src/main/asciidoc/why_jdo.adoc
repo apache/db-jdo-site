@@ -1,0 +1,145 @@
+[[index]]
+image::images/JDOx150.png[align="center"]
+image::images/jdo_text.png[align="center"]
+== JDO TEST
+
+'''''
+
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:titlepage:
+:grid: cols
+
+=== Why JDO ?anchor:Why_JDO_[]
+
+The majority of applications need to persist (or store) data during
+their lifecycle. There are many ways of doing this with an application
+written in Java.
+
+* If your datastore is RDBMS you can handle the persistence (and
+retrieval) of data yourself using *JDBC*. Obviously with this route you
+have the burden of having to write the persistence layer yourself. This
+gives much control, but also creates significant work, both in writing
+the code but also in testing and maintenance.
+* You can use *JDO*, a standardised persistence API. With *JDO* you can
+develop plain old java objects (POJOs) and persist them as they are
+transparently. This requires very little work from the developer. It
+allows persistence to any type of datastore in principle, being designed
+with flexibility and datastore agnositicity in mind. This has been a
+standard since 2002 (JDO1), being upgraded in 2006 (JDO2) and is in the
+process of being developed further (JDO2.1) by Apache JDO
+* You can use *JPA*, a standardised persistence API, and part of the
+EJB3 specification. This also allows you to to develop plain old Java
+objects (POJOs) and persist them using a standardised API. It's
+specification is not as mature or as feature rich as the JDO API, nor
+does it provide the flexibility of using any type of datastore. This was
+released in 2006 (JPA1) to supercede EJB2. It really only allows
+persistence to RDBMS datastores. If you want to persist to other
+datastores you should consider JDO.
+* _If you are stuck with using an EJB2.* architecture you could use
+Entity Beans. This means that you hand off your objects to the EJB part
+of the J2EE server. This simplifies things for the developer in some
+respect but places major restrictions in that your objects have to be
+Entity Beans._
+* You can also use a proprietary persistence API (e.g Hibernates own
+API, TopLinks own API, iBatis, Castor etc). The disadvantages of going
+this route are that you cannot easily swap to an alternative
+implementation of the API if you hit problems with your software choice.
+
+To give a _guide_, here are a few important consideration points when
+choosing a persistence layer for your application.
+
+[cols=",,,,,",options="header",]
+|===
+|Feature |JDBC |JDO |JPA |EJB2 |Custom ORM
+|Standards-Driven |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|Choice of datastores |image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Support POJOs |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Usable in J2SE |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Usable in J2EE |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Out of box implementation (1) |image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Simple to unit test |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Dynamic queries |image:images/icon_success_sml.png[image] (2)
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Comprehensive ORM |image:images/icon_warning_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_warning_sml.png[image]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Primary Key generation |image:images/icon_success_sml.png[image] (2)
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Supports inherited objects |image:images/icon_success_sml.png[image]
+(2) |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Schema Creation |image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Existing schema |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+|===
+
+[arabic]
+. refers to whether it is necessary to write the persistence yourself
+(e.g as with JDBC) or whether you can just persist by simple calls.
+. requires the developer to write this layer.
+
+'''''
+
+[[footer]]
+Copyright © 2005-2015. All Rights Reserved.
+
+'''''

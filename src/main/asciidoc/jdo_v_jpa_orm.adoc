@@ -1,0 +1,270 @@
+[[index]]
+image::images/JDOx150.png[align="center"]
+image::images/jdo_text.png[align="center"]
+== JDO TEST
+
+'''''
+
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:titlepage:
+:grid: cols
+
+=== Which ORM specification ?anchor:Which_ORM_specification_[]
+
+There are 2 prevalent specification in the Java ORM world. JDO provides
+the most complete definition, whilst JPA is the most recent.
+
+==== Relationshipsanchor:Relationships[]
+
+In this guide we show the different types of ORM relation commonly used,
+and mark against it which specification supports it. This list is not
+yet complete but will be added to to provide a comprehensive list of
+relationship type and where you can find it.
+
+[cols=",,,",options="header",]
+|===
+|Field Type |Relation |JDO |JPA
+|PC
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_one.adoc#uni[1-1
+Unidirectional] |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|PC
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_one.adoc#bi[1-1
+Bidirectional] |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|PC
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.adoc#PC[1-1
+serialised] |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|PC
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/compound_identity.adoc#1_1_uni[1-1
+CompoundIdentity Unidirectional]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|PC
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/compound_identity.adoc#1_N_coll_bi[1-N
+CompoundIdentity Collection Bidirectional]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|PC
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/compound_identity.adoc#1_N_map_bi[1-N
+CompoundIdentity Map Bidirectional]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|Interface
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/interfaces.adoc[1-1
+Unidirectional] |image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|Interface
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/interfaces.adoc[1-1
+Bidirectional] |image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|Interface
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.adoc#Reference[1-1
+serialised] |image:images/icon_success_sml.png[image] |?
+
+|Collection<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.adoc#fk_uni[1-N
+ForeignKey Unidirectional Collection]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Collection<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.adoc#fk_bi[1-N
+ForeignKey Bidirectional Collection]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Collection<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.adoc#join_uni[1-N
+JoinTable Unidirectional Collection]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Collection<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.adoc#join_bi[1-N
+JoinTable Bidirectional Collection]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Collection<Non-PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.adoc#join_nonpc[1-N
+JoinTable Collection] |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Collection<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.adoc#shared_join[1-N
+JoinTable Collection using shared JoinTable]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|Collection<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.adoc#shared_fk[1-N
+ForeignKey Collection using shared ForeignKey]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|Collection<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/many_to_many.adoc[M-N
+JoinTable] |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Collection<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/compound_identity.adoc#1_N_uni[1-N
+CompoundIdentity Unidirectional]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Collection<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.adoc#Collection[1-N
+serialised Collection] |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Collection<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.adoc#CollectionElements[1-N
+JoinTable Collection of serialised elements]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|List<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.adoc#fk_uni[1-N
+ForeignKey Unidirectional Indexed List]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|List<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.adoc#fk_bi[1-N
+ForeignKey Bidirectional Indexed List]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|List<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.adoc#join_uni[1-N
+JoinTable Unidirectional Indexed List]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|List<PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.adoc#join_bi[1-N
+JoinTable Bidirectional Indexed List]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|List<Non-PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.adoc#join_nonpc[1-N
+JoinTable Indexed List] |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|List<PC>
+|http://www.datanucleus.org/products/accessplatform/jpa/orm/one_to_many_list.adoc#fk_uni[1-N
+ForeignKey Unidirectional Ordered List]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|List<PC>
+|http://www.datanucleus.org/products/accessplatform/jpa/orm/one_to_many_list.adoc#fk_bi[1-N
+ForeignKey Bidirectional Ordered List]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|List<PC>
+|http://www.datanucleus.org/products/accessplatform/jpa/orm/one_to_many_list.adoc#join_uni[1-N
+JoinTable Unidirectional Ordered List]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|List<PC>
+|http://www.datanucleus.org/products/accessplatform/jpa/orm/one_to_many_list.adoc#join_bi[1-N
+JoinTable Bidirectional Ordered List]
+|image:images/icon_error_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Map<PC, PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.adoc#join_pc_pc[1-N
+JoinTable Map] |image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|Map<Non-PC, PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.adoc#join_simple_pc[1-N
+JoinTable Map] |image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|Map<PC, Non-PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.adoc#join_pc_simple[1-N
+JoinTable Map] |image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|Map<Non-PC, Non-PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.adoc#join_simple_simple[1-N
+JoinTable Map] |image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|Map<Non-PC, PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.adoc#fk_uni_key[1-N
+ForeignKey Map Unidirectional (key stored in value)]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Map<Non-PC, PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.adoc#fk_bi_key[1-N
+ForeignKey Map Bidirectional (key stored in value)]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Map<PC, Non-PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.adoc#fk_uni_value[1-N
+ForeignKey Map Unidirectional (value stored in key)]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|Map<PC, PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.adoc#Map[1-N
+serialised Map] |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Map<PC, PC>
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.adoc#MapKeysValues[1-N
+JoinTable Map of serialised keys/values]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|PC[ ]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/arrays.adoc#fk[1-N
+ForeignKey Unidirectional Array]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|PC[ ]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/arrays.adoc#join[1-N
+JoinTable Unidirectional Array]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+
+|PC[ ]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.adoc#Array[1-N
+serialised Array] |image:images/icon_success_sml.png[image]
+|image:images/icon_success_sml.png[image]
+
+|Non-PC[ ]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/arrays.adoc#join[1-N
+JoinTable Unidirectional Array]
+|image:images/icon_success_sml.png[image]
+|image:images/icon_error_sml.png[image]
+|===
+
+'''''
+
+[[footer]]
+Copyright © 2005-2015. All Rights Reserved.
+
+'''''
