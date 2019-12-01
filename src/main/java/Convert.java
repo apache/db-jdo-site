@@ -19,6 +19,9 @@ import club.caliope.udc.OutputFormat;
  * The paths are hardcoded and assume src and target to have the same base folder.
  * The html menu can be configured in template/document.html.erb
  * 
+ * Requirements:
+ * * Pandoc: https://pandoc.org/
+ * 
  * To create HTML from the generated ASCIIDOC:
  * * mvn clean compile
  * * Copy "target/site"to "docs".
@@ -32,12 +35,14 @@ public class Convert {
 
 	private static final String NL = "\n"; 
 	// Base folder for src and output files
-	private static final Path basePath = Paths.get("D:\\projects\\workspace-zoo\\jdo.site");
+	private static final Path basePath = Paths.get("C:\\work\\eclipse-workspace\\jdo.site");
+	// Input folder
+	private static final String input = "docs";
 	// Output folder
-	private static final String output = "pandoc-out";
+	private static final String output = "adoc-out";
 
 	public static void main(String[] args) throws IOException {
-		Path srcPath = basePath.resolve("docs");
+		Path srcPath = basePath.resolve(input);
 
 		String executionPath = System.getProperty("user.dir");
 		System.out.println(executionPath);
@@ -76,6 +81,7 @@ public class Convert {
 				Files.createDirectories(fullOutPath.getParent());
 			}
 
+			Files.deleteIfExists(fullOutPath);
 			File outFile = Files.createFile(fullOutPath).toFile();
 			new DocumentConverter()
 			.fromFile(src, InputFormat.HTML)
@@ -122,8 +128,10 @@ public class Convert {
 					//image:images/JDOx150.gif[Apache JDO]
 					//image:images/jdo_text.gif[Apache JDO]
 
-					// Fix external links
-					s = s.replace(".html", ".adoc");
+					// Fix external links, except for actual javadoc html pages 
+//					if (!s.contains("-javadoc/index.html")) {
+//						s = s.replace(".html", ".adoc");
+//					}
 					// Fix internal crossrefs
 					s = s.replace("link:#", "xref:");
 
@@ -179,9 +187,13 @@ public class Convert {
 	private static String header() {
 		StringBuilder s = new StringBuilder();
 		s.append("[[index]]").append(NL);
-		s.append("image::images/JDOx150.png[align=\"center\"]").append(NL);
-		s.append("image::images/jdo_text.png[align=\"center\"]").append(NL);
-		s.append("== JDO TEST").append(NL);
+		
+//		s.append("--").append(NL);
+		s.append("image:images/JDOx150.png[float=\"left\"]").append(NL);
+		s.append("image:images/jdo_text.png[float=\"left\"]").append(NL);
+//		s.append("--").append(NL);
+		
+		//s.append("== JDO TEST").append(NL);
 		//s.append("link:./[image:images/JDOx150.gif[Apache JDO]]").append(NL);
 		//s.append("link:./[image:images/jdo_text.gif[Apache JDO]]").append(NL);
 		s.append(NL);

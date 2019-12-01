@@ -1,0 +1,13 @@
+[[index]]
+image::images/JDOx150.png[align="center"]
+image::images/jdo_text.png[align="center"]
+== JDO TEST
+
+'''''
+
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:titlepage:
+:grid: cols
+
