@@ -1,6 +1,8 @@
 [[index]]
 image:images/JDOx150.png[float="left"]
 image:images/jdo_text.png[float="left"]
+= XYZ
+:notitle:
 
 '''''
 
@@ -19,24 +21,24 @@ glossary of some common terms that may be encountered.
 [cols=",",options="header",]
 |===
 |Term |Definition
-|anchor:application-identity[]####application identity |When the persistence
+|anchor:application-identity[]application identity |When the persistence
 of a class is defined in a MetaData file, the developer can decide that
 they want to control the identity of objects of that class. This is
 called *application identity* because the application has the control.
 
-|anchor:attach-detach[]####attach/detach |When you have an object of a class
+|anchor:attach-detach[]attach/detach |When you have an object of a class
 that is associated with a PersistenceManager it is referred to as being
 _attached_. If you want to stop persistence of that object you can
 _detach_ the object. This has the effect that any changes to the object
 will not be persisted, and also that the object can be used outside
 transactions.
 
-|anchor:datastore-identity[]####datastore identity |When the persistence of a
+|anchor:datastore-identity[]datastore identity |When the persistence of a
 class is defined in a MetaData file, the developer can decide that they
 want the identity of objects of that class to be defined by the JDO
 implementation. This is called *datastore identity*
 
-|anchor:default-fetch-group[]####default-fetch-group (DFG) |When a persisted
+|anchor:default-fetch-group[]default-fetch-group (DFG) |When a persisted
 object is retrieved from the datastore its fields can be retrieved with
 it, or optionally can be retrieved only when needed. If a field is in
 the *default-fetch-group* it will be retrieved when the object is
@@ -44,18 +46,18 @@ retrieved. Some field types default to being in the
 *default-fetch-group* (e.g primitives, wrappers to primtives,
 java.util.Date) and others (e.g java.util.Set, java.util.List) don't.
 
-|anchor:embedded[]####embedded |A field can be defined as embedded if it will
+|anchor:embedded[]embedded |A field can be defined as embedded if it will
 be stored as a column in the table of its containing object.
 
-|anchor:enhancer[]####enhancer |JDO 1.0.1 requires the use of a byte-code
+|anchor:enhancer[]enhancer |JDO 1.0.1 requires the use of a byte-code
 enhancer that takes the Java compiled classes and "enhances" them,
 adding in information to permit their use in a JDO environment.
 
-|anchor:fco[]####FCO |JDO defines 2 main groups of Java objects. The first is
+|anchor:fco[]FCO |JDO defines 2 main groups of Java objects. The first is
 those objects that have an identity. These are termed "First Class
 Objects" or FCO for short.
 
-|anchor:fetchgroup[]####Fetch Group |JDO allows a user to define groups of
+|anchor:fetchgroup[]Fetch Group |JDO allows a user to define groups of
 fields that should be retrieved (fetched) at the same time. These are
 called a "fetch group". The principal "fetch group" is the "default
 fetch group", where JDO has rules for what fields are in this group. A
@@ -63,21 +65,21 @@ user can define their own group, and make this active so that when
 objects of their type are retrieved, they have control over the fetching
 process.
 
-|anchor:JDOQL[]####JDOQL |JDO introduces its own Java-like query language as a
+|anchor:JDOQL[]JDOQL |JDO introduces its own Java-like query language as a
 datastore independent way of retrieving objects from the datastore. This
 is known as JDOQL (JDO Query Language).
 
-|anchor:nondurable-identity[]####nondurable identity |Where the objects of a
+|anchor:nondurable-identity[]nondurable identity |Where the objects of a
 class should be unique in the JVM but not in the datastore (where an
 RDBMS table doesnt have a PK for example).
 
-|anchor:objectid-class[]####objectid class |When an object of a class is
+|anchor:objectid-class[]objectid class |When an object of a class is
 persisted, it is assigned an object identity. When the developer has
 chosen to use xref:application-identity[application identity] they can
 assign a class to represent this identity (as a primary key) - this is
 the object id class.
 
-|anchor:optimistic-transaction[]####optimistic transaction |When working with
+|anchor:optimistic-transaction[]optimistic transaction |When working with
 long duration transactions it is undesirable to have locking and so the
 assumption is made that the data being updated by the transaction will
 not be modified by any other transaction during the course of the
@@ -86,7 +88,7 @@ confirm integrity that no data has been changed. See also
 xref:pessimistic-transaction[pessimistic transaction] for the contrary
 type which provides locking.
 
-|anchor:persistence-by-reachability[]####persistence-by-reachability |When you
+|anchor:persistence-by-reachability[]persistence-by-reachability |When you
 call makePersistent() on an object, the object will be persisted and, in
 addition, any other objects reachable from that object (via
 relationships) will also be persisted. This is known as
@@ -94,18 +96,18 @@ relationships) will also be persisted. This is known as
 when it checks whether these reachable objects are still reachable and,
 if not, removes them from persistence.
 
-|anchor:persistence-aware[]####persistence-aware |When an class needs to
+|anchor:persistence-aware[]persistence-aware |When an class needs to
 access fields of a persistence capable class directly, it should be
 enhanced, and is referred to as "Persistence Aware". If a class uses
 field accessor methods then it doesnt need to become "Persistence
 Aware".
 
-|anchor:persistence-capable[]####persistence-capable (PC) |When an class is
+|anchor:persistence-capable[]persistence-capable (PC) |When an class is
 byte-code enhanced, and has valid MetaData, it is referred to as
 "Persistence Capable". This means that it can be persisted by a JDO
 implementation.
 
-|anchor:persistence-modifier[]####persistence-modifier |When defining the
+|anchor:persistence-modifier[]persistence-modifier |When defining the
 persistence of a class, the developer can select particular fields to be
 persisted, and others not depending on their importance in the scope of
 their application. The *persistence-modifier* defines whether a field is
@@ -113,10 +115,10 @@ persistent. If this tag is not specified JDO will assign defaults based
 on the field type (primitives, primitive wrappers, java.util.Data,
 persistence capable fields, etc are by default persistent).
 
-|anchor:persistent[]####persistent |This is an object state where the object
+|anchor:persistent[]persistent |This is an object state where the object
 is persistent in a datastore.
 
-|anchor:pessimistic-transaction[]####pessimistic transaction |This is the
+|anchor:pessimistic-transaction[]pessimistic transaction |This is the
 default transaction type in JDO, and is suitable for shortlived
 operations where there is no other blocking activity during the
 transaction. When data is accessed other transactions are locked out
@@ -124,20 +126,20 @@ from accessing it until the transaction is complete. See also
 xref:optimistic-transaction[optimistic transaction] for the contrary
 type which reduces locking.
 
-|anchor:requires-extent[]####Requires Extent |When the persistent of a class
+|anchor:requires-extent[]Requires Extent |When the persistent of a class
 is defined, the developer decides if the object will be stored with its
 own identity (in its own table for example) or whether it will be stored
 as part of another object. If it will have its own identity, it will
 require and Extent.
 
-|anchor:sco[]####SCO |JDO defines 2 main groups of Java objects. The second
+|anchor:sco[]SCO |JDO defines 2 main groups of Java objects. The second
 group is those objects that don't have an identity. These are termed
 "Second Class Objects" or SCO for short.
 
-|anchor:SQL[]####SQL |JDO allows use of multiple query languages. One of
+|anchor:SQL[]SQL |JDO allows use of multiple query languages. One of
 these, for use with RDBMS datastores, is SQL.
 
-|anchor:transient[]####transient |This is an object state where the object is
+|anchor:transient[]transient |This is an object state where the object is
 not persistent.
 |===
 

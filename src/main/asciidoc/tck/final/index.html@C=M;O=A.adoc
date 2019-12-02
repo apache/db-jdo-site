@@ -1,7 +1,8 @@
 [[index]]
-image::images/JDOx150.png[align="center"]
-image::images/jdo_text.png[align="center"]
-== JDO TEST
+image:images/JDOx150.png[float="left"]
+image:images/jdo_text.png[float="left"]
+= XYZ
+:notitle:
 
 '''''
 

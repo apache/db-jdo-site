@@ -1,7 +1,8 @@
 [[index]]
-image::images/JDOx150.png[align="center"]
-image::images/jdo_text.png[align="center"]
-== JDO TEST
+image:images/JDOx150.png[float="left"]
+image:images/jdo_text.png[float="left"]
+= XYZ
+:notitle:
 
 '''''
 
@@ -15,8 +16,8 @@ image::images/jdo_text.png[align="center"]
 
 Use the links below to download Apache JDO from one of our mirrors. For
 more information about the projects see
-link:../downloads.adoc[Downloads]. For information on running the TCK,
-see link:../tck.adoc[TCK].
+link:../downloads.html[Downloads]. For information on running the TCK,
+see link:../tck.html[TCK].
 
 It is good practice to xref:Verifying[verify the integrity] of the
 distribution files.
@@ -104,7 +105,7 @@ directory], rather than from a mirror. Then verify the signatures using
 Alternatively, you can verify the checksums on the files. Unix programs
 called `md5`/`sha1` or `md5sum`/`sha1sum` are included in many unix
 distributions. `*sum` is also available as part of
-http://www.gnu.org/software/textutils/textutils.adoc[GNU Textutils].
+http://www.gnu.org/software/textutils/textutils.html[GNU Textutils].
 Windows users can get binary md5 programs from
 http://www.fourmilab.ch/md5/[http://www.fourmilab.ch/md5] and
 http://www.pc-tools.net/win32/freeware/console/[hhttp://www.pc-tools.net/win32/freeware/console].

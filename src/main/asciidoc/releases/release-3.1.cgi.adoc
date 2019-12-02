@@ -1,7 +1,8 @@
 [[index]]
-image::images/JDOx150.png[align="center"]
-image::images/jdo_text.png[align="center"]
-== JDO TEST
+image:images/JDOx150.png[float="left"]
+image:images/jdo_text.png[float="left"]
+= XYZ
+:notitle:
 
 '''''
 
@@ -15,8 +16,8 @@ image::images/jdo_text.png[align="center"]
 
 Use the links below to download Apache JDO from one of our mirrors. For
 more information about the projects see
-link:../downloads.adoc[Downloads]. For information on running the TCK,
-see link:../tck.adoc[TCK].
+link:../downloads.html[Downloads]. For information on running the TCK,
+see link:../tck.html[TCK].
 
 It is good practice to xref:Verifying[verify the integrity] of the
 distribution files.
@@ -65,7 +66,7 @@ to check how well an implementation is compliant with the JDO
 specification. The tck project contains the JDO Technology Compatibility
 Kit. The source distribution is the only artifact needed to be
 downloaded by the user. The dependencies are automatically downloaded by
-maven as needed to run the TCK. Please refer to the README.adoc for
+maven as needed to run the TCK. Please refer to the README.html for
 further details.
 
 http://apache.mirror.anlx.net//db/jdo/3.1/jdo-3.1-src.zip[jdo-3.1-src.zip]

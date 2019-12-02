@@ -259,7 +259,7 @@ table.CodeRay td.code>pre{padding:0}
                     <ul class="dropdown-menu">
                         <li><a href="roadmap.html">RoadMap / TODO</a></li>
                         <li><a href="svn.html">Source Code</a></li>
-                        <li><a href="http://cwiki.apache.org/GMOxDEV/coding-standards.html">Coding Standards</a></li>
+                        <li><a href="http://cwiki.apache.org/GMOxDEV/Coding+standards">Coding Standards</a></li>
                         <li><a href="issuetracking.html">Issue Tracking</a></li>
                         <li><a href="dependencies.html">Dependencies</a></li>
                     </ul>
@@ -285,7 +285,9 @@ table.CodeRay td.code>pre{padding:0}
                 <div id="doc-content">
                     <div id="index" class="paragraph">
 <p><span class="image" style="float: left"><img src="images/JDOx150.png" alt="JDOx150"></span>
-<span class="image" style="float: left"><img src="images/jdo_text.png" alt="jdo text"></span></p>
+<span class="image" style="float: left"><img src="images/jdo_text.png" alt="jdo text"></span>
+= XYZ
+:notitle:</p>
 </div>
 <hr>
 <div class="sect1">
@@ -309,14 +311,14 @@ glossary of some common terms that may be encountered.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="application-identity"></a><mark>#</mark>#application identity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="application-identity"></a>application identity</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When the persistence
 of a class is defined in a MetaData file, the developer can decide that
 they want to control the identity of objects of that class. This is
 called <strong>application identity</strong> because the application has the control.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="attach-detach"></a><mark>#</mark>#attach/detach</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="attach-detach"></a>attach/detach</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When you have an object of a class
 that is associated with a PersistenceManager it is referred to as being
 <em>attached</em>. If you want to stop persistence of that object you can
@@ -325,14 +327,14 @@ will not be persisted, and also that the object can be used outside
 transactions.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="datastore-identity"></a><mark>#</mark>#datastore identity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="datastore-identity"></a>datastore identity</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When the persistence of a
 class is defined in a MetaData file, the developer can decide that they
 want the identity of objects of that class to be defined by the JDO
 implementation. This is called <strong>datastore identity</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="default-fetch-group"></a><mark>#</mark>#default-fetch-group (DFG)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="default-fetch-group"></a>default-fetch-group (DFG)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When a persisted
 object is retrieved from the datastore its fields can be retrieved with
 it, or optionally can be retrieved only when needed. If a field is in
@@ -342,24 +344,24 @@ retrieved. Some field types default to being in the
 java.util.Date) and others (e.g java.util.Set, java.util.List) don&#8217;t.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="embedded"></a><mark>#</mark>#embedded</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="embedded"></a>embedded</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A field can be defined as embedded if it will
 be stored as a column in the table of its containing object.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="enhancer"></a><mark>#</mark>#enhancer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="enhancer"></a>enhancer</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JDO 1.0.1 requires the use of a byte-code
 enhancer that takes the Java compiled classes and "enhances" them,
 adding in information to permit their use in a JDO environment.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fco"></a><mark>#</mark>#FCO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fco"></a>FCO</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JDO defines 2 main groups of Java objects. The first is
 those objects that have an identity. These are termed "First Class
 Objects" or FCO for short.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fetchgroup"></a><mark>#</mark>#Fetch Group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="fetchgroup"></a>Fetch Group</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JDO allows a user to define groups of
 fields that should be retrieved (fetched) at the same time. These are
 called a "fetch group". The principal "fetch group" is the "default
@@ -369,19 +371,19 @@ objects of their type are retrieved, they have control over the fetching
 process.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="JDOQL"></a><mark>#</mark>#JDOQL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="JDOQL"></a>JDOQL</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JDO introduces its own Java-like query language as a
 datastore independent way of retrieving objects from the datastore. This
 is known as JDOQL (JDO Query Language).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="nondurable-identity"></a><mark>#</mark>#nondurable identity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="nondurable-identity"></a>nondurable identity</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Where the objects of a
 class should be unique in the JVM but not in the datastore (where an
 RDBMS table doesnt have a PK for example).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="objectid-class"></a><mark>#</mark>#objectid class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="objectid-class"></a>objectid class</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When an object of a class is
 persisted, it is assigned an object identity. When the developer has
 chosen to use <a href="#application-identity">application identity</a> they can
@@ -389,7 +391,7 @@ assign a class to represent this identity (as a primary key) - this is
 the object id class.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="optimistic-transaction"></a><mark>#</mark>#optimistic transaction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="optimistic-transaction"></a>optimistic transaction</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When working with
 long duration transactions it is undesirable to have locking and so the
 assumption is made that the data being updated by the transaction will
@@ -400,7 +402,7 @@ confirm integrity that no data has been changed. See also
 type which provides locking.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="persistence-by-reachability"></a><mark>#</mark>#persistence-by-reachability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="persistence-by-reachability"></a>persistence-by-reachability</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When you
 call makePersistent() on an object, the object will be persisted and, in
 addition, any other objects reachable from that object (via
@@ -410,7 +412,7 @@ when it checks whether these reachable objects are still reachable and,
 if not, removes them from persistence.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="persistence-aware"></a><mark>#</mark>#persistence-aware</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="persistence-aware"></a>persistence-aware</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When an class needs to
 access fields of a persistence capable class directly, it should be
 enhanced, and is referred to as "Persistence Aware". If a class uses
@@ -418,14 +420,14 @@ field accessor methods then it doesnt need to become "Persistence
 Aware".</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="persistence-capable"></a><mark>#</mark>#persistence-capable (PC)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="persistence-capable"></a>persistence-capable (PC)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When an class is
 byte-code enhanced, and has valid MetaData, it is referred to as
 "Persistence Capable". This means that it can be persisted by a JDO
 implementation.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="persistence-modifier"></a><mark>#</mark>#persistence-modifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="persistence-modifier"></a>persistence-modifier</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When defining the
 persistence of a class, the developer can select particular fields to be
 persisted, and others not depending on their importance in the scope of
@@ -435,12 +437,12 @@ on the field type (primitives, primitive wrappers, java.util.Data,
 persistence capable fields, etc are by default persistent).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="persistent"></a><mark>#</mark>#persistent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="persistent"></a>persistent</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This is an object state where the object
 is persistent in a datastore.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="pessimistic-transaction"></a><mark>#</mark>#pessimistic transaction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="pessimistic-transaction"></a>pessimistic transaction</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This is the
 default transaction type in JDO, and is suitable for shortlived
 operations where there is no other blocking activity during the
@@ -450,7 +452,7 @@ from accessing it until the transaction is complete. See also
 type which reduces locking.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="requires-extent"></a><mark>#</mark>#Requires Extent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="requires-extent"></a>Requires Extent</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">When the persistent of a class
 is defined, the developer decides if the object will be stored with its
 own identity (in its own table for example) or whether it will be stored
@@ -458,18 +460,18 @@ as part of another object. If it will have its own identity, it will
 require and Extent.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="sco"></a><mark>#</mark>#SCO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="sco"></a>SCO</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JDO defines 2 main groups of Java objects. The second
 group is those objects that don&#8217;t have an identity. These are termed
 "Second Class Objects" or SCO for short.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="SQL"></a><mark>#</mark>#SQL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="SQL"></a>SQL</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JDO allows use of multiple query languages. One of
 these, for use with RDBMS datastores, is SQL.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="transient"></a><mark>#</mark>#transient</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="transient"></a>transient</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">This is an object state where the object is
 not persistent.</p></td>
 </tr>
