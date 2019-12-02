@@ -7,7 +7,7 @@ This repository contains the JDO website source.
 
  * The ASCIIDOC sources can be found in src/main/asciidoc
  * The website menu is defined in src/main/template
- * The website can be build with `mvn clean build`. This generates html files in `target/site`. These need to be copied manually into the docs `folder` where they should be immediately visible on the website (you may have to refresh the browser).
+ * The website can be build with `mvn clean build`. This generates html files in `target/site`. These need to be copied manually into the `docs` folder. Then, after `git commit` and `git push`, they should be visible on the website (you may have to refresh the browser). Alternatively, the generated files can of course be viwed locally with a web browser.
  * The converter for migrating the old html files to asciidoc can be found in src/main/java
 
 ### TODO Asciidoc 
