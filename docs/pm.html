@@ -11,9 +11,9 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>JDO TEST</title>
+    <title>Persistence Manager<a id="Persistence_Manager"></a></title>
 
-    <link rel="icon" type="image/png" href="https://tzaeschke.github.io/test-jdo-asciidoc/images/JDO_32x32.png"/>
+    <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
     <!--
         Apache JDO Documentation Template
@@ -280,33 +280,25 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
                 <div class="page-title">
-                    <h1>JDO TEST</h1>
+                    <h1>Persistence Manager<a id="Persistence_Manager"></a></h1>
                 </div>
                 <div id="doc-content">
-                    <div id="index" class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/JDOx150.png" alt="JDOx150">
+                    <div id="index" class="paragraph">
+<p><span class="image" style="float: left"><img src="images/JDOx150.png" alt="JDOx150"></span>
+<span class="image" style="float: left"><img src="images/jdo_text.png" alt="jdo text"></span></p>
 </div>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/jdo_text.png" alt="jdo text">
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jdo_test">JDO TEST</h2>
-<div class="sectionbody">
 <hr>
-<div class="sect2">
-<h3 id="_persistence_manager_a_id_persistence_manager_a">Persistence Manager<a id="Persistence_Manager"></a></h3>
+<div class="sect1">
+<h2 id="_persistence_manager_a_id_persistence_manager_a">Persistence Manager<a id="Persistence_Manager"></a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Any JDO-enabled application will require at least one
 <em>PersistenceManager</em> (PM). This is obtained from the
-<a href="pmf.adoc">PersistenceManagerFactory</a> for the datastore.</p>
+<a href="pmf.html">PersistenceManagerFactory</a> for the datastore.</p>
 </div>
 <div class="paragraph">
 <p>The simplest way of creating a <em>PersistenceManager</em>
-<a href="api20/apidocs/javax/jdo/PersistenceManager.adoc"><span class="image"><img src="images/javadoc.png" alt="image"></span></a>
+<a href="api20/apidocs/javax/jdo/PersistenceManager.html"><span class="image"><img src="images/javadoc.png" alt="image"></span></a>
 is as follows</p>
 </div>
 <div class="literalblock">
@@ -323,11 +315,11 @@ datastore. A <em>PersistenceManager</em> has a single transaction.</p>
 <div class="paragraph">
 <p><br></p>
 </div>
-<div class="sect3">
-<h4 id="_persist_objects_a_id_persist_objects_a">Persist Objects<a id="Persist_Objects"></a></h4>
+<div class="sect2">
+<h3 id="_persist_objects_a_id_persist_objects_a">Persist Objects<a id="Persist_Objects"></a></h3>
 <div class="paragraph">
 <p>To persist an object, the object must first be marked as persistable
-using <a href="metadata.adoc">MetaData (XML/Annotations)</a>. Then you would
+using <a href="metadata.html">MetaData (XML/Annotations)</a>. Then you would
 start the PM transaction, and use <em>makePersistent</em> as follows</p>
 </div>
 <div class="literalblock">
@@ -387,8 +379,8 @@ will remove it from persistence.</p>
 <p><br></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_retrieve_objects_a_id_retrieve_objects_a">Retrieve Objects<a id="Retrieve_Objects"></a></h4>
+<div class="sect2">
+<h3 id="_retrieve_objects_a_id_retrieve_objects_a">Retrieve Objects<a id="Retrieve_Objects"></a></h3>
 <div class="paragraph">
 <p>So we&#8217;ve made some of our objects persistent, and now we want to
 retrieve them in our application. Here&#8217;s one way of retrieving objects
@@ -429,8 +421,8 @@ the objects returned.</p>
 <p><br></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_update_objects_a_id_update_objects_a">Update Objects<a id="Update_Objects"></a></h4>
+<div class="sect2">
+<h3 id="_update_objects_a_id_update_objects_a">Update Objects<a id="Update_Objects"></a></h3>
 <div class="paragraph">
 <p>To update an object we firstly retrieve it, as above, and then we call
 any of its mutator methods. For example</p>
@@ -471,8 +463,8 @@ the datastore &#8230;&#8203; transparently!</p>
 <p><br></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_delete_objects_a_id_delete_objects_a">Delete Objects<a id="Delete_Objects"></a></h4>
+<div class="sect2">
+<h3 id="_delete_objects_a_id_delete_objects_a">Delete Objects<a id="Delete_Objects"></a></h3>
 <div class="paragraph">
 <p>So we can persist objects, and retrieve them. Now we want to remove one
 from persistence.</p>
@@ -503,10 +495,10 @@ catch (Exception e)
 <p><br></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_making_an_object_transient_a_id_making_an_object_transient_a">Making an object transient<a id="Making_an_object_transient"></a></h4>
+<div class="sect2">
+<h3 id="_making_an_object_transient_a_id_making_an_object_transient_a">Making an object transient<a id="Making_an_object_transient"></a></h3>
 <div class="paragraph">
-<p>As we have seen in the <a href="state_transition.adoc">JDO States guide</a>, an
+<p>As we have seen in the <a href="state_transition.html">JDO States guide</a>, an
 object can have many possible states. When we want to take an object and
 work on it, but removing its identity we can make it <strong>transient</strong>. This
 means that it will retain the values of its fields, yet will no longer
@@ -541,7 +533,6 @@ catch (Exception e)
 <p>Copyright © 2005-2015. All Rights Reserved.</p>
 </div>
 <hr>
-</div>
 </div>
 </div>
 </div>

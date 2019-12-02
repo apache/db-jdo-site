@@ -11,9 +11,9 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>JDO TEST</title>
+    <title>Source Code Version Control<a id="Source_Code_Version_Control"></a></title>
 
-    <link rel="icon" type="image/png" href="https://tzaeschke.github.io/test-jdo-asciidoc/images/JDO_32x32.png"/>
+    <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
     <!--
         Apache JDO Documentation Template
@@ -280,25 +280,17 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
                 <div class="page-title">
-                    <h1>JDO TEST</h1>
+                    <h1>Source Code Version Control<a id="Source_Code_Version_Control"></a></h1>
                 </div>
                 <div id="doc-content">
-                    <div id="index" class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/JDOx150.png" alt="JDOx150">
+                    <div id="index" class="paragraph">
+<p><span class="image" style="float: left"><img src="images/JDOx150.png" alt="JDOx150"></span>
+<span class="image" style="float: left"><img src="images/jdo_text.png" alt="jdo text"></span></p>
 </div>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/jdo_text.png" alt="jdo text">
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jdo_test">JDO TEST</h2>
-<div class="sectionbody">
 <hr>
-<div class="sect2">
-<h3 id="_source_code_version_control_a_id_source_code_version_control_a">Source Code Version Control<a id="Source_Code_Version_Control"></a></h3>
+<div class="sect1">
+<h2 id="_source_code_version_control_a_id_source_code_version_control_a">Source Code Version Control<a id="Source_Code_Version_Control"></a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Apache JDO uses <a href="http://subversion.tigris.org">Subversion</a> to manage its
 source code. If you&#8217;re new to Subversion, you can check out the
@@ -312,16 +304,20 @@ book covering 1.0 and 1.1).</p>
 <a href="mailto:jdo-commits-subscribe@db.apache.org">jdo-commits-subscribe@db.apache.org</a>.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_web_access_to_subversion_a_id_web_access_to_subversion_a">Web Access to Subversion<a id="Web_Access_to_Subversion"></a></h3>
+</div>
+<div class="sect1">
+<h2 id="_web_access_to_subversion_a_id_web_access_to_subversion_a">Web Access to Subversion<a id="Web_Access_to_Subversion"></a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>If you just want to browse the source code, you can use the
 <a href="https://svn.apache.org/viewvc/db/jdo">ViewVC web interface</a> to
 Subversion. This is current at all times.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_checking_out_code_using_subversion_a_id_checking_out_code_using_subversion_a">Checking Out Code Using Subversion<a id="Checking_Out_Code_Using_Subversion"></a></h3>
+</div>
+<div class="sect1">
+<h2 id="_checking_out_code_using_subversion_a_id_checking_out_code_using_subversion_a">Checking Out Code Using Subversion<a id="Checking_Out_Code_Using_Subversion"></a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Anyone can check code out of Subversion. You only need to specify a
 username and password to update the Subversion repository, and only JDO
@@ -329,8 +325,8 @@ committers can do that. If you are a committer, are working from behind
 a firewall, or are connected to the internet through a proxy server,
 please see the sections below for more information.</p>
 </div>
-<div class="sect3">
-<h4 id="_anonymous_check_out_from_subversion_a_id_anonymous_check_out_from_subversion_a">Anonymous check out from Subversion<a id="Anonymous_check_out_from_Subversion"></a></h4>
+<div class="sect2">
+<h3 id="_anonymous_check_out_from_subversion_a_id_anonymous_check_out_from_subversion_a">Anonymous check out from Subversion<a id="Anonymous_check_out_from_Subversion"></a></h3>
 <div class="paragraph">
 <p>Use a command like:</p>
 </div>
@@ -349,8 +345,8 @@ executing the following command from within the jdo.</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_access_from_behind_a_firewall_a_id_access_from_behind_a_firewall_a">Access from behind a firewall<a id="Access_from_behind_a_firewall"></a></h4>
+<div class="sect2">
+<h3 id="_access_from_behind_a_firewall_a_id_access_from_behind_a_firewall_a">Access from behind a firewall<a id="Access_from_behind_a_firewall"></a></h3>
 <div class="paragraph">
 <p>For those users who are stuck behind a corporate firewall which is
 blocking http access to the Subversion repository, you can try to access
@@ -362,8 +358,8 @@ it via HTTPS:</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_access_through_a_proxy_a_id_access_through_a_proxy_a">Access through a proxy<a id="Access_through_a_proxy"></a></h4>
+<div class="sect2">
+<h3 id="_access_through_a_proxy_a_id_access_through_a_proxy_a">Access through a proxy<a id="Access_through_a_proxy"></a></h3>
 <div class="paragraph">
 <p>The Subversion client can go through a proxy, if you configure it to do
 so. First, edit your "servers" configuration file to indicate which
@@ -392,8 +388,8 @@ http-proxy-port = 3128</pre>
 the the repository from the Sun network (SWAN).</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_committer_access_a_id_committer_access_a">Committer access<a id="Committer_access"></a></h4>
+<div class="sect2">
+<h3 id="_committer_access_a_id_committer_access_a">Committer access<a id="Committer_access"></a></h3>
 <div class="paragraph">
 <p>Everyone can access the Apache JDO Subversion repository via HTTPS, but
 Apache JDO Committers must checkout the Subversion repository via HTTPS.</p>
@@ -404,8 +400,8 @@ Apache JDO Committers must checkout the Subversion repository via HTTPS.</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_netbeans_cvs_repository_access_a_id_netbeans_cvs_repository_access_a">NetBeans CVS repository access<a id="NetBeans_CVS_repository_access"></a></h4>
+<div class="sect2">
+<h3 id="_netbeans_cvs_repository_access_a_id_netbeans_cvs_repository_access_a">NetBeans CVS repository access<a id="NetBeans_CVS_repository_access"></a></h3>
 <div class="paragraph">
 <p>The btree subproject checks out the NetBeans mdr btree implementation.
 This requires cvs being installed on your system. The official NetBeans
@@ -423,10 +419,12 @@ definition of the preGoal java:prepare-filesystem.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_submitting_code_changes_a_id_submitting_code_changes_a">Submitting Code Changes<a id="Submitting_Code_Changes"></a></h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_submitting_code_changes_a_id_submitting_code_changes_a">Submitting Code Changes<a id="Submitting_Code_Changes"></a></h3>
-<div class="sect3">
-<h4 id="_submitting_a_patch_a_id_submitting_a_patch_a">Submitting a patch<a id="Submitting_a_patch"></a></h4>
+<h3 id="_submitting_a_patch_a_id_submitting_a_patch_a">Submitting a patch<a id="Submitting_a_patch"></a></h3>
 <div class="paragraph">
 <p>If you make changes to Apache JDO, and would like to contribute the to
 the project, you should create a patch and send it to the jdo-dev alias
@@ -439,11 +437,11 @@ command:</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_committing_changes_to_subversion_a_id_committing_changes_to_subversion_a">Committing changes to subversion<a id="Committing_changes_to_subversion"></a></h4>
+<div class="sect2">
+<h3 id="_committing_changes_to_subversion_a_id_committing_changes_to_subversion_a">Committing changes to subversion<a id="Committing_changes_to_subversion"></a></h3>
 <div class="paragraph">
 <p>To commit changes to the Subversion repository, you must be an Apache
-JDO committer. See <a href="get-involved.adoc">Get Involved</a> for information
+JDO committer. See <a href="get-involved.html">Get Involved</a> for information
 on how to become a committer and how to set up your password once you
 become a committer.</p>
 </div>
@@ -474,16 +472,20 @@ username and password on svn.apache.org.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_building_jdo_from_source_a_id_building_jdo_from_source_a">Building JDO from Source<a id="Building_JDO_from_Source"></a></h3>
+</div>
+<div class="sect1">
+<h2 id="_building_jdo_from_source_a_id_building_jdo_from_source_a">Building JDO from Source<a id="Building_JDO_from_Source"></a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the <a href="http://wiki.apache.org/jdo/FrontPage">Wiki page</a> for
 details. Note that the JDO project is subdivided into several smaller
 projects, and each project is built separately.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_using_subversion_on_windows_with_cygwin_a_id_using_subversion_on_windows_with_cygwin_a">Using Subversion on Windows with cygwin<a id="Using_Subversion_on_Windows_with_cygwin"></a></h3>
+</div>
+<div class="sect1">
+<h2 id="_using_subversion_on_windows_with_cygwin_a_id_using_subversion_on_windows_with_cygwin_a">Using Subversion on Windows with cygwin<a id="Using_Subversion_on_Windows_with_cygwin"></a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>If you use Subversion on Windows under cygwin, you may find that the
 Subversion client automatically assigns the executable property to
@@ -502,8 +504,8 @@ Name: svn:executable
 <p>This section explains the source of the problem and suggests some
 actions to avoid it.</p>
 </div>
-<div class="sect3">
-<h4 id="_background_a_id_background_a">Background<a id="Background"></a></h4>
+<div class="sect2">
+<h3 id="_background_a_id_background_a">Background<a id="Background"></a></h3>
 <div class="paragraph">
 <p>Subversion carries executable information in the built-in property
 called svn:executable. This property, unlike others, may be present or
@@ -526,8 +528,8 @@ all, cygwin svn sets the svn:executable property on the file when you
 invoke <em>svn add</em>.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_removing_existing_executable_properties_from_the_repository_a_id_removing_existing_executable_properties_from_the_repository_a">Removing existing executable properties from the repository<a id="Removing_existing_executable_properties_from_the_repository"></a></h4>
+<div class="sect2">
+<h3 id="_removing_existing_executable_properties_from_the_repository_a_id_removing_existing_executable_properties_from_the_repository_a">Removing existing executable properties from the repository<a id="Removing_existing_executable_properties_from_the_repository"></a></h3>
 <div class="paragraph">
 <p>You can use svn propdel to remove the svn:executable property from your
 working copy.</p>
@@ -543,13 +545,13 @@ files below the current directory. You can use this and commit the files
 to clean the repository if necessary.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_preventing_subversion_from_adding_unwanted_executable_properties_a_id_preventing_subversion_from_adding_unwanted_executable_properties_a">Preventing Subversion from adding unwanted executable properties<a id="Preventing_Subversion_from_adding_unwanted_executable_properties"></a></h4>
+<div class="sect2">
+<h3 id="_preventing_subversion_from_adding_unwanted_executable_properties_a_id_preventing_subversion_from_adding_unwanted_executable_properties_a">Preventing Subversion from adding unwanted executable properties<a id="Preventing_Subversion_from_adding_unwanted_executable_properties"></a></h3>
 <div class="paragraph">
 <p>Windows/cygwin users who don&#8217;t want to have to think about using <em>svn
 propdel</em> or <em>chmod</em> on each added file can use a non-cygwin version of
 svn. The Subversion 1.2.3 Win32 binaries, downloadable from the link at
-the bottom of <a href="http://subversion.tigris.org/project_packages.adoc" class="bare">http://subversion.tigris.org/project_packages.adoc</a>, appear
+the bottom of <a href="http://subversion.tigris.org/project_packages.html" class="bare">http://subversion.tigris.org/project_packages.html</a>, appear
 to work well. After installation add the svn.exe location to your
 Windows PATH variable. If you are switching from cygwin svn to Win32 svn</p>
 </div>
@@ -591,7 +593,6 @@ checkout to a new directory.</p>
 <p>Copyright © 2005-2015. All Rights Reserved.</p>
 </div>
 <hr>
-</div>
 </div>
 </div>
 </div>

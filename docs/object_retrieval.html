@@ -11,9 +11,9 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>JDO TEST</title>
+    <title>Object Retrieval<a id="Object_Retrieval"></a></title>
 
-    <link rel="icon" type="image/png" href="https://tzaeschke.github.io/test-jdo-asciidoc/images/JDO_32x32.png"/>
+    <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
     <!--
         Apache JDO Documentation Template
@@ -280,32 +280,24 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
                 <div class="page-title">
-                    <h1>JDO TEST</h1>
+                    <h1>Object Retrieval<a id="Object_Retrieval"></a></h1>
                 </div>
                 <div id="doc-content">
-                    <div id="index" class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/JDOx150.png" alt="JDOx150">
+                    <div id="index" class="paragraph">
+<p><span class="image" style="float: left"><img src="images/JDOx150.png" alt="JDOx150"></span>
+<span class="image" style="float: left"><img src="images/jdo_text.png" alt="jdo text"></span></p>
 </div>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/jdo_text.png" alt="jdo text">
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jdo_test">JDO TEST</h2>
-<div class="sectionbody">
 <hr>
-<div class="sect2">
-<h3 id="_object_retrieval_a_id_object_retrieval_a">Object Retrieval<a id="Object_Retrieval"></a></h3>
+<div class="sect1">
+<h2 id="_object_retrieval_a_id_object_retrieval_a">Object Retrieval<a id="Object_Retrieval"></a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>JDO provides persistence of objects. The logical next step after
 persisting objects is to retrieve them for use in your application.
 There are several ways to do this</p>
 </div>
-<div class="sect3">
-<h4 id="_retrieve_an_object_from_its_identity_a_id_retrieve_an_object_from_its_identity_a">Retrieve an object from its identity<a id="Retrieve_an_object_from_its_identity"></a></h4>
+<div class="sect2">
+<h3 id="_retrieve_an_object_from_its_identity_a_id_retrieve_an_object_from_its_identity_a">Retrieve an object from its identity<a id="Retrieve_an_object_from_its_identity"></a></h3>
 <div class="paragraph">
 <p>The simplest form of object retrieval is where we have the identity.
 This is simply</p>
@@ -321,8 +313,8 @@ otherwise the JDO implementation goes to the datastore. When the object
 is retrieved its fields are populated according to its Fetch Group.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_retrieve_an_object_based_on_its_extent_a_id_retrieve_an_object_based_on_its_extent_a">Retrieve an object based on its Extent<a id="Retrieve_an_object_based_on_its_Extent"></a></h4>
+<div class="sect2">
+<h3 id="_retrieve_an_object_based_on_its_extent_a_id_retrieve_an_object_based_on_its_extent_a">Retrieve an object based on its Extent<a id="Retrieve_an_object_based_on_its_Extent"></a></h3>
 <div class="paragraph">
 <p>A persistable class can be persisted with an <strong>Extent</strong> of all instances
 of that type. You can use this to retrieve objects of the required type,
@@ -347,8 +339,8 @@ instances of subclasses.</p>
 <p><br></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_retrieve_an_object_based_on_a_criteria_a_id_retrieve_an_object_based_on_a_criteria_a">Retrieve an object based on a criteria<a id="Retrieve_an_object_based_on_a_criteria"></a></h4>
+<div class="sect2">
+<h3 id="_retrieve_an_object_based_on_a_criteria_a_id_retrieve_an_object_based_on_a_criteria_a">Retrieve an object based on a criteria<a id="Retrieve_an_object_based_on_a_criteria"></a></h3>
 <div class="paragraph">
 <p>Where we want to retrieve all objects based on some criteria (e.g all
 objects of class A where field 'x' of A is a certain value) we need to
@@ -383,7 +375,6 @@ according to the Fetch Group.</p>
 <p>Copyright © 2005-2015. All Rights Reserved.</p>
 </div>
 <hr>
-</div>
 </div>
 </div>
 </div>

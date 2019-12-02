@@ -11,9 +11,9 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>JDO TEST</title>
+    <title>Fetch Groups<a id="Fetch_Groups"></a></title>
 
-    <link rel="icon" type="image/png" href="https://tzaeschke.github.io/test-jdo-asciidoc/images/JDO_32x32.png"/>
+    <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
     <!--
         Apache JDO Documentation Template
@@ -280,25 +280,17 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
                 <div class="page-title">
-                    <h1>JDO TEST</h1>
+                    <h1>Fetch Groups<a id="Fetch_Groups"></a></h1>
                 </div>
                 <div id="doc-content">
-                    <div id="index" class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/JDOx150.png" alt="JDOx150">
+                    <div id="index" class="paragraph">
+<p><span class="image" style="float: left"><img src="images/JDOx150.png" alt="JDOx150"></span>
+<span class="image" style="float: left"><img src="images/jdo_text.png" alt="jdo text"></span></p>
 </div>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/jdo_text.png" alt="jdo text">
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jdo_test">JDO TEST</h2>
-<div class="sectionbody">
 <hr>
-<div class="sect2">
-<h3 id="_fetch_groups_a_id_fetch_groups_a">Fetch Groups<a id="Fetch_Groups"></a></h3>
+<div class="sect1">
+<h2 id="_fetch_groups_a_id_fetch_groups_a">Fetch Groups<a id="Fetch_Groups"></a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>When an object is retrieved from the datastore by JDO typically not all
 fields are retrieved immediately. This is because for efficiency
@@ -327,7 +319,7 @@ groups at runtime via an API</p>
 </div>
 <div class="paragraph">
 <p>The <strong>fetch group</strong> in use for a class is controled via the <em>FetchPlan</em>
-<a href="http://db.apache.org/jdo/api20/apidocs/javax/jdo/FetchPlan.adoc"><span class="image"><img src="images/javadoc.png" alt="image"></span></a>
+<a href="http://db.apache.org/jdo/api20/apidocs/javax/jdo/FetchPlan.html"><span class="image"><img src="images/javadoc.png" alt="image"></span></a>
 interface. To get a handle on the current <em>FetchPlan</em> we do</p>
 </div>
 <div class="literalblock">
@@ -341,8 +333,8 @@ interface. To get a handle on the current <em>FetchPlan</em> we do</p>
 <div class="paragraph">
 <p><a id="dfg"></a></p>
 </div>
-<div class="sect3">
-<h4 id="_default_fetch_group_a_id_default_fetch_group_a">Default Fetch Group<a id="Default_Fetch_Group"></a></h4>
+<div class="sect2">
+<h3 id="_default_fetch_group_a_id_default_fetch_group_a">Default Fetch Group<a id="Default_Fetch_Group"></a></h3>
 <div class="paragraph">
 <p>JDO provides an initial fetch group, comprising the fields that will be
 retrieved when an object is retrieved if the user does nothing to define
@@ -416,8 +408,8 @@ group at any time you simply do</p>
 <p><a id="static"></a></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_named_fetch_groups_a_id_named_fetch_groups_a">Named Fetch Groups<a id="Named_Fetch_Groups"></a></h4>
+<div class="sect2">
+<h3 id="_named_fetch_groups_a_id_named_fetch_groups_a">Named Fetch Groups<a id="Named_Fetch_Groups"></a></h3>
 <div class="paragraph">
 <p>As mentioned above, JDO allows specification of users own fetch groups.
 These are specified in the MetaData of the class. For example, if we
@@ -502,14 +494,14 @@ gives much power and control over what will be loaded and when.</p>
 </div>
 <div class="paragraph">
 <p>You can read more about <strong>named fetch-groups</strong> and how to use it with
-<a href="attach_detach.adoc"><strong>attach/detach</strong></a></p>
+<a href="attach_detach.html"><strong>attach/detach</strong></a></p>
 </div>
 <div class="paragraph">
 <p><a id="dynamic"></a></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_dynamic_fetch_groups_a_id_dynamic_fetch_groups_a">Dynamic Fetch Groups<a id="Dynamic_Fetch_Groups"></a></h4>
+<div class="sect2">
+<h3 id="_dynamic_fetch_groups_a_id_dynamic_fetch_groups_a">Dynamic Fetch Groups<a id="Dynamic_Fetch_Groups"></a></h3>
 <div class="paragraph">
 <p>The mechanism above provides static fetch groups defined in XML or
 annotations. That is great when you know in advance what fields you want
@@ -540,8 +532,8 @@ fetched.</p>
 <p><br></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_fetch_depth_a_id_fetch_depth_a">Fetch Depth<a id="Fetch_Depth"></a></h4>
+<div class="sect2">
+<h3 id="_fetch_depth_a_id_fetch_depth_a">Fetch Depth<a id="Fetch_Depth"></a></h3>
 <div class="paragraph">
 <p>The basic fetch group defines which fields are to be fetched. It doesn&#8217;t
 explicitly define how far down an object graph is to be fetched. JDO
@@ -640,8 +632,8 @@ amount of recursion. The default is 1. Let&#8217;s take an example</p>
 field, hence fetching the children and the grandchildren.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_fetch_size_a_id_fetch_size_a">Fetch Size<a id="Fetch_Size"></a></h4>
+<div class="sect2">
+<h3 id="_fetch_size_a_id_fetch_size_a">Fetch Size<a id="Fetch_Size"></a></h3>
 <div class="paragraph">
 <p>A FetchPlan can also be used for defining the fetching policy when using
 queries. This can be set using</p>
@@ -663,7 +655,6 @@ immediately.</p>
 <p>Copyright © 2005-2015. All Rights Reserved.</p>
 </div>
 <hr>
-</div>
 </div>
 </div>
 </div>

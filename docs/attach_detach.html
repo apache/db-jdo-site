@@ -11,9 +11,9 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>JDO TEST</title>
+    <title>JDO Attach/Detach<a id="JDO_AttachDetach"></a></title>
 
-    <link rel="icon" type="image/png" href="https://tzaeschke.github.io/test-jdo-asciidoc/images/JDO_32x32.png"/>
+    <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
     <!--
         Apache JDO Documentation Template
@@ -280,25 +280,17 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
                 <div class="page-title">
-                    <h1>JDO TEST</h1>
+                    <h1>JDO Attach/Detach<a id="JDO_AttachDetach"></a></h1>
                 </div>
                 <div id="doc-content">
-                    <div id="index" class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/JDOx150.png" alt="JDOx150">
+                    <div id="index" class="paragraph">
+<p><span class="image" style="float: left"><img src="images/JDOx150.png" alt="JDOx150"></span>
+<span class="image" style="float: left"><img src="images/jdo_text.png" alt="jdo text"></span></p>
 </div>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/jdo_text.png" alt="jdo text">
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jdo_test">JDO TEST</h2>
-<div class="sectionbody">
 <hr>
-<div class="sect2">
-<h3 id="_jdo_attach_detach_a_id_jdo_attachdetach_a">JDO Attach/Detach<a id="JDO_AttachDetach"></a></h3>
+<div class="sect1">
+<h2 id="_jdo_attach_detach_a_id_jdo_attachdetach_a">JDO Attach/Detach<a id="JDO_AttachDetach"></a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>JDO provides an interface to the persistence of objects. JDO 1.0 doesn&#8217;t
 provide a way of taking an object that was just persisted and just work
@@ -307,7 +299,7 @@ fields manually and copy them back to the persisted object later. JDO
 2.0 introduces a new way of handling this situation, by <strong>detaching</strong> an
 object from the persistence graph, allowing it to be worked on in the
 users application. It can then be <strong>attached</strong> to the persistence graph
-later. Please refer to <a href="state_transition.adoc">Object Lifecycle</a> for
+later. Please refer to <a href="state_transition.html">Object Lifecycle</a> for
 where this fits in. The first thing to do to use a class with this
 facility is to tag it as "detachable". This is done by adding the
 attribute</p>
@@ -318,7 +310,7 @@ attribute</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This acts as an instruction to the <a href="enhancement.adoc">enhancement
+<p>This acts as an instruction to the <a href="enhancement.html">enhancement
 process</a> to add methods necessary to utilise the attach/detach process.</p>
 </div>
 <div class="paragraph">
@@ -407,7 +399,7 @@ identities you should use <em>makeTransient</em> instead of <em>detachCopy</em>.
 </li>
 <li>
 <p>Calling <em>detachCopy</em> will detach all fields of that object that are in
-the current <a href="fetchgroups.adoc">Fetch Group</a> for that class for that
+the current <a href="fetchgroups.html">Fetch Group</a> for that class for that
 <em>PersistenceManager</em>.</p>
 </li>
 <li>
@@ -415,7 +407,7 @@ the current <a href="fetchgroups.adoc">Fetch Group</a> for that class for that
 the <em>Default Fetch Group</em>.</p>
 </li>
 <li>
-<p>You should choose your <a href="fetchgroups.adoc">Fetch Group</a> carefully,
+<p>You should choose your <a href="fetchgroups.html">Fetch Group</a> carefully,
 bearing in mind which object(s) you want to access whilst detached.
 Detaching a relation field will detach the related object as well.</p>
 </li>
@@ -439,8 +431,8 @@ whilst detached.</p>
 <div class="paragraph">
 <p><a id="detach_all_on_commit"></a></p>
 </div>
-<div class="sect3">
-<h4 id="_detach_all_on_commit_a_id_detach_all_on_commit_a">Detach All On Commit<a id="Detach_All_On_Commit"></a></h4>
+<div class="sect2">
+<h3 id="_detach_all_on_commit_a_id_detach_all_on_commit_a">Detach All On Commit<a id="Detach_All_On_Commit"></a></h3>
 <div class="paragraph">
 <p>JDO2 also provides a mechanism whereby all objects that were enlisted in
 a transaction are automatically detached when the transaction is
@@ -494,8 +486,8 @@ finally
 <p><a id="copy_on_attach"></a></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_copy_on_attach_a_id_copy_on_attach_a">Copy On Attach<a id="Copy_On_Attach"></a></h4>
+<div class="sect2">
+<h3 id="_copy_on_attach_a_id_copy_on_attach_a">Copy On Attach<a id="Copy_On_Attach"></a></h3>
 <div class="paragraph">
 <p>By default when you are attaching a detached object it will return an
 attached copy of the detached object. JDO2.1 provides a new feature that
@@ -548,8 +540,8 @@ cache), then a JDOUserException will be thrown.</p>
 <p><br></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_serialization_of_detachable_classes_a_id_serialization_of_detachable_classes_a">Serialization of Detachable classes<a id="Serialization_of_Detachable_classes"></a></h4>
+<div class="sect2">
+<h3 id="_serialization_of_detachable_classes_a_id_serialization_of_detachable_classes_a">Serialization of Detachable classes<a id="Serialization_of_Detachable_classes"></a></h3>
 <div class="paragraph">
 <p>During enhancement of Detachable classes, a field called
 <em>jdoDetachedState</em> is added to the class definition. This field allows
@@ -589,7 +581,6 @@ the <em>java.io.Serializable</em> interface, as the following example:</p>
 <p>Copyright © 2005-2015. All Rights Reserved.</p>
 </div>
 <hr>
-</div>
 </div>
 </div>
 </div>

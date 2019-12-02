@@ -11,9 +11,9 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>JDO TEST</title>
+    <title>JDO 3.0 Overview<a id="JDO_3.0_Overview"></a></title>
 
-    <link rel="icon" type="image/png" href="https://tzaeschke.github.io/test-jdo-asciidoc/images/JDO_32x32.png"/>
+    <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
     <!--
         Apache JDO Documentation Template
@@ -280,27 +280,19 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
                 <div class="page-title">
-                    <h1>JDO TEST</h1>
+                    <h1>JDO 3.0 Overview<a id="JDO_3.0_Overview"></a></h1>
                 </div>
                 <div id="doc-content">
-                    <div id="index" class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/JDOx150.png" alt="JDOx150">
+                    <div id="index" class="paragraph">
+<p><span class="image" style="float: left"><img src="images/JDOx150.png" alt="JDOx150"></span>
+<span class="image" style="float: left"><img src="images/jdo_text.png" alt="jdo text"></span></p>
 </div>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/jdo_text.png" alt="jdo text">
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jdo_test">JDO TEST</h2>
-<div class="sectionbody">
 <hr>
+<div class="sect1">
+<h2 id="_jdo_3_0_overview_a_id_jdo_3_0_overview_a">JDO 3.0 Overview<a id="JDO_3.0_Overview"></a></h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_jdo_3_0_overview_a_id_jdo_3_0_overview_a">JDO 3.0 Overview<a id="JDO_3.0_Overview"></a></h3>
-<div class="sect3">
-<h4 id="_background_a_id_background_a">Background<a id="Background"></a></h4>
+<h3 id="_background_a_id_background_a">Background<a id="Background"></a></h3>
 <div class="paragraph">
 <p>Java Data Objects (JDO) is a specification begun in 2000, with 2 major
 releases JDO1 (2002 under JSR0012) and JDO2 (2006 under JSR0243). It was
@@ -316,8 +308,8 @@ of cancel/timeout control to queries, and addition of control to the
 locking of objects when read.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_metadata_api_a_id_metadata_api_a">Metadata API<a id="Metadata_API"></a></h4>
+<div class="sect2">
+<h3 id="_metadata_api_a_id_metadata_api_a">Metadata API<a id="Metadata_API"></a></h3>
 <div class="paragraph">
 <p>To persist Java objects you need to specify which classes are
 persistable, and how they are persisted. This was traditionally handled
@@ -413,11 +405,11 @@ PersistenceManagerFactory, like this</p>
 </div>
 <div class="paragraph">
 <p>You can view the Javadocs for the Metadata API
-<a href="http://db.apache.org/jdo/api30/apidocs/javax/jdo/metadata/package-summary.adoc">here</a>.</p>
+<a href="http://db.apache.org/jdo/api30/apidocs/javax/jdo/metadata/package-summary.html">here</a>.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_enhancer_api_a_id_enhancer_api_a">Enhancer API<a id="Enhancer_API"></a></h4>
+<div class="sect2">
+<h3 id="_enhancer_api_a_id_enhancer_api_a">Enhancer API<a id="Enhancer_API"></a></h3>
 <div class="paragraph">
 <p>JDO implementations typically (but aren&#8217;t compelled to) include a
 bytecode enhancement step, allowing for efficient change detection of
@@ -466,11 +458,11 @@ enhancer.enhance();</pre>
 </div>
 <div class="paragraph">
 <p>You can view the Javadocs for the Enhancer API
-<a href="http://db.apache.org/jdo/api30/apidocs/index.adoc">here</a>.</p>
+<a href="http://db.apache.org/jdo/api30/apidocs/index.html">here</a>.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_query_cancel_timeout_api_a_id_query_canceltimeout_api_a">Query Cancel/Timeout API<a id="Query_CancelTimeout_API"></a></h4>
+<div class="sect2">
+<h3 id="_query_cancel_timeout_api_a_id_query_canceltimeout_api_a">Query Cancel/Timeout API<a id="Query_CancelTimeout_API"></a></h3>
 <div class="paragraph">
 <p>On occasions a query may be inefficient, or may suffer from problems in
 the underlying datastore, and so we don&#8217;t want to affect the
@@ -492,8 +484,8 @@ void cancel(Thread thread);</pre>
 timeout.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_control_of_read_objects_locking_a_id_control_of_read_objects_locking_a">Control of read objects locking<a id="Control_of_read_objects_locking"></a></h4>
+<div class="sect2">
+<h3 id="_control_of_read_objects_locking_a_id_control_of_read_objects_locking_a">Control of read objects locking<a id="Control_of_read_objects_locking"></a></h3>
 <div class="paragraph">
 <p>When we are using datastore (pessimistic) transactions it often doesn&#8217;t
 make sense to just lock all objects read in the transaction. For this
@@ -532,7 +524,6 @@ Boolean getSerializeRead();</pre>
 <p>Copyright © 2005-2015. All Rights Reserved.</p>
 </div>
 <hr>
-</div>
 </div>
 </div>
 </div>

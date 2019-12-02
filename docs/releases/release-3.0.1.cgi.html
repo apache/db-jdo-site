@@ -11,7 +11,7 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>Persistence MetaData<a id="Persistence_MetaData"></a></title>
+    <title>JDO TEST</title>
 
     <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
@@ -280,79 +280,146 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
                 <div class="page-title">
-                    <h1>Persistence MetaData<a id="Persistence_MetaData"></a></h1>
+                    <h1>JDO TEST</h1>
                 </div>
                 <div id="doc-content">
-                    <div id="index" class="paragraph">
-<p><span class="image" style="float: left"><img src="images/JDOx150.png" alt="JDOx150"></span>
-<span class="image" style="float: left"><img src="images/jdo_text.png" alt="jdo text"></span></p>
+                    <div id="index" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/JDOx150.png" alt="JDOx150">
 </div>
-<hr>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/jdo_text.png" alt="jdo text">
+</div>
+</div>
 <div class="sect1">
-<h2 id="_persistence_metadata_a_id_persistence_metadata_a">Persistence MetaData<a id="Persistence_MetaData"></a></h2>
+<h2 id="_jdo_test">JDO TEST</h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_jdo_3_0_1_distributions_a_id_jdo_3_0_1_distributions_a">JDO 3.0.1 Distributions<a id="JDO_3.0.1_Distributions"></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>JDO 1.0 and JDO 2.0 support specification of persistence using XML
-MetaData. JDO 2.1 adds on the ability to specify persistence using Java5
-annotations.</p>
-</div>
-<div class="sect2">
-<h3 id="_xml_metadata_a_id_xml_metadata_a">XML MetaData<a id="XML_MetaData"></a></h3>
-<div class="paragraph">
-<p>JDO expects any XML MetaData to be specified in a file or files in
-particular positions in the file system. For example, if you have a
-class <em>com.mycompany.sample.MyExample</em>, JDO will look for any of the
-following files until it finds one (in the order stated) :-</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>META-INF/package.jdo
-WEB-INF/package.jdo
-package.jdo
-com/package.jdo
-com/mycompany/package.jdo
-com/mycompany/sample/package.jdo
-com/mycompany/sample/MyExample.jdo</pre>
-</div>
+<p>Use the links below to download Apache JDO from one of our mirrors. For
+more information about the projects see
+<a href="../downloads.adoc">Downloads</a>. For information on running the TCK,
+see <a href="../tck.adoc">TCK</a>.</p>
 </div>
 <div class="paragraph">
-<p>In addition to specifying XML MetaData in a <strong>jdo</strong> file, if defining O/R
-mapping information you can also split this out into an ORM file. The
-locations for ORM files are similar in nature to those for JDO files.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>META-INF/package-{mapping}.orm
-WEB-INF/package-{mapping}.orm
-package-{mapping}.orm
-com/package-{mapping}.orm
-com/mycompany/package-{mapping}.orm
-com/mycompany/sample/package-{mapping}.orm
-com/mycompany/sample/MyExample-{mapping}.orm</pre>
-</div>
+<p>It is good practice to <a href="#Verifying">verify the integrity</a> of the
+distribution files.</p>
 </div>
 <div class="paragraph">
-<p>where <em>{mapping}</em> is a property specified by the user and may be
-"mysql" for ORM information for MySQL datastores, and "oracle" for ORM
-information for Oracle datastores, and so on.</p>
+<p>You are currently using <strong><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></strong>. If you
+encounter a problem with this mirror, then please select another. If all
+mirrors are failing, there are backup mirrors at the end of the list.
+See <a href="http://www.apache.org/mirrors/">status</a> of mirrors.</p>
+</div>
+<div class="paragraph">
+<p>Other mirrors:
+<a href="http://apache.mirror.anlx.net/http://apache.mirrors.nublue.co.uk/http://mirror.ox.ac.uk/sites/rsync.apache.org/http://mirror.vorboss.net/apache/http://mirrors.ukfast.co.uk/sites/ftp.apache.org/http://www.mirrorservice.org/sites/ftp.apache.org/ftp://ftp.mirrorservice.org/sites/ftp.apache.org/https://www-eu.apache.org/dist/" class="bare">http://apache.mirror.anlx.net/http://apache.mirrors.nublue.co.uk/http://mirror.ox.ac.uk/sites/rsync.apache.org/http://mirror.vorboss.net/apache/http://mirrors.ukfast.co.uk/sites/ftp.apache.org/http://www.mirrorservice.org/sites/ftp.apache.org/ftp://ftp.mirrorservice.org/sites/ftp.apache.org/https://www-eu.apache.org/dist/</a>
+(backup)<a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a> (backup)</p>
 </div>
 <div class="paragraph">
 <p><br></p>
 </div>
+<div class="sect2">
+<h3 id="_release_notes_a_id_release_notes_a">Release Notes<a id="Release_Notes"></a></h3>
+<div class="paragraph">
+<p><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12317950&amp;styleName=Html&amp;projectId=10630">View
+release notes for JDO 3.0.1</a></p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_annotations_a_id_annotations_a">Annotations<a id="Annotations"></a></h3>
+<h3 id="_api_a_id_api_a">API<a id="API"></a></h3>
 <div class="paragraph">
-<p>JDO 2.1 provides support for annotations. Classes and fields/properties
-can be annotated defining the persistence and, optionally, any ORM
-information.</p>
+<p>The api project contains source to build jdo-api.jar, which defines the
+JDO API. The jar file is the only artifact needed for users who wish to
+compile their programs using the JDO API. It can be downloaded
+automatically by maven and placed into the local maven repository if you
+include the proper dependency in your maven project definition. Use
+groupId javax.jdo, artifactId jdo-api, version 3.0 and define your
+remote repository as <a href="http://www.ibiblio.org/maven" class="bare">http://www.ibiblio.org/maven</a>. Alternatively, it can
+be downloaded manually and put into a location of your choice.</p>
+</div>
+<div class="paragraph">
+<p><a href="http://people.apache.org/repo/m1-ibiblio-rsync-repository/javax.jdo/jars/jdo-api-3.0.1.jar">jdo-api-3.0.1.jar</a></p>
+</div>
+<div class="paragraph apache org/repo/m1-ibiblio-rsync-repository/javax jdo/jars/jdo-api-3 0 1 jar md5[MD5]">
+<p><a href="http://people.apache.org/repo/m1-ibiblio-rsync-repository/javax.jdo/poms/jdo-api-3.0.1.pom">jdo-api-3.0.1.pom</a></p>
+</div>
+<div class="paragraph apache org/repo/m1-ibiblio-rsync-repository/javax jdo/poms/jdo-api-3 0 1 pom md5[MD5]">
+<p><a href="http://apache.mirrors.nublue.co.uk//db/jdo/3.0.1/jdo-api-3.0.1-src.zip">jdo-api-3.0.1-src.zip</a></p>
+</div>
+<div class="paragraph apache org/dist/db/jdo/3 0 1/jdo-api-3 0 1-src zip md5[MD5]">
+<p><a href="http://apache.mirrors.nublue.co.uk//db/jdo/3.0.1/jdo-api-3.0.1-src.tar.gz">jdo-api-3.0.1-src.tar.gz</a></p>
+</div>
+</div>
+<div class="sect2 apache org/dist/db/jdo/3 0 1/jdo-api-3 0 1-src tar gz md5[MD5]">
+<h3 id="_tck_a_id_tck_a">TCK<a id="TCK"></a></h3>
+<div class="paragraph">
+<p>This is a download for all implementors of JDO, and for those who want
+to check how well an implementation is compliant with the JDO
+specification. The tck2 project contains the JDO 2 Technology
+Compatibility Kit. The source distribution is the only artifact needed
+to be downloaded by the user. The dependencies (including the model20
+jar, util20 jar, enhancer20 jar, api2 jar, and JPOX) are automatically
+downloaded by maven as needed to run the TCK.</p>
+</div>
+<div class="paragraph">
+<p><a href="http://apache.mirrors.nublue.co.uk//db/jdo/3.0.1/jdo-tck-3.0.1-src.zip">jdo-tck-3.0.1-src.zip</a></p>
+</div>
+<div class="paragraph apache org/dist/db/jdo/3 0 1/jdo-tck-3 0 1-src zip md5[MD5]">
+<p><a href="http://apache.mirrors.nublue.co.uk//db/jdo/3.0.1/jdo-tck-3.0.1-src.tar.gz">jdo-tck-3.0.1-src.tar.gz</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 apache org/dist/db/jdo/3 0 1/jdo-tck-3 0 1-src tar gz md5[MD5]">
+<h2 id="_verifying_releases_a_id_verifying_releases_a">Verifying Releases<a id="Verifying_Releases"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a id="Verifying"></a></p>
+</div>
+<div class="paragraph">
+<p>It is essential that you verify the integrity of the downloaded files
+using the PGP signature and/or the MD5 checksum. The checksum is not as
+strong an indicator as the PGP signature is.</p>
+</div>
+<div class="paragraph">
+<p>The PGP signatures can be verified using PGP or GPG. First download the
+<a href="http://www.apache.org/dist/db/jdo/KEYS">KEYS</a> as well as the <code>asc</code>
+signature file for the particular distribution. Make sure you get these
+files from the <a href="http://www.apache.org/dist/db/jdo/">main distribution
+directory</a>, rather than from a mirror. Then verify the signatures using</p>
+</div>
+<div class="paragraph">
+<p>` % pgpk -a KEYS % pgpv release_name.tar.gz.asc` <em>or</em><br>
+` % pgp -ka KEYS % pgp release_name.tar.gz.asc` <em>or</em><br>
+` % gpg --import KEYS % gpg --verify release_name.tar.gz.asc`</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can verify the checksums on the files. Unix programs
+called <code>md5</code>/<code>sha1</code> or <code>md5sum</code>/<code>sha1sum</code> are included in many unix
+distributions. <code>*sum</code> is also available as part of
+<a href="http://www.gnu.org/software/textutils/textutils.adoc">GNU Textutils</a>.
+Windows users can get binary md5 programs from
+<a href="http://www.fourmilab.ch/md5/">http://www.fourmilab.ch/md5</a> and
+<a href="http://www.pc-tools.net/win32/freeware/console/">hhttp://www.pc-tools.net/win32/freeware/console</a>.
+Windows SlavaSoft <a href="http://www.slavasoft.com/fsum/">fsum</a> supports MD5 and
+SHA1.</p>
+</div>
+<div class="paragraph">
+<p>We highly recommend verifying the PGP signature, though.</p>
 </div>
 <hr>
 <div id="footer" class="paragraph">
 <p>Copyright © 2005-2015. All Rights Reserved.</p>
 </div>
 <hr>
-</div>
 </div>
 </div>
                 </div>

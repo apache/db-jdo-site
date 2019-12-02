@@ -11,7 +11,7 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>Persistence MetaData<a id="Persistence_MetaData"></a></title>
+    <title>JDO TEST</title>
 
     <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
@@ -280,79 +280,186 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
                 <div class="page-title">
-                    <h1>Persistence MetaData<a id="Persistence_MetaData"></a></h1>
+                    <h1>JDO TEST</h1>
                 </div>
                 <div id="doc-content">
-                    <div id="index" class="paragraph">
-<p><span class="image" style="float: left"><img src="images/JDOx150.png" alt="JDOx150"></span>
-<span class="image" style="float: left"><img src="images/jdo_text.png" alt="jdo text"></span></p>
+                    <div id="index" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/JDOx150.png" alt="JDOx150">
 </div>
-<hr>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/jdo_text.png" alt="jdo text">
+</div>
+</div>
 <div class="sect1">
-<h2 id="_persistence_metadata_a_id_persistence_metadata_a">Persistence MetaData<a id="Persistence_MetaData"></a></h2>
+<h2 id="_jdo_test">JDO TEST</h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_replication_a_id_data_replication_a">Data Replication<a id="Data_Replication"></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>JDO 1.0 and JDO 2.0 support specification of persistence using XML
-MetaData. JDO 2.1 adds on the ability to specify persistence using Java5
-annotations.</p>
-</div>
-<div class="sect2">
-<h3 id="_xml_metadata_a_id_xml_metadata_a">XML MetaData<a id="XML_MetaData"></a></h3>
-<div class="paragraph">
-<p>JDO expects any XML MetaData to be specified in a file or files in
-particular positions in the file system. For example, if you have a
-class <em>com.mycompany.sample.MyExample</em>, JDO will look for any of the
-following files until it finds one (in the order stated) :-</p>
+<p>There are times when you need to replicate data between datastores. In
+many cases datastores themselves provide a means of doing this, however
+if you want to avoid using datastore-specific functionality you can
+utilise JDO to perform this task. JDO2 allows replication by use of
+detach/attach functionality. We demonstrate this with an example</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>META-INF/package.jdo
-WEB-INF/package.jdo
-package.jdo
-com/package.jdo
-com/mycompany/package.jdo
-com/mycompany/sample/package.jdo
-com/mycompany/sample/MyExample.jdo</pre>
+<pre>public class ElementHolder
+{
+    long id;
+    private Set elements = new HashSet();
+
+    ...
+}
+
+public class Element
+{
+    String name;
+
+    ...
+}
+
+public class SubElement extends Element
+{
+    double value;
+
+    ...
+}</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In addition to specifying XML MetaData in a <strong>jdo</strong> file, if defining O/R
-mapping information you can also split this out into an ORM file. The
-locations for ORM files are similar in nature to those for JDO files.</p>
+<p>so we have a 1-N unidirectional (Set) relation, and we define the
+metadata like this</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>META-INF/package-{mapping}.orm
-WEB-INF/package-{mapping}.orm
-package-{mapping}.orm
-com/package-{mapping}.orm
-com/mycompany/package-{mapping}.orm
-com/mycompany/sample/package-{mapping}.orm
-com/mycompany/sample/MyExample-{mapping}.orm</pre>
+<pre>&lt;jdo&gt;
+    &lt;package name="org.apache.jdo.test"&gt;
+        &lt;class name="ElementHolder" identity-type="application" detachable="true"&gt;
+            &lt;inheritance strategy="new-table"/&gt;
+            &lt;field name="id" primary-key="true"/&gt;
+            &lt;field name="elements" persistence-modifier="persistent"&gt;
+                &lt;collection element-type="Element"/&gt;
+                &lt;join/&gt;
+            &lt;/field&gt;
+        &lt;/class&gt;
+
+        &lt;class name="Element" identity-type="application" detachable="true"&gt;
+            &lt;inheritance strategy="new-table"/&gt;
+            &lt;field name="name" primary-key="true"/&gt;
+        &lt;/class&gt;
+
+        &lt;class name="SubElement"&gt;
+            &lt;inheritance strategy="new-table"/&gt;
+            &lt;field name="value"/&gt;
+        &lt;/class&gt;
+    &lt;/package&gt;
+&lt;/jdo&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>where <em>{mapping}</em> is a property specified by the user and may be
-"mysql" for ORM information for MySQL datastores, and "oracle" for ORM
-information for Oracle datastores, and so on.</p>
+<p>and so in our application we create some objects in <em>datastore1</em>, like
+this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>PersistenceManagerFactory pmf1 = JDOHelper.getPersistenceManagerFactory("jdo.1.properties");
+PersistenceManager pm1 = pmf1.getPersistenceManager();
+Transaction tx1 = pm1.currentTransaction();
+Object holderId = null;
+try
+{
+    tx1.begin();
+
+    ElementHolder holder = new ElementHolder(101);
+    holder.addElement(new Element("First Element"));
+    holder.addElement(new Element("Second Element"));
+    holder.addElement(new SubElement("First Inherited Element"));
+    holder.addElement(new SubElement("Second Inherited Element"));
+    pm1.makePersistent(holder);
+
+    tx1.commit();
+    holderId = JDOHelper.getObjectId(holder);
+}
+finally
+{
+    if (tx1.isActive())
+    {
+        tx1.rollback();
+    }
+    pm1.close();
+}</pre>
+</div>
 </div>
 <div class="paragraph">
-<p><br></p>
+<p>and now we want to replicate these objects into <em>datastore2</em>, so we
+detach them from <em>datastore1</em> and attach them to <em>datastore2</em>, like this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>// Detach the objects from "datastore1"
+ElementHolder detachedHolder = null;
+pm1 = pmf1.getPersistenceManager();
+tx1 = pm1.currentTransaction();
+try
+{
+    pm1.getFetchPlan().setGroups(new String[] {FetchPlan.DEFAULT, FetchPlan.ALL});
+    pm1.getFetchPlan().setMaxFetchDepth(-1);
+
+    tx1.begin();
+
+    ElementHolder holder = (ElementHolder) pm1.getObjectById(holderID);
+    detachedHolder = (ElementHolder) pm1.detachCopy(holder);
+
+    tx1.commit();
+}
+finally
+{
+    if (tx1.isActive())
+    {
+        tx1.rollback();
+    }
+    pm1.close();
+}
+
+// Attach the objects to datastore2
+PersistenceManagerFactory pmf2 = JDOHelper.getPersistenceManagerFactory("jdo.2.properties");
+PersistenceManager pm2 = pmf2.getPersistenceManager();
+Transaction tx2 = pm2.currentTransaction();
+try
+{
+    tx2.begin();
+
+    pm2.makePersistent(detachedHolder);
+
+    tx2.commit();
+}
+finally
+{
+    if (tx2.isActive())
+    {
+        tx2.rollback();
+    }
+    pm2.close();
+}</pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_annotations_a_id_annotations_a">Annotations<a id="Annotations"></a></h3>
 <div class="paragraph">
-<p>JDO 2.1 provides support for annotations. Classes and fields/properties
-can be annotated defining the persistence and, optionally, any ORM
-information.</p>
+<p>These objects are now replicated into <em>datastore2</em>. Clearly you can
+extend this basic idea and replicate large amounts of data.</p>
 </div>
 <hr>
 <div id="footer" class="paragraph">
 <p>Copyright © 2005-2015. All Rights Reserved.</p>
 </div>
 <hr>
-</div>
 </div>
 </div>
                 </div>

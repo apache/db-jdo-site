@@ -11,9 +11,9 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>JDO TEST</title>
+    <title>JDO State Transition<a id="JDO_State_Transition"></a></title>
 
-    <link rel="icon" type="image/png" href="https://tzaeschke.github.io/test-jdo-asciidoc/images/JDO_32x32.png"/>
+    <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
     <!--
         Apache JDO Documentation Template
@@ -280,25 +280,17 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
                 <div class="page-title">
-                    <h1>JDO TEST</h1>
+                    <h1>JDO State Transition<a id="JDO_State_Transition"></a></h1>
                 </div>
                 <div id="doc-content">
-                    <div id="index" class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/JDOx150.png" alt="JDOx150">
+                    <div id="index" class="paragraph">
+<p><span class="image" style="float: left"><img src="images/JDOx150.png" alt="JDOx150"></span>
+<span class="image" style="float: left"><img src="images/jdo_text.png" alt="jdo text"></span></p>
 </div>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="images/jdo_text.png" alt="jdo text">
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jdo_test">JDO TEST</h2>
-<div class="sectionbody">
 <hr>
-<div class="sect2">
-<h3 id="_jdo_state_transition_a_id_jdo_state_transition_a">JDO State Transition<a id="JDO_State_Transition"></a></h3>
+<div class="sect1">
+<h2 id="_jdo_state_transition_a_id_jdo_state_transition_a">JDO State Transition<a id="JDO_State_Transition"></a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>JDO manages the lifecycle of an object, from creation (<strong>Transient</strong>)
 through to persistence in the datastore (<strong>Hollow</strong>, <strong>Persistent Clean</strong>)
@@ -393,10 +385,10 @@ instance whose values have been changed since detaching.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="sect3">
-<h4 id="_detecting_object_state_a_id_detecting_object_state_a">Detecting Object State<a id="Detecting_Object_State"></a></h4>
+<div class="sect2">
+<h3 id="_detecting_object_state_a_id_detecting_object_state_a">Detecting Object State<a id="Detecting_Object_State"></a></h3>
 <div class="paragraph">
-<p>JDO provides a class <a href="jdohelper.adoc">JDOHelper</a> that allows you to
+<p>JDO provides a class <a href="jdohelper.html">JDOHelper</a> that allows you to
 interrogate the object state via its attributes (isPersistent(),
 isDeleted(), etc). In JDO 2.1 for JDKs 1.5+ <em>JDOHelper</em> is extended to
 also provide a method that gives the full object state.</p>
@@ -410,8 +402,8 @@ also provide a method that gives the full object state.</p>
 <p><br></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_persisting_an_object_a_id_persisting_an_object_a">Persisting an object<a id="Persisting_an_object"></a></h4>
+<div class="sect2">
+<h3 id="_persisting_an_object_a_id_persisting_an_object_a">Persisting an object<a id="Persisting_an_object"></a></h3>
 <div class="paragraph">
 <p>The most basic thing you can do with JDO is persist an object. The
 following code is an example of how you can do this</p>
@@ -449,8 +441,8 @@ started. The following diagram shows this graphically</p>
 <p><span class="image"><img src="images/state_transition_persist.png" alt="image"></span><br></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_updating_an_object_a_id_updating_an_object_a">Updating an object<a id="Updating_an_object"></a></h4>
+<div class="sect2">
+<h3 id="_updating_an_object_a_id_updating_an_object_a">Updating an object<a id="Updating_an_object"></a></h3>
 <div class="paragraph">
 <p>When you have persisted objects you need to update them. The following
 code is an example of how you can do this</p>
@@ -489,8 +481,8 @@ The following diagram shows this graphically</p>
 <p><span class="image"><img src="images/state_transition_update.png" alt="image"></span><br></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_deleting_an_object_a_id_deleting_an_object_a">Deleting an object<a id="Deleting_an_object"></a></h4>
+<div class="sect2">
+<h3 id="_deleting_an_object_a_id_deleting_an_object_a">Deleting an object<a id="Deleting_an_object"></a></h3>
 <div class="paragraph">
 <p>When you no longer need an object persisted, you can delete it. The
 following code is an example of how you can do this</p>
@@ -530,8 +522,8 @@ this graphically</p>
 <p><span class="image"><img src="images/state_transition_delete.png" alt="image"></span><br></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_possible_state_transitions_a_id_possible_state_transitions_a">Possible state transitions<a id="Possible_state_transitions"></a></h4>
+<div class="sect2">
+<h3 id="_possible_state_transitions_a_id_possible_state_transitions_a">Possible state transitions<a id="Possible_state_transitions"></a></h3>
 <div class="paragraph">
 <p>The following diagram shows the state transitions possible with JDO.</p>
 </div>
@@ -546,7 +538,6 @@ this graphically</p>
 <p>Copyright © 2005-2015. All Rights Reserved.</p>
 </div>
 <hr>
-</div>
 </div>
 </div>
 </div>
