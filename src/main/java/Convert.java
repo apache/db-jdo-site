@@ -51,12 +51,12 @@ public class Convert {
 	} 
 
 	private static void convert(File src) {
-		if (!src.toString().endsWith(".html")) {
-			// skip non-html: css, ...
-			return;
-		}
 		if (src.toString().contains("docs\\api")) {
 			// skip 'api' folders
+			return;
+		}
+		if (!src.toString().endsWith(".html")) {
+			// skip non-html: css, ...
 			return;
 		}
 
@@ -166,6 +166,11 @@ public class Convert {
 					// some more hacks:
 					s = s.endsWith("]##") ? s.substring(0, s.lastIndexOf(']') + 1) : s;
 					s = s.endsWith("]####") ? s.substring(0, s.lastIndexOf(']') + 1) : s;
+					// Fixes glossary.html
+					int pos = s.indexOf("]####");
+					if (pos >=0) {
+						s = s.substring(0, pos + 1) + s.substring(pos + 5);
+					}
 
 					bw.write(s + NL);
 				}
@@ -192,7 +197,10 @@ public class Convert {
 		s.append("image:images/JDOx150.png[float=\"left\"]").append(NL);
 		s.append("image:images/jdo_text.png[float=\"left\"]").append(NL);
 //		s.append("--").append(NL);
-		
+	
+		// Hide title
+		//s.append("= XYZ").append(NL);
+		//s.append(":notitle:").append(NL);
 		//s.append("== JDO TEST").append(NL);
 		//s.append("link:./[image:images/JDOx150.gif[Apache JDO]]").append(NL);
 		//s.append("link:./[image:images/jdo_text.gif[Apache JDO]]").append(NL);
