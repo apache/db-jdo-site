@@ -235,9 +235,10 @@
     <% if is_toc? then %>
         <div class="row-fluid">
             <div class="col-sm-9">
-                <div class="page-title">
-                    <h1><%= document.name %></h1>
+<!--                <div class="page-title">
+                    <h3><%= document.name %></h3>
                 </div>
+-->
                 <div id="doc-content">
                     <%= document.content %>
                 </div>
@@ -254,7 +255,7 @@
                     <!-- Front Page, so no heading -->
                 <% else %>
                     <div class="page-title">
-                        <h1><%= document.name %></h1>
+                        <h4><%= document.name %></h4>
                     </div>
                 <% end %>
                 <div id="doc-content">
