@@ -7,12 +7,28 @@ This repository contains the JDO website source.
 
  * The ASCIIDOC sources can be found in `src/main/asciidoc`
  * The website menu is defined in `src/main/template`
- * The website can be build with `mvn clean build`. This generates html files in `target/site`. These need to be copied manually into the `docs` folder. Then, after `git commit` and `git push`, they should be visible on the website (you may have to refresh the browser). Alternatively, the generated files can of course be viwed locally with a web browser.
  * The converter for migrating the old html files to asciidoc can be found in `src/main/java`
+
+
+
+How to build the website:
+ * Use `git pull`  to get the latest version from the repository.
+ * Use `git branch MyBranchName` and `git checkout MyBranchName` to create a branch and check it out.
+ * Adapt the asciidoc files in `src/main/asciidoc` or the website menu in  `src/main/template
+ * Call `mvn clean build`. This generates html files in `target/site`. 
+ * Copy all files from `target/site` into the `docs` folder, do not forget subfolders.
+ * Verify the generated website by viewing it locally with a web browser. 
+ * Commit changes with `git commit -m 'my commit message' `.
+ * Push changes to the repository with `git push`.
+ * Go to Github.com and create a PR for your branch
+ * Once th PR is accepted, the changes should be visible on the website (you may have to refresh the browser). 
+
 
 ### TODO Asciidoc 
  * JDO Usage -> Guides are missing
  * Links in Usage -> Glossary
+ * There are some direct references to db.apache.org/jdo -> remove or convert
+ * Fix pages in subfolders: Move to main folder?
   
 ### TODO
  * Downloads -> Any release -> cgi files....
