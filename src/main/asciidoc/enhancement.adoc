@@ -563,7 +563,3 @@ public class A implements PersistenceCapable, Detachable
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

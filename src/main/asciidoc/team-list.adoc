@@ -55,7 +55,3 @@ link:get-involved.html[Get Involved].
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

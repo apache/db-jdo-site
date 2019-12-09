@@ -48,7 +48,3 @@ Other external dependencies of JDO are subproject-specific:
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

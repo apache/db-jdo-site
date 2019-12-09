@@ -199,7 +199,3 @@ This concludes our simple overview of JDO3. We hope you enjoy using it
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

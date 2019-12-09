@@ -56,7 +56,3 @@ Heiko Bobzin. Publisher: Prentice Hall
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

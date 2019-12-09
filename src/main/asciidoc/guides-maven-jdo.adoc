@@ -245,7 +245,3 @@ projects, primarily JPOX, and Apache JDO, and a member of the JSR243
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

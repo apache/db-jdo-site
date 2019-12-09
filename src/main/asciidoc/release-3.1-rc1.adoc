@@ -10,32 +10,41 @@ image:images/jdo_text.png[float="left"]
 :titlepage:
 :grid: cols
 
-== JDO 3.1 Distributionsanchor:JDO_3.1_Distributions[]
+== JDO 3.1-rc1 Distributionsanchor:JDO_3.1-rc1_Distributions[]
 
 Use the links below to download Apache JDO from one of our mirrors. For
-more information about the projects see
-link:../downloads.html[Downloads]. For information on running the TCK,
-see link:../tck.html[TCK].
+more information about the projects see link:downloads.html[Downloads].
+For information on running the TCK, see link:tck.html[TCK].
 
 It is good practice to xref:Verifying[verify the integrity] of the
 distribution files.
 
-You are currently using *http://apache.mirror.anlx.net/*. If you
-encounter a problem with this mirror, then please select another. If all
-mirrors are failing, there are backup mirrors at the end of the list.
-See http://www.apache.org/mirrors/[status] of mirrors.
+You are currently using
+*http://mirror.ox.ac.uk/sites/rsync.apache.org/*. If you encounter a
+problem with this mirror, then please select another. If all mirrors are
+failing, there are backup mirrors at the end of the list. See
+http://www.apache.org/mirrors/[status] of mirrors.
 
 Other mirrors:
-http://apache.mirror.anlx.net/http://apache.mirrors.nublue.co.uk/http://mirror.ox.ac.uk/sites/rsync.apache.org/http://mirror.vorboss.net/apache/http://mirrors.ukfast.co.uk/sites/ftp.apache.org/http://www.mirrorservice.org/sites/ftp.apache.org/ftp://ftp.mirrorservice.org/sites/ftp.apache.org/https://www-eu.apache.org/dist/
-(backup)https://www-us.apache.org/dist/ (backup)
+
+* http://apache.mirror.anlx.net/ 
+* http://apache.mirrors.nublue.co.uk/ 
+* http://mirror.ox.ac.uk/sites/rsync.apache.org/ 
+* http://mirror.vorboss.net/apache/ 
+* http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ 
+* http://www.mirrorservice.org/sites/ftp.apache.org/ 
+* ftp://ftp.mirrorservice.org/sites/ftp.apache.org/ 
+* https://www-eu.apache.org/dist/   (backup) 
+* https://www-us.apache.org/dist/   (backup) 
+
 
 {empty} +
 
 
 === Release Notesanchor:Release_Notes[]
 
-https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12325878&styleName=Html&projectId=10630[View
-release notes for JDO 3.1]
+https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12314921&styleName=Html&projectId=10630[View
+release notes for JDO 3.1-rc1]
 
 === APIanchor:API[]
 
@@ -44,18 +53,18 @@ JDO API. The jar file is the only artifact needed for users who wish to
 compile their programs using the JDO API. It can be downloaded
 automatically by maven and placed into the local maven repository if you
 include the proper dependency in your maven project definition. Use
-groupId javax.jdo, artifactId jdo-api, version 3.1 and define your
+groupId javax.jdo, artifactId jdo-api, version 3.1-rc1 and define your
 remote repository as http://www.ibiblio.org/maven. Alternatively, it can
 be downloaded manually and put into a location of your choice.
 
-http://apache.mirror.anlx.net//db/jdo/3.1/jdo-api-3.1.jar[jdo-api-3.1.jar]
-[http://www.apache.org/dist/db/jdo/3.1/jdo-api-3.1.jar.asc[PGP]]
+http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-api-3.1-rc1.jar[jdo-api-3.1-rc1.jar]
+[http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-api-3.1-rc1.jar.asc[PGP]]
 
-http://apache.mirror.anlx.net//db/jdo/3.1/jdo-api-3.1.pom[jdo-api-3.1.pom]
-[http://www.apache.org/dist/db/jdo/3.1/jdo-api-3.1.pom.asc[PGP]]
+http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-api-3.1-rc1.pom[jdo-api-3.1-rc1.pom]
+[http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-api-3.1-rc1.pom.asc[PGP]]
 
-http://apache.mirror.anlx.net//db/jdo/3.1/jdo-api-3.1-sources.jar[jdo-api-3.1-sources.jar]
-[http://www.apache.org/dist/db/jdo/3.1/jdo-api-3.1-sources.jar.asc[PGP]]
+http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-api-3.1-rc1-sources.jar[jdo-api-3.1-rc1-sources.jar]
+[http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-api-3.1-rc1-sources.jar.asc[PGP]]
 
 === TCKanchor:TCK[]
 
@@ -67,11 +76,11 @@ downloaded by the user. The dependencies are automatically downloaded by
 maven as needed to run the TCK. Please refer to the README.html for
 further details.
 
-http://apache.mirror.anlx.net//db/jdo/3.1/jdo-3.1-src.zip[jdo-3.1-src.zip]
-[http://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.zip.asc[PGP]]
+http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-3.1-rc1-src.zip[jdo-3.1-rc1-src.zip]
+[http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-3.1-rc1-src.zip.asc[PGP]]
 
-http://apache.mirror.anlx.net//db/jdo/3.1/jdo-3.1-src.tar.gz[jdo-3.1-src.tar.gz]
-[http://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.tar.gz.asc[PGP]]
+http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-3.1-rc1-src.tar.gz[jdo-3.1-rc1-src.tar.gz]
+[http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-3.1-rc1-src.tar.gz.asc[PGP]]
 
 == Verifying Releasesanchor:Verifying_Releases[]
 
@@ -92,7 +101,3 @@ directory], rather than from a mirror. Then verify the signatures using
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

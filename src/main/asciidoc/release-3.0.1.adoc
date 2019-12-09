@@ -13,9 +13,8 @@ image:images/jdo_text.png[float="left"]
 == JDO 3.0.1 Distributionsanchor:JDO_3.0.1_Distributions[]
 
 Use the links below to download Apache JDO from one of our mirrors. For
-more information about the projects see
-link:../downloads.html[Downloads]. For information on running the TCK,
-see link:../tck.html[TCK].
+more information about the projects see link:downloads.html[Downloads].
+For information on running the TCK, see link:tck.html[TCK].
 
 It is good practice to xref:Verifying[verify the integrity] of the
 distribution files.
@@ -26,8 +25,17 @@ mirrors are failing, there are backup mirrors at the end of the list.
 See http://www.apache.org/mirrors/[status] of mirrors.
 
 Other mirrors:
-http://apache.mirror.anlx.net/http://apache.mirrors.nublue.co.uk/http://mirror.ox.ac.uk/sites/rsync.apache.org/http://mirror.vorboss.net/apache/http://mirrors.ukfast.co.uk/sites/ftp.apache.org/http://www.mirrorservice.org/sites/ftp.apache.org/ftp://ftp.mirrorservice.org/sites/ftp.apache.org/https://www-eu.apache.org/dist/
-(backup)https://www-us.apache.org/dist/ (backup)
+
+* http://apache.mirror.anlx.net/ 
+* http://apache.mirrors.nublue.co.uk/ 
+* http://mirror.ox.ac.uk/sites/rsync.apache.org/ 
+* http://mirror.vorboss.net/apache/ 
+* http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ 
+* http://www.mirrorservice.org/sites/ftp.apache.org/ 
+* ftp://ftp.mirrorservice.org/sites/ftp.apache.org/ 
+* https://www-eu.apache.org/dist/   (backup) 
+* https://www-us.apache.org/dist/   (backup) 
+
 
 {empty} +
 
@@ -114,7 +122,3 @@ We highly recommend verifying the PGP signature, though.
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

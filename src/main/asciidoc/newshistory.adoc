@@ -24,7 +24,3 @@ Software Foundation and Sun Microsystems, Inc.
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

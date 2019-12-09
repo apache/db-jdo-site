@@ -138,7 +138,3 @@ choosing a persistence layer for your application.
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

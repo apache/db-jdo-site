@@ -36,7 +36,3 @@ on the mailing list and provides additional information on the project.
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

@@ -598,7 +598,3 @@ image:images/icon_success_sml.png[image]
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

@@ -2,13 +2,13 @@
 image:images/JDOx150.png[float="left"]
 image:images/jdo_text.png[float="left"]
 
+'''''
+
 :_basedir: 
 :_imagesdir: images/
 :notoc:
 :titlepage:
 :grid: cols
-
-'''''
 
 == JDO : Annotationsanchor:JDO_:_Annotations[]
 
@@ -1917,7 +1917,3 @@ public class Person
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

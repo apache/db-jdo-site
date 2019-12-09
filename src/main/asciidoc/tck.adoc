@@ -42,7 +42,3 @@ please see link:tck/final[http://db.apache.org/jdo/tck/final].
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''

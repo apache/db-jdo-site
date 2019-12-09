@@ -131,7 +131,3 @@ As an overall conclusion "JPA" is a subset of what is available in
 
 '''''
 
-[[footer]]
-Copyright © 2005-2015. All Rights Reserved.
-
-'''''
