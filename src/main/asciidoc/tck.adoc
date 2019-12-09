@@ -37,8 +37,7 @@ in the tck directory.
 Vendors must post test results on a publicly accessible web site for
 examination by the public. The posting includes the output of the test
 run, which consists of multiple log files containing configuration
-information and test results. For an example of the required posting,
-please see link:tck/final[http://db.apache.org/jdo/tck/final].
+information and test results.
 
 '''''
 
