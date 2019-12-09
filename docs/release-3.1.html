@@ -11,7 +11,7 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>Meta-Data - JDOQuery<a id="Meta-Data_-_JDOQuery"></a></title>
+    <title>JDO 3.1 Distributions<a id="JDO_3.1_Distributions"></a></title>
 
     <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
@@ -280,7 +280,7 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
 <!--                <div class="page-title">
-                    <h3>Meta-Data - JDOQuery<a id="Meta-Data_-_JDOQuery"></a></h3>
+                    <h3>JDO 3.1 Distributions<a id="JDO_3.1_Distributions"></a></h3>
                 </div>
 -->
                 <div id="doc-content">
@@ -290,50 +290,258 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <hr>
 <div class="sect1">
-<h2 id="_meta_data_jdoquery_a_id_meta_data_jdoquery_a">Meta-Data - JDOQuery<a id="Meta-Data_-_JDOQuery"></a></h2>
+<h2 id="_jdo_3_1_distributions_a_id_jdo_3_1_distributions_a">JDO 3.1 Distributions<a id="JDO_3.1_Distributions"></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>JDO defines XML MetaData in <strong>jdo</strong> files as well as <strong>orm</strong> files, but also
-specifies that named queries can be defined in <em>jdoquery</em> files. As
-always with XML, the metadata must match the defined DTD/XSD for that
-file type. This section describes the content of the <strong>jdoquery</strong> files.
-All <strong>jdoquery</strong> files must contain a valid DTD/DOCTYPE specification. You
-can use PUBLIC or SYSTEM versions of these.</p>
+<p>Use the links below to download Apache JDO from one of our mirrors. For
+more information about the projects see <a href="downloads.html">Downloads</a>.
+For information on running the TCK, see <a href="tck.html">TCK</a>.</p>
 </div>
 <div class="paragraph">
-<p>Here are a few examples valid for <strong>jdoquery</strong> files eith DTD
-specification</p>
+<p>It is good practice to <a href="#Verifying">verify the integrity</a> of the
+distribution files.</p>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;!DOCTYPE jdoquery PUBLIC
-    "-//Sun Microsystems, Inc.//DTD Java Data Objects Query Metadata 3.0//EN"
-    "http://xmlns.jcp.org/dtd/jdoquery_3_0.dtd"&gt;
-
-&lt;!DOCTYPE jdoquery SYSTEM "file:/javax/jdo/jdoquery.dtd"&gt;</pre>
+<div class="paragraph">
+<p>You are currently using <strong><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></strong>. If you
+encounter a problem with this mirror, then please select another. If all
+mirrors are failing, there are backup mirrors at the end of the list.
+See <a href="http://www.apache.org/mirrors/">status</a> of mirrors.</p>
 </div>
+<div class="paragraph">
+<p>Other mirrors:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></p>
+</li>
+<li>
+<p><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></p>
+</li>
+<li>
+<p><a href="http://mirror.ox.ac.uk/sites/rsync.apache.org/" class="bare">http://mirror.ox.ac.uk/sites/rsync.apache.org/</a></p>
+</li>
+<li>
+<p><a href="http://mirror.vorboss.net/apache/" class="bare">http://mirror.vorboss.net/apache/</a></p>
+</li>
+<li>
+<p><a href="http://mirrors.ukfast.co.uk/sites/ftp.apache.org/" class="bare">http://mirrors.ukfast.co.uk/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="http://www.mirrorservice.org/sites/ftp.apache.org/" class="bare">http://www.mirrorservice.org/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp.mirrorservice.org/sites/ftp.apache.org/" class="bare">ftp://ftp.mirrorservice.org/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="https://www-eu.apache.org/dist/" class="bare">https://www-eu.apache.org/dist/</a>   (backup)</p>
+</li>
+<li>
+<p><a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a>   (backup)</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><br></p>
 </div>
+<div class="sect2">
+<h3 id="_release_notes_a_id_release_notes_a">Release Notes<a id="Release_Notes"></a></h3>
 <div class="paragraph">
-<p>Here is an example valid for <strong>jdoquery</strong> files with XSD specification</p>
+<p><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12325878&amp;styleName=Html&amp;projectId=10630">View
+release notes for JDO 3.1</a></p>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;jdo xmlns="http://xmlns.jcp.org/xml/ns/jdo/jdo"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/jdo/jdoquery
-        http://xmlns.jcp.org/xml/ns/jdo/jdoquery_3_0.xsd"&gt;
-    ...
-&lt;/jdo&gt;</pre>
 </div>
+<div class="sect2">
+<h3 id="_api_a_id_api_a">API<a id="API"></a></h3>
+<div class="paragraph">
+<p>The api project contains source to build jdo-api.jar, which defines the
+JDO API. The jar file is the only artifact needed for users who wish to
+compile their programs using the JDO API. It can be downloaded
+automatically by maven and placed into the local maven repository if you
+include the proper dependency in your maven project definition. Use
+groupId javax.jdo, artifactId jdo-api, version 3.1 and define your
+remote repository as <a href="http://www.ibiblio.org/maven" class="bare">http://www.ibiblio.org/maven</a>. Alternatively, it can
+be downloaded manually and put into a location of your choice.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></p>
+</li>
+<li>
+<p><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></p>
+</li>
+<li>
+<p><a href="http://mirror.ox.ac.uk/sites/rsync.apache.org/" class="bare">http://mirror.ox.ac.uk/sites/rsync.apache.org/</a></p>
+</li>
+<li>
+<p><a href="http://mirror.vorboss.net/apache/" class="bare">http://mirror.vorboss.net/apache/</a></p>
+</li>
+<li>
+<p><a href="http://mirrors.ukfast.co.uk/sites/ftp.apache.org/" class="bare">http://mirrors.ukfast.co.uk/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="http://www.mirrorservice.org/sites/ftp.apache.org/" class="bare">http://www.mirrorservice.org/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp.mirrorservice.org/sites/ftp.apache.org/" class="bare">ftp://ftp.mirrorservice.org/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="https://www-eu.apache.org/dist/" class="bare">https://www-eu.apache.org/dist/</a>   (backup)</p>
+</li>
+<li>
+<p><a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a>   (backup)</p>
+</li>
+<li>
+<p><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></p>
+</li>
+<li>
+<p><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></p>
+</li>
+<li>
+<p><a href="http://mirror.ox.ac.uk/sites/rsync.apache.org/" class="bare">http://mirror.ox.ac.uk/sites/rsync.apache.org/</a></p>
+</li>
+<li>
+<p><a href="http://mirror.vorboss.net/apache/" class="bare">http://mirror.vorboss.net/apache/</a></p>
+</li>
+<li>
+<p><a href="http://mirrors.ukfast.co.uk/sites/ftp.apache.org/" class="bare">http://mirrors.ukfast.co.uk/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="http://www.mirrorservice.org/sites/ftp.apache.org/" class="bare">http://www.mirrorservice.org/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp.mirrorservice.org/sites/ftp.apache.org/" class="bare">ftp://ftp.mirrorservice.org/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="https://www-eu.apache.org/dist/" class="bare">https://www-eu.apache.org/dist/</a>   (backup)</p>
+</li>
+<li>
+<p><a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a>   (backup)</p>
+</li>
+<li>
+<p><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></p>
+</li>
+<li>
+<p><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></p>
+</li>
+<li>
+<p><a href="http://mirror.ox.ac.uk/sites/rsync.apache.org/" class="bare">http://mirror.ox.ac.uk/sites/rsync.apache.org/</a></p>
+</li>
+<li>
+<p><a href="http://mirror.vorboss.net/apache/" class="bare">http://mirror.vorboss.net/apache/</a></p>
+</li>
+<li>
+<p><a href="http://mirrors.ukfast.co.uk/sites/ftp.apache.org/" class="bare">http://mirrors.ukfast.co.uk/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="http://www.mirrorservice.org/sites/ftp.apache.org/" class="bare">http://www.mirrorservice.org/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp.mirrorservice.org/sites/ftp.apache.org/" class="bare">ftp://ftp.mirrorservice.org/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="https://www-eu.apache.org/dist/" class="bare">https://www-eu.apache.org/dist/</a>   (backup)</p>
+</li>
+<li>
+<p><a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a>   (backup)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tck_a_id_tck_a">TCK<a id="TCK"></a></h3>
+<div class="paragraph">
+<p>This is a download for all implementors of JDO, and for those who want
+to check how well an implementation is compliant with the JDO
+specification. The tck project contains the JDO Technology Compatibility
+Kit. The source distribution is the only artifact needed to be
+downloaded by the user. The dependencies are automatically downloaded by
+maven as needed to run the TCK. Please refer to the README.html for
+further details.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></p>
+</li>
+<li>
+<p><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></p>
+</li>
+<li>
+<p><a href="http://mirror.ox.ac.uk/sites/rsync.apache.org/" class="bare">http://mirror.ox.ac.uk/sites/rsync.apache.org/</a></p>
+</li>
+<li>
+<p><a href="http://mirror.vorboss.net/apache/" class="bare">http://mirror.vorboss.net/apache/</a></p>
+</li>
+<li>
+<p><a href="http://mirrors.ukfast.co.uk/sites/ftp.apache.org/" class="bare">http://mirrors.ukfast.co.uk/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="http://www.mirrorservice.org/sites/ftp.apache.org/" class="bare">http://www.mirrorservice.org/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp.mirrorservice.org/sites/ftp.apache.org/" class="bare">ftp://ftp.mirrorservice.org/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="https://www-eu.apache.org/dist/" class="bare">https://www-eu.apache.org/dist/</a>   (backup)</p>
+</li>
+<li>
+<p><a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a>   (backup)</p>
+</li>
+<li>
+<p><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></p>
+</li>
+<li>
+<p><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></p>
+</li>
+<li>
+<p><a href="http://mirror.ox.ac.uk/sites/rsync.apache.org/" class="bare">http://mirror.ox.ac.uk/sites/rsync.apache.org/</a></p>
+</li>
+<li>
+<p><a href="http://mirror.vorboss.net/apache/" class="bare">http://mirror.vorboss.net/apache/</a></p>
+</li>
+<li>
+<p><a href="http://mirrors.ukfast.co.uk/sites/ftp.apache.org/" class="bare">http://mirrors.ukfast.co.uk/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="http://www.mirrorservice.org/sites/ftp.apache.org/" class="bare">http://www.mirrorservice.org/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="ftp://ftp.mirrorservice.org/sites/ftp.apache.org/" class="bare">ftp://ftp.mirrorservice.org/sites/ftp.apache.org/</a></p>
+</li>
+<li>
+<p><a href="https://www-eu.apache.org/dist/" class="bare">https://www-eu.apache.org/dist/</a>   (backup)</p>
+</li>
+<li>
+<p><a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a>   (backup)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_verifying_releases_a_id_verifying_releases_a">Verifying Releases<a id="Verifying_Releases"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a id="Verifying"></a></p>
 </div>
 <div class="paragraph">
-<p>Your MetaData should match either the
-<a href="http://xmlns.jcp.org/dtd/jdoquery_3_0.dtd">DTD</a> or the
-<a href="http://xmlns.jcp.org/xml/ns/jdo/jdoquery_3_0.xsd">XSD</a> specification.</p>
+<p>It is essential that you verify the integrity of the downloaded files
+using the PGP signature.</p>
+</div>
+<div class="paragraph">
+<p>The PGP signatures can be verified using PGP or GPG. First download the
+<a href="http://www.apache.org/dist/db/jdo/KEYS">KEYS</a> as well as the <code>asc</code>
+signature file for the particular distribution. Make sure you get these
+files from the <a href="http://www.apache.org/dist/db/jdo/">main distribution
+directory</a>, rather than from a mirror. Then verify the signatures using</p>
+</div>
+<div class="paragraph">
+<p>` % pgpk -a KEYS % pgpv release_name.tar.gz.asc` <em>or</em><br>
+` % pgp -ka KEYS % pgp release_name.tar.gz.asc` <em>or</em><br>
+` % gpg --import KEYS % gpg --verify release_name.tar.gz.asc`</p>
 </div>
 <hr>
 </div>

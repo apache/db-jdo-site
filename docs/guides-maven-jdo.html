@@ -11,7 +11,7 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>Meta-Data - JDOQuery<a id="Meta-Data_-_JDOQuery"></a></title>
+    <title>JDO Meets Maven<a id="JDO_Meets_Maven"></a></title>
 
     <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
@@ -280,7 +280,7 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
 <!--                <div class="page-title">
-                    <h3>Meta-Data - JDOQuery<a id="Meta-Data_-_JDOQuery"></a></h3>
+                    <h3>JDO Meets Maven<a id="JDO_Meets_Maven"></a></h3>
                 </div>
 -->
                 <div id="doc-content">
@@ -290,52 +290,306 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <hr>
 <div class="sect1">
-<h2 id="_meta_data_jdoquery_a_id_meta_data_jdoquery_a">Meta-Data - JDOQuery<a id="Meta-Data_-_JDOQuery"></a></h2>
+<h2 id="_jdo_meets_maven_a_id_jdo_meets_maven_a">JDO Meets Maven<a id="JDO_Meets_Maven"></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>JDO defines XML MetaData in <strong>jdo</strong> files as well as <strong>orm</strong> files, but also
-specifies that named queries can be defined in <em>jdoquery</em> files. As
-always with XML, the metadata must match the defined DTD/XSD for that
-file type. This section describes the content of the <strong>jdoquery</strong> files.
-All <strong>jdoquery</strong> files must contain a valid DTD/DOCTYPE specification. You
-can use PUBLIC or SYSTEM versions of these.</p>
+<p>By <a href="mailto:andy@jpox.org">Andy Jefferson</a></p>
+</div>
+<div class="sect2">
+<h3 id="_background_maven_a_id_background_maven_a">Background - Maven<a id="Background_-_Maven"></a></h3>
+<div class="paragraph">
+<p><a href="http://maven.apache.org">Maven</a> is a tool for managing and building
+projects providing an alternative to the accepted
+<a href="http://ant.apache.org">Ant</a> build process. Maven is almost totally
+plugin-driven, and provides plugins for many common tasks (for example:
+building EJB components such as WARs and EARs, generating documentation,
+running unit tests) and related software (for example:
+<a href="http://checkstyle.sf.net">Checkstyle</a>, <a href="http://pmd.sf.net">PMD</a>,
+<a href="http://www.thecortex.net/clover">Clover</a>,
+<a href="http://www.jcoverage.com">JCoverage</a>).</p>
 </div>
 <div class="paragraph">
-<p>Here are a few examples valid for <strong>jdoquery</strong> files eith DTD
-specification</p>
+<p>Maven builds on top of the definition of a project. It formalises
+project definitions such as dependencies (and hence classpaths),
+versions, source repositories, mailing lists, etc. This project
+definition provides placeholders for all of the typical metrics
+important to a project. It formalises the location of the source tree
+for a project and of the unit tests. This rigorous structure allows
+Maven&#8217;s plugins to provide generalised functionality such as building
+the source tree, running the unit tests, generating javadoc, code
+analysis, etc.</p>
+</div>
+<div class="paragraph">
+<p>Maven operates using the concept of <strong>goals</strong>. Each <strong>goal</strong> can have "pre"
+and "post" goals. This structure allows for chaining of operations, with
+one operation firing off another, and another to achieve some overall
+end result.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_integrating_jdo_with_maven_a_id_integrating_jdo_with_maven_a">Integrating JDO with Maven<a id="Integrating_JDO_with_Maven"></a></h3>
+<div class="paragraph">
+<p>In developing a JDO system, the developer has many concerns - not least
+the likes of object-relationship mapping - and should, as far as
+possible, be spared the "administrative" burdens associated with
+building the system. Maven&#8217;s formalization of the source tree structure
+and chaining of actions helps achieve this objective by saving the
+developer from having to explicitly define tasks like JDO class
+bytecode-enhancement. Thus, rather than explicitly invoking a
+bytecode-enhancement task in the system build, Maven is able to provide
+this activity by way of a plugin, which could even be automatically
+chained off the existing Java compilation task.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_anatomy_of_a_maven_jdo_plugin_a_id_anatomy_of_a_maven_jdo_plugin_a">Anatomy of a Maven JDO plugin<a id="Anatomy_of_a_Maven_JDO_plugin"></a></h3>
+<div class="paragraph">
+<p>A Maven plugin can use a variety of languages, however most commonly
+utilises <a href="http://jakarta.apache.org/commons/jelly/">Jelly scripting
+language</a>, at least for definition of the plugin&#8217;s goals. A Maven plugin
+typically requires a minimum of 3 files &#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>project.xml</em> (defining the dependencies of the plugin on other
+software)</p>
+</li>
+<li>
+<p><em>plugin.jelly</em> (providing the <strong>goals</strong> definition)</p>
+</li>
+<li>
+<p><em>plugin.properties</em> (properties available for configuration)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Maven plugins can use a variety of other scripting and templating
+utilities, however these are not currently required for the JDO plugins
+implemented.</p>
+</div>
+<div class="paragraph">
+<p>Plugins have now been developed for <a href="http://www.jpox.org">JPOX</a>, and
+<a href="http://tjdo.sf.net">TJDO</a>, though can readily be developed for any JDO
+implementation. The best way of understanding the process involved is by
+analysing a Maven JDO plugin - in this case, the JPOX plugin. Here the
+<em>plugin.jelly</em> file is as follows:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;!DOCTYPE jdoquery PUBLIC
-    "-//Sun Microsystems, Inc.//DTD Java Data Objects Query Metadata 3.0//EN"
-    "http://xmlns.jcp.org/dtd/jdoquery_3_0.dtd"&gt;
+<pre>&lt;goal name="jpox"
+    description="Enhance classes for use with Java Persistent Objects (JPOX)"
+    prereqs="jpox:enhance"/&gt;
 
-&lt;!DOCTYPE jdoquery SYSTEM "file:/javax/jdo/jdoquery.dtd"&gt;</pre>
+&lt;goal name="jpox:init"&gt;
+    ... snip ... code to generate jpoxClasspath and jpoxMetaDataFiles
+&lt;/goal&gt;
+
+&lt;goal name="jpox:enhance"
+    description="Perform the enhancement of classes for use with JPOX"
+    prereqs="jpox:init"&gt;
+    &lt;echo&gt;JDO-enhancing classes for Java Persistent Objects&lt;/echo&gt;
+
+    &lt;ant:java dir="${maven.build.dest}"
+        classname="org.jpox.enhance.SunReferenceEnhancer"
+        failonerror="true"
+        fork="true"&gt;
+        &lt;classpath refid="jpoxClasspath"/&gt;
+        &lt;arg line="${jpoxMetaDataFiles}"/&gt;
+    &lt;/ant:java&gt;
+
+    &lt;echo&gt;Classes are now JDO-enhanced for Java Persistent Objects&lt;/echo&gt;
+&lt;/goal&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><br></p>
+<p>It can be seen that the plugin has several goals, the default one being
+to run the enhance goal. Since this goal requires (as a prerequisite)
+the running of the init goal, they are chained.</p>
 </div>
 <div class="paragraph">
-<p>Here is an example valid for <strong>jdoquery</strong> files with XSD specification</p>
+<p>Some JDO implementations (for example JPOX, or Kodo) allow the
+generation of the JDO database schema prior to running the JDO-enabled
+application. This is catered for with additional <strong>goal(s)</strong>. For JPOX
+again, this is handled as follows</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;jdo xmlns="http://xmlns.jcp.org/xml/ns/jdo/jdo"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/jdo/jdoquery
-        http://xmlns.jcp.org/xml/ns/jdo/jdoquery_3_0.xsd"&gt;
-    ...
-&lt;/jdo&gt;</pre>
+<pre>&lt;goal name="jpox:schema-create"
+    prereqs="jpox:init"&gt;
+    &lt;echo&gt;Creating tables for Persistence Capability&lt;/echo&gt;
+
+    &lt;ant:java dir="${maven.build.dest}"
+        classname="org.jpox.SchemaTool"
+        failonerror="true"
+        fork="true"&gt;
+        &lt;classpath refid="jpoxClasspath"/&gt;
+        &lt;sysproperty key="database.driver" value="${maven.jpox.database.driver}"/&gt;
+        &lt;sysproperty key="database.url" value="${maven.jpox.database.url}"/&gt;
+        &lt;sysproperty key="database.user" value="${maven.jpox.database.user}"/&gt;
+        &lt;sysproperty key="database.password" value="${maven.jpox.database.password}"/&gt;
+        &lt;arg line="-create"/&gt;
+        &lt;arg line="${jpoxMetaDataFiles}"/&gt;
+    &lt;/ant:java&gt;
+&lt;/goal&gt;
+
+&lt;goal name="jpox:schema-delete"
+    prereqs="jpox:init"&gt;
+    &lt;echo&gt;Deleting tables for Persistence Capability&lt;/echo&gt;
+
+    &lt;ant:java dir="${maven.build.dest}"
+        classname="org.jpox.SchemaTool"
+        failonerror="true"
+        fork="true"&gt;
+        &lt;classpath refid="jpoxClasspath"/&gt;
+        &lt;sysproperty key="database.driver" value="${maven.jpox.database.driver}"/&gt;
+        &lt;sysproperty key="database.url" value="${maven.jpox.database.url}"/&gt;
+        &lt;sysproperty key="database.user" value="${maven.jpox.database.user}"/&gt;
+        &lt;sysproperty key="database.password" value="${maven.jpox.database.password}"/&gt;
+        &lt;arg line="-delete"/&gt;
+        &lt;arg line="${jpoxMetaDataFiles}"/&gt;
+    &lt;/ant:java&gt;
+    &lt;/goal&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Your MetaData should match either the
-<a href="http://xmlns.jcp.org/dtd/jdoquery_3_0.dtd">DTD</a> or the
-<a href="http://xmlns.jcp.org/xml/ns/jdo/jdoquery_3_0.xsd">XSD</a> specification.</p>
+<p>Hence there are 2 additional <strong>goals</strong>, one for creating all tables
+required by JPOX, and a second for deleting these tables. Clearly this
+has more relevance to <strong>schema generation</strong> than for <strong>existing schemas</strong></p>
+</div>
+<div class="paragraph">
+<p>Where a JDO implementation allows a particular configuration operation,
+a Maven plugin <strong>goal</strong> can be added to deliver this functionality to the
+Maven user. As a result, individual implementations can add as many
+goals as they wish to fulfil their users requirements.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_a_maven_jdo_plugin_a_id_using_a_maven_jdo_plugin_a">Using a Maven JDO plugin<a id="Using_a_Maven_JDO_plugin"></a></h3>
+<div class="paragraph">
+<p>Using the JPOX Maven plugin as an example, the basic enhancement process
+could be invoked as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>maven jpox:enhance</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The problem with this is that it burdens the developer with having to
+explicitly invoke the enhancement process. As an alternative it is
+possible to integrate bytecode enhancement as an automatic step chained
+off the basic Java compilation process. This is achieved by including
+the following in the project <em>maven.xml</em> file:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;postGoal name="java:compile"&gt;
+    &lt;attainGoal name="jpox:enhance"/&gt;
+&lt;/postGoal&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So wherever the <strong>java:compile</strong> goal is called, as a postGoal it runs the
+<strong>jpox:enhance</strong> goal, leaving the developer with JDO enabled classes
+ready to run.</p>
+</div>
+<div class="paragraph">
+<p>Maven&#8217;s plugins can be made configurable using properties specified in
+the <em>plugin.properties</em> file. For the JPOX plugin, the following
+properties can be set</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>maven.jpox.jdo.fileset.dir</strong> : Directory containing the JDO MetaData
+files</p>
+</li>
+<li>
+<p><strong>maven.jpox.jdo.fileset.include</strong> : Fileset include path for JDO
+MetaData files (default: <strong>*/</strong>.jdo)</p>
+</li>
+<li>
+<p><strong>maven.jpox.jdo.fileset.exclude</strong> : Fileset exclude path for JDO
+MetaData files</p>
+</li>
+<li>
+<p><strong>maven.jpox.database.driver</strong> : Driver for use in connecting to
+datastore</p>
+</li>
+<li>
+<p><strong>maven.jpox.database.url</strong> : URL defining the datastore</p>
+</li>
+<li>
+<p><strong>maven.jpox.database.user</strong> : Login name for the datastore</p>
+</li>
+<li>
+<p><strong>maven.jpox.database.password</strong> : Password for the datastore</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example, the following properties could be included in the Maven
+<em>project.properties</em> file</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>maven.jpox.jdo.fileset.dir=${basedir}/jdo
+maven.jpox.jdo.fileset.include=**/*.jdo
+maven.jpox.database.driver=com.mysql.jdbc.Driver
+maven.jpox.database.url=jdbc:mysql://localhost/jpox
+maven.jpox.database.user={my_username}
+maven.jpox.database.password={my_password}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This would define the JDO MetaData files residing under the "jdo"
+project directory, with names matching <strong>.jdo and would be used when all
+JDO plugin *goals</strong> (such as <strong>enhance</strong>) are called. The 4 <strong>database</strong>
+properties are used in the <strong>schema-create/schema-delete</strong> goals (as seen
+in the <em>plugin.jelly</em> file earlier).</p>
+</div>
+<div class="paragraph">
+<p>Invocation of the JPOX schema-create optional goal could be achieved as
+follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>maven jpox:schema-create</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conclusion_a_id_conclusion_a">Conclusion<a id="Conclusion"></a></h3>
+<div class="paragraph">
+<p>This article has attempted to give a feel for both the operation of
+Maven, and how to integrate JDO into a Maven project. The various Maven
+JDO plugins can be downloaded as follows</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>JPOX (1.1.8) - <a href="http://www.jpox.org/">Java Persistent Objects (JPOX)
+project</a></p>
+</li>
+<li>
+<p>TJDO (2.0-beta3) - <a href="http://www.ibiblio.org/maven/maven/plugins/">Ibiblio
+site</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_about_the_author_a_id_about_the_author_a">About the author<a id="About_the_author"></a></h3>
+<div class="paragraph">
+<p>Andy Jefferson is an independent software consultant who has been
+working in the IT industry for more than 15 years, primarily in the
+United Kingdom. He is an active participator in several OpenSource
+projects, primarily JPOX, and Apache JDO, and a member of the JSR243
+(JDO2) Expert Group.</p>
 </div>
 <hr>
+</div>
 </div>
 </div>
                 </div>

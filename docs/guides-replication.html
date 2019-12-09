@@ -11,7 +11,7 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>Meta-Data - JDOQuery<a id="Meta-Data_-_JDOQuery"></a></title>
+    <title>Data Replication<a id="Data_Replication"></a></title>
 
     <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
@@ -280,7 +280,7 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
 <!--                <div class="page-title">
-                    <h3>Meta-Data - JDOQuery<a id="Meta-Data_-_JDOQuery"></a></h3>
+                    <h3>Data Replication<a id="Data_Replication"></a></h3>
                 </div>
 -->
                 <div id="doc-content">
@@ -290,50 +290,160 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <hr>
 <div class="sect1">
-<h2 id="_meta_data_jdoquery_a_id_meta_data_jdoquery_a">Meta-Data - JDOQuery<a id="Meta-Data_-_JDOQuery"></a></h2>
+<h2 id="_data_replication_a_id_data_replication_a">Data Replication<a id="Data_Replication"></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>JDO defines XML MetaData in <strong>jdo</strong> files as well as <strong>orm</strong> files, but also
-specifies that named queries can be defined in <em>jdoquery</em> files. As
-always with XML, the metadata must match the defined DTD/XSD for that
-file type. This section describes the content of the <strong>jdoquery</strong> files.
-All <strong>jdoquery</strong> files must contain a valid DTD/DOCTYPE specification. You
-can use PUBLIC or SYSTEM versions of these.</p>
-</div>
-<div class="paragraph">
-<p>Here are a few examples valid for <strong>jdoquery</strong> files eith DTD
-specification</p>
+<p>There are times when you need to replicate data between datastores. In
+many cases datastores themselves provide a means of doing this, however
+if you want to avoid using datastore-specific functionality you can
+utilise JDO to perform this task. JDO2 allows replication by use of
+detach/attach functionality. We demonstrate this with an example</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;!DOCTYPE jdoquery PUBLIC
-    "-//Sun Microsystems, Inc.//DTD Java Data Objects Query Metadata 3.0//EN"
-    "http://xmlns.jcp.org/dtd/jdoquery_3_0.dtd"&gt;
+<pre>public class ElementHolder
+{
+    long id;
+    private Set elements = new HashSet();
 
-&lt;!DOCTYPE jdoquery SYSTEM "file:/javax/jdo/jdoquery.dtd"&gt;</pre>
+    ...
+}
+
+public class Element
+{
+    String name;
+
+    ...
+}
+
+public class SubElement extends Element
+{
+    double value;
+
+    ...
+}</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><br></p>
-</div>
-<div class="paragraph">
-<p>Here is an example valid for <strong>jdoquery</strong> files with XSD specification</p>
+<p>so we have a 1-N unidirectional (Set) relation, and we define the
+metadata like this</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;jdo xmlns="http://xmlns.jcp.org/xml/ns/jdo/jdo"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/jdo/jdoquery
-        http://xmlns.jcp.org/xml/ns/jdo/jdoquery_3_0.xsd"&gt;
-    ...
+<pre>&lt;jdo&gt;
+    &lt;package name="org.apache.jdo.test"&gt;
+        &lt;class name="ElementHolder" identity-type="application" detachable="true"&gt;
+            &lt;inheritance strategy="new-table"/&gt;
+            &lt;field name="id" primary-key="true"/&gt;
+            &lt;field name="elements" persistence-modifier="persistent"&gt;
+                &lt;collection element-type="Element"/&gt;
+                &lt;join/&gt;
+            &lt;/field&gt;
+        &lt;/class&gt;
+
+        &lt;class name="Element" identity-type="application" detachable="true"&gt;
+            &lt;inheritance strategy="new-table"/&gt;
+            &lt;field name="name" primary-key="true"/&gt;
+        &lt;/class&gt;
+
+        &lt;class name="SubElement"&gt;
+            &lt;inheritance strategy="new-table"/&gt;
+            &lt;field name="value"/&gt;
+        &lt;/class&gt;
+    &lt;/package&gt;
 &lt;/jdo&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Your MetaData should match either the
-<a href="http://xmlns.jcp.org/dtd/jdoquery_3_0.dtd">DTD</a> or the
-<a href="http://xmlns.jcp.org/xml/ns/jdo/jdoquery_3_0.xsd">XSD</a> specification.</p>
+<p>and so in our application we create some objects in <em>datastore1</em>, like
+this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>PersistenceManagerFactory pmf1 = JDOHelper.getPersistenceManagerFactory("jdo.1.properties");
+PersistenceManager pm1 = pmf1.getPersistenceManager();
+Transaction tx1 = pm1.currentTransaction();
+Object holderId = null;
+try
+{
+    tx1.begin();
+
+    ElementHolder holder = new ElementHolder(101);
+    holder.addElement(new Element("First Element"));
+    holder.addElement(new Element("Second Element"));
+    holder.addElement(new SubElement("First Inherited Element"));
+    holder.addElement(new SubElement("Second Inherited Element"));
+    pm1.makePersistent(holder);
+
+    tx1.commit();
+    holderId = JDOHelper.getObjectId(holder);
+}
+finally
+{
+    if (tx1.isActive())
+    {
+        tx1.rollback();
+    }
+    pm1.close();
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and now we want to replicate these objects into <em>datastore2</em>, so we
+detach them from <em>datastore1</em> and attach them to <em>datastore2</em>, like this</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>// Detach the objects from "datastore1"
+ElementHolder detachedHolder = null;
+pm1 = pmf1.getPersistenceManager();
+tx1 = pm1.currentTransaction();
+try
+{
+    pm1.getFetchPlan().setGroups(new String[] {FetchPlan.DEFAULT, FetchPlan.ALL});
+    pm1.getFetchPlan().setMaxFetchDepth(-1);
+
+    tx1.begin();
+
+    ElementHolder holder = (ElementHolder) pm1.getObjectById(holderID);
+    detachedHolder = (ElementHolder) pm1.detachCopy(holder);
+
+    tx1.commit();
+}
+finally
+{
+    if (tx1.isActive())
+    {
+        tx1.rollback();
+    }
+    pm1.close();
+}
+
+// Attach the objects to datastore2
+PersistenceManagerFactory pmf2 = JDOHelper.getPersistenceManagerFactory("jdo.2.properties");
+PersistenceManager pm2 = pmf2.getPersistenceManager();
+Transaction tx2 = pm2.currentTransaction();
+try
+{
+    tx2.begin();
+
+    pm2.makePersistent(detachedHolder);
+
+    tx2.commit();
+}
+finally
+{
+    if (tx2.isActive())
+    {
+        tx2.rollback();
+    }
+    pm2.close();
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These objects are now replicated into <em>datastore2</em>. Clearly you can
+extend this basic idea and replicate large amounts of data.</p>
 </div>
 <hr>
 </div>

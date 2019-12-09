@@ -23,12 +23,6 @@ How to build the website:
  * Go to Github.com and create a PR for your branch
  * Once th PR is accepted, the changes should be visible on the website (you may have to refresh the browser). 
 
-
-### TODO Asciidoc 
- * JDO Usage -> Guides are missing
- * Links in Usage -> Glossary
- * There are some direct references to db.apache.org/jdo -> remove or convert
- * Fix pages in subfolders: Move to main folder?
   
 ### TODO
  * Downloads -> Any release -> cgi files....
