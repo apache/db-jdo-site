@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -78,6 +79,4 @@ If the objects found by the query are in the JDO cache then they are
 retrieved from there, otherwise the JDO implementation goes to the
 datastore. When the objects are retrieved their fields are populated
 according to the Fetch Group.
-
-'''''
 

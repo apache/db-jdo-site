@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -238,6 +239,4 @@ Execute from the Permission Entries. Click "Reset permissions on all
 child objects and enable propogations of inheritable permissions". Click
 Apply. OK. OK.) You will have to do this again when you do a clean
 checkout to a new directory.
-
-'''''
 

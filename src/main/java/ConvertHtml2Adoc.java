@@ -35,7 +35,8 @@ public class ConvertHtml2Adoc {
 
 	private static final String NL = "\n"; 
 	// Base folder for src and output files
-	private static final Path basePath = Paths.get("C:\\work\\eclipse-workspace\\jdo.site");
+	//private static final Path basePath = Paths.get("C:\\work\\eclipse-workspace\\jdo.site");
+	private static final Path basePath = Paths.get("D:\\projects\\workspace-zoo\\jdo.site");
 	// Input folder
 	private static final String input = "docs";
 	// Output folder
@@ -125,6 +126,15 @@ public class ConvertHtml2Adoc {
 						// skip footer and everything after it.
 						break;
 					}
+					if (s.contains("'''''")) {
+						// weird ''''' at ends of files
+						break;
+					}
+					
+					// Move headers up by one level
+					if (s.startsWith("===")) {
+						s = s.substring(1);
+					} 
 					
 					// Handle select/option in 'release' files
 //					if (s.contains("<select name=")) {
@@ -223,8 +233,8 @@ public class ConvertHtml2Adoc {
 		s.append("[[index]]").append(NL);
 		
 //		s.append("--").append(NL);
-		s.append("image:images/JDOx150.png[float=\"left\"]").append(NL);
-		s.append("image:images/jdo_text.png[float=\"left\"]").append(NL);
+		s.append("image:images/JDOx100.png[float=\"left\"]").append(NL);
+		s.append("image:images/jdo_text.png[float=\"right\"]").append(NL);
 //		s.append("--").append(NL);
 	
 		// Hide title
@@ -239,6 +249,7 @@ public class ConvertHtml2Adoc {
 		s.append(":_basedir: ").append(NL);
 		s.append(":_imagesdir: images/").append(NL);
 		s.append(":notoc:").append(NL);
+		s.append(":nofooter:").append(NL);
 		s.append(":titlepage:").append(NL);
 		s.append(":grid: cols").append(NL);
 		s.append(NL);

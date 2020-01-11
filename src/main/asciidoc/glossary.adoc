@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -140,6 +141,4 @@ these, for use with RDBMS datastores, is SQL.
 |anchor:transient[]transient |This is an object state where the object is
 not persistent.
 |===
-
-'''''
 

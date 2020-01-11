@@ -1,0 +1,26 @@
+[[index]]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
+
+'''''
+
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:nofooter:
+:titlepage:
+:grid: cols
+
+== JDOCentral at Apache JDOanchor:JDOCentral_at_Apache_JDO[]
+
+Welcome to the new home of JDOCentral!
+
+JDOCentral was a privately maintained site. Apache JDO is home for the
+development of the JDO specification and the TCK. The
+http://www.datanucleus.org[DataNucleus] site is home for the development
+of the Reference Implementation of the JDO specification.
+
+Visit the other pages on the Apache JDO site to find out what's going on
+with JDO. Join the http://db.apache.org/jdo/mail-lists.html[mailing
+lists] to get involved and provide feedback.
+

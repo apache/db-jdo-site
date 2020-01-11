@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -248,6 +249,4 @@ Single-String JDOQL :
 Query query = pm.newQuery("SELECT FROM mydomain.A WHERE b instanceof mydomain.B2");
 List results = (List)query.execute();
 ....
-
-'''''
 

@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -225,6 +226,4 @@ passed persistent object
 |JDOHelper.getVersion(object) |Returns the version of the passed
 persistent object
 |===
-
-'''''
 

@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -86,6 +87,4 @@ GoogleStorage, Cassandra, OrientDB, Salesforce.com, Neo4j
 transactions and screens (CICS, IMS...), packaged applications (ERP,
 CRM,SFA...), components (EJB...).
 |===
-
-'''''
 

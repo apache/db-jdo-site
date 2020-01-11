@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -49,6 +50,4 @@ http://svn.apache.org/viewcvs.cgi/db/jdo/[SubversionRepository].
 * Sign up for a http://wiki.apache.org/jdo/UserPreferences[WiKi]
 account.
 * Sign up for an http://issues.apache.org/jira/[ASF JIRA] account.
-
-'''''
 

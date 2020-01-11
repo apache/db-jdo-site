@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -47,6 +48,4 @@ Here is an example valid for *jdo* files with XSD specification
 Your MetaData should match either the
 http://xmlns.jcp.org/dtd/jdo_3_0.dtd[DTD] or the
 http://xmlns.jcp.org/xml/ns/jdo/jdo_3_0.xsd[XSD] specification.
-
-'''''
 

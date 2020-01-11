@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -59,6 +60,4 @@ information for Oracle datastores, and so on.
 JDO 2.1 provides support for annotations. Classes and fields/properties
 can be annotated defining the persistence and, optionally, any ORM
 information.
-
-'''''
 

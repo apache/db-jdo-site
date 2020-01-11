@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -21,6 +22,4 @@ Objects, v. 1.0.2 and successors thereto to the extent provided by Sun.
 This was accomplished via Schedule B-2 to the Software Grant and
 Corporate Contributor License Agreement (CCLA) between The Apache
 Software Foundation and Sun Microsystems, Inc.
-
-'''''
 

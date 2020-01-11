@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -52,6 +53,4 @@ link:get-involved.html[Get Involved].
 |Chris Beams |SpringSource
 |Ilan Kirsch |ObjectDB
 |===
-
-'''''
 

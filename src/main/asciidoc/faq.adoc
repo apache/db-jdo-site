@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -33,6 +34,4 @@ The users mailing list is jdo-user@db.apache.org.
 *Does this project use a wiki?* It does - the
 http://wiki.apache.org/jdo[JDO wiki] complements the work taking place
 on the mailing list and provides additional information on the project.
-
-'''''
 

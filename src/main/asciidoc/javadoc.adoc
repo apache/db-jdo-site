@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -21,9 +22,9 @@ directory.
 JDO 3.1 is the current release of the Apache JDO implementation of
 JSR-243.
 
-link:api31/jdo-api-3.1-javadoc/index.html[Browse JDO 3.1 javadoc online]
+link:api31/apidocs/index.html[Browse JDO 3.1 javadoc online]
 
-link:api31/jdo-api-3.1-javadoc.zip[Download JDO 3.1 javadoc]
+link:api31/apidocs.zip[Download JDO 3.1 javadoc]
 
 == JDO 3.0 javadocanchor:JDO_3.0_javadoc[]
 
@@ -71,6 +72,4 @@ JDO 1.1 is the Apache JDO implementation of JSR-12.
 link:api11/apidocs/index.html[Browse JDO 1.1 javadoc online]
 
 link:api11/apidocs.zip[Download JDO 1.1 javadoc]
-
-'''''
 

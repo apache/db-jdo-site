@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -37,7 +38,6 @@ in the tck directory.
 Vendors must post test results on a publicly accessible web site for
 examination by the public. The posting includes the output of the test
 run, which consists of multiple log files containing configuration
-information and test results.
-
-'''''
+information and test results. For an example of the required posting,
+please see link:tck/final[http://db.apache.org/jdo/tck/final].
 

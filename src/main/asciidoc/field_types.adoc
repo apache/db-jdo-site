@@ -1,12 +1,13 @@
 [[index]]
-image:images/JDOx150.png[float="left"]
-image:images/jdo_text.png[float="left"]
+image:images/JDOx100.png[float="left"]
+image:images/jdo_text.png[float="right"]
 
 '''''
 
 :_basedir: 
 :_imagesdir: images/
 :notoc:
+:nofooter:
 :titlepage:
 :grid: cols
 
@@ -595,6 +596,4 @@ image:images/icon_error_sml.png[image]
 image:images/icon_success_sml.png[image]
 
 image:images/icon_success_sml.png[image]
-
-'''''
 
