@@ -14,7 +14,7 @@ This repository contains the JDO website source.
 How to build the website:
  * Use `git pull`  to get the latest version from the repository.
  * Use `git branch MyBranchName` and `git checkout MyBranchName` to create a branch and check it out.
- * Adapt the asciidoc files in `src/main/asciidoc` or the website menu in  `src/main/template
+ * Adapt the asciidoc files in `src/main/asciidoc` or the website menu in  `src/main/template`
  * Call `mvn clean compile`. This generates html files in `target/site`. 
  * Copy all files from `target/site` into the `docs` folder, do not forget subfolders.
  * Verify the generated website by viewing it locally with a web browser. 
