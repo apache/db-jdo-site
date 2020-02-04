@@ -16,7 +16,7 @@ Use the links below to download Apache JDO from one of our mirrors. For
 more information about the projects see link:downloads.html[Downloads].
 For information on running the TCK, see link:tck.html[TCK].
 
-It is good practice to xref:Verifying[verify the integrity] of the
+It is essential to xref:Verifying[verify the integrity] of the
 distribution files.
 
 You are currently using *http://apache.mirror.anlx.net/*. If you
