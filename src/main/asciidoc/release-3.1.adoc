@@ -19,23 +19,17 @@ For information on running the TCK, see link:tck.html[TCK].
 It is essential to xref:Verifying[verify the integrity] of the
 distribution files.
 
-You are currently using *http://apache.mirror.anlx.net/*. If you
-encounter a problem with this mirror, then please select another. If all
-mirrors are failing, there are backup mirrors at the end of the list.
-See http://www.apache.org/mirrors/[status] of mirrors.
+https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-source-release.zip[3.1 source-release.zip]
+https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-source-release.zip.asc[asc]
+https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-source-release.zip.sha1[sha1]
 
-Other mirrors:
+https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.tar.gz[3.1 src.tar.gz]
+https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.tar.gz.asc[asc]
+https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.tar.gz.sha1[sha1]
 
-* http://apache.mirror.anlx.net/ 
-* http://apache.mirrors.nublue.co.uk/ 
-* http://mirror.ox.ac.uk/sites/rsync.apache.org/ 
-* http://mirror.vorboss.net/apache/ 
-* http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ 
-* http://www.mirrorservice.org/sites/ftp.apache.org/ 
-* ftp://ftp.mirrorservice.org/sites/ftp.apache.org/ 
-* https://www-eu.apache.org/dist/   (backup) 
-* https://www-us.apache.org/dist/   (backup) 
-
+https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.zip[3.1 src.zip]
+https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.zip.asc[asc]
+https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.zip.sha1[sha1]
 
 {empty} +
 
