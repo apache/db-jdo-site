@@ -12,26 +12,10 @@ image:images/jdo_text.png[float="left"]
 
 == JDO 3.1 Distributionsanchor:JDO_3.1_Distributions[]
 
-Use the links below to download Apache JDO from one of our mirrors. For
-more information about the projects see link:downloads.html[Downloads].
-For information on running the TCK, see link:tck.html[TCK].
+Use the links below to download Apache JDO from one of our mirrors.
 
 It is essential to xref:Verifying[verify the integrity] of the
 distribution files.
-
-https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-source-release.zip[3.1 source-release.zip]
-https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-source-release.zip.asc[asc]
-https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-source-release.zip.sha1[sha1]
-
-https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.tar.gz[3.1 src.tar.gz]
-https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.tar.gz.asc[asc]
-https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.tar.gz.sha1[sha1]
-
-https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.zip[3.1 src.zip]
-https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.zip.asc[asc]
-https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.zip.sha1[sha1]
-
-{empty} +
 
 
 === Release Notesanchor:Release_Notes[]
@@ -43,82 +27,51 @@ release notes for JDO 3.1]
 
 The api project contains source to build jdo-api.jar, which defines the
 JDO API. The jar file is the only artifact needed for users who wish to
-compile their programs using the JDO API. It can be downloaded
+compile their programs using the JDO API.
+
+https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-api-3.1.jar[3.1 api.jar]
+https://www.apache.org/dist/db/jdo/3.1/jdo-api-3.1.jar.asc[asc]
+https://www.apache.org/dist/db/jdo/3.1/jdo-api-3.1.jar.sha1[sha1]
+
+== Maven (convenience binary)anchor:Maven[]
+
+The JDO API can be downloaded
 automatically by maven and placed into the local maven repository if you
-include the proper dependency in your maven project definition. Use
-groupId javax.jdo, artifactId jdo-api, version 3.1 and define your
-remote repository as http://www.ibiblio.org/maven. Alternatively, it can
-be downloaded manually and put into a location of your choice.
-
-
-* http://apache.mirror.anlx.net/ 
-* http://apache.mirrors.nublue.co.uk/ 
-* http://mirror.ox.ac.uk/sites/rsync.apache.org/ 
-* http://mirror.vorboss.net/apache/ 
-* http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ 
-* http://www.mirrorservice.org/sites/ftp.apache.org/ 
-* ftp://ftp.mirrorservice.org/sites/ftp.apache.org/ 
-* https://www-eu.apache.org/dist/   (backup) 
-* https://www-us.apache.org/dist/   (backup) 
-
-
-
-* http://apache.mirror.anlx.net/ 
-* http://apache.mirrors.nublue.co.uk/ 
-* http://mirror.ox.ac.uk/sites/rsync.apache.org/ 
-* http://mirror.vorboss.net/apache/ 
-* http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ 
-* http://www.mirrorservice.org/sites/ftp.apache.org/ 
-* ftp://ftp.mirrorservice.org/sites/ftp.apache.org/ 
-* https://www-eu.apache.org/dist/   (backup) 
-* https://www-us.apache.org/dist/   (backup) 
-
-
-
-* http://apache.mirror.anlx.net/ 
-* http://apache.mirrors.nublue.co.uk/ 
-* http://mirror.ox.ac.uk/sites/rsync.apache.org/ 
-* http://mirror.vorboss.net/apache/ 
-* http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ 
-* http://www.mirrorservice.org/sites/ftp.apache.org/ 
-* ftp://ftp.mirrorservice.org/sites/ftp.apache.org/ 
-* https://www-eu.apache.org/dist/   (backup) 
-* https://www-us.apache.org/dist/   (backup) 
-
+include the proper dependency in your maven project definition.
+For example:
+[source,xml]
+<dependency>
+  <groupId>javax.jdo</groupId>
+  <artifactId>jdo-api</artifactId>
+  <version>3.1</version>
+</dependency>
 
 === TCKanchor:TCK[]
 
 This is a download for all implementors of JDO, and for those who want
 to check how well an implementation is compliant with the JDO
-specification. The tck project contains the JDO Technology Compatibility
+specification.
+
+The TCK project contains the JDO Technology Compatibility
 Kit. The source distribution is the only artifact needed to be
-downloaded by the user. The dependencies are automatically downloaded by
-maven as needed to run the TCK. Please refer to the README.html for
-further details.
+downloaded by the user and contains all of the sources used to build
+the JDO project including the API, TCK, and test artifacts.
+The dependencies are automatically downloaded by
+maven as needed to run the TCK. 
 
+Please refer to the README.html for further details.
 
-* http://apache.mirror.anlx.net/ 
-* http://apache.mirrors.nublue.co.uk/ 
-* http://mirror.ox.ac.uk/sites/rsync.apache.org/ 
-* http://mirror.vorboss.net/apache/ 
-* http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ 
-* http://www.mirrorservice.org/sites/ftp.apache.org/ 
-* ftp://ftp.mirrorservice.org/sites/ftp.apache.org/ 
-* https://www-eu.apache.org/dist/   (backup) 
-* https://www-us.apache.org/dist/   (backup) 
+https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-source-release.zip[3.1 source-release.zip (8 MB)]
+https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-source-release.zip.asc[asc]
+https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-source-release.zip.sha1[sha1]
 
+https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.tar.gz[3.1 src.tar.gz (1.1 MB)]
+https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.tar.gz.asc[asc]
+https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.tar.gz.sha1[sha1]
 
-
-* http://apache.mirror.anlx.net/ 
-* http://apache.mirrors.nublue.co.uk/ 
-* http://mirror.ox.ac.uk/sites/rsync.apache.org/ 
-* http://mirror.vorboss.net/apache/ 
-* http://mirrors.ukfast.co.uk/sites/ftp.apache.org/ 
-* http://www.mirrorservice.org/sites/ftp.apache.org/ 
-* ftp://ftp.mirrorservice.org/sites/ftp.apache.org/ 
-* https://www-eu.apache.org/dist/   (backup) 
-* https://www-us.apache.org/dist/   (backup) 
-
+https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.zip[3.1 src.zip (2.8 MB)]
+https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.zip.asc[asc]
+https://www.apache.org/dist/db/jdo/3.1/jdo-3.1-src.zip.sha1[sha1]
 
 == Verifying Releasesanchor:Verifying_Releases[]
 
@@ -128,9 +81,9 @@ It is essential that you verify the integrity of the downloaded files
 using the PGP signature.
 
 The PGP signatures can be verified using PGP or GPG. First download the
-http://www.apache.org/dist/db/jdo/KEYS[KEYS] as well as the `asc`
+https://www.apache.org/dist/db/jdo/KEYS[KEYS] as well as the `asc`
 signature file for the particular distribution. Make sure you get these
-files from the http://www.apache.org/dist/db/jdo/[main distribution
+files from the https://www.apache.org/dist/db/jdo/[main distribution
 directory], rather than from a mirror. Then verify the signatures using
 
 ` % pgpk -a KEYS % pgpv release_name.tar.gz.asc` _or_ +
