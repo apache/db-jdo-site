@@ -93,14 +93,14 @@ these commands (depending on your tool set):
 
 [source]
 % pgpk -a KEYS 
-% pgpv release_name.tar.gz.asc
+% pgpv release_artifact.asc
 
 [source]
 % pgp -ka KEYS
-% pgp release_name.tar.gz.asc
+% pgp release_artifact.asc
 
 [source]
 % gpg --import KEYS
-% gpg --verify release_name.tar.gz.asc
+% gpg --verify release_artifact.asc
 
 
