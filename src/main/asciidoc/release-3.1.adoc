@@ -34,7 +34,7 @@ The api project contains source to build jdo-api.jar, which defines the
 JDO API. The jar file is the only artifact needed for users who wish to
 compile their programs using the JDO API.
 
-https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-api-3.1-sources.jar[jdo 3.1 api-sources.jar]
+https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-api-3.1-sources.jar[jdo-api-3.1-sources.jar]
 https://www.apache.org/dist/db/jdo/3.1/jdo-api-3.1-sources.jar.asc[asc]
 https://www.apache.org/dist/db/jdo/3.1/jdo-api-3.1-sources.jar.sha1[sha1]
 https://www.apache.org/dist/db/jdo/3.1/jdo-api-3.1-sources.jar.md5[md5]
