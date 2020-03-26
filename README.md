@@ -21,7 +21,7 @@ How to build the website:
  * Commit changes with `git commit -m 'my commit message' `.
  * Push changes to the repository with `git push`.
  * Go to Github.com and create a PR for your branch
- * Once th PR is accepted, the changes should be visible on the website (you may have to refresh the browser). 
+ * Once the PR is accepted, the changes should be visible on the website (you may have to refresh the browser). 
 
   
 ### TODO
