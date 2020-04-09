@@ -1,0 +1,24 @@
+# Staging and publishing profile for Apache JDO:
+staging:
+  profile: master
+  whoami:  master
+ 
+staging:
+  profile: staging
+  whoami:  staging
+ 
+publish:
+  whoami:  asf-site
+#  TODO This may not work, because it is not a hostname....
+  hostname: db.apache.org/jdo  
+
+ 
+github:
+  description: "Apache JDO project"
+#  homepage: https://db.apache.org/jdo
+  labels:
+    - JDO
+    - database
+    - ORM
+    - apache
+    - Java
