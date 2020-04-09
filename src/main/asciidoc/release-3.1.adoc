@@ -10,7 +10,7 @@ image:images/jdo_text.png[float="left"]
 :titlepage:
 :grid: cols
 
-= JDO 3.1 Distributionsanchor:JDO_3.1_Distributions[]
+== JDO 3.1 Distributionsanchor:JDO_3.1_Distributions[]
 
 If you intend to develop JDO (make modifications to the JDO code), you should
 clone the public repository and submit pull requests if desired.
@@ -23,12 +23,12 @@ If you are using Maven, you can declare a dependency using the instructions belo
 It is essential to xref:Verifying[verify the integrity] of the
 distribution files after downloading any artifacts.
 
-== Release Notesanchor:Release_Notes[]
+=== Release Notesanchor:Release_Notes[]
 
 https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12325878&styleName=Html&projectId=10630[View
 release notes for JDO 3.1]
 
-== APIanchor:API[]
+=== APIanchor:API[]
 
 The api project contains source to build jdo-api.jar, which defines the
 JDO API. The jar file is the only artifact needed for users who wish to
@@ -39,7 +39,7 @@ https://downloads.apache.org/db/jdo/3.1/jdo-api-3.1-sources.jar.asc[asc]
 https://downloads.apache.org/db/jdo/3.1/jdo-api-3.1-sources.jar.sha1[sha1]
 https://downloads.apache.org/db/jdo/3.1/jdo-api-3.1-sources.jar.md5[md5]
 
-=== Maven (convenience binary)anchor:Maven[]
+==== Maven (convenience binary)anchor:Maven[]
 
 The JDO API can be downloaded
 automatically by maven and placed into the local maven repository if you
@@ -52,7 +52,7 @@ For example:
   <version>3.1</version>
 </dependency>
 
-== TCKanchor:TCK[]
+=== TCKanchor:TCK[]
 
 This is a download for all implementors of JDO, and for those who want
 to check how well an implementation is compliant with the JDO
@@ -77,7 +77,7 @@ https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.zip.asc[asc]
 https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.zip.sha1[sha1]
 https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.zip.md5[md5]
 
-== Verifying Releasesanchor:Verifying_Releases[]
+=== Verifying Releasesanchor:Verifying_Releases[]
 
 anchor:Verifying[]
 

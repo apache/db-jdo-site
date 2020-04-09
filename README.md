@@ -25,10 +25,11 @@ How to build the website:
 
   
 ### TODO
- * Downloads -> Any release -> cgi files....
+ * General -> Downloads: Link to release-3.1? Add section about previous releases, 3.0.1 etc?
+ * JDO Implementation -> Specification: Where do we host the PDF files?
  * Development -> Sourcecode page
  * Development -> Coding standard page
- * Community -> Team?
+ * Community -> Team/Organizations
  * Development -> Dependencies (SVN -> Git)
  * Cleanup everything
  

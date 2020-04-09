@@ -13,16 +13,14 @@ image:images/jdo_text.png[float="right"]
 
 == Latest Official Releaseanchor:Latest_Official_Release[]
 
-link:releases/release-3.1.cgi[JDO 3.1] image:images/dot_clear.png[image]
+<<release-3.1.adoc#,JDO 3.1>> image:images/dot_clear.png[image]
 March 20, 2015
 
 == Previous Official Releasesanchor:Previous_Official_Releases[]
 
-link:releases/release-3.1-rc1.cgi[JDO 3.1-rc1]
-image:images/dot_clear.png[image] September 22, 2013
+<<release-3.1-rc1.adoc#,JDO 3.1-rc1>> image:images/dot_clear.png[image] September 22, 2013
 
-link:releases/release-3.0.1.cgi[JDO 3.0.1]
-image:images/dot_clear.png[image] November 13, 2011
+<<release-3.0.1.adoc#,JDO 3.0.1>> image:images/dot_clear.png[image] November 13, 2011
 
 == About JDO Releasesanchor:About_JDO_Releases[]
 
