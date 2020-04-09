@@ -11,13 +11,17 @@ publish:
   whoami:  publish
   subdir:  jdo
 
- 
 github:
   description: "Apache JDO project"
   homepage: https://db.apache.org/jdo
   labels:
-    - JDO
+    - db
+    - jdo
+    - nosql
+    - jpa
+    - jta
+    - api
     - database
-    - ORM
+    - orm
     - apache
-    - Java
+    - java
