@@ -42,6 +42,7 @@ link:get-involved.html[Get Involved].
 |Dain Sundstrom |
 |Brian Topping |
 |Michael Watzek |Tech@Spree
+|Tilmann Zäschke |http://www.zoodb.org[ZooDB]
 |Martin Zaun |Sun Microsystems, Inc.
 |===
 
