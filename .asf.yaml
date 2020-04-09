@@ -1,0 +1,23 @@
+# Staging and publishing profile for Apache JDO:
+staging:
+  profile: master
+  whoami:  master
+ 
+staging:
+  profile: staging
+  whoami:  staging
+ 
+publish:
+  whoami:  publish
+  subdir:  jdo
+
+ 
+github:
+  description: "Apache JDO project"
+  homepage: https://db.apache.org/jdo
+  labels:
+    - JDO
+    - database
+    - ORM
+    - apache
+    - Java
