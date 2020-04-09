@@ -24,7 +24,7 @@ How to build the website:
  * Once the PR is accepted, the changes should be visible on the website (you may have to refresh the browser). 
 
   
-### TODO
+### TODO Documentation
  * General -> Downloads: Link to release-3.1? Add section about previous releases, 3.0.1 etc?
  * JDO Implementation -> Specification: Where do we host the PDF files?
  * Development -> Sourcecode page
@@ -32,4 +32,7 @@ How to build the website:
  * Community -> Team/Organizations
  * Development -> Dependencies (SVN -> Git)
  * Cleanup everything
+ 
+### TODO Process
+ * Set output folder to `output` or `content` (for use by `.asf.yaml`)
  

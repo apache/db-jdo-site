@@ -293,56 +293,18 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="_jdo_3_1_distributions_a_id_jdo_3_1_distributions_a">JDO 3.1 Distributions<a id="JDO_3.1_Distributions"></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Use the links below to download Apache JDO from one of our mirrors. For
-more information about the projects see <a href="downloads.html">Downloads</a>.
-For information on running the TCK, see <a href="tck.html">TCK</a>.</p>
+<p>If you intend to develop JDO (make modifications to the JDO code), you should
+clone the public repository and submit pull requests if desired.
+You can use this url: <a href="https://github.com/apache/db-jdo.git">db-jdo.git</a></p>
 </div>
 <div class="paragraph">
-<p>It is good practice to <a href="#Verifying">verify the integrity</a> of the
-distribution files.</p>
+<p>To develop your own code to use JDO, you can use the links below
+to download Apache JDO from one of the official ASF mirrors.
+If you are using Maven, you can declare a dependency using the instructions below.</p>
 </div>
 <div class="paragraph">
-<p>You are currently using <strong><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></strong>. If you
-encounter a problem with this mirror, then please select another. If all
-mirrors are failing, there are backup mirrors at the end of the list.
-See <a href="http://www.apache.org/mirrors/">status</a> of mirrors.</p>
-</div>
-<div class="paragraph">
-<p>Other mirrors:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></p>
-</li>
-<li>
-<p><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></p>
-</li>
-<li>
-<p><a href="http://mirror.ox.ac.uk/sites/rsync.apache.org/" class="bare">http://mirror.ox.ac.uk/sites/rsync.apache.org/</a></p>
-</li>
-<li>
-<p><a href="http://mirror.vorboss.net/apache/" class="bare">http://mirror.vorboss.net/apache/</a></p>
-</li>
-<li>
-<p><a href="http://mirrors.ukfast.co.uk/sites/ftp.apache.org/" class="bare">http://mirrors.ukfast.co.uk/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="http://www.mirrorservice.org/sites/ftp.apache.org/" class="bare">http://www.mirrorservice.org/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="ftp://ftp.mirrorservice.org/sites/ftp.apache.org/" class="bare">ftp://ftp.mirrorservice.org/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="https://www-eu.apache.org/dist/" class="bare">https://www-eu.apache.org/dist/</a>   (backup)</p>
-</li>
-<li>
-<p><a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a>   (backup)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><br></p>
+<p>It is essential to <a href="#Verifying">verify the integrity</a> of the
+distribution files after downloading any artifacts.</p>
 </div>
 <div class="sect2">
 <h3 id="_release_notes_a_id_release_notes_a">Release Notes<a id="Release_Notes"></a></h3>
@@ -356,97 +318,31 @@ release notes for JDO 3.1</a></p>
 <div class="paragraph">
 <p>The api project contains source to build jdo-api.jar, which defines the
 JDO API. The jar file is the only artifact needed for users who wish to
-compile their programs using the JDO API. It can be downloaded
-automatically by maven and placed into the local maven repository if you
-include the proper dependency in your maven project definition. Use
-groupId javax.jdo, artifactId jdo-api, version 3.1 and define your
-remote repository as <a href="http://www.ibiblio.org/maven" class="bare">http://www.ibiblio.org/maven</a>. Alternatively, it can
-be downloaded manually and put into a location of your choice.</p>
+compile their programs using the JDO API.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></p>
-</li>
-<li>
-<p><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></p>
-</li>
-<li>
-<p><a href="http://mirror.ox.ac.uk/sites/rsync.apache.org/" class="bare">http://mirror.ox.ac.uk/sites/rsync.apache.org/</a></p>
-</li>
-<li>
-<p><a href="http://mirror.vorboss.net/apache/" class="bare">http://mirror.vorboss.net/apache/</a></p>
-</li>
-<li>
-<p><a href="http://mirrors.ukfast.co.uk/sites/ftp.apache.org/" class="bare">http://mirrors.ukfast.co.uk/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="http://www.mirrorservice.org/sites/ftp.apache.org/" class="bare">http://www.mirrorservice.org/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="ftp://ftp.mirrorservice.org/sites/ftp.apache.org/" class="bare">ftp://ftp.mirrorservice.org/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="https://www-eu.apache.org/dist/" class="bare">https://www-eu.apache.org/dist/</a>   (backup)</p>
-</li>
-<li>
-<p><a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a>   (backup)</p>
-</li>
-<li>
-<p><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></p>
-</li>
-<li>
-<p><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></p>
-</li>
-<li>
-<p><a href="http://mirror.ox.ac.uk/sites/rsync.apache.org/" class="bare">http://mirror.ox.ac.uk/sites/rsync.apache.org/</a></p>
-</li>
-<li>
-<p><a href="http://mirror.vorboss.net/apache/" class="bare">http://mirror.vorboss.net/apache/</a></p>
-</li>
-<li>
-<p><a href="http://mirrors.ukfast.co.uk/sites/ftp.apache.org/" class="bare">http://mirrors.ukfast.co.uk/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="http://www.mirrorservice.org/sites/ftp.apache.org/" class="bare">http://www.mirrorservice.org/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="ftp://ftp.mirrorservice.org/sites/ftp.apache.org/" class="bare">ftp://ftp.mirrorservice.org/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="https://www-eu.apache.org/dist/" class="bare">https://www-eu.apache.org/dist/</a>   (backup)</p>
-</li>
-<li>
-<p><a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a>   (backup)</p>
-</li>
-<li>
-<p><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></p>
-</li>
-<li>
-<p><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></p>
-</li>
-<li>
-<p><a href="http://mirror.ox.ac.uk/sites/rsync.apache.org/" class="bare">http://mirror.ox.ac.uk/sites/rsync.apache.org/</a></p>
-</li>
-<li>
-<p><a href="http://mirror.vorboss.net/apache/" class="bare">http://mirror.vorboss.net/apache/</a></p>
-</li>
-<li>
-<p><a href="http://mirrors.ukfast.co.uk/sites/ftp.apache.org/" class="bare">http://mirrors.ukfast.co.uk/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="http://www.mirrorservice.org/sites/ftp.apache.org/" class="bare">http://www.mirrorservice.org/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="ftp://ftp.mirrorservice.org/sites/ftp.apache.org/" class="bare">ftp://ftp.mirrorservice.org/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="https://www-eu.apache.org/dist/" class="bare">https://www-eu.apache.org/dist/</a>   (backup)</p>
-</li>
-<li>
-<p><a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a>   (backup)</p>
-</li>
-</ul>
+<div class="paragraph">
+<p><a href="https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-api-3.1-sources.jar">jdo-api-3.1-sources.jar</a>
+<a href="https://downloads.apache.org/db/jdo/3.1/jdo-api-3.1-sources.jar.asc">asc</a>
+<a href="https://downloads.apache.org/db/jdo/3.1/jdo-api-3.1-sources.jar.sha1">sha1</a>
+<a href="https://downloads.apache.org/db/jdo/3.1/jdo-api-3.1-sources.jar.md5">md5</a></p>
+</div>
+<div class="sect3">
+<h4 id="_maven_convenience_binary_a_id_maven_a">Maven (convenience binary)<a id="Maven"></a></h4>
+<div class="paragraph">
+<p>The JDO API can be downloaded
+automatically by maven and placed into the local maven repository if you
+include the proper dependency in your maven project definition.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>javax.jdo<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>jdo-api<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>3.1<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -454,76 +350,34 @@ be downloaded manually and put into a location of your choice.</p>
 <div class="paragraph">
 <p>This is a download for all implementors of JDO, and for those who want
 to check how well an implementation is compliant with the JDO
-specification. The tck project contains the JDO Technology Compatibility
+specification.</p>
+</div>
+<div class="paragraph">
+<p>The TCK project contains the JDO Technology Compatibility
 Kit. The source distribution is the only artifact needed to be
-downloaded by the user. The dependencies are automatically downloaded by
-maven as needed to run the TCK. Please refer to the README.html for
-further details.</p>
+downloaded by the user and contains all of the sources used to build
+the JDO project including the API, TCK, and test artifacts.
+The dependencies are automatically downloaded by
+maven as needed to run the TCK.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></p>
-</li>
-<li>
-<p><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></p>
-</li>
-<li>
-<p><a href="http://mirror.ox.ac.uk/sites/rsync.apache.org/" class="bare">http://mirror.ox.ac.uk/sites/rsync.apache.org/</a></p>
-</li>
-<li>
-<p><a href="http://mirror.vorboss.net/apache/" class="bare">http://mirror.vorboss.net/apache/</a></p>
-</li>
-<li>
-<p><a href="http://mirrors.ukfast.co.uk/sites/ftp.apache.org/" class="bare">http://mirrors.ukfast.co.uk/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="http://www.mirrorservice.org/sites/ftp.apache.org/" class="bare">http://www.mirrorservice.org/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="ftp://ftp.mirrorservice.org/sites/ftp.apache.org/" class="bare">ftp://ftp.mirrorservice.org/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="https://www-eu.apache.org/dist/" class="bare">https://www-eu.apache.org/dist/</a>   (backup)</p>
-</li>
-<li>
-<p><a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a>   (backup)</p>
-</li>
-<li>
-<p><a href="http://apache.mirror.anlx.net/" class="bare">http://apache.mirror.anlx.net/</a></p>
-</li>
-<li>
-<p><a href="http://apache.mirrors.nublue.co.uk/" class="bare">http://apache.mirrors.nublue.co.uk/</a></p>
-</li>
-<li>
-<p><a href="http://mirror.ox.ac.uk/sites/rsync.apache.org/" class="bare">http://mirror.ox.ac.uk/sites/rsync.apache.org/</a></p>
-</li>
-<li>
-<p><a href="http://mirror.vorboss.net/apache/" class="bare">http://mirror.vorboss.net/apache/</a></p>
-</li>
-<li>
-<p><a href="http://mirrors.ukfast.co.uk/sites/ftp.apache.org/" class="bare">http://mirrors.ukfast.co.uk/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="http://www.mirrorservice.org/sites/ftp.apache.org/" class="bare">http://www.mirrorservice.org/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="ftp://ftp.mirrorservice.org/sites/ftp.apache.org/" class="bare">ftp://ftp.mirrorservice.org/sites/ftp.apache.org/</a></p>
-</li>
-<li>
-<p><a href="https://www-eu.apache.org/dist/" class="bare">https://www-eu.apache.org/dist/</a>   (backup)</p>
-</li>
-<li>
-<p><a href="https://www-us.apache.org/dist/" class="bare">https://www-us.apache.org/dist/</a>   (backup)</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Please refer to the README for further details.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.tar.gz">jdo-3.1-src.tar.gz (1.1 MB)</a>
+<a href="https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.tar.gz.asc">asc</a>
+<a href="https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.tar.gz.sha1">sha1</a>
+<a href="https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.tar.gz.md5">md5</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.zip">jdo-3.1-src.zip (2.8 MB)</a>
+<a href="https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.zip.asc">asc</a>
+<a href="https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.zip.sha1">sha1</a>
+<a href="https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.zip.md5">md5</a></p>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_verifying_releases_a_id_verifying_releases_a">Verifying Releases<a id="Verifying_Releases"></a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_verifying_releases_a_id_verifying_releases_a">Verifying Releases<a id="Verifying_Releases"></a></h3>
 <div class="paragraph">
 <p><a id="Verifying"></a></p>
 </div>
@@ -533,17 +387,31 @@ using the PGP signature.</p>
 </div>
 <div class="paragraph">
 <p>The PGP signatures can be verified using PGP or GPG. First download the
-<a href="http://www.apache.org/dist/db/jdo/KEYS">KEYS</a> as well as the <code>asc</code>
+<a href="https://www.apache.org/dist/db/jdo/KEYS">KEYS</a> as well as the <code>asc</code>
 signature file for the particular distribution. Make sure you get these
-files from the <a href="http://www.apache.org/dist/db/jdo/">main distribution
-directory</a>, rather than from a mirror. Then verify the signatures using</p>
+files from the <a href="https://www.apache.org/dist/db/jdo/">main distribution
+directory</a>, rather than from a mirror. Then verify the signatures using
+these commands (depending on your tool set):</p>
 </div>
-<div class="paragraph">
-<p>` % pgpk -a KEYS % pgpv release_name.tar.gz.asc` <em>or</em><br>
-` % pgp -ka KEYS % pgp release_name.tar.gz.asc` <em>or</em><br>
-` % gpg --import KEYS % gpg --verify release_name.tar.gz.asc`</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>% pgpk -a KEYS
+% pgpv release_artifact.asc</code></pre>
 </div>
-<hr>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>% pgp -ka KEYS
+% pgp release_artifact.asc</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>% gpg --import KEYS
+% gpg --verify release_artifact.asc</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
                 </div>
@@ -573,7 +441,7 @@ directory</a>, rather than from a mirror. Then verify the signatures using</p>
         </div>
     </div>
     <hr/>
-    <p class="text-center">&copy; 2005-2019 Apache Software Foundation. All Rights Reserved.</p>
+    <p class="text-center">&copy; 2005-2020 Apache Software Foundation. All Rights Reserved.</p>
 </div>
 </footer>
 </body>
