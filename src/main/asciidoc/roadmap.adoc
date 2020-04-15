@@ -1,8 +1,5 @@
 [[index]]
-image:images/JDOx100.png[float="left"]
-image:images/jdo_text.png[float="right"]
-
-'''''
+{empty} +
 
 :_basedir: 
 :_imagesdir: images/
