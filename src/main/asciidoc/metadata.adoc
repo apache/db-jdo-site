@@ -19,7 +19,7 @@ annotations.
 JDO expects any XML MetaData to be specified in a file or files in
 particular positions in the file system. For example, if you have a
 class _com.mycompany.sample.MyExample_, JDO will look for any of the
-following files until it finds one (in the order stated) :-
+following files until it finds one (in the order stated) :
 
 ....
 META-INF/package.jdo

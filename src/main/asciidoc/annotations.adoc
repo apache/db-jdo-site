@@ -12,7 +12,7 @@
 
 One of the things that JDK 1.5 provides that can be of some use is
 annotations, and JDO provides its own set. When selecting to use
-annotations please bear in mind the following :-
+annotations please bear in mind the following :
 
 * You must have the *jdo-api* jar in your CLASSPATH since this provides
 the annotations

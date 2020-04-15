@@ -89,7 +89,7 @@ finally
 
 So we now don't need to do any manual copying of object fields just
 using a simple call to detach the object, and then attach it again
-later. Here are a few things to note with _attach/detach_ :-
+later. Here are a few things to note with _attach/detach_ :
 
 * Calling _detachCopy_ on an object that is not detachable will return a
 *transient* instance that is a COPY of the original, so use the COPY

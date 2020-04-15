@@ -43,7 +43,7 @@ anchor:dfg[]
 JDO provides an initial fetch group, comprising the fields that will be
 retrieved when an object is retrieved if the user does nothing to define
 the required behaviour. By default the _default fetch group_ comprises
-all fields of the following types :-
+all fields of the following types :
 
 * primitives : boolean, byte, char, double, float, int, long, short
 * Object wrappers of primitives : Boolean, Byte, Character, Double,
