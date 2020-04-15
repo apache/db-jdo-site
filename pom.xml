@@ -79,7 +79,7 @@
                         -->
                         <!-- Attributes common to all output formats -->
                         <attributes>
-                            <endpoint-url>http://www.datanucleus.org</endpoint-url>
+                            <endpoint-url>http://db.apache.org/jdo</endpoint-url>
                             <sourcedir>${project.build.sourceDirectory}</sourcedir>
                             <project-version>${project.version}</project-version>
                         </attributes>
@@ -130,64 +130,6 @@
                                         <toc>left</toc>
                                         <icons>font</icons>
                                         <version>${project.version}</version>
-
-                                        <!-- improvethisdoc.rootDir>/</improvethisdoc.rootDir>
-                                        <improvethisdoc.srcDir>/src/main/asciidoc</improvethisdoc.srcDir>
-                                        <improvethisdoc.organisation>datanucleus</improvethisdoc.organisation>
-                                        <improvethisdoc.repo>docs-accessplatform</improvethisdoc.repo>
-                                        <improvethisdoc.branch>master</improvethisdoc.branch>
-                                        <improvethisdoc.label>Edit</improvethisdoc.label-->
-                                    </attributes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>pdf</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-<!--                 <property>
-                    <name>!skip.pdf</name>
-                </property> -->
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctor-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>generate-pdf-doc</id>
-                                <phase>generate-resources</phase>
-                                <goals>
-                                    <goal>process-asciidoc</goal>
-                                </goals>
-                                <configuration>
-                                    <backend>pdf</backend>
-
-                                    <sourceDirectory>src/main/asciidoc/</sourceDirectory>
-                                    <outputDirectory>${project.reporting.outputDirectory}/</outputDirectory>
-
-                                    <sourceHighlighter>rouge</sourceHighlighter>
-                                    <preserveDirectories>true</preserveDirectories>
-                                    <relativeBaseDir>true</relativeBaseDir>
-                                    <doctype>book</doctype>
-
-                                    <attributes>
-                                        <sourcedir>${project.build.sourceDirectory}</sourcedir>
-                                        <imagesdir/>
-
-                                        <icons>font</icons>
-                                        <pagenums/>
-                                        <toc/>
-                                        <idprefix/>
-                                        <idseparator>-</idseparator>
-                                        <version>${project.version}</version>
-                                        <title-logo-image>${project.reporting.outputDirectory}/images/DataNucleus16-300.jpg</title-logo-image>
                                     </attributes>
                                 </configuration>
                             </execution>
