@@ -31,6 +31,7 @@ How to build the website:
  * Development -> Coding standard page
  * Community -> Team/Organizations
  * Development -> Dependencies (SVN -> Git)
+ * Consider removing jdocentral.adoc / newshistory.adoc
  * Cleanup everything
  
 ### TODO Process
