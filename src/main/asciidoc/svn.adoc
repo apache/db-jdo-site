@@ -5,7 +5,7 @@
 
 [[index]]
 
-== JDO Souce Codeanchor:JDO_Source_Code[]
+== JDO Source Codeanchor:JDO_Source_Code[]
 
 === Source Code Version Controlanchor:Source_Code_Version_Control[]
 
