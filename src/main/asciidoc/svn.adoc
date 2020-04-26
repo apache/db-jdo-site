@@ -1,14 +1,13 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
-:notoc:
-:nofooter:
-:titlepage:
 :grid: cols
+:development:
 
-== Source Code Version Controlanchor:Source_Code_Version_Control[]
+[[index]]
+
+== JDO Souce Codeanchor:JDO_Source_Code[]
+
+=== Source Code Version Controlanchor:Source_Code_Version_Control[]
 
 Apache JDO uses http://subversion.tigris.org[Subversion] to manage its
 source code. If you're new to Subversion, you can check out the
@@ -20,13 +19,13 @@ To receive notice of commits to the repository subscribe to
 jdo-commits@db.apache.org by sending email to
 jdo-commits-subscribe@db.apache.org.
 
-== Web Access to Subversionanchor:Web_Access_to_Subversion[]
+=== Web Access to Subversionanchor:Web_Access_to_Subversion[]
 
 If you just want to browse the source code, you can use the
 https://svn.apache.org/viewvc/db/jdo[ViewVC web interface] to
 Subversion. This is current at all times.
 
-== Checking Out Code Using Subversionanchor:Checking_Out_Code_Using_Subversion[]
+==== Checking Out Code Using Subversionanchor:Checking_Out_Code_Using_Subversion[]
 
 Anyone can check code out of Subversion. You only need to specify a
 username and password to update the Subversion repository, and only JDO
@@ -34,7 +33,7 @@ committers can do that. If you are a committer, are working from behind
 a firewall, or are connected to the internet through a proxy server,
 please see the sections below for more information.
 
-=== Anonymous check out from Subversionanchor:Anonymous_check_out_from_Subversion[]
+==== Anonymous check out from Subversionanchor:Anonymous_check_out_from_Subversion[]
 
 Use a command like:
 
@@ -49,7 +48,7 @@ executing the following command from within the jdo.
 % svn update
 ....
 
-=== Access from behind a firewallanchor:Access_from_behind_a_firewall[]
+==== Access from behind a firewallanchor:Access_from_behind_a_firewall[]
 
 For those users who are stuck behind a corporate firewall which is
 blocking http access to the Subversion repository, you can try to access
@@ -59,7 +58,7 @@ it via HTTPS:
 % svn checkout https://svn.apache.org/repos/asf/db/jdo
 ....
 
-=== Access through a proxyanchor:Access_through_a_proxy[]
+==== Access through a proxyanchor:Access_through_a_proxy[]
 
 The Subversion client can go through a proxy, if you configure it to do
 so. First, edit your "servers" configuration file to indicate which
@@ -83,7 +82,7 @@ http-proxy-port = 3128
 Please use the regular http proxy settings in case you want to access
 the the repository from the Sun network (SWAN).
 
-=== Committer accessanchor:Committer_access[]
+==== Committer accessanchor:Committer_access[]
 
 Everyone can access the Apache JDO Subversion repository via HTTPS, but
 Apache JDO Committers must checkout the Subversion repository via HTTPS.
@@ -92,7 +91,7 @@ Apache JDO Committers must checkout the Subversion repository via HTTPS.
 % svn checkout https://svn.apache.org/repos/asf/db/jdo
 ....
 
-=== NetBeans CVS repository accessanchor:NetBeans_CVS_repository_access[]
+==== NetBeans CVS repository accessanchor:NetBeans_CVS_repository_access[]
 
 The btree subproject checks out the NetBeans mdr btree implementation.
 This requires cvs being installed on your system. The official NetBeans
@@ -107,9 +106,9 @@ link:/jdo-data/attachments/SubversionRepository/attachments/netbeans-mdr-btree.z
 Unzip the file in the btree directory and comment out (or remove) the
 definition of the preGoal java:prepare-filesystem.
 
-== Submitting Code Changesanchor:Submitting_Code_Changes[]
+=== Submitting Code Changesanchor:Submitting_Code_Changes[]
 
-=== Submitting a patchanchor:Submitting_a_patch[]
+==== Submitting a patchanchor:Submitting_a_patch[]
 
 If you make changes to Apache JDO, and would like to contribute the to
 the project, you should create a patch and send it to the jdo-dev alias
@@ -120,7 +119,7 @@ command:
 % svn diff > your-changes.patch
 ....
 
-=== Committing changes to subversionanchor:Committing_changes_to_subversion[]
+==== Committing changes to subversionanchor:Committing_changes_to_subversion[]
 
 To commit changes to the Subversion repository, you must be an Apache
 JDO committer. See link:get-involved.html[Get Involved] for information
@@ -147,13 +146,13 @@ $> svn commit --username your-username --password your-password
 Remember to replace 'your-username' and 'your-password' with your actual
 username and password on svn.apache.org.
 
-== Building JDO from Sourceanchor:Building_JDO_from_Source[]
+=== Building JDO from Sourceanchor:Building_JDO_from_Source[]
 
 Refer to the http://wiki.apache.org/jdo/FrontPage[Wiki page] for
 details. Note that the JDO project is subdivided into several smaller
 projects, and each project is built separately.
 
-== Using Subversion on Windows with cygwinanchor:Using_Subversion_on_Windows_with_cygwin[]
+=== Using Subversion on Windows with cygwinanchor:Using_Subversion_on_Windows_with_cygwin[]
 
 If you use Subversion on Windows under cygwin, you may find that the
 Subversion client automatically assigns the executable property to
@@ -170,7 +169,7 @@ Name: svn:executable
 This section explains the source of the problem and suggests some
 actions to avoid it.
 
-=== Backgroundanchor:Background[]
+==== Backgroundanchor:Background[]
 
 Subversion carries executable information in the built-in property
 called svn:executable. This property, unlike others, may be present or
@@ -190,7 +189,7 @@ Unix-style permissions this way as well. If the file is executable by
 all, cygwin svn sets the svn:executable property on the file when you
 invoke _svn add_.
 
-=== Removing existing executable properties from the repositoryanchor:Removing_existing_executable_properties_from_the_repository[]
+==== Removing existing executable properties from the repositoryanchor:Removing_existing_executable_properties_from_the_repository[]
 
 You can use svn propdel to remove the svn:executable property from your
 working copy.
@@ -203,7 +202,7 @@ will recursively remove the svn:executable property from all of the
 files below the current directory. You can use this and commit the files
 to clean the repository if necessary.
 
-=== Preventing Subversion from adding unwanted executable propertiesanchor:Preventing_Subversion_from_adding_unwanted_executable_properties[]
+==== Preventing Subversion from adding unwanted executable propertiesanchor:Preventing_Subversion_from_adding_unwanted_executable_properties[]
 
 Windows/cygwin users who don't want to have to think about using _svn
 propdel_ or _chmod_ on each added file can use a non-cygwin version of

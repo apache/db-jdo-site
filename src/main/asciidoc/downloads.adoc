@@ -1,25 +1,24 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
-:notoc:
-:nofooter:
-:titlepage:
 :grid: cols
+:development:
 
-== Latest Official Releaseanchor:Latest_Official_Release[]
+[[index]]
+
+== Downloadsanchor:Downloads[]
+
+=== Latest Official Releaseanchor:Latest_Official_Release[]
 
 <<release-3.1.adoc#,JDO 3.1>> image:images/dot_clear.png[image]
 March 20, 2015
 
-== Previous Official Releasesanchor:Previous_Official_Releases[]
+=== Previous Official Releasesanchor:Previous_Official_Releases[]
 
 <<release-3.1-rc1.adoc#,JDO 3.1-rc1>> image:images/dot_clear.png[image] September 22, 2013
 
 <<release-3.0.1.adoc#,JDO 3.0.1>> image:images/dot_clear.png[image] November 13, 2011
 
-== About JDO Releasesanchor:About_JDO_Releases[]
+=== About JDO Releasesanchor:About_JDO_Releases[]
 
 A release of JDO includes the JDO API and the Technology Compatibility
 Kit (TCK). The TCK is available only in source form. The API project is

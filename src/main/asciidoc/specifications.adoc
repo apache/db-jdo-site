@@ -1,14 +1,13 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
-:notoc:
-:nofooter:
-:titlepage:
 :grid: cols
+:general:
 
-== JDO Final Specificationsanchor:JDO_Final_Specifications[]
+[[index]]
+
+== JDO Specificationsanchor:JDO_Specifications[]
+
+=== JDO Final Specificationsanchor:JDO_Final_Specifications[]
 
 The following specifications for JDO are available
 
@@ -31,7 +30,7 @@ http://jcp.org/aboutJava/communityprocess/mrel/jsr243/index2.html[JDO
 * The http://www.jcp.org/en/jsr/detail?id=12[JDO 1.0 Specification
 (Final)]
 
-== JDO Draft Specificationsanchor:JDO_Draft_Specifications[]
+=== JDO Draft Specificationsanchor:JDO_Draft_Specifications[]
 
 The following specifications for JDO are snapshots of the current
 Maintenance Release specification under development. The specification

@@ -1,11 +1,9 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
-:notoc:
-:titlepage:
 :grid: cols
+:development:
+
+[[index]]
 
 == JDO 3.1 Distributionsanchor:JDO_3.1_Distributions[]
 

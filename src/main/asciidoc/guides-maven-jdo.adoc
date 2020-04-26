@@ -1,11 +1,8 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
-:notoc:
-:titlepage:
 :grid: cols
+
+[[index]]
 
 == JDO Meets Mavenanchor:JDO_Meets_Maven[]
 

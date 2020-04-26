@@ -1,12 +1,8 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
-:notoc:
-:nofooter:
-:titlepage:
 :grid: cols
+
+[[index]]
 
 == The Apache JDO Projectanchor:The_Apache_JDO_Project[]
 
