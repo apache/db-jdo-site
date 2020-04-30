@@ -1,11 +1,11 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
 :notoc:
-:titlepage:
+:notitle:
 :grid: cols
+:usage:
+
+[[index]]
 
 == Data Replicationanchor:Data_Replication[]
 

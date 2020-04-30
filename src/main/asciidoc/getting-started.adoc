@@ -1,0 +1,10 @@
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:notitle:
+:grid: cols
+:general:
+
+[[index]]
+
+== Getting Startedanchor:Getting_Started[]

@@ -1,15 +1,15 @@
+:_basedir: 
+:_imagesdir: images/
+:notoc:
+:nofooter:
+:notitle:
+:grid: cols
+
 [[index]]
 image:images/JDOx100.png[float="left"]
 image:images/jdo_text.png[float="right"]
 
 '''''
-
-:_basedir: 
-:_imagesdir: images/
-:notoc:
-:nofooter:
-:titlepage:
-:grid: cols
 
 == About Apache JDOanchor:About_Apache_JDO[]
 

@@ -1,12 +1,11 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
 :notoc:
-:nofooter:
-:titlepage:
+:notitle:
 :grid: cols
+:general:
+
+[[index]]
 
 == Why JDO ?anchor:Why_JDO_[]
 

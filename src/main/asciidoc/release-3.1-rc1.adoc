@@ -1,10 +1,9 @@
-[[index]]
-{empty} +
 :_basedir: 
 :_imagesdir: images/
-:notoc:
-:titlepage:
 :grid: cols
+:development:
+
+[[index]]
 
 == JDO 3.1-rc1 Distributionsanchor:JDO_3.1-rc1_Distributions[]
 
@@ -53,14 +52,14 @@ groupId javax.jdo, artifactId jdo-api, version 3.1-rc1 and define your
 remote repository as http://www.ibiblio.org/maven. Alternatively, it can
 be downloaded manually and put into a location of your choice.
 
-http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-api-3.1-rc1.jar[jdo-api-3.1-rc1.jar]
-[http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-api-3.1-rc1.jar.asc[PGP]]
+* http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-api-3.1-rc1.jar[jdo-api-3.1-rc1.jar]
+http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-api-3.1-rc1.jar.asc[PGP]
 
-http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-api-3.1-rc1.pom[jdo-api-3.1-rc1.pom]
-[http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-api-3.1-rc1.pom.asc[PGP]]
+* http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-api-3.1-rc1.pom[jdo-api-3.1-rc1.pom]
+http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-api-3.1-rc1.pom.asc[PGP]
 
-http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-api-3.1-rc1-sources.jar[jdo-api-3.1-rc1-sources.jar]
-[http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-api-3.1-rc1-sources.jar.asc[PGP]]
+* http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-api-3.1-rc1-sources.jar[jdo-api-3.1-rc1-sources.jar]
+http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-api-3.1-rc1-sources.jar.asc[PGP]
 
 === TCKanchor:TCK[]
 
@@ -72,11 +71,11 @@ downloaded by the user. The dependencies are automatically downloaded by
 maven as needed to run the TCK. Please refer to the README.html for
 further details.
 
-http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-3.1-rc1-src.zip[jdo-3.1-rc1-src.zip]
-[http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-3.1-rc1-src.zip.asc[PGP]]
+* http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-3.1-rc1-src.zip[jdo-3.1-rc1-src.zip]
+http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-3.1-rc1-src.zip.asc[PGP]
 
-http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-3.1-rc1-src.tar.gz[jdo-3.1-rc1-src.tar.gz]
-[http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-3.1-rc1-src.tar.gz.asc[PGP]]
+* http://mirror.ox.ac.uk/sites/rsync.apache.org//db/jdo/3.1-rc1/jdo-3.1-rc1-src.tar.gz[jdo-3.1-rc1-src.tar.gz]
+http://www.apache.org/dist/db/jdo/3.1-rc1/jdo-3.1-rc1-src.tar.gz.asc[PGP]
 
 == Verifying Releasesanchor:Verifying_Releases[]
 

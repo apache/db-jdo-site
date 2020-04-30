@@ -1,15 +1,13 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
-:notoc:
-:nofooter:
-:titlepage:
 :grid: cols
+:development:
 
-== Processanchor:Process[]
+[[index]]
 
+== Issue Trackingsanchor:Issue_Tracking[]
+
+=== JIRA
 The JDO project uses
 http://issues.apache.org/jira/secure/BrowseProject.jspa?id=10630[JIRA]
 to track issues.
@@ -33,7 +31,7 @@ backported (if ever necessary) to dot releases after the original
 release ships.
 ____
 
-== View Issuesanchor:View_Issues[]
+=== View Issuesanchor:View_Issues[]
 
 * http://issues.apache.org/jira/browse/JDO?report=com.atlassian.jira.plugin.system.project:openissues-panel[Open
 Issues]

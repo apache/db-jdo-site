@@ -1,12 +1,9 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
-:notoc:
-:nofooter:
-:titlepage:
 :grid: cols
+:metadata:
+
+[[index]]
 
 == Persistence MetaDataanchor:Persistence_MetaData[]
 

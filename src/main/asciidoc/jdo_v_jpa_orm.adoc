@@ -1,12 +1,10 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
 :notoc:
-:nofooter:
-:titlepage:
 :grid: cols
+:metadata:
+
+[[index]]
 
 == Which ORM specification ?anchor:Which_ORM_specification_[]
 

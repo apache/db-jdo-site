@@ -1,14 +1,13 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
 :notoc:
-:nofooter:
-:titlepage:
+:notitle:
 :grid: cols
+:metadata:
 
-== JDO Enhancementanchor:JDO_Enhancement[]
+[[index]]
+
+== JDO Bytecode Enhancementanchor:JDO_Bytecode_Enhancement[]
 
 JDO defines a byte-code enhancement process that provides for dirty
 detection of fields. Before a class is used at runtime it is compiled

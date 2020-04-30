@@ -1,14 +1,13 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
-:notoc:
-:nofooter:
-:titlepage:
 :grid: cols
+:community:
 
-== How do I contribute, give feedback, fix bugs and so on?anchor:How_do_I_contribute_give_feedback_fix_bugs_and_so_on[]
+[[index]]
+
+== Get Involvedanchor:Get_Involved[]
+
+=== How do I contribute, give feedback, fix bugs?
 
 The Apache JDO project really needs and appreciates any contributions,
 including documentation help, source code and feedback. Suggested
@@ -28,7 +27,7 @@ Pacific time. The conference call number is 866 230-6968 (international
 status, issues, concerns, and strategy. Everyone interested in Apache
 JDO is welcome and encouraged to participate.
 
-== How do I become a committer?anchor:How_do_I_become_a_committer[]
+=== How do I become a committer
 
 If you're interested in committing to the project:
 

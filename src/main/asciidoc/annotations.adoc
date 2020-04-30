@@ -1,12 +1,11 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
-:notoc:
-:nofooter:
-:titlepage:
 :grid: cols
+:notoc:
+:notitle:
+:metadata:
+
+[[index]]
 
 == JDO : Annotationsanchor:JDO_:_Annotations[]
 

@@ -1,12 +1,9 @@
-[[index]]
-{empty} +
-
 :_basedir: 
 :_imagesdir: images/
-:notoc:
-:nofooter:
-:titlepage:
 :grid: cols
+:general:
+
+[[index]]
 
 == About the Technology Compatibility Kitanchor:About_the_Technology_Compatibility_Kit[]
 
@@ -16,7 +13,7 @@ Technology Compatibility Kit (TCK). The TCK is released as a packaged
 Java source tree. Maven is the driver of a test run. You must download
 and install http://maven.apache.org/[Maven 2+]before running the TCK.
 
-== Running the TCKanchor:Running_the_TCK[]
+=== Running the TCKanchor:Running_the_TCK[]
 
 To run the Technology Compatibility Kit:
 
@@ -30,7 +27,7 @@ http://svn.apache.org/viewcvs.cgi/*checkout*/db/jdo/branches/3.1/README.html[REA
 http://svn.apache.org/viewcvs.cgi/*checkout*/db/jdo/branches/3.1/tck/RunRules.html[RunRules.html]
 in the tck directory.
 
-== Demonstrating Complianceanchor:Demonstrating_Compliance[]
+=== Demonstrating Complianceanchor:Demonstrating_Compliance[]
 
 Vendors must post test results on a publicly accessible web site for
 examination by the public. The posting includes the output of the test
