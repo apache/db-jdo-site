@@ -19,33 +19,31 @@ have ideas, please feel free to suggest them on the mailing list.
 If you would like to become a committer, please see
 link:get-involved.html[Get Involved].
 
-== Apache JDO Committersanchor:Apache_JDO_Committers[]
+=== Apache JDO Committersanchor:Apache_JDO_Committers[]
 
 [cols=",",options="header",]
 |===
 |Name |Organization
-|Matthew Adams |SpringSource
-|Erik Bengtson |JPOX
-|Michael Bouschen |Tech@Spree
-|Michelle Caisse |Sun Microsystems, Inc.
+|Matthew Adams |Northscaler
+|Erik Bengtson |
+|Michael Bouschen |akquinet tech@spree
+|Michelle Caisse |L-3 Communications
 |Andy Jefferson |DataNucleus
-|Patrick Linskey |Oracle
-|Geir Magnusson Jr. |IBM
+|Patrick Linskey |Cisco
+|Geir Magnusson Jr. |fuboTV
 |Brian McCallister |
-|Craig Russell |Sun Microsystems, Inc.
+|Craig Russell |
 |Dain Sundstrom |
 |Brian Topping |
-|Michael Watzek |Tech@Spree
+|Michael Watzek |akquinet tech@spree
 |Tilmann Zäschke |http://www.zoodb.org[ZooDB]
-|Martin Zaun |Sun Microsystems, Inc.
+|Martin Zaun |
 |===
 
-== Apache JDO Contributorsanchor:Apache_JDO_Contributors[]
+=== Apache JDO Contributorsanchor:Apache_JDO_Contributors[]
 
 [cols=",",options="header",]
 |===
 |Name |Organization
-|Chris Beams |SpringSource
-|Ilan Kirsch |ObjectDB
 |===
 

@@ -1,0 +1,41 @@
+:_basedir: 
+:_imagesdir: images/
+:grid: cols
+:development:
+
+[[index]]
+
+== JDO Source Codeanchor:JDO_Source_Code[]
+
+=== Source Code Version Controlanchor:Source_Code_Version_Control[]
+
+Apache JDO uses https://git-scm.com[git] to manage its source code.
+
+To receive notice of commits to the repository subscribe to
+jdo-commits@db.apache.org by sending email to jdo-commits-subscribe@db.apache.org.
+
+The ASF operates a dual master system for repositories that use Git as their primary version
+control system. This means committers may commit to either gitbox.apache.org or GitHub.
+
+=== Checking Out Code
+
+You can download the Apache JDO source code using:
+
+....
+git clone https://gitbox.apache.org/repos/asf/db-jdo.git
+git clone https://github.com/apache/db-jdo.git
+....
+
+Contributors can fork this repo using github’s tools and contribute patches/new features using pull requests.
+
+Committers can push to this repo directly, once their ASF account and github account have been linked.
+See https://gitbox.apache.org/setup[gitbox setup] for more details on how to do this.
+
+=== Web Site
+
+The sources for this site are available in a distinct Git repository:
+
+....
+https://gitbox.apache.org/repos/asf/db-jdo-site.git
+https://github.com/apache/db-jdo-site.git
+....
