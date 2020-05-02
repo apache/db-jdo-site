@@ -11,7 +11,7 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>JDO Extents</title>
+    <title>Getting Started</title>
 
     <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
@@ -173,7 +173,7 @@ table.CodeRay td.code>pre{padding:0}
                   <!-- menu item General -->
 
                   
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">General <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:#2385c6">General <span class="caret"></span></a>
                   
                   <ul class="dropdown-menu">
                         <li><a href="why_jdo.html">Why JDO?</a></li>
@@ -241,7 +241,7 @@ table.CodeRay td.code>pre{padding:0}
 
                 <li class="dropdown">
                   
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:#2385c6">Query <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Query <span class="caret"></span></a>
                   
                     <ul class="dropdown-menu">
                         <li><a href="jdoql.html">JDOQL</a></li>
@@ -302,28 +302,9 @@ table.CodeRay td.code>pre{padding:0}
                 
                 <div id="doc-content">
                     <div class="sect1">
-<h2 id="index">JDO Extents<a id="JDO_Extents"></a></h2>
+<h2 id="index">Getting Started<a id="Getting_Started"></a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>JDO implementations manage the persistence of objects into the
-datastore. An <strong>Extent</strong> is a collection of objects of a particular type
-of object that have been persisted. When you define the MetaData for a
-class you can define if the class requires an Extent. The default is
-true. You access the Extent as follows</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Extent e = pm.getExtent(MyClass.class, true);</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This example will return an Extent that contains all persisted instances
-of the class <em>MyClass</em> and its subclasses (the second argument in the
-call). An Extent is useful where you want to restrict a Query to query
-over just that set of objects. It can also be used where you just want
-to retrieve all persisted objects of a type (as an alternative to using
-a Query).</p>
-</div>
+
 </div>
 </div>
                 </div>

@@ -8,7 +8,7 @@ staging:
   whoami:  staging
  
 publish:
-  whoami:  publish
+  whoami:  master
   subdir:  jdo
 
 github:
