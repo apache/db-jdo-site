@@ -1,15 +1,16 @@
 # Staging and publishing profile for Apache JDO:
 staging:
-  profile: master
+  profile: ~
   whoami:  master
+  outputdir: jdo
  
 staging:
   profile: staging
   whoami:  staging
  
 publish:
-  whoami:  master
-  subdir:  jdo
+  whoami:  publish
+  outputdir:  jdo
 
 github:
   description: "Apache JDO project"
