@@ -2,11 +2,11 @@
 staging:
   profile: ~
   whoami:  staging
-  subdir: jdo
+  subdir: content/jdo
  
 publish:
   whoami:  master
-  subdir:  jdo
+  subdir:  content/jdo
 
 github:
   description: "Apache JDO project"
