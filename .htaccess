@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteBase /jdo/
+RewriteRule ^(?!docs/)(.*)$ docs/$1
