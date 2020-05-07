@@ -104,7 +104,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                          <outputDirectory>${basedir}/content</outputDirectory>
+                          <outputDirectory>${basedir}/docs</outputDirectory>
                           <resources>          
                               <resource>
                                   <directory>target/site</directory>
