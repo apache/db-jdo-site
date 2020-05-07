@@ -3,10 +3,7 @@ staging:
   profile: ~
   whoami:  master
   outputdir: jdo
- 
-staging:
-  profile: staging
-  whoami:  staging
+  subdir: jdo
  
 publish:
   whoami:  publish
