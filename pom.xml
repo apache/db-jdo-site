@@ -27,6 +27,7 @@
         <!--incode-asciidoctor-extension-monotree.version>0.0.2</incode-asciidoctor-extension-monotree.version-->
         <!--incode-asciidoctor-extension-improvethisdoc.version>0.0.1</incode-asciidoctor-extension-improvethisdoc.version-->
         <jruby.version>1.7.26</jruby.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
 
         <build.dir>${project.basedir}/target/site</build.dir>
     </properties>
@@ -90,6 +91,31 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                          <outputDirectory>${basedir}/docs</outputDirectory>
+                          <resources>          
+                              <resource>
+                                  <directory>target/site</directory>
+                              </resource>
+                          </resources>              
+                        </configuration>            
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        
     </build>
 
     <profiles>
