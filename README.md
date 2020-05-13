@@ -23,7 +23,15 @@ How to build the website:
  * Go to Github.com and create a PR for your branch
  * Once the PR is accepted, the changes should be visible on the website (you may have to refresh the browser). 
 
-  
+How to add javadoc
+* Create the javadoc jar (e.g. jdo-api-3.2-javadoc.jar) in the db-jdo repository by calling `mvn clean install -Papache-release` in the api submodule.
+* Create a new folder under docs e.g. docs/api32.
+* Copy the javadocs jar info the new folder: e.g. `cp  jdo-api-3.2-javadoc.jar  docs/api32`.
+* Create a new subforder docs/api32/jdo-api-3.2-javadoc
+* Unpack the javadoc jar in the subfolder
+* Edit javadoc.adoc under src/main/asciidoc and create a new section 'JDO 3.2 javadoc'.
+* Add two links: one referring index.html in the subfolder and one referring the javadoc jar.
+
 ### TODO Documentation
  * General -> Downloads: Link to release-3.1? Add section about previous releases, 3.0.1 etc?
  * JDO Implementation -> Specification: Where do we host the PDF files?
