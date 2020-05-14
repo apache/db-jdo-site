@@ -27,7 +27,7 @@ How to add javadoc
 * Create the javadoc jar (e.g. jdo-api-3.2-javadoc.jar) in the db-jdo repository by calling `mvn clean install -Papache-release` in the api submodule.
 * Create a new folder under docs e.g. docs/api32.
 * Copy the javadocs jar info the new folder: e.g. `cp  jdo-api-3.2-javadoc.jar  docs/api32`.
-* Create a new subforder docs/api32/jdo-api-3.2-javadoc
+* Create a new subfolder docs/api32/jdo-api-3.2-javadoc
 * Unpack the javadoc jar in the subfolder
 * Edit javadoc.adoc under src/main/asciidoc and create a new section 'JDO 3.2 javadoc'.
 * Add two links: one referring index.html in the subfolder and one referring the javadoc jar.
@@ -41,7 +41,3 @@ How to add javadoc
  * Development -> Dependencies (SVN -> Git)
  * Consider removing jdocentral.adoc / newshistory.adoc
  * Cleanup everything
- 
-### TODO Process
- * Set output folder to `output` or `content` (for use by `.asf.yaml`)
- 
