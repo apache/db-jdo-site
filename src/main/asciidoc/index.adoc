@@ -35,7 +35,7 @@ transactions
 
 JDO is being developed as a Java Specification Request in the Java
 Community Process. The original JDO 1.0 is
-http://www.jcp.org/en/jsr/detail?id=12[JSR-12] and the current JDO 3.0.1
+http://www.jcp.org/en/jsr/detail?id=12[JSR-12] and the current JDO 3.1
 is http://www.jcp.org/en/jsr/detail?id=243[JSR-243].
 
 The Apache JDO project is focused on building the JDO API and the TCK
@@ -124,7 +124,7 @@ provides support for JDK 1.5 features,including the use of annotations
 as a means of specifying mapping. It also includes many corrections and
 minor changes. For details, see
 http://jcp.org/aboutJava/communityprocess/maintenance/jsr243/243ChangeLog.html[Change
-Log for JSR-000243 JavaTM Data Objects 2.0] (_2007-08-02_)
+Log for JSR-000243 JavaTM Data Objects 2.0]
 ____
 
 *JDO 2.0 has been approved by the JCP* +
@@ -145,20 +145,18 @@ includes many features requested by users:
 * Improved support for single-field primary keys
 * Object lifecycle event monitoring
 * Improved support for bidirectional relationships
-
-(_2006-05-03_)
 ____
 
 *Java Community Process!* +
 JDO is being developed under the Java Community Process. The Apache JDO
 project is developing the API and the Technology Compatibility Kit for
-the JDO standard. (_2005-07-13_)
+the JDO standard.
 
 *Users!* +
 We'd love to have you involved. Check out the
 http://wiki.apache.org/jdo[Wiki]. Check out the
 http://www.jcp.org/en/jsr/detail?id=243[Specification], which has been
-approved. link:./get-involved.html[Get Involved]! (_2005-07-13_)
+approved. link:./get-involved.html[Get Involved]!
 
 _Archived articles are link:newshistory.html[here]_.
 
