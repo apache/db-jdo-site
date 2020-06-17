@@ -1,0 +1,13 @@
+:_basedir: 
+:_imagesdir: images/
+:grid: cols
+:development:
+
+[[index]]
+
+== Coding Standardsanchor:Codeing_Standars[]
+
+The JDO development team follows the http://cwiki.apache.org/GMOxDEV/Coding+standards[Apache Geronimo code style].
+Please use this code style if you submit patches and extensions to JDO. 
+
+{empty} +
