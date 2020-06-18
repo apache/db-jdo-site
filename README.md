@@ -32,6 +32,6 @@ How to add javadoc
 * Edit javadoc.adoc under src/main/asciidoc and create a new section 'JDO 3.2 javadoc'.
 * Add two links: one referring index.html in the subfolder and one referring the javadoc jar.
 
-### TODO Documentations: Link to release-3.1? Add section about previous releases, 3.0.1 etc?
+### TODO
  * Consider removing jdocentral.adoc / newshistory.adoc
  * Cleanup everything
