@@ -1,4 +1,6 @@
-# Staging and publishing profile for Apache JDO:
+# Staging and publishing profile for Apache JDO
+# NOTE: This does currently not work, presumably because JDO is a sub project and there is 
+#       no staging area for subprojects or for the parent 'db' project.
 staging:
   profile: ~
   whoami:  staging
