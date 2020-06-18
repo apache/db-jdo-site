@@ -1,7 +1,7 @@
 # db-jdo-site
 Sources for the Apache DB JDO web site
 
-While under construction, the website can be found under [https://apache.github.io/db-jdo-site/](https://apache.github.io/db-jdo-site/) 
+The website is mirrored under [https://apache.github.io/db-jdo-site/](https://apache.github.io/db-jdo-site/) 
 
 This repository contains the JDO website source.
 
