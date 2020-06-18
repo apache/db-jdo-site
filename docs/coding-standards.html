@@ -11,7 +11,7 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>JDO Exceptions</title>
+    <title>Coding Standards</title>
 
     <link rel="icon" type="image/png" href="https://apache.github.io/db-jdo-site/images/JDO_32x32.png"/>
 
@@ -198,7 +198,7 @@ table.CodeRay td.code>pre{padding:0}
 
                 <li class="dropdown">
                   
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:#2385c6">API Usage<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">API Usage<span class="caret"></span></a>
                   
                     <ul class="dropdown-menu">
                         <li><a href="jdohelper.html">JDO Helper</a></li>
@@ -271,7 +271,7 @@ table.CodeRay td.code>pre{padding:0}
 
                <li class="dropdown">
                   
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Development<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:#2385c6">Development<span class="caret"></span></a>
                   
                     <ul class="dropdown-menu">
                         <li><a href="roadmap.html">RoadMap / TODO</a></li>
@@ -297,140 +297,19 @@ table.CodeRay td.code>pre{padding:0}
         <div class="row-fluid">
             <div class="col-sm-9">
 <!--                <div class="page-title">
-                    <h3>JDO Exceptions<a id="JDO_Exceptions"></a></h3>
+                    <h3>Coding Standards<a id="Codeing_Standars"></a></h3>
                 </div>
 -->
                 <div id="doc-content">
                     <div class="sect1">
-<h2 id="index">JDO Exceptions<a id="JDO_Exceptions"></a></h2>
+<h2 id="index">Coding Standards<a id="Codeing_Standars"></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>All exceptions raised by a JDO implementation are runtime exceptions
-which means that you can choose to catch the exceptions or not. The
-reason for JDO using <em>unchecked</em> exceptions is that JDO tries to provide
-transparent persistence, and so needs to present the same interface and
-exceptions whatever the state an object has.</p>
-</div>
-<div class="sect2">
-<h3 id="_jdoexception_a_id_jdoexception_a">JDOException<a id="JDOException"></a></h3>
-<div class="paragraph">
-<p>This is the base class for all JDO exceptions. It is a subclass of
-RuntimeException, and need not be declared or caught.</p>
+<p>The JDO development team follows the <a href="http://cwiki.apache.org/GMOxDEV/Coding+standards">Apache Geronimo coding style</a>.
+Please use this coding style for contributions (pull request, patches or extensions) to JDO.</p>
 </div>
 <div class="paragraph">
 <p><br></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_can_retry_exceptions_a_id_can_retry_exceptions_a">Can Retry Exceptions<a id="Can_Retry_Exceptions"></a></h3>
-<div class="paragraph">
-<p><span class="image"><img src="images/jdo_exception_canretry.jpg" alt="JDO Can Retry Exceptions"></span></p>
-</div>
-<table class="tableblock frame-all grid-cols spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Exception</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDOCanRetryException</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the base class for errors that can be
-retried.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDOUserException</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the base class for user errors that can be
-retried.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDODataStoreException</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the base class for datastore errors that
-can be retried. Any root SQLException that caused this will typically be
-nested within this exception.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDOObjectNotFoundException</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This exception is to notify the application
-that an object does not exist in the datastore. When this exception is
-thrown during a transaction, there has been no change in the status of
-the transaction in progress. If this exception is a nested exception
-thrown during commit, then the transaction is rolled back.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDOUnsupportedOptionException</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This exception is thrown by an
-implementation to indicate that it does not implement a JDO optional
-feature.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><br></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_fatal_exceptions_a_id_fatal_exceptions_a">Fatal Exceptions<a id="Fatal_Exceptions"></a></h3>
-<div class="paragraph">
-<p><span class="image"><img src="images/jdo_exception_fatal.jpg" alt="JDO Fatal Exceptions"></span></p>
-</div>
-<table class="tableblock frame-all grid-cols spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Exception</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDOFatalException</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the base class for errors that cannot be
-retried. This exception generally means that the transaction associated
-with the PersistenceManager has been rolled back, and the transaction
-should be abandoned.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDOFatalUserException</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the base class for user errors that
-cannot be retried.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDOFatalInternalException</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the base class for JDO
-implementation failures.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDOFatalDataStoreException</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is the base class for fatal datastore
-errors. When this exception is thrown, the transaction has been rolled
-back. Any root SQLException that caused this will typically be nested
-within this exception.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDOOptimisticVerificationException</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This exception is the result of a
-user commit operation in an optimistic transaction where the
-verification of new, modified, or deleted instances fails the
-verification. The user will never see this exception except as a result
-of commit.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDODetachedFieldAccessException</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This exception is the result of a user
-accessing a field of a detached instance, where the field was not copied
-to the detached instance.</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 </div>

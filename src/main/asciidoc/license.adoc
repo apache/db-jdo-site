@@ -9,6 +9,6 @@
 
 == Licenseanchor:Lisense[]
 
-The JDO API and the JDO TCK are licensed under the Apache License 2.0. For more information about licenses see the http://www.apache.org/licenses/LICENSE-2.0[Apache License page].
+The JDO API and the JDO TCK are licensed under the http://www.apache.org/licenses/LICENSE-2.0[Apache License 2.0].
 
 {empty} +
