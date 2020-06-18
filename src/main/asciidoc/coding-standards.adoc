@@ -1,5 +1,7 @@
 :_basedir: 
 :_imagesdir: images/
+:notoc:
+:notitle:
 :grid: cols
 :development:
 
