@@ -33,5 +33,4 @@ How to add javadoc
 * Add two links: one referring index.html in the subfolder and one referring the javadoc jar.
 
 ### TODO
- * Consider removing jdocentral.adoc / newshistory.adoc
  * Cleanup everything
