@@ -28,7 +28,7 @@ using the JDO implementation classes to define the application view of
 PersistenceManagerFactory and PersistenceManager.
 
 Next, choose a JDO implementation. You can get information
-on JDO implementations here. Some factors to consider when choosing
+on JDO implementations link:impls.adoc[here]. Some factors to consider when choosing
 a JDO implementation is what databases they support, what Java version
 they support, and whether they provide tools to create database schema from
 an object model or create an object model from the database schema.
