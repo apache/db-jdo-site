@@ -33,4 +33,4 @@ How to add javadoc
 * Add two links: one referring index.html in the subfolder and one referring the javadoc jar.
 
 ### TODO
- * Cleanup everything
+ * If you find any issues please provide a PR or ticket [here](https://issues.apache.org/jira/projects/JDO/issues/?filter=allopenissues)
