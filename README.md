@@ -16,12 +16,11 @@ How to build the website:
  * Use `git branch MyBranchName` and `git checkout MyBranchName` to create a branch and check it out.
  * Adapt the asciidoc files in `src/main/asciidoc` or the website menu in  `src/main/template`
  * Call `mvn clean compile`. This generates html files in `target/site`. 
- * Copy all files from `target/site` into the `docs` folder, do not forget subfolders.
  * Verify the generated website by viewing it locally with a web browser. 
  * Commit changes with `git commit -m 'my commit message' `.
  * Push changes to the repository with `git push`.
  * Go to Github.com and create a PR for your branch
- * Once the PR is accepted, the changes should be visible on the website (you may have to refresh the browser). 
+ * Once the PR is accepted, the changes should be visible on the website (you may have to refresh the browser).
 
 How to add javadoc
 * Create the javadoc jar (e.g. jdo-api-3.2-javadoc.jar) in the db-jdo repository by calling `mvn clean install -Papache-release` in the api submodule.
