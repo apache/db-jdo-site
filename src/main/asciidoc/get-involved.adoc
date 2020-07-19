@@ -7,42 +7,53 @@
 
 == Get Involvedanchor:Get_Involved[]
 
-=== How do I contribute, give feedback, fix bugs?
+=== How do I contribute (e.g. give feedback, fix bugs, etc.)?
 
-The Apache JDO project really needs and appreciates any contributions,
-including documentation help, source code and feedback. Suggested
-changes should come in the form of source code and/or very detailed and
-constructive feedback.
+Apache JDO is run as an open source project, so we always appreciate any contributions, including documentation help, source code, and feedback.
+If you would like to suggest changes, we would appreciate it if they would come in the form of source code and/or constructive feedback.
+
+The default way of providing contributions to this project is through our GitHub page (link:https://github.com/apache/db-jdo[JDO repo], link:https://github.com/apache/db-jdo-site[website repo]).
+We are following the default link:https://guides.github.com/introduction/flow/[GitHub workflow] using link:https://guides.github.com/activities/forking/[forks].
+
+More information on how to access the project source code is available link:source-code.html[here].
+
+
+=== Reporting Bugs
+
+Bugs and other issues can be posted on the project http://issues.apache.org/jira/secure/BrowseProject.jspa?id=10630[JIRA].
+
+
+=== Contacting Us
+
+The project uses different channels of communication:
 
 * Discussion occurs on the link:mail-lists.html[JDO mailing lists].
-* Information on access to the project source code is available
-link:source-code.html[here].
-* Bugs and other issues can be posted on the project
-http://issues.apache.org/jira/secure/BrowseProject.jspa?id=10630[JIRA].
-* Additional documentation and discussion can be found on the project
-http://wiki.apache.org/jdo/[wiki].
-* We have a communications conference call every week. During this call we
-discuss project status, issues, concerns, and strategy. Everyone interested
-in Apache JDO is welcome and encouraged to participate.
-The agenda is available on the Dev List (see link:mail-lists.html[JDO mailing lists]).
+* Additional documentation and discussion can be found on the project http://wiki.apache.org/jdo/[wiki].
+* We have a communications conference call every week.
+  During this call we discuss project status, issues, concerns, and strategy.
+  Everyone interested in Apache JDO is welcome and encouraged to participate.
+  The agenda is available on the Dev List (see link:mail-lists.html[JDO mailing lists]).
 
-=== How do I become a committer
+=== Contributing as a Non-Committer
 
-If you're interested in committing to the project:
+In general, contributing to an Apache project requires the contributor signing the link:https://www.apache.org/licenses/contributor-agreements.html[Apache Contributor License Agreement].
+This is, however, only strictly required for "major contributions."
+The boundary for such "major contributions" is not firmly defined, but minor code changes, bug fixes, or documentation changes, for example, should generally not require the signing of the license agreement.
+If you are not sure whether your contribution requires the signing of the license agreement, feel free to ask.
 
-* You'll need to fill out some legal paperwork and go through a process
-to get an apache committer account: See
-http://apache.org/dev/new-committers-guide.html[New Committers Guide],
-http://apache.org/dev/contributors.html[Contributors], and
-http://apache.org/dev/committers.html[Committers] for more details.
-* After you've received an email from root@apache.org with your
-committer account information, change your initial password: Login by
-'ssh -l <username> people.apache.org'; run 'passwd'; run 'svnpasswd'.
-See http://apache.org/dev/version-control.html[Committer Subversion
-Access].
+
+=== Becoming a Committer
+
+To receive direct push access to the repository, you will have to become an official committer.
+
+If you're interested in becoming a committer:
+
+* You'll need to fill out some legal paperwork and go through a process to get an Apache committer account:
+  See http://apache.org/dev/new-committers-guide.html[New Committers Guide], http://apache.org/dev/contributors.html[Contributors], and http://apache.org/dev/committers.html[Committers] for more details.
+* After you've received an email from root@apache.org with your committer account information, change your initial password:
+  Login by 'ssh -l <username> people.apache.org'; run 'passwd'; run 'svnpasswd'.
+  See http://apache.org/dev/version-control.html[Committer Subversion Access].
 * Check out the JDO sources and test your svn account:
-http://svn.apache.org/viewcvs.cgi/db/jdo/[SubversionRepository].
-* Sign up for a http://wiki.apache.org/jdo/UserPreferences[WiKi]
-account.
+  http://svn.apache.org/viewcvs.cgi/db/jdo/[Subversion Repository].
+* Sign up for a http://wiki.apache.org/jdo/UserPreferences[Wiki] account.
 * Sign up for an http://issues.apache.org/jira/[ASF JIRA] account.
-

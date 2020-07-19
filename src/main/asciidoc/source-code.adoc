@@ -26,9 +26,9 @@ git clone https://gitbox.apache.org/repos/asf/db-jdo.git
 git clone https://github.com/apache/db-jdo.git
 ....
 
-Contributors can fork this repo using github’s tools and contribute patches/new features using pull requests.
+Contributors can fork this repo using GitHub’s tools and contribute patches/new features using pull requests. See link:get-involved.html#_how_do_i_contribute_e_g_give_feedback_fix_bugs_etc[Getting Involved].
 
-Committers can push to this repo directly, once their ASF account and github account have been linked.
+Committers can push to this repo directly, once their ASF account and GitHub account have been linked.
 See https://gitbox.apache.org/setup[gitbox setup] for more details on how to do this.
 
 === Web Site
