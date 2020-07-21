@@ -52,338 +52,338 @@ can be used as part of the primary key.
 |Java Type |DFG? |Persistent? |PK?
 
 |boolean
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |byte
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |char
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |double
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:times[]
 
 |float
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:times[]
 
 |int
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |long
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |short
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |boolean[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |byte[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |char[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |double[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |float[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |int[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |long[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |short[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.lang.Boolean
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |java.lang.Byte
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |java.lang.Character
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |java.lang.Double
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:times[]
 
 |java.lang.Float
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:times[]
 
 |java.lang.Integer
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |java.lang.Long
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |java.lang.Short
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |java.lang.Boolean[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.lang.Byte[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.lang.Character[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.lang.Double[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.lang.Float[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.lang.Integer[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.lang.Long[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.lang.Short[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.lang.Number
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:times[]
 
 |java.lang.Object
-|image:images/icon_error_sml.png[image]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:times[]
+|icon:times[]
 
 |java.lang.String
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |java.lang.String[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.math.BigDecimal
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:times[]
 
 |java.math.BigInteger
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |java.math.BigDecimal[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.math.BigInteger[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.sql.Date
-|image:images/icon_error_sml.png[image]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:times[]
+|icon:times[]
+|icon:check[]
 
 |java.sql.Time
-|image:images/icon_error_sml.png[image]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:times[]
+|icon:times[]
+|icon:check[]
 
 |java.sql.Timestamp
-|image:images/icon_error_sml.png[image]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:times[]
+|icon:times[]
+|icon:check[]
 
 |java.util.ArrayList
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.Collection
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.Currency
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:check[]
 
 |java.util.Date
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |java.util.Date[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.HashMap
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.HashSet
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.Hashtable
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.LinkedHashMap
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.LinkedHashSet
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.LinkedList
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.List
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.Locale
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:check[]
 
 |java.util.Locale[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.Map
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.Set
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.TreeMap
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.TreeSet
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.util.Vector
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:times[]
 
 |java.io.Serializable
-|image:images/icon_error_sml.png[image]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:times[]
+|icon:times[]
 
 |javax.jdo.spi.PersistenceCapable
-|image:images/icon_error_sml.png[image]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:times[]
+|icon:times[]
+|icon:check[]
 
 |javax.jdo.spi.PersistenceCapable[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|icon:times[]
+|icon:times[]
+|icon:times[]
 
 |java.lang.Enum
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:check[]
+|icon:check[]
+|icon:check[]
 
 |java.lang.Enum[]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|icon:times[]
+|icon:check[]
+|icon:check[]
 
 |===
