@@ -1,0 +1,55 @@
+# Builds and deploys the site if the build was successful
+name: Build & Deploy Site
+
+# Conditions necessary to trigger a build
+on:
+  push:
+    # Ignore pushes on all branches by default
+    # branches that should trigger a build must be explicitly excluded from the ignore using '!BRANCH_NAME'
+    branches-ignore:
+      - '**'
+      - '!master'
+
+    # Only build if a file in one of these paths has been changed
+    paths:
+      - 'src/main/asciidoc/**'
+      - 'src/main/template/**'
+
+jobs:
+  build:
+    name: Build & Deploy Site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Build Site
+        run: mvn clean compile
+
+      # Determines the short sha of the commit that triggered the build
+      - name: Determine Short SHA
+        if: success()
+        id: short-sha
+        run: |
+          short_sha=$(git rev-parse --short=10 $GITHUB_SHA)
+          echo "::set-output name=short_sha::$short_sha"
+        shell: 'bash'
+
+      # Copies the build artifacts to 'docs/'
+      - name: Deploy Site
+        if: success()
+        run: cp -r target/site* docs/
+
+      # Commits any changes to the 'docs/' directory using the credentials of the commit that triggered the action
+      # Uses the GitHub action https://github.com/marketplace/actions/add-commit
+      - name: Commit Result
+        if: success()
+        uses: EndBug/add-and-commit@v4
+        with:
+          add: 'docs/'
+          message: 'Auto-deploy site for commit ${{ steps.short-sha.outputs.short_sha }}'
+        env:
+          # This is necessary in order to push a commit to the repo
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
