@@ -40,7 +40,7 @@ jobs:
       # Copies the build artifacts to 'docs/'
       - name: Deploy Site
         if: success()
-        run: cp -r target/site* docs/
+        run: cp -r target/site/* docs/
 
       # Commits any changes to the 'docs/' directory using the credentials of the commit that triggered the action
       # Uses the GitHub action https://github.com/marketplace/actions/add-commit
