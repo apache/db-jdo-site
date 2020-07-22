@@ -9,10 +9,13 @@
 
 === How do I contribute (e.g. give feedback, fix bugs, etc.)?
 
-Apache JDO is run as an open source project, so we always appreciate any contributions, including documentation help, source code, and feedback.
-If you would like to suggest changes, we would appreciate it if they would come in the form of source code and/or constructive feedback.
+Apache JDO is run as an open source project, so we always appreciate any contributions,
+including documentation help, source code, and feedback. If you would like to suggest 
+changes, we would appreciate it if they would come in the form of source code and/or
+constructive feedback.
 
-The default way of providing contributions to this project is through our GitHub page (link:https://github.com/apache/db-jdo[JDO repo], link:https://github.com/apache/db-jdo-site[website repo]).
+The default way of providing contributions to this project is through our GitHub page
+(link:https://github.com/apache/db-jdo[JDO repo], link:https://github.com/apache/db-jdo-site[website repo]).
 We are following the default link:https://guides.github.com/introduction/flow/[GitHub workflow] using link:https://guides.github.com/activities/forking/[forks].
 
 More information on how to access the project source code is available link:source-code.html[here].
