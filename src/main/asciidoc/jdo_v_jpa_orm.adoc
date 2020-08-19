@@ -22,238 +22,210 @@ relationship type and where you can find it.
 |===
 |Field Type |Relation |JDO |JPA
 |PC
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_one.html#uni[1-1
-Unidirectional] |image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_one.html#uni[1-1 Unidirectional] 
+|icon:check[]
+|icon:check[]
 
 |PC
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_one.html#bi[1-1
-Bidirectional] |image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_one.html#bi[1-1 Bidirectional] 
+|icon:check[]
+|icon:check[]
 
 |PC
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#PC[1-1
-serialised] |image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#PC[1-1 serialised] 
+|icon:check[]
+|icon:check[]
 
 |PC
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/compound_identity.html#1_1_uni[1-1
-CompoundIdentity Unidirectional]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/compound_identity.html#1_1_uni[1-1 CompoundIdentity Unidirectional]
+|icon:check[]
+|icon:check[]
 
 |PC
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/compound_identity.html#1_N_coll_bi[1-N
-CompoundIdentity Collection Bidirectional]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/compound_identity.html#1_N_coll_bi[1-N CompoundIdentity Collection Bidirectional]
+|icon:check[]
+|icon:check[]
 
 |PC
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/compound_identity.html#1_N_map_bi[1-N
-CompoundIdentity Map Bidirectional]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/compound_identity.html#1_N_map_bi[1-N CompoundIdentity Map Bidirectional]
+|icon:check[]
+|icon:times[]
 
 |Interface
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/interfaces.html[1-1
-Unidirectional] |image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/interfaces.html[1-1 Unidirectional] 
+|icon:check[]
+|icon:times[]
 
 |Interface
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/interfaces.html[1-1
-Bidirectional] |image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/interfaces.html[1-1 Bidirectional] 
+|icon:check[]
+|icon:times[]
 
 |Interface
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#Reference[1-1
-serialised] |image:images/icon_success_sml.png[image] |?
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#Reference[1-1serialised] 
+|icon:check[] 
+|?
 
 |Collection<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#fk_uni[1-N
-ForeignKey Unidirectional Collection]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#fk_uni[1-N ForeignKey Unidirectional Collection]
+|icon:check[]
+|icon:check[]
 
 |Collection<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#fk_bi[1-N
-ForeignKey Bidirectional Collection]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#fk_bi[1-N ForeignKey Bidirectional Collection]
+|icon:check[]
+|icon:check[]
 
 |Collection<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#join_uni[1-N
-JoinTable Unidirectional Collection]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#join_uni[1-N JoinTable Unidirectional Collection]
+|icon:check[]
+|icon:check[]
 
 |Collection<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#join_bi[1-N
-JoinTable Bidirectional Collection]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#join_bi[1-N JoinTable Bidirectional Collection]
+|icon:check[]
+|icon:check[]
 
 |Collection<Non-PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#join_nonpc[1-N
-JoinTable Collection] |image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#join_nonpc[1-N JoinTable Collection] 
+|icon:check[]
+|icon:check[]
 
 |Collection<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#shared_join[1-N
-JoinTable Collection using shared JoinTable]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#shared_join[1-N JoinTable Collection using shared JoinTable]
+|icon:times[]
+|icon:times[]
 
 |Collection<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#shared_fk[1-N
-ForeignKey Collection using shared ForeignKey]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_collection.html#shared_fk[1-N ForeignKey Collection using shared ForeignKey]
+|icon:times[]
+|icon:times[]
 
 |Collection<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/many_to_many.html[M-N
-JoinTable] |image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/many_to_many.html[M-N JoinTable] |icon:check[]
+|icon:check[]
 
 |Collection<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/compound_identity.html#1_N_uni[1-N
-CompoundIdentity Unidirectional]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/compound_identity.html#1_N_uni[1-N CompoundIdentity Unidirectional]
+|icon:check[]
+|icon:check[]
 
 |Collection<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#Collection[1-N
-serialised Collection] |image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#Collection[1-N serialised Collection] |icon:check[]
+|icon:check[]
 
 |Collection<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#CollectionElements[1-N
-JoinTable Collection of serialised elements]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#CollectionElements[1-N JoinTable Collection of serialised elements]
+|icon:check[]
+|icon:times[]
 
 |List<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.html#fk_uni[1-N
-ForeignKey Unidirectional Indexed List]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.html#fk_uni[1-N ForeignKey Unidirectional Indexed List]
+|icon:check[]
+|icon:check[]
 
 |List<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.html#fk_bi[1-N
-ForeignKey Bidirectional Indexed List]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.html#fk_bi[1-N ForeignKey Bidirectional Indexed List]
+|icon:check[]
+|icon:check[]
 
 |List<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.html#join_uni[1-N
-JoinTable Unidirectional Indexed List]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.html#join_uni[1-N JoinTable Unidirectional Indexed List]
+|icon:check[]
+|icon:check[]
 
 |List<PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.html#join_bi[1-N
-JoinTable Bidirectional Indexed List]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.html#join_bi[1-N JoinTable Bidirectional Indexed List]
+|icon:check[]
+|icon:check[]
 
 |List<Non-PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.html#join_nonpc[1-N
-JoinTable Indexed List] |image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_list.html#join_nonpc[1-N JoinTable Indexed List] |icon:check[]
+|icon:check[]
 
 |List<PC>
-|http://www.datanucleus.org/products/accessplatform/jpa/orm/one_to_many_list.html#fk_uni[1-N
-ForeignKey Unidirectional Ordered List]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jpa/orm/one_to_many_list.html#fk_uni[1-N ForeignKey Unidirectional Ordered List]
+|icon:times[]
+|icon:check[]
 
 |List<PC>
-|http://www.datanucleus.org/products/accessplatform/jpa/orm/one_to_many_list.html#fk_bi[1-N
-ForeignKey Bidirectional Ordered List]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jpa/orm/one_to_many_list.html#fk_bi[1-N ForeignKey Bidirectional Ordered List]
+|icon:times[]
+|icon:check[]
 
 |List<PC>
-|http://www.datanucleus.org/products/accessplatform/jpa/orm/one_to_many_list.html#join_uni[1-N
-JoinTable Unidirectional Ordered List]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jpa/orm/one_to_many_list.html#join_uni[1-N JoinTable Unidirectional Ordered List]
+|icon:times[]
+|icon:check[]
 
 |List<PC>
-|http://www.datanucleus.org/products/accessplatform/jpa/orm/one_to_many_list.html#join_bi[1-N
-JoinTable Bidirectional Ordered List]
-|image:images/icon_error_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jpa/orm/one_to_many_list.html#join_bi[1-N JoinTable Bidirectional Ordered List]
+|icon:times[]
+|icon:check[]
 
 |Map<PC, PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#join_pc_pc[1-N
-JoinTable Map] |image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#join_pc_pc[1-N JoinTable Map] 
+|icon:check[]
+|icon:times[]
 
 |Map<Non-PC, PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#join_simple_pc[1-N
-JoinTable Map] |image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#join_simple_pc[1-N JoinTable Map] 
+|icon:check[]
+|icon:times[]
 
 |Map<PC, Non-PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#join_pc_simple[1-N
-JoinTable Map] |image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#join_pc_simple[1-N JoinTable Map] 
+|icon:check[]
+|icon:times[]
 
 |Map<Non-PC, Non-PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#join_simple_simple[1-N
-JoinTable Map] |image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#join_simple_simple[1-N JoinTable Map] 
+|icon:check[]
+|icon:times[]
 
 |Map<Non-PC, PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#fk_uni_key[1-N
-ForeignKey Map Unidirectional (key stored in value)]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#fk_uni_key[1-N ForeignKey Map Unidirectional (key stored in value)]
+|icon:check[]
+|icon:check[]
 
 |Map<Non-PC, PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#fk_bi_key[1-N
-ForeignKey Map Bidirectional (key stored in value)]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#fk_bi_key[1-N ForeignKey Map Bidirectional (key stored in value)]
+|icon:check[]
+|icon:check[]
 
 |Map<PC, Non-PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#fk_uni_value[1-N
-ForeignKey Map Unidirectional (value stored in key)]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/one_to_many_map.html#fk_uni_value[1-N ForeignKey Map Unidirectional (value stored in key)]
+|icon:check[]
+|icon:times[]
 
 |Map<PC, PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#Map[1-N
-serialised Map] |image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#Map[1-N serialised Map] 
+|icon:check[]
+|icon:check[]
 
 |Map<PC, PC>
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#MapKeysValues[1-N
-JoinTable Map of serialised keys/values]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#MapKeysValues[1-N JoinTable Map of serialised keys/values]
+|icon:check[]
+|icon:times[]
 
 |PC[ ]
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/arrays.html#fk[1-N
-ForeignKey Unidirectional Array]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/arrays.html#fk[1-N ForeignKey Unidirectional Array]
+|icon:check[]
+|icon:times[]
 
 |PC[ ]
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/arrays.html#join[1-N
-JoinTable Unidirectional Array]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/arrays.html#join[1-N JoinTable Unidirectional Array]
+|icon:check[]
+|icon:times[]
 
 |PC[ ]
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#Array[1-N
-serialised Array] |image:images/icon_success_sml.png[image]
-|image:images/icon_success_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/serialised.html#Array[1-N serialised Array] 
+|icon:check[]
+|icon:check[]
 
 |Non-PC[ ]
-|http://www.datanucleus.org/products/accessplatform/jdo/orm/arrays.html#join[1-N
-JoinTable Unidirectional Array]
-|image:images/icon_success_sml.png[image]
-|image:images/icon_error_sml.png[image]
+|http://www.datanucleus.org/products/accessplatform/jdo/orm/arrays.html#join[1-N JoinTable Unidirectional Array]
+|icon:check[]
+|icon:times[]
 |===
 
