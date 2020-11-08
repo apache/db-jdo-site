@@ -80,5 +80,9 @@ GoogleStorage, Cassandra, OrientDB, Salesforce.com, Neo4j
 |RDBMS, XML, Versant ODBMS, Jalisto, Web services, mainframe
 transactions and screens (CICS, IMS...), packaged applications (ERP,
 CRM,SFA...), components (EJB...).
+
+
+|http://www.zoodb.org[ZooDB] |NonCommercial |3.0 (partial), 3.1 (Partial)
+|ZooDB ODBMS
 |===
 
