@@ -11,6 +11,9 @@ on:
       - '!master'
 
     # Only build if a file in one of these paths has been changed
+    #
+    # This list must not contains directories which are modified and commited as part of this action
+    # Such a setup would lead to an infinite loop where the push as part of the action triggers a new run of the action
     paths:
       - 'src/main/asciidoc/**'
       - 'src/main/template/**'
@@ -26,7 +29,7 @@ jobs:
           fetch-depth: 1
 
       - name: Build Site
-        run: mvn clean compile
+        run: mvn clean install
 
       # Determines the short sha of the commit that triggered the build
       - name: Determine Short SHA
@@ -37,19 +40,34 @@ jobs:
           echo "::set-output name=short_sha::$short_sha"
         shell: 'bash'
 
-      # Copies the build artifacts to 'docs/'
-      - name: Deploy Site
+      # Determine the author data of the HEAD commit which will be used for the deploy commit
+      - name: Determine HEAD Author Data
         if: success()
-        run: cp -r target/site/* docs/
+        id: author-data
+        run: |
+          author_name=$(git log -1 --format='%aN' HEAD)
+          echo "::set-output name=author_name::$author_name"
+          author_email=$(git log -1 --format='%aE' HEAD)
+          echo "::set-output name=author_email::$author_email"
+        shell: 'bash'
 
-      # Commits any changes to the 'docs/' directory using the credentials of the commit that triggered the action
-      # Uses the GitHub action https://github.com/marketplace/actions/add-commit
+      # Commits any changes to the 'docs/' directory using the credentials of the current HEAD commit; does nothing if there is nothing to commit
       - name: Commit Result
         if: success()
-        uses: EndBug/add-and-commit@v4
-        with:
-          add: 'docs/'
-          message: 'Auto-deploy site for commit ${{ steps.short-sha.outputs.short_sha }}'
-        env:
-          # This is necessary in order to push a commit to the repo
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
+        run: |
+          echo "Adding changes"
+          git add 'docs/'
+          if $(git diff -s --cached --exit-code)
+            then
+              # nothing staged
+              echo "Nothing to commit"
+              exit 0
+          fi
+          echo "Setting up author data"
+          git config user.name "${{ steps.author-data.outputs.author_name }}"
+          git config user.email "${{ steps.author-data.outputs.author_email }}"
+          echo "Commiting changes"
+          git commit -m "Auto-deploy site for commit ${{ steps.short-sha.outputs.short_sha }}"
+          echo "Pushing changes"
+          git push
+        shell: 'bash'
