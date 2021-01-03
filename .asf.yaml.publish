@@ -1,0 +1,6 @@
+# Publishing profile for Apache JDO website
+#
+# This file is only used on the site publishing branch
+publish:
+  whoami:  publish
+  subdir:  jdo

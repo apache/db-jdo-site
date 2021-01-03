@@ -5,18 +5,18 @@ name: Build & Deploy Site
 on:
   push:
     # Ignore pushes on all branches by default
-    # branches that should trigger a build must be explicitly excluded from the ignore using '!BRANCH_NAME'
+    # Branches that should trigger a build must be explicitly excluded from the ignore using '!BRANCH_NAME'
+    #
+    # Excluding the branch that is pushed by this action will lead to an infinite loop
     branches-ignore:
       - '**'
       - '!master'
 
     # Only build if a file in one of these paths has been changed
-    #
-    # This list must not contains directories which are modified and commited as part of this action
-    # Such a setup would lead to an infinite loop where the push as part of the action triggers a new run of the action
     paths:
       - 'src/main/asciidoc/**'
       - 'src/main/template/**'
+      - '.asf.yaml.publish'
 
 jobs:
   build:
@@ -29,7 +29,7 @@ jobs:
           fetch-depth: 1
 
       - name: Build Site
-        run: mvn clean install
+        run: mvn clean compile
 
       # Determines the short sha of the commit that triggered the build
       - name: Determine Short SHA
@@ -40,34 +40,49 @@ jobs:
           echo "::set-output name=short_sha::$short_sha"
         shell: 'bash'
 
-      # Determine the author data of the HEAD commit which will be used for the deploy commit
-      - name: Determine HEAD Author Data
+      # Determines the author data of the HEAD commit
+      # Sets up the author data to be used for the site deploy commit
+      - name: Determine HEAD Commit Author Data
         if: success()
         id: author-data
         run: |
+          echo "Reading author data"
           author_name=$(git log -1 --format='%aN' HEAD)
-          echo "::set-output name=author_name::$author_name"
           author_email=$(git log -1 --format='%aE' HEAD)
-          echo "::set-output name=author_email::$author_email"
+
+          echo "Setting up author data to use for deploy commit"
+          git config user.name $author_name
+          git config user.email $author_email
         shell: 'bash'
 
-      # Commits any changes to the 'docs/' directory using the credentials of the current HEAD commit; does nothing if there is nothing to commit
-      - name: Commit Result
+      # Publishes the site build results to a separate orphan branch
+      #
+      # Creates and checks out a new orphan branch
+      # Creates a single commit containing only the site build artifacts and site configuration files located in the root directory
+      # The commit is created with the author data set up in the previous step
+      # Force-pushes the created branch, overwriting the previously published site build
+      - name: Publish site branch
         if: success()
         run: |
-          echo "Adding changes"
-          git add 'docs/'
-          if $(git diff -s --cached --exit-code)
-            then
-              # nothing staged
-              echo "Nothing to commit"
-              exit 0
-          fi
-          echo "Setting up author data"
-          git config user.name "${{ steps.author-data.outputs.author_name }}"
-          git config user.email "${{ steps.author-data.outputs.author_email }}"
-          echo "Commiting changes"
+          branch_name="publish"
+
+          echo "Creating orphan branch"
+          git checkout --orphan $branch_name
+          echo
+
+          echo "Dropping content other than site data"
+          git reset
+          rm .gitignore
+          git add .asf.yaml.publish target/site
+          git clean -df
+          git mv target/site/* ./
+          git mv .asf.yaml.publish .asf.yaml
+          echo
+
+          echo "Committing changes"
           git commit -m "Auto-deploy site for commit ${{ steps.short-sha.outputs.short_sha }}"
-          echo "Pushing changes"
-          git push
+          echo
+
+          echo "Pushing site branch"
+          git push -f origin $branch_name
         shell: 'bash'
