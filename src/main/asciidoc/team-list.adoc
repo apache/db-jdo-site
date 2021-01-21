@@ -27,6 +27,7 @@ link:get-involved.html[Get Involved].
 |Matthew Adams |Northscaler
 |Erik Bengtson |
 |Michael Bouschen |akquinet tech@spree
+|Tobias Bouschen |
 |Michelle Caisse |L-3 Communications
 |Andy Jefferson |DataNucleus
 |Patrick Linskey |Cisco
