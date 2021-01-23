@@ -1,0 +1,89 @@
+# Recreates the orphan site branch
+#
+# This workflow is set up as a fallback in cases where the site branch has been deleted
+# The workflow to automatically publish the site after a push to the master relies on there already being a functioning site branch
+# This will not cause the website to be published; another push to the site branch (e.g. thought the deploy workflow) is necessary for this
+name: Recreate Site Branch - ONLY USE IF SITE BRANCH GOT DELETED
+
+# Conditions necessary to trigger a build
+#
+# Can only be triggered manually
+on:
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    name: Build & Deploy Site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          fetch-depth: 1
+
+
+      - name: Build Site
+        run: mvn clean compile
+
+
+      # Determines the short sha of the commit that triggered the build
+      - name: Determine Short SHA
+        if: success()
+        id: short-sha
+        run: |
+          short_sha=$(git rev-parse --short=10 $GITHUB_SHA)
+          echo "::set-output name=short_sha::$short_sha"
+        shell: 'bash'
+
+
+      # Determines the author data of the HEAD commit
+      # Sets up the author data to be used for the site deploy commit
+      - name: Determine HEAD Commit Author Data
+        if: success()
+        id: author-data
+        run: |
+          echo "Reading author data"
+          author_name=$(git log -1 --format='%aN' HEAD)
+          author_email=$(git log -1 --format='%aE' HEAD)
+
+          echo "Setting up author data to use for deploy commit"
+          git config user.name $author_name
+          git config user.email $author_email
+        shell: 'bash'
+
+
+      # Publishes the site build results to a separate orphan branch
+      #
+      # Creates and checks out a new orphan branch
+      # Creates a single commit containing only the site build artifacts and site configuration files located in the root directory
+      # The commit is created with the author data set up in the previous step
+      # Force-pushes the created branch, overwriting the previously published site build
+      - name: Publish site branch
+        if: success()
+        run: |
+          branch_name="publish"
+
+          echo "Creating orphan branch"
+          git checkout --orphan $branch_name
+          echo
+
+          echo "Dropping content other than site data"
+          git reset
+          rm .gitignore
+          git add target/site
+          git add .asf.yaml.publish .htaccess
+          git clean -df
+          mkdir -v content
+          git mv target/site/* content/
+          git mv .asf.yaml.publish .asf.yaml
+          echo
+
+          echo "Committing changes"
+          git commit -m "Auto-deploy site for commit ${{ steps.short-sha.outputs.short_sha }}"
+          echo
+
+          echo "Pushing site branch"
+          git push -f origin $branch_name
+        shell: 'bash'
