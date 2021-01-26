@@ -3,4 +3,4 @@
 # This file is only used on the site publishing branch
 publish:
   whoami:  publish
-  subdir:  jdo
+  subdir:  content/jdo
