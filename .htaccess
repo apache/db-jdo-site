@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteBase /jdo/
+RewriteRule ^(?!content/)(.*)$ content/$1
