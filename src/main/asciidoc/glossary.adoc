@@ -9,7 +9,7 @@
 
 == JDO Glossaryanchor:JDO_Glossary[]
 
-JDO utilizes some terminology used elsewhere (e.g Java EE) but also
+JDO utilizes some terminology used elsewhere (e.g. Java EE) but also
 introduces some terminology that may be new to people. Below is a
 glossary of some common terms that may be encountered.
 
