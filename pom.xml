@@ -104,13 +104,22 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                          <outputDirectory>${basedir}/docs</outputDirectory>
-                          <resources>          
-                              <resource>
-                                  <directory>target/site</directory>
-                              </resource>
-                          </resources>              
-                        </configuration>            
+                            <outputDirectory>${basedir}/docs</outputDirectory>
+                            <nonFilteredFileExtensions>
+                                <nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+                                <nonFilteredFileExtension>jar</nonFilteredFileExtension>
+                                <nonFilteredFileExtension>html</nonFilteredFileExtension>
+                            </nonFilteredFileExtensions>
+                            <resources>
+                                <resource>
+                                    <directory>target/site</directory>
+                                </resource>
+                                <resource>
+                                    <directory>src/main/resources/javadoc</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
