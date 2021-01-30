@@ -17,4 +17,8 @@ hs_err_pid*
 *.prefs
 .classpath
 /.settings/
+
+# Intellij
 /.idea/
+*.iml
+*.iws
