@@ -55,8 +55,8 @@ If you're interested in becoming a committer:
   See http://apache.org/dev/new-committers-guide.html[New Committers Guide], http://apache.org/dev/contributors.html[Contributors], and http://apache.org/dev/committers.html[Committers] for more details.
 * After you've received an email from root@apache.org with your committer account information, change your initial password:
   Login by 'ssh -l <username> people.apache.org'; run 'passwd'; run 'svnpasswd'.
-  See http://apache.org/dev/version-control.html[Committer Subversion Access].
-* Check out the JDO sources and test your svn account:
-  http://svn.apache.org/viewcvs.cgi/db/jdo/[Subversion Repository].
+  See http://apache.org/dev/version-control.html[Committer Source Code Access].
+* Check out the JDO sources and test your account:
+  https://github.com/apache/db-jdo[Git Repository].
 * Sign up for a http://wiki.apache.org/jdo/UserPreferences[Wiki] account.
 * Sign up for an http://issues.apache.org/jira/[ASF JIRA] account.
