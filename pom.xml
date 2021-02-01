@@ -99,21 +99,13 @@
                 <executions>
                     <execution>
                         <id>copy-resources</id>
-                        <phase>install</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/docs</outputDirectory>
-                            <nonFilteredFileExtensions>
-                                <nonFilteredFileExtension>pdf</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>jar</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>html</nonFilteredFileExtension>
-                            </nonFilteredFileExtensions>
+                            <outputDirectory>${build.dir}</outputDirectory>
                             <resources>
-                                <resource>
-                                    <directory>target/site</directory>
-                                </resource>
                                 <resource>
                                     <directory>src/main/resources/javadoc</directory>
                                     <filtering>false</filtering>
