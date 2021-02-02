@@ -110,6 +110,10 @@
                                     <directory>src/main/resources/javadoc</directory>
                                     <filtering>false</filtering>
                                 </resource>
+                                <resource>
+                                    <directory>src/main/resources/quickref</directory>
+                                    <filtering>false</filtering>
+                                </resource>
                             </resources>
                         </configuration>
                     </execution>
