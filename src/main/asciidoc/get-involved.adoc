@@ -58,5 +58,4 @@ If you're interested in becoming a committer:
   See https://gitbox.apache.org/setup/[Account Linking Utility].
 * Check out the JDO sources and test your account:
   https://github.com/apache/db-jdo[Git Repository].
-* Sign up for a http://wiki.apache.org/jdo/UserPreferences[Wiki] account.
-* Sign up for an http://issues.apache.org/jira/[ASF JIRA] account.
+
