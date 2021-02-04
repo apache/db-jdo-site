@@ -99,18 +99,19 @@
                 <executions>
                     <execution>
                         <id>copy-resources</id>
-                        <phase>install</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                          <outputDirectory>${basedir}/docs</outputDirectory>
-                          <resources>          
-                              <resource>
-                                  <directory>target/site</directory>
-                              </resource>
-                          </resources>              
-                        </configuration>            
+                            <outputDirectory>${build.dir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/javadoc</directory>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
