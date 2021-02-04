@@ -12,10 +12,10 @@
 The following specifications for JDO are available
 
 * The
-http://svn.apache.org/viewvc/db/jdo/trunk/specification/OOO/JDO-3.1.pdf?view=co[JDO
+https://gitbox.apache.org/repos/asf?p=db-jdo.git;a=blob;f=specification/OOO/JDO-3.1.pdf[JDO
 3.1 Specification]
 * The
-http://svn.apache.org/viewvc/db/jdo/trunk/specification/OOO/JDO_3_1-rc1.pdf?view=co[JDO
+https://gitbox.apache.org/repos/asf?p=db-jdo.git;a=blob;f=specification/OOO/JDO_3_1-rc1.pdf[JDO
 3.1 Specification (Release Candidate 1)]
 * The
 http://jcp.org/aboutJava/communityprocess/mrel/jsr243/index3.html[JDO
