@@ -2,9 +2,6 @@
 
 This repository contains the sources for the [Apache DB JDO website](https://db.apache.org/jdo/).
 
-The website is mirrored on https://apache.github.io/db-jdo-site/.
-
-
 ## Building the Site
 
 The content and styling of the site is defined in the [AsciiDoc](https://asciidoc.org/) format. It is built using [Maven](https://maven.apache.org/).
