@@ -53,9 +53,10 @@ If you're interested in becoming a committer:
 
 * You'll need to fill out some legal paperwork and go through a process to get an Apache committer account:
   See http://apache.org/dev/new-committers-guide.html[New Committers Guide], http://apache.org/dev/contributors.html[Contributors], and http://apache.org/dev/committers.html[Committers] for more details.
-* After you've received an email from root@apache.org with your committer account information, change your initial password:
-  Login by 'ssh -l <username> people.apache.org'; run 'passwd'; run 'svnpasswd'.
-  See http://apache.org/dev/version-control.html[Committer Source Code Access].
+  
+* After you've received an email from root@apache.org with your committer account information, link your GitHub account
+  with the Apache GitHub Organisation.
+  See https://gitbox.apache.org/setup/[Account Linking Utility].
 * Check out the JDO sources and test your account:
   https://github.com/apache/db-jdo[Git Repository].
 * Sign up for a http://wiki.apache.org/jdo/UserPreferences[Wiki] account.
