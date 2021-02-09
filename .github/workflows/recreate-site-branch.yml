@@ -16,6 +16,11 @@ jobs:
   build:
     name: Build & Deploy Site
     runs-on: ubuntu-latest
+
+    env:
+      # The name of the branch used to publish the website build artifacts
+      BRANCH_NAME: publish
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -63,10 +68,8 @@ jobs:
       - name: Publish site branch
         if: success()
         run: |
-          branch_name="publish"
-
           echo "Creating orphan branch"
-          git checkout --orphan $branch_name
+          git checkout --orphan ${{ env.BRANCH_NAME }}
           echo
 
           echo "Dropping content other than site data"
@@ -85,5 +88,5 @@ jobs:
           echo
 
           echo "Pushing site branch"
-          git push -f origin $branch_name
+          git push -f origin ${{ env.BRANCH_NAME }}
         shell: 'bash'
