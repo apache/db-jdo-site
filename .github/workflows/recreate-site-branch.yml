@@ -33,7 +33,8 @@ jobs:
 
 
       - name: Build Site
-        run: mvn clean compile
+        run: |
+          mvn clean compile
 
 
       # Determines the short sha of the commit that triggered the build
@@ -60,33 +61,39 @@ jobs:
           git config user.email $author_email
 
 
-      # Publishes the site build results to a separate orphan branch
-      #
-      # Creates and checks out a new orphan branch
-      # Creates a single commit containing only the site build artifacts and site configuration files located in the root directory
-      # The commit is created with the author data set up in the previous step
-      # Force-pushes the created branch, overwriting the previously published site build
-      - name: Publish site branch
+      # Creates and checks out a new orphan branch used to publish the site
+      - name: Create Orphan Site Branch
         if: success()
         run: |
-          echo "Creating orphan branch"
           git checkout --orphan ${{ env.BRANCH_NAME }}
-          echo
 
-          echo "Dropping content other than site data"
+
+      # Drops all content other than the site data from the workspace
+      # This creates a minimal state that only contains the website build results
+      - name: Drop Content Other Than Site Data
+        if: success()
+        run: |
           git reset
           rm .gitignore
           git add target/site
           git add .asf.yaml.publish .htaccess
           git clean -df
+
+
+      # Moves the site content and site configuration to the correct location
+      - name: Move Content and Site Configuration
+        if: success()
+        run: |
           mkdir -v content
-          git mv target/site/* content/
-          git mv .asf.yaml.publish .asf.yaml
-          echo
+          git mv -v target/site/* content/
+          git mv -v .asf.yaml.publish .asf.yaml
 
-          echo "Committing changes"
+
+      # Creates a single commit containing only the site build artifacts and site configuration files
+      # The commit is created with the author data set up in the previous step
+      # Force-pushes the created branch, overwriting the previously published site build
+      - name: Publish Results
+        if: success()
+        run: |
           git commit -m "Auto-deploy site for commit ${{ steps.short-sha.outputs.SHORT_SHA }}"
-          echo
-
-          echo "Pushing site branch"
           git push -f origin ${{ env.BRANCH_NAME }}
