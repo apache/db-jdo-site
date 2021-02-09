@@ -44,7 +44,8 @@ jobs:
 
 
       - name: Build Site
-        run: mvn clean compile
+        run: |
+          mvn clean compile
 
 
       # Determines the short sha of the commit that triggered the build
@@ -74,54 +75,60 @@ jobs:
       # Adds additional configuration files that are supposed to be included in the page deploy to the build directory
       #
       # This ensures that such files are preserved when checking out the publish branch
-      - name: Add additional resources to build directory
+      - name: Add Additional Resources to Build Directory
         if: success()
         run: |
           cp -v .asf.yaml.publish target/site/.asf.yaml
           cp -v .htaccess target/site/
 
 
-      # Publishes the site build results to a separate branch
-      #
-      # Checks out the site branch
-      # Replaces the site configuration files and site build artifact with the ones set up in the previous step
-      # Creates a new commit containing the new site build artifacts and site configuration files
-      # The commit is created with the author data set up in the previous step
-      # Pushes the site branch
-      - name: Publish site branch
+      - name: Check Out Site Branch
         if: success()
         run: |
-          echo "Checking out site branch"
           git fetch origin ${{ env.BRANCH_NAME }}
           git checkout -b ${{ env.BRANCH_NAME }} origin/${{ env.BRANCH_NAME }}
-          echo
 
-          # Drops all existing files and folders except the base folder and the resources excluded by the regex
-          # This ensures that old configuration files that were removed on the master will be removed from the site branch as well
-          # Additional resources to exclude can be added by modifying the regex or adding new regex by using "-a -not -regex '...'"
-          echo "Dropping old site resources"
+
+      # Drops all existing files and folders except the base folder and the resources excluded by the regex
+      # This ensures that old configuration files that were removed on the master will be removed from the site branch as well
+      # Additional resources to exclude can be added by modifying the regex or adding new regex by using "-a -not -regex '...'"
+      - name: Drop Old Site Resources
+        if: success()
+        run: |
           find . \
             -mindepth 1 -regextype posix-extended \
             -not -regex '^\./(target|.git)(/.*)?$' \
             -delete -print
-          echo
 
-          echo "Adding new site configuration"
+
+      # Moves additional configuration files that were added to the build directory to their target directory
+      # In general, this should move all resources touched in the step 'Add additional resources to build directory'
+      - name: Add New Site Configuration
+        if: success()
+        run: |
           mv -v target/site/.asf.yaml ./
           mv -v target/site/.htaccess ./
-          echo
 
-          echo "Adding new site build"
+
+      # Moves the new site resources from the build directory to the content directory
+      - name: Add New Site Resources
+        if: success()
+        run: |
           mkdir -v content
           mv -v target/site/* content/
-          echo
 
           # Explicitly removes build dir
           # This checks whether there are any remaining resources that were not moved to the correct location
+          echo
           echo "Removing build dir"
           rmdir -v -p target/site
-          echo
 
+
+      # Publishes the build results
+      # Does nothing if there is nothing to publish
+      - name: Publish Results
+        if: success()
+        run: |
           echo "Staging new content"
           git add -v -A
           echo
