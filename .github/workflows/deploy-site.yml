@@ -28,6 +28,9 @@ jobs:
   build:
     name: Build & Deploy Site
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
 
     env:
       # The name of the branch used to publish the website build artifacts
@@ -51,7 +54,6 @@ jobs:
         run: |
           short_sha=$(git rev-parse --short=10 $GITHUB_SHA)
           echo "::set-output name=SHORT_SHA::$short_sha"
-        shell: 'bash'
 
 
       # Determines the author data of the HEAD commit
@@ -67,7 +69,6 @@ jobs:
           echo "Setting up author data to use for deploy commit"
           git config user.name $author_name
           git config user.email $author_email
-        shell: 'bash'
 
 
       # Adds additional configuration files that are supposed to be included in the page deploy to the build directory
@@ -131,4 +132,3 @@ jobs:
 
           echo "Pushing site branch"
           git push origin ${{ env.BRANCH_NAME }}
-        shell: 'bash'
