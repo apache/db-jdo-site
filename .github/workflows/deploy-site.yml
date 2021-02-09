@@ -28,6 +28,11 @@ jobs:
   build:
     name: Build & Deploy Site
     runs-on: ubuntu-latest
+
+    env:
+      # The name of the branch used to publish the website build artifacts
+      BRANCH_NAME: publish
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -85,11 +90,9 @@ jobs:
       - name: Publish site branch
         if: success()
         run: |
-          branch_name="publish"
-
           echo "Checking out site branch"
-          git fetch origin $branch_name
-          git checkout -b $branch_name origin/$branch_name
+          git fetch origin ${{ env.BRANCH_NAME }}
+          git checkout -b ${{ env.BRANCH_NAME }} origin/${{ env.BRANCH_NAME }}
           echo
 
           # Drops all existing files and folders except the base folder and the resources excluded by the regex
@@ -127,5 +130,5 @@ jobs:
           echo
 
           echo "Pushing site branch"
-          git push origin $branch_name
+          git push origin ${{ env.BRANCH_NAME }}
         shell: 'bash'
