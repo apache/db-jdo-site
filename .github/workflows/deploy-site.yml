@@ -124,15 +124,30 @@ jobs:
           rmdir -v -p target/site
 
 
+      - name: Stage Changes
+        id: stage-changes
+        if: success()
+        run: |
+          git add -v -A
+
+          if $(git diff -s --cached --exit-code)
+            then
+              # nothing staged
+              echo "Nothing to commit"
+              has_staged_changes=false
+            else
+              # something staged
+              has_staged_changes=true
+          fi
+
+          echo "::set-output name=HAS_STAGED_CHANGES::$has_staged_changes"
+
+
       # Publishes the build results
       # Does nothing if there is nothing to publish
       - name: Publish Results
-        if: success()
+        if: success() && steps.stage-changes.outputs.HAS_STAGED_CHANGES == 'true'
         run: |
-          echo "Staging new content"
-          git add -v -A
-          echo
-
           echo "Committing changes"
           git commit -m "Auto-deploy site for commit ${{ steps.short-sha.outputs.SHORT_SHA }}"
           echo
