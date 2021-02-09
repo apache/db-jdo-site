@@ -50,7 +50,7 @@ jobs:
         id: short-sha
         run: |
           short_sha=$(git rev-parse --short=10 $GITHUB_SHA)
-          echo "::set-output name=short_sha::$short_sha"
+          echo "::set-output name=SHORT_SHA::$short_sha"
         shell: 'bash'
 
 
@@ -126,7 +126,7 @@ jobs:
           echo
 
           echo "Committing changes"
-          git commit -m "Auto-deploy site for commit ${{ steps.short-sha.outputs.short_sha }}"
+          git commit -m "Auto-deploy site for commit ${{ steps.short-sha.outputs.SHORT_SHA }}"
           echo
 
           echo "Pushing site branch"
