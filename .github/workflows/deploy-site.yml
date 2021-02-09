@@ -119,7 +119,7 @@ jobs:
           echo
 
           echo "Staging new content"
-          git add .
+          git add -v -A
           echo
 
           echo "Committing changes"
