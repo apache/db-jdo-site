@@ -18,3 +18,9 @@ github:
   protected_branches:
     publish:
       allow_force_pushes: true
+
+notifications:
+  commits:      jdo-commits@db.apache.org
+  issues:       jdo-dev@db.apache.org
+  pullrequests: jdo-dev@db.apache.org
+  jira_options: link label
