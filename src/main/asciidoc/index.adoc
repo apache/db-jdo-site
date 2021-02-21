@@ -5,7 +5,7 @@
 :grid: cols
 
 [[index]]
-image:images/JDOx100.png[float="left"]
+image:images/JDOx150.png[logo,100,100,float="left"]
 image:images/jdo_text.png[float="right"]
 
 '''''
