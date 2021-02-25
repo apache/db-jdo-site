@@ -1,0 +1,27 @@
+# Builds the site
+#
+# This job builds the website for pull requests to ensure that the PR does not break the build
+name: Build Site
+
+# Conditions necessary to trigger a build
+on:
+  pull_request:
+
+jobs:
+  build:
+    name: Build Site
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+
+      - name: Build Site
+        run: |
+          mvn clean compile
