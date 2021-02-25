@@ -8,13 +8,11 @@ name: Build & Deploy Site
 # Conditions necessary to trigger a build
 on:
   push:
-    # Ignore pushes on all branches by default
-    # Branches that should trigger a build must be explicitly excluded from the ignore using '!BRANCH_NAME'
+    # Only run for pushes to the following branches
     #
-    # Excluding the branch that is pushed by this action will lead to an infinite loop
-    branches-ignore:
-      - '**'
-      - '!master'
+    # Including the branch that is pushed by this action will lead to an infinite loop
+    branches:
+      - 'master'
 
     # Only build if a file in one of these paths has been changed
     paths:
