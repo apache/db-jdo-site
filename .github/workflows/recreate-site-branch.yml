@@ -34,7 +34,7 @@ jobs:
 
       - name: Build Site
         run: |
-          mvn clean compile
+          mvn clean package
 
 
       # Determines the short sha of the commit that triggered the build

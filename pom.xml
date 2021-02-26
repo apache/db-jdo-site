@@ -99,7 +99,7 @@
                 <executions>
                     <execution>
                         <id>copy-resources</id>
-                        <phase>compile</phase>
+                        <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
