@@ -35,11 +35,11 @@
 Java model abstraction of persistence, developed as Java Specification 
 Requests (JSR 12 and 243) under the auspices of the Java Community Process.
 This repository contains the sources for the Apache DB JDO website</description>
-    <url>http://db.apache.org/jdo</url>
+    <url>https://db.apache.org/jdo</url>
     <inceptionYear>2019</inceptionYear>
     <organization>
         <name>Apache Software Foundation</name>
-        <url>http://www.apache.org</url>
+        <url>https://www.apache.org</url>
     </organization>
 
     <scm>
@@ -66,7 +66,7 @@ This repository contains the sources for the Apache DB JDO website</description>
                         <baseDir>${project.basedir}</baseDir>
                         <!-- Attributes common to all output formats -->
                         <attributes>
-                            <endpoint-url>http://db.apache.org/jdo</endpoint-url>
+                            <endpoint-url>https://db.apache.org/jdo</endpoint-url>
                             <sourcedir>${project.build.sourceDirectory}</sourcedir>
                             <project-version>${project.version}</project-version>
                         </attributes>
