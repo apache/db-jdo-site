@@ -117,9 +117,23 @@ jobs:
 
           # Explicitly removes build dir
           # This checks whether there are any remaining resources that were not moved to the correct location
+          # Drops the rest of the resources in the target directory if there are any
           echo
-          echo "Removing build dir"
-          rmdir -v -p target/site
+          echo "Removing site build directory"
+
+          if rmdir -v target/site
+            then
+              echo
+              echo "Removing remaining build directories"
+              rm -r -v target
+
+            else
+              echo
+              echo "Failed due to resources remaining in site build directory:"
+              tree target/site
+
+              exit 1
+          fi
 
 
       - name: Stage Changes
