@@ -7,9 +7,9 @@ The website is mirrored on https://apache.github.io/db-jdo-site/.
 
 ## Building the Site
 
-The content and styling of the site is defined in the [AsciiDoc](https://asciidoc.org/) format. It is built using [Maven](https://maven.apache.org/). For details on publishing the site see below.
+The content and styling of the site is defined in the [AsciiDoc](https://asciidoc.org/) format. It is built using [Maven](https://maven.apache.org/). For details on publishing the site see section [Publishing the Site](#publishing-the-site).
 
-The site can be built by calling `mvn clean install`. This generates the HTML files in `target/site`.
+The site can be built by calling `mvn clean install`. This generates the HTML files in `target/site` and copies them into the `docs/` directory.
 
 ### Adding Javadoc
 
@@ -45,10 +45,10 @@ To contribute changes, you can follow these steps:
 ### TODO
  * If you find any issues please provide a PR or [create a JIRA ticket](https://issues.apache.org/jira/projects/JDO/issues/?filter=allopenissues)
  
-### PUBLISHING THE SITE
+### Publishing the Site
 After changes have been made to the sources in the `db-jdo-site/src/main/asciidoc` or `db-jdo-site/src/main/template` directory, changes will be published automatically to the live web site by simply pushing changes to the master branch of the repository. The process is as follows:
 
-1. Pushing changes to the master branch invokes the post-push script in `db-jdo-site/.github/workflows/deploy-site.yml` which builds the site in `db-jdo-site/target/` via `mvn clean install`.
+1. Pushing changes to the master branch invokes the post-push script in [`db-jdo-site/.github/workflows/deploy-site.yml`](./.github/workflows/deploy-site.yml) which builds the site in `db-jdo-site/target/` via `mvn clean install`.
 
 1. If the build is successful, the files are copied from `db-jdo-site/target/` to `db-jdo-site/docs/`. The `db-jdo-site/docs` directory is checked to see if any changes have been made.
 
@@ -57,4 +57,3 @@ After changes have been made to the sources in the `db-jdo-site/src/main/asciido
 1. If changes were made to the docs directory by the post-push script, the script then commits the changes to the master branch using the same credentials as were used by the original push.
 
 1. Once the changes have been made to `db-jdo-site/docs/` the script in `db-jdo-site/.asf.yaml` is automatically invoked. This script is executed by Apache Infrastructure machines, and it publishes changes to `db.apache.org/jdo`. It may take some time for the changes to be seen on the live site.
-
