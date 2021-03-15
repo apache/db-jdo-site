@@ -13,9 +13,31 @@ github:
     - apache
     - java
 
-  # Set up branch protection for site publishing branch to avoid accidental deletion
-  # Force-pushes are still necessary as they are used to deploy new versions of the site
+  enabled_merge_buttons:
+    # disable merge button:
+    merge:   false
+    # enable squash button:
+    squash:  true
+    # enable rebase button:
+    rebase:  true
+
   protected_branches:
+    # rules for the 'master' branch
+    master:
+      # disallows pushing merge commits to the branch
+      required_linear_history: true
+
+      required_status_checks:
+        # strict means "Require branches to be up to date before merging".
+        strict: false
+        # contexts are the names of checks that must pass
+        contexts:
+          - build-site
+
+    # rules for the 'publish' branch
+    #
+    # set up branch protection for site publishing branch to avoid accidental deletion
+    # force-pushes are still necessary as they are used to deploy new versions of the site
     publish:
       allow_force_pushes: true
 
