@@ -23,7 +23,7 @@ on:
 
 
 jobs:
-  build:
+  deploy-site:
     name: Build & Deploy Site
     runs-on: ubuntu-latest
     defaults:
