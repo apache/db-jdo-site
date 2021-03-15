@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  build-site:
     name: Build Site
     runs-on: ubuntu-latest
     defaults:
