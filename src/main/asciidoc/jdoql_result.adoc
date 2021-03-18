@@ -41,7 +41,7 @@ What you specify in the _result_ defines what form of result you get
 back.
 
 * *Object* - this is returned if you have only a single row in the
-results and a single column. This is achived when you specified either
+results and a single column. This is achieved when you specified either
 UNIQUE, or just an aggregate (e.g "max(field2)")
 * *Object[]* - this is returned if you have only a single row in the
 results, but more than 1 column (e.g "max(field1), avg(field2)")
