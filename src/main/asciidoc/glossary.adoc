@@ -38,8 +38,8 @@ object is retrieved from the datastore its fields can be retrieved with
 it, or optionally can be retrieved only when needed. If a field is in
 the *default-fetch-group* it will be retrieved when the object is
 retrieved. Some field types default to being in the
-*default-fetch-group* (e.g primitives, wrappers to primtives,
-java.util.Date) and others (e.g java.util.Set, java.util.List) don't.
+*default-fetch-group* (e.g. primitives, wrappers to primitives,
+java.util.Date) and others (e.g. java.util.Set, java.util.List) don't.
 
 |anchor:embedded[]embedded |A field can be defined as embedded if it will
 be stored as a column in the table of its containing object.
@@ -94,7 +94,7 @@ if not, removes them from persistence.
 |anchor:persistence-aware[]persistence-aware |When an class needs to
 access fields of a persistence capable class directly, it should be
 enhanced, and is referred to as "Persistence Aware". If a class uses
-field accessor methods then it doesnt need to become "Persistence
+field accessor methods then it doesn't need to become "Persistence
 Aware".
 
 |anchor:persistence-capable[]persistence-capable (PC) |When an class is
@@ -114,7 +114,7 @@ persistence capable fields, etc are by default persistent).
 is persistent in a datastore.
 
 |anchor:pessimistic-transaction[]pessimistic transaction |This is the
-default transaction type in JDO, and is suitable for shortlived
+default transaction type in JDO, and is suitable for short-lived
 operations where there is no other blocking activity during the
 transaction. When data is accessed other transactions are locked out
 from accessing it until the transaction is complete. See also

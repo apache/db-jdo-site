@@ -50,7 +50,7 @@ Now we move onto the operations for persistence.
 * *getPersistenceManager(Object pc)* - returns the PersistenceManager
 associated with the passed object (if any)
 * *makeDirty(Object pc, String fieldName)* - marks the field of the
-passed object as dirty (meaning that it needs updating in ther
+passed object as dirty (meaning that it needs updating in its
 datastore)
 * *getObjectId(Object pc)* - returns the object identity for the passed
 object (if persistent)

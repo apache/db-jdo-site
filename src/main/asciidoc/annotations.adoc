@@ -105,7 +105,7 @@ secondary tables from this table
 table from this table
 
 |xref:Columns[@Columns] |Class |ORM : Defines a series of columns that
-dont have associated fields ("unmapped columns")
+don't have associated fields ("unmapped columns")
 
 |xref:Persistent[@Persistent] |Field/Method |Defines the persistence
 for a field/property of the class
