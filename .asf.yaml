@@ -32,7 +32,7 @@ github:
         strict: false
         # contexts are the names of checks that must pass
         contexts:
-          - build-site
+          - "Build Site"
 
     # rules for the 'publish' branch
     #
