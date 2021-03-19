@@ -1,7 +1,7 @@
 # Builds the site
 #
 # This job builds the website for pull requests to ensure that the PR does not break the build
-name: build-site
+name: Build Site
 
 # Conditions necessary to trigger a build
 on:
@@ -9,6 +9,7 @@ on:
 
 jobs:
   build-site:
+    name: Build Site
     runs-on: ubuntu-latest
     defaults:
       run:
