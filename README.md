@@ -7,7 +7,9 @@ The website is mirrored on https://apache.github.io/db-jdo-site/.
 
 ## Building the Site
 
-The content and styling of the site is defined in the [AsciiDoc](https://asciidoc.org/) format. It is built using [Maven](https://maven.apache.org/). For details on publishing the site see section [Publishing the Site](#publishing-the-site).
+The content and styling of the site is defined in the [AsciiDoc](https://asciidoc.org/) format.
+It is built using [Maven](https://maven.apache.org/).
+For details on publishing the site see section [Publishing the Site](#publishing-the-site).
 
 The site can be built by calling `mvn clean compile`. This generates the HTML files in `target/site`.
 Most of the site will work with the exception of the javadoc file downloads.
@@ -19,9 +21,9 @@ The site can then be viewed by opening the local file `target/site/index.html` i
 The site contains a packaged version of the JDO API javadoc. It can be updated as follows:
 
 * Create the javadoc jar (e.g. jdo-api-3.2-javadoc.jar) in the db-jdo repository by calling `mvn clean install -Papache-release` in the api submodule.
-* Create a new folder under docs e.g. `src/main/resources/javadoc/api32`.
-* Copy the javadocs jar into the new folder: e.g. `cp  jdo-api-3.2-javadoc.jar  src/main/resources/javadoc/api32`.
-* Create a new subfolder `src/main/resources/javadoc/api32/jdo-api-3.2-javadoc`
+* Create a new folder in the javadoc resources directory e.g. `src/main/resources/javadoc/api32`.
+* Copy the javadocs jar into the new folder, e.g. `cp  jdo-api-3.2-javadoc.jar  src/main/resources/javadoc/api32`.
+* Create a new subfolder, e.g. `src/main/resources/javadoc/api32/jdo-api-3.2-javadoc`
 * Unpack the javadoc jar in the subfolder
 * Edit javadoc.adoc under src/main/asciidoc and create a new section 'JDO 3.2 javadoc'.
 * Add two links: one referring index.html in the subfolder and one referring the javadoc jar.
@@ -44,7 +46,7 @@ using [forks](https://guides.github.com/activities/forking/).
 To contribute changes, you can follow these steps:
 
  * Adapt the AsciiDoc files in `src/main/asciidoc` or the website menu in  `src/main/template`.
- * Build the site (see [above](#building-the-site) and verify the generated website by viewing `target/site/index.html` locally with a web browser.
+ * Build the site (see [above](#building-the-site)) and verify the generated website by viewing `target/site/index.html` locally with a web browser.
  * Commit the source changes (not the build artifacts) in your branch and open a pull request.
 
 ### Reporting issues
