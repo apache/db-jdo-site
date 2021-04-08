@@ -17,7 +17,7 @@ The site can then be viewed by opening the local file `target/site/index.html` i
 
 The site contains a packaged version of the JDO API javadoc. It can be updated as follows:
 
-* Create the javadoc jar (e.g. jdo-api-3.2-javadoc.jar) in the db-jdo repository by calling ```mvn clean install -Papache-release``` in the api submodule.
+* Create the javadoc jar (e.g. jdo-api-3.2-javadoc.jar) in the db-jdo repository by calling the folowing command in the api submodule: `mvn clean install -Papache-release`.
 * Create a new folder in the javadoc resources directory e.g. `src/main/resources/javadoc/api32`.
 * Copy the javadocs jar into the new folder, e.g. `cp  jdo-api-3.2-javadoc.jar  src/main/resources/javadoc/api32`.
 * Create a new subfolder, e.g. `src/main/resources/javadoc/api32/jdo-api-3.2-javadoc`.
