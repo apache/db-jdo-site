@@ -233,8 +233,8 @@ site]
 
 Andy Jefferson is an independent software consultant who has been
 working in the IT industry for more than 15 years, primarily in the
-United Kingdom. He is an active participator in several OpenSource
-projects, primarily JPOX, and Apache JDO, and a member of the JSR243
+United Kingdom. Andy is an active participant in several OpenSource
+projects, primarily DataNucleus and Apache JDO, and a member of the JSR243
 (JDO2) Expert Group.
 
 '''''
