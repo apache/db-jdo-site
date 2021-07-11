@@ -20,7 +20,7 @@ that you won't be changing at deployment. Things such as table and
 column names shouldn't really be specified using annotations although it
 is permitted. Instead it would be better to put such information in an
 ORM MetaData file.
-* Annotations can be added in two places - for the class as a whole, or
+* Annotations can be added in two places – for the class as a whole, or
 for a field in particular.
 * You can annotate fields or getters with field-level information. If
 you annotate fields then the fields are processed for persistence. If
