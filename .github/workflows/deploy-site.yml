@@ -66,8 +66,8 @@ jobs:
           author_email=$(git log -1 --format='%aE' HEAD)
 
           echo "Setting up author data to use for deploy commit"
-          git config user.name $author_name
-          git config user.email $author_email
+          git config --local user.name $author_name
+          git config --local user.email $author_email
 
 
       # Adds additional configuration files that are supposed to be included in the page deploy to the build directory
