@@ -1,7 +1,7 @@
 # Recreates the orphan site branch
 #
 # This workflow is set up as a fallback in cases where the site branch has been deleted
-# The workflow to automatically publish the site after a push to the master relies on there already being a functioning site branch
+# The workflow to automatically publish the site after a push to the main branch relies on there already being a functioning site branch
 # This will not cause the website to be published; another push to the site branch (e.g. thought the deploy workflow) is necessary for this
 name: Recreate Site Branch - ONLY USE IF SITE BRANCH GOT DELETED
 
@@ -28,7 +28,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: master
+          ref: main
           fetch-depth: 1
 
 

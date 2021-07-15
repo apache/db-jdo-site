@@ -12,7 +12,7 @@ on:
     #
     # Including the branch that is pushed by this action will lead to an infinite loop
     branches:
-      - 'master'
+      - 'main'
 
     # Only build if a file in one of these paths has been changed
     paths:
@@ -88,7 +88,7 @@ jobs:
 
 
       # Drops all existing files and folders except the base folder and the resources excluded by the regex
-      # This ensures that old configuration files that were removed on the master will be removed from the site branch as well
+      # This ensures that old configuration files that were removed on the main branch will be removed from the site branch as well
       # Additional resources to exclude can be added by modifying the regex or adding new regex by using "-a -not -regex '...'"
       - name: Drop Old Site Resources
         if: success()
