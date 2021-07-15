@@ -50,11 +50,11 @@ To contribute changes, you can follow these steps:
 If you find any issues please provide a PR or [create a JIRA ticket](https://issues.apache.org/jira/projects/JDO/issues/?filter=allopenissues).
  
 ### Publishing the Site
-After changes have been made to the sources in the `src/main/asciidoc` or `src/main/template` directory, changes will be published automatically to the live web site by simply pushing changes to the master branch of the repository. The process is as follows:
+After changes have been made to the sources in the `src/main/asciidoc` or `src/main/template` directory, changes will be published automatically to the live web site by simply pushing changes to the main branch of the repository. The process is as follows:
 
-1. Pushing changes to the master branch invokes the post-push script in [`db-jdo-site/.github/workflows/deploy-site.yml`](./.github/workflows/deploy-site.yml) which builds the site in `target/site` via `mvn clean package`.
+1. Pushing changes to the main branch invokes the post-push script in [`db-jdo-site/.github/workflows/deploy-site.yml`](./.github/workflows/deploy-site.yml) which builds the site in `target/site` via `mvn clean package`.
 
-2. If the build is successful, the build artifacts in the master branch are pushed to the `publish` branch.
+2. If the build is successful, the build artifacts in the main branch are pushed to the `publish` branch.
 
 3. Once the changes have been pushed to the `publish` branch, the script in `.asf.yaml.publish` is automatically invoked. This script is executed by Apache Infrastructure machines, and it publishes changes to `db.apache.org/jdo`. It may take some time for the changes to be seen on the live site.
 Details on the use of .asf.yaml is found [here](https://cwiki.apache.org/confluence/display/INFRA/git+-+.asf.yaml+features#git.asf.yamlfeatures-WebSiteDeploymentServiceforGitRepositories).

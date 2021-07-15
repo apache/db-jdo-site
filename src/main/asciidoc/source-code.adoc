@@ -14,8 +14,9 @@ Apache JDO uses https://git-scm.com[git] to manage its source code.
 To receive notice of commits to the repository subscribe to
 jdo-commits@db.apache.org by sending email to jdo-commits-subscribe@db.apache.org.
 
-The ASF operates a dual master system for repositories that use Git as their primary version
+The ASF operates a dual hosting system for repositories that use Git as their primary version
 control system. This means committers may commit to either gitbox.apache.org or GitHub.
+Changes are automatically mirrored to the other repository.
 
 === Checking Out Code
 

@@ -22,9 +22,9 @@ To run the Technology Compatibility Kit:
 link:source-code.html[Source Code] for instructions on
 checking out code.
 . Follow the instructions in the Prerequisites section of
-https://github.com/apache/db-jdo/blob/master/README.md[README.md]
+https://github.com/apache/db-jdo/blob/main/README.md[README.md]
 . Follow the procedure in
-https://github.com/apache/db-jdo/blob/master/tck/RunRules.md[RunRules.md]
+https://github.com/apache/db-jdo/blob/main/tck/RunRules.md[RunRules.md]
 in the tck directory.
 
 === Demonstrating Complianceanchor:Demonstrating_Compliance[]
