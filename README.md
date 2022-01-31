@@ -47,7 +47,6 @@ To contribute changes, you can follow these steps:
  * Commit the source changes (not the build artifacts) in your branch and open a pull request.
 
 ### Reporting issues
-
 If you find any issues please provide a PR or [create a JIRA ticket](https://issues.apache.org/jira/projects/JDO/issues/?filter=allopenissues).
  
 ### Publishing the Site
