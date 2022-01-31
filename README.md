@@ -47,9 +47,11 @@ To contribute changes, you can follow these steps:
  * Commit the source changes (not the build artifacts) in your branch and open a pull request.
 
 ### Reporting issues
+
 If you find any issues please provide a PR or [create a JIRA ticket](https://issues.apache.org/jira/projects/JDO/issues/?filter=allopenissues).
  
 ### Publishing the Site
+
 After changes have been made to the sources in the `src/main/asciidoc` or `src/main/template` directory, changes will be published automatically to the live web site by simply pushing changes to the main branch of the repository. The process is as follows:
 
 1. Pushing changes to the main branch invokes the post-push script in [`db-jdo-site/.github/workflows/deploy-site.yml`](./.github/workflows/deploy-site.yml) which builds the site in `target/site` via `mvn clean package`.
