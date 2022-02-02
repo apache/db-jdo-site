@@ -12,6 +12,9 @@
 The following specifications for JDO are available
 
 * The
+https://gitbox.apache.org/repos/asf?p=db-jdo.git;a=blob;f=specification/OOO/JDO-3.2.pdf[JDO
+3.2 Specification]
+* The
 https://gitbox.apache.org/repos/asf?p=db-jdo.git;a=blob;f=specification/OOO/JDO-3.1.pdf[JDO
 3.1 Specification]
 * The

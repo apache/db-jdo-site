@@ -35,7 +35,7 @@ transactions
 
 JDO is being developed as a Java Specification Request in the Java
 Community Process. The original JDO 1.0 is
-http://www.jcp.org/en/jsr/detail?id=12[JSR-12] and the current JDO 3.1
+http://www.jcp.org/en/jsr/detail?id=12[JSR-12] and the current JDO 3.2
 is http://www.jcp.org/en/jsr/detail?id=243[JSR-243].
 
 The Apache JDO project is focused on building the JDO API and the TCK
@@ -45,6 +45,20 @@ object databases, and file systems. If you need an implementation for
 building a JDO application, see link:impls.html[Implementations].
 
 == JDO Newsanchor:JDO_News[]
+
+*JDO 3.2 is released* +
+
+____
+JDO 3.2 has been released. This release contains minor bug fixes and several
+new features, such as support for `Optional`, typesafe queries and an upgrade
+to JDK 1.8. For a
+complete list of changes (features plus bug fixes) see
+https://issues.apache.org/jira/browse/JDO-800?jql=project%20%3D%20JDO%20AND%20fixVersion%20%3D%20%22JDO%203.2%22%20ORDER%20BY%20fixVersion%20ASC%2C%20created%20DESC[JDO 3.2
+changes]. You can download the release from the
+link:downloads.html[downloads page]. You can also use the new release in
+maven projects simply by referencing the jdo-api artifact in your
+pom.xml.
+____
 
 *JDO 3.1 is released* +
 
