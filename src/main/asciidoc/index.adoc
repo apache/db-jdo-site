@@ -55,7 +55,7 @@ to JDK 1.8. For a
 complete list of changes (features plus bug fixes) see
 https://issues.apache.org/jira/issues/?jql=project%20%3D%20JDO%20AND%20fixVersion%20%3D%20%22JDO%203.2%22[JDO 3.2
 changes]. You can download the release from the
-link:downloads.html[downloads page]. You can also use the new release in
+xref:downloads.adoc[downloads page]. You can also use the new release in
 maven projects simply by referencing the jdo-api artifact in your
 pom.xml.
 ____
@@ -67,7 +67,7 @@ JDO 3.1 has been released. This release contains minor bug fixes. For a
 complete list of changes (features plus bug fixes) see
 https://issues.apache.org/jira/browse/JDO/fixforversion/12325878[JDO 3.1
 changes]. You can download the release from the
-link:downloads.html[downloads page]. You can also use the new release in
+xref:downloads.adoc[downloads page]. You can also use the new release in
 maven projects simply by referencing the jdo-api artifact in your
 pom.xml.
 ____
@@ -79,7 +79,7 @@ JDO 3.1-rc1 has been released. This release contains minor bug fixes.
 For a complete list of changes (features plus bug fixes) see
 https://issues.apache.org/jira/browse/JDO/fixforversion/12314921[JDO
 3.1-rc1 changes]. You can download the release from the
-link:downloads.html[downloads page]. You can also use the new release in
+xref:downloads.adoc[downloads page]. You can also use the new release in
 maven projects simply by referencing the jdo-api artifact in your
 pom.xml.
 ____
