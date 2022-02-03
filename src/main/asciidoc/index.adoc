@@ -53,7 +53,7 @@ JDO 3.2 has been released. This release contains minor bug fixes and several
 new features, such as support for `Optional`, typesafe queries and an upgrade
 to JDK 1.8. For a
 complete list of changes (features plus bug fixes) see
-https://issues.apache.org/jira/browse/JDO-800?jql=project%20%3D%20JDO%20AND%20fixVersion%20%3D%20%22JDO%203.2%22%20ORDER%20BY%20fixVersion%20ASC%2C%20created%20DESC[JDO 3.2
+https://issues.apache.org/jira/issues/?jql=project%20%3D%20JDO%20AND%20fixVersion%20%3D%20%22JDO%203.2%22[JDO 3.2
 changes]. You can download the release from the
 link:downloads.html[downloads page]. You can also use the new release in
 maven projects simply by referencing the jdo-api artifact in your
