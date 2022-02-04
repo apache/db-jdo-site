@@ -12,12 +12,12 @@ working long and hard to make quality software for the rest of the world
 to use.
 
 If you would like to contribute to JDO, please see the
-link:roadmap.html[roadmap] list to find areas where you can contribute.
+xref:roadmap.adoc[roadmap] list to find areas where you can contribute.
 If there is nothing in there that suits your interest, but you still
 have ideas, please feel free to suggest them on the mailing list.
 
 If you would like to become a committer, please see
-link:get-involved.html[Get Involved].
+xref:get-involved.adoc[Get Involved].
 
 === Apache JDO Committersanchor:Apache_JDO_Committers[]
 

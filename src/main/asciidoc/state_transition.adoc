@@ -65,7 +65,7 @@ instance whose values have been changed since detaching.
 
 === Detecting Object Stateanchor:Detecting_Object_State[]
 
-JDO provides a class link:jdohelper.html[JDOHelper] that allows you to
+JDO provides a class xref:jdohelper.adoc[JDOHelper] that allows you to
 interrogate the object state via its attributes (isPersistent(),
 isDeleted(), etc). In JDO 2.1 for JDKs 1.5+ _JDOHelper_ is extended to
 also provide a method that gives the full object state.

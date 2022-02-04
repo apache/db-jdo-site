@@ -19,7 +19,7 @@ To run the Technology Compatibility Kit:
 
 [arabic]
 . Check out the JDO source code from the most recent branch. See
-link:source-code.html[Source Code] for instructions on
+xref:source-code.adoc[Source Code] for instructions on
 checking out code.
 . Follow the instructions in the Prerequisites section of
 https://github.com/apache/db-jdo/blob/main/README.md[README.md]

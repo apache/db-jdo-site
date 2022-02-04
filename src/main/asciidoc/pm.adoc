@@ -9,7 +9,7 @@
 
 Any JDO-enabled application will require at least one
 _PersistenceManager_ (PM). This is obtained from the
-link:pmf.html[PersistenceManagerFactory] for the datastore.
+xref:pmf.adoc[PersistenceManagerFactory] for the datastore.
 
 The simplest way of creating a _PersistenceManager_
 link:api20/apidocs/javax/jdo/PersistenceManager.html[image:images/javadoc.png[image]]
@@ -30,7 +30,7 @@ datastore. A _PersistenceManager_ has a single transaction.
 === Persist Objectsanchor:Persist_Objects[]
 
 To persist an object, the object must first be marked as persistable
-using link:metadata.html[MetaData (XML/Annotations)]. Then you would
+using xref:metadata.adoc[MetaData (XML/Annotations)]. Then you would
 start the PM transaction, and use _makePersistent_ as follows
 
 ....
@@ -193,7 +193,7 @@ catch (Exception e)
 
 === Making an object transientanchor:Making_an_object_transient[]
 
-As we have seen in the link:state_transition.html[JDO States guide], an
+As we have seen in the xref:state_transition.adoc[JDO States guide], an
 object can have many possible states. When we want to take an object and
 work on it, but removing its identity we can make it *transient*. This
 means that it will retain the values of its fields, yet will no longer

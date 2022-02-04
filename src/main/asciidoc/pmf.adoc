@@ -117,7 +117,7 @@ Range of Values: true \| false
 
 
 |*javax.jdo.option.Optimistic*
-|Whether to use link:transactions.html[Optimistic transactions]. Range of Values: true \| false
+|Whether to use xref:transactions.html[Optimistic transactions]. Range of Values: true \| false
 
 
 |*javax.jdo.option.RetainValues*

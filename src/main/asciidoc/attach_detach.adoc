@@ -14,7 +14,7 @@ fields manually and copy them back to the persisted object later. JDO
 2.0 introduces a new way of handling this situation, by *detaching* an
 object from the persistence graph, allowing it to be worked on in the
 users application. It can then be *attached* to the persistence graph
-later. Please refer to link:state_transition.html[Object Lifecycle] for
+later. Please refer to xref:state_transition.adoc[Object Lifecycle] for
 where this fits in. The first thing to do to use a class with this
 facility is to tag it as "detachable". This is done by adding the
 attribute
@@ -23,7 +23,7 @@ attribute
 <class name="MyClass" detachable="true">
 ....
 
-This acts as an instruction to the link:enhancement.html[enhancement
+This acts as an instruction to the xref:enhancement.adoc[enhancement
 process] to add methods necessary to utilise the attach/detach process.
 
 The following code fragment highlights how to use the attach/detach
@@ -100,11 +100,11 @@ them later (updating the associated object in the datastore. If you want
 to create copies of the objects in the datastore with their own
 identities you should use _makeTransient_ instead of _detachCopy_.
 * Calling _detachCopy_ will detach all fields of that object that are in
-the current link:fetchgroups.html[Fetch Group] for that class for that
+the current xref:fetchgroups.adoc[Fetch Group] for that class for that
 _PersistenceManager_.
 * By default the fields of the object that will be detached are those in
 the _Default Fetch Group_.
-* You should choose your link:fetchgroups.html[Fetch Group] carefully,
+* You should choose your xref:fetchgroups.adoc[Fetch Group] carefully,
 bearing in mind which object(s) you want to access whilst detached.
 Detaching a relation field will detach the related object as well.
 * If you don't detach a field of an object, you [.underline]#cannot#
