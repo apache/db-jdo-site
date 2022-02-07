@@ -28,7 +28,7 @@ https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.zip.sha512[sha512
 
 ==== Release Notesanchor:Release_Notes[]
 
-https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12325878&styleName=Html&projectId=10630[View
+https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12316653&styleName=Html&projectId=10630[View
 release notes for JDO 3.2]
 
 === Maven (convenience binary)anchor:Maven[]
