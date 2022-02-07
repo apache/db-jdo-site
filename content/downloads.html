@@ -305,12 +305,16 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <div class="sect2">
 <h3 id="_latest_official_release">Latest Official Release<a id="Latest_Official_Release"></a></h3>
 <div class="paragraph">
-<p><a href="release-3.1.html">JDO 3.1</a> <span class="image"><img src="images/dot_clear.png" alt="image"></span>
-March 20, 2015</p>
+<p><a href="release-3.2.html">JDO 3.2</a> <span class="image"><img src="images/dot_clear.png" alt="image"></span>
+February 1, 2022</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_previous_official_releases">Previous Official Releases<a id="Previous_Official_Releases"></a></h3>
+<div class="paragraph">
+<p><a href="release-3.1.html">JDO 3.1</a> <span class="image"><img src="images/dot_clear.png" alt="image"></span>
+March 20, 2015</p>
+</div>
 <div class="paragraph">
 <p><a href="release-3.1-rc1.html">JDO 3.1-rc1</a> <span class="image"><img src="images/dot_clear.png" alt="image"></span> September 22, 2013</p>
 </div>
@@ -323,18 +327,18 @@ March 20, 2015</p>
 <div class="paragraph">
 <p>A release of JDO includes the JDO API and the Technology Compatibility
 Kit (TCK). The TCK is available only in source form. The API project is
-available as source and binary, and as raw jar files.</p>
+available as source and as a jar file using the standard Maven dependency protocol.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The api project contains source to build jdo-api.jar. The jar file is
+<p>The source release contains sources to build jdo-api.jar. The jar file is
 the only artifact needed for users who wish to compile their programs
 using the JDO API. It can be downloaded automatically by maven and
 placed into the local maven repository if you include the proper
 dependency in your maven project definition. Use groupId javax.jdo,
-artifactId jdo-ap and version 3.1. Alternatively, it can be downloaded
-manually and put into a location of your choice.</p>
+artifactId jdo-ap and version 3.2. Alternatively, it can be downloaded
+manually from Maven and put into a location of your choice.</p>
 </li>
 <li>
 <p>The tck project contains the JDO Technology Compatibility Kit. The
@@ -342,21 +346,6 @@ source distribution is the only artifact needed to be downloaded by the
 user.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>All are available for download as source, but if you wish to run the TCK
-you need only download the TCK project. The dependencies will be
-automatically downloaded by maven as jar files.</p>
-</div>
-<div class="paragraph">
-<p>For information on running the TCK, see <a href="tck.html">TCK</a>. If
-downloading multiple source packages, extract them all into the same
-directory. This will preserve the source dependencies among the
-projects.</p>
-</div>
-<div class="paragraph">
-<p>See <a href="source-code.html">Source Code Version Control</a> for information about
-downloading the latest source code for all of the JDO projects.</p>
 </div>
 </div>
 </div>
