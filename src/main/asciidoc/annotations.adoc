@@ -237,7 +237,7 @@ public class MyClass
 }
 ....
 
-See the documentation for link:class_types.html[Class Types]
+See the documentation for xref:class_types.adoc[Class Types]
 
 {empty} +
 
@@ -439,7 +439,7 @@ public class MyClass
 }
 ....
 
-See the documentation for link:transactions.html[transactions]
+See the documentation for xref:transactions.adoc[transactions]
 
 {empty} +
 
@@ -502,7 +502,7 @@ public class MyClass
 }
 ....
 
-See the documentation for link:fetchgroups.html[FetchGroups]
+See the documentation for xref:fetchgroups.adoc[FetchGroups]
 
 {empty} +
 
@@ -538,7 +538,7 @@ public class MyClass
 }
 ....
 
-See the documentation for link:fetchgroups.html[FetchGroups]
+See the documentation for xref:fetchgroups.adoc[FetchGroups]
 
 {empty} +
 
@@ -577,7 +577,7 @@ public class MyClass
 }
 ....
 
-See the documentation for link:fetchgroups.html[FetchGroups]
+See the documentation for xref:fetchgroups.adoc[FetchGroups]
 
 {empty} +
 
@@ -617,7 +617,7 @@ public class MyClass
 }
 ....
 
-See the documentation for link:fetchgroups.html[FetchGroups]
+See the documentation for xref:fetchgroups.adoc[FetchGroups]
 
 {empty} +
 
@@ -1147,7 +1147,7 @@ public class MyClass
 }
 ....
 
-See the documentation for link:field_types.html[Field Types]
+See the documentation for xref:field_types.adoc[Field Types]
 
 {empty} +
 
@@ -1196,7 +1196,7 @@ public class MyClass
 }
 ....
 
-See the documentation for link:field_types.html[Field Types]
+See the documentation for xref:field_types.adoc[Field Types]
 
 {empty} +
 
@@ -1222,7 +1222,7 @@ public class MyClass
 }
 ....
 
-See the documentation for link:field_types.html[Field Types]
+See the documentation for xref:field_types.adoc[Field Types]
 
 {empty} +
 

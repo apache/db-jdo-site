@@ -9,10 +9,13 @@
 
 === Latest Official Releaseanchor:Latest_Official_Release[]
 
-<<release-3.1.adoc#,JDO 3.1>> image:images/dot_clear.png[image]
-March 20, 2015
+<<release-3.2.adoc#,JDO 3.2>> image:images/dot_clear.png[image]
+February 1, 2022
 
 === Previous Official Releasesanchor:Previous_Official_Releases[]
+
+<<release-3.1.adoc#,JDO 3.1>> image:images/dot_clear.png[image]
+March 20, 2015
 
 <<release-3.1-rc1.adoc#,JDO 3.1-rc1>> image:images/dot_clear.png[image] September 22, 2013
 
@@ -22,28 +25,15 @@ March 20, 2015
 
 A release of JDO includes the JDO API and the Technology Compatibility
 Kit (TCK). The TCK is available only in source form. The API project is
-available as source and binary, and as raw jar files.
+available as source and as a jar file using the standard Maven dependency protocol.
 
-* The api project contains source to build jdo-api.jar. The jar file is
+* The source release contains sources to build jdo-api.jar. The jar file is
 the only artifact needed for users who wish to compile their programs
 using the JDO API. It can be downloaded automatically by maven and
 placed into the local maven repository if you include the proper
 dependency in your maven project definition. Use groupId javax.jdo,
-artifactId jdo-ap and version 3.1. Alternatively, it can be downloaded
-manually and put into a location of your choice.
+artifactId jdo-ap and version 3.2. Alternatively, it can be downloaded
+manually from Maven and put into a location of your choice.
 * The tck project contains the JDO Technology Compatibility Kit. The
 source distribution is the only artifact needed to be downloaded by the
 user.
-
-All are available for download as source, but if you wish to run the TCK
-you need only download the TCK project. The dependencies will be
-automatically downloaded by maven as jar files.
-
-For information on running the TCK, see link:tck.html[TCK]. If
-downloading multiple source packages, extract them all into the same
-directory. This will preserve the source dependencies among the
-projects.
-
-See link:source-code.html[Source Code Version Control] for information about
-downloading the latest source code for all of the JDO projects.
-

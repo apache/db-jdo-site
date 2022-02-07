@@ -10,7 +10,7 @@
 == Transactionsanchor:Transactions[]
 
 When managing the persistence of objects using a
-link:pm.html[PersistenceManager] it is normal to handle all datastore
+xref:pm.adoc[PersistenceManager] it is normal to handle all datastore
 operations in a transaction. For this reason each _PersistenceManager_
 has its own transaction. Consequently a typical JDO persistence method
 will look something like this

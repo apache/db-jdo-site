@@ -10,7 +10,7 @@
 To build and run your JDO application, you need a JDO implementation.
 This page lists commercial and non-commercial JDO implementations. For
 information on how vendors certify compliance with the JDO
-specifications, see link:tck.html[TCK].
+specifications, see xref:tck.adoc[TCK].
 
 === JDO Reference Implementationsanchor:JDO_Reference_Implementations[]
 

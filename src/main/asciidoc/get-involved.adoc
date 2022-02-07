@@ -22,7 +22,7 @@ If a pull request is related to an existing https://issues.apache.org/jira/secur
 This will automatically create a reference to the pull request in the ticket.
 Please also include a link to the referenced JIRA ticket in the pull request message.
 
-More information on how to access the project source code is available link:source-code.html[here].
+More information on how to access the project source code is available xref:source-code.adoc[here].
 
 
 === Reporting Bugs
@@ -34,12 +34,12 @@ Bugs and other issues can be posted on the project https://issues.apache.org/jir
 
 The project uses different channels of communication:
 
-* Discussion occurs on the link:mail-lists.html[JDO mailing lists].
+* Discussion occurs on the xref:mail-lists.adoc[JDO mailing lists].
 * Additional documentation and discussion can be found on the project http://wiki.apache.org/jdo/[wiki].
 * We have a communications conference call every week.
   During this call we discuss project status, issues, concerns, and strategy.
   Everyone interested in Apache JDO is welcome and encouraged to participate.
-  The agenda is available on the Dev List (see link:mail-lists.html[JDO mailing lists]).
+  The agenda is available on the Dev List (see xref:mail-lists.adoc[JDO mailing lists]).
 
 === Contributing as a Non-Committer
 

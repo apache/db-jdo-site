@@ -1,0 +1,95 @@
+:_basedir: 
+:_imagesdir: images/
+:grid: cols
+:development:
+
+[[index]]
+
+== JDO 3.2 Distributionsanchor:JDO_3.2_Distributions[]
+
+To develop your own code to use or implement JDO, you can use the links below
+to download Apache JDO from an official ASF download site.
+If you are using Maven, you can declare a dependency using the instructions below.
+
+=== Source releaseanchor:Source_Release[]
+
+The full source release is available for download. This includes the API and TCK.
+
+It is essential to xref:Verifying[verify the integrity] of the
+distribution files after downloading any artifacts.
+
+https://www.apache.org/dyn/closer.lua/db/jdo/3.2/jdo-3.2-source-release.tar.gz[jdo-3.2-source-release.tar.gz (1.1 MB)]
+https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.tar.gz.asc[asc]
+https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.tar.gz.sha512[sha512]
+
+https://www.apache.org/dyn/closer.lua/db/jdo/3.2/jdo-3.2-source-release.zip[jdo-3.2-source-release.zip (2.8 MB)]
+https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.zip.asc[asc]
+https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.zip.sha512[sha512]
+
+==== Release Notesanchor:Release_Notes[]
+
+https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12325878&styleName=Html&projectId=10630[View
+release notes for JDO 3.2]
+
+=== Maven (convenience binary)anchor:Maven[]
+
+The most convenient way to use JDO is to configure your project using Maven.
+The JDO API can be downloaded
+automatically by maven and placed into your local maven repository if you
+include the proper dependency in your maven project definition.
+For example:
+[source,xml]
+<dependency>
+  <groupId>javax.jdo</groupId>
+  <artifactId>jdo-api</artifactId>
+  <version>3.2</version>
+</dependency>
+
+=== Developers of the JDO project
+
+If you develop JDO (make modifications to the JDO code), you can
+clone the public git repository and submit pull requests if desired.
+You can use this url: https://github.com/apache/db-jdo.git[db-jdo.git]
+
+=== TCKanchor:TCK[]
+
+The TCK is intended for all implementors of JDO, and for those who want
+to check whether an implementation is compliant with the JDO
+specification. It is included in the full xref:Source_Release[source release].
+
+The TCK project contains the JDO Technology Compatibility
+Kit. The source distribution is the only artifact needed to be
+downloaded by the user and contains all of the sources used to build
+the JDO project including the API, TCK, and test artifacts.
+The dependencies are automatically downloaded by
+maven as needed to run the TCK. 
+
+Please refer to the README for further details.
+
+=== Verifying Releasesanchor:Verifying_Releases[]
+
+anchor:Verifying[]
+
+It is essential that you verify the integrity of the downloaded files
+using the PGP signature.
+
+The PGP signatures can be verified using PGP or GPG. First download the
+link:https://downloads.apache.org/db/jdo/KEYS[KEYS] as well as the `asc`
+signature file for the particular distribution. Make sure you get these
+files from the link:https://downloads.apache.org/db/jdo/[main distribution
+directory]. Then verify the signatures using
+these commands (depending on your tool set):
+
+[source]
+% pgpk -a KEYS 
+% pgpv release_artifact.asc
+
+[source]
+% pgp -ka KEYS
+% pgp release_artifact.asc
+
+[source]
+% gpg --import KEYS
+% gpg --verify release_artifact.asc
+
+

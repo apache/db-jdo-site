@@ -80,9 +80,9 @@ It is essential that you verify the integrity of the downloaded files
 using the PGP signature.
 
 The PGP signatures can be verified using PGP or GPG. First download the
-https://www.apache.org/dist/db/jdo/KEYS[KEYS] as well as the `asc`
+link:https://www.apache.org/dist/db/jdo/KEYS[KEYS] as well as the `asc`
 signature file for the particular distribution. Make sure you get these
-files from the https://www.apache.org/dist/db/jdo/[main distribution
+files from the link:https://www.apache.org/dist/db/jdo/[main distribution
 directory], rather than from a mirror. Then verify the signatures using
 these commands (depending on your tool set):
 

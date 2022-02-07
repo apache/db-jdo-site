@@ -8,8 +8,8 @@
 == JDO 3.1-rc1 Distributionsanchor:JDO_3.1-rc1_Distributions[]
 
 Use the links below to download Apache JDO from one of our mirrors. For
-more information about the projects see link:downloads.html[Downloads].
-For information on running the TCK, see link:tck.html[TCK].
+more information about the projects see xref:downloads.adoc[Downloads].
+For information on running the TCK, see xref:tck.adoc[TCK].
 
 It is good practice to xref:Verifying[verify the integrity] of the
 distribution files.

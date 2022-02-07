@@ -161,7 +161,7 @@ _PersistenceManager.newQuery()_, _PersistenceManager.getExtent()_,
 _PersistenceManager.detachCopy_ and much more besides.
 
 You can read more about *named fetch-groups* and how to use it with
-link:attach_detach.html[*attach/detach*]
+xref:attach_detach.adoc[*attach/detach*]
 
 anchor:dynamic[]
 

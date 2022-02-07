@@ -110,7 +110,7 @@ columns, *FK constraints*, *index columns*, *index constraints*, unique
 key columns, *unique key constraints* |Tables, columns, PK columns, FK
 columns, unique key columns
 
-|ORM Relationships |link:jdo_v_jpa_orm.html[*Full range of Collection,
+|ORM Relationships |xref:jdo_v_jpa_orm.adoc[*Full range of Collection,
 Map, List, Array, 1-1, 1-N, M-N using PC, Non-PC and interface objects*]
 |Basic 1-1, 1-N, M-N, Collection<NonPC>, Map<NonPC>
 

@@ -12,7 +12,7 @@
 JDO defines XML MetaData in *jdo* files as well as *orm* files. As
 always with XML, the metadata must match the defined DTD/XSD for that
 file type. This section describes the content of the *orm* files. The
-content of *jdo* files can be found link:jdo_dtd.html[here]. All *orm*
+content of *jdo* files can be found xref:jdo_dtd.adoc[here]. All *orm*
 files must contain a valid DTD/DOCTYPE specification. You can use PUBLIC
 or SYSTEM versions of these.
 
