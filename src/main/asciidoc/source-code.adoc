@@ -36,5 +36,5 @@ The sources for this site are available in a distinct repository that is also av
 [GitHub] and https://gitbox.apache.org/repos/asf/db-jdo-site.git[gitbox.apache.org]:
 
 ....
-https://github.com/apache/db-jdo-site.git
+git clone https://github.com/apache/db-jdo-site.git
 ....
