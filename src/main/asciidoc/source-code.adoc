@@ -9,13 +9,12 @@
 
 === Source Code Version Controlanchor:Source_Code_Version_Control[]
 
-Apache JDO uses https://git-scm.com[git] to manage its source code.
-
 To receive notice of commits to the repository subscribe to
 jdo-commits@db.apache.org by sending email to jdo-commits-subscribe@db.apache.org.
 
-The ASF operates a dual hosting system for repositories that use Git as their primary version
-control system. This means committers may commit to either gitbox.apache.org or GitHub.
+The ASF operates a dual hosting system for repositories that use https://git-scm.com[git] as their primary version
+control system. This means committers may commit to either https://github.com/apache/db-jdo.git[GitHub] 
+or https://gitbox.apache.org/repos/asf/db-jdo.git[gitbox.apache.org].
 Changes are automatically mirrored to the other repository.
 
 === Checking Out Code
@@ -23,7 +22,6 @@ Changes are automatically mirrored to the other repository.
 You can download the Apache JDO source code using:
 
 ....
-git clone https://gitbox.apache.org/repos/asf/db-jdo.git
 git clone https://github.com/apache/db-jdo.git
 ....
 
@@ -34,9 +32,9 @@ See https://gitbox.apache.org/setup[gitbox setup] for more details on how to do 
 
 === Web Site
 
-The sources for this site are available in a distinct Git repository:
+The sources for this site are available in a distinct repository that is also available on https://github.com/apache/db-jdo-site.git
+[GitHub] and https://gitbox.apache.org/repos/asf/db-jdo-site.git[gitbox.apache.org]:
 
 ....
-https://gitbox.apache.org/repos/asf/db-jdo-site.git
 https://github.com/apache/db-jdo-site.git
 ....
