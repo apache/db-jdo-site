@@ -32,9 +32,19 @@ See https://gitbox.apache.org/setup[gitbox setup] for more details on how to do 
 
 === Web Site
 
-The sources for this site are available in a distinct repository that is also available on https://github.com/apache/db-jdo-site.git
-[GitHub] and https://gitbox.apache.org/repos/asf/db-jdo-site.git[gitbox.apache.org]:
+The sources for this site are available in a distinct repository that is also available on 
+https://github.com/apache/db-jdo-site.git[GitHub] and https://gitbox.apache.org/repos/asf/db-jdo-site.git[gitbox.apache.org]:
 
 ....
 git clone https://github.com/apache/db-jdo-site.git
 ....
+
+
+=== Specification
+
+The sources of the xref:specifications.adoc[JDO Specification] are available in a separate on https://github.com/clr-apache/jdo-specification.git[GitHub]:
+
+....
+git clone https://github.com/clr-apache/jdo-specification.git
+....
+
