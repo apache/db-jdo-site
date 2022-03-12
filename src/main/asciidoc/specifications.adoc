@@ -12,26 +12,21 @@
 The following specifications for JDO are available
 
 * The
-https://gitbox.apache.org/repos/asf?p=db-jdo.git;a=blob;f=specification/OOO/JDO-3.2.pdf[JDO
-3.2 Specification]
+https://jcp.org/aboutJava/communityprocess/mrel/jsr243/index4.html[JDO 3.2 Specification (Maintenance Release 4)]
 * The
-https://gitbox.apache.org/repos/asf?p=db-jdo.git;a=blob;f=specification/OOO/JDO-3.1.pdf[JDO
-3.1 Specification]
+https://github.com/clr-apache/jdo-specification/blob/main/releases/JDO-3.1.pdf[JDO 3.1 Specification]
 * The
-https://gitbox.apache.org/repos/asf?p=db-jdo.git;a=blob;f=specification/OOO/JDO_3_1-rc1.pdf[JDO
-3.1 Specification (Release Candidate 1)]
+https://github.com/clr-apache/jdo-specification/blob/main/releases/JDO_3_1-rc1.pdf[JDO 3.1 Specification (Release Candidate 1)]
 * The
-http://jcp.org/aboutJava/communityprocess/mrel/jsr243/index3.html[JDO
-3.0 Specification (Maintenance Release 3)]
+http://jcp.org/aboutJava/communityprocess/mrel/jsr243/index3.html[JDO 3.0 Specification (Maintenance Release 3)]
 * The
-http://jcp.org/aboutJava/communityprocess/mrel/jsr243/index2.html[JDO
-2.2 Specification (Maintenance Release 2)]
-* The http://www.jcp.org/en/jsr/detail?id=243[JDO 2.1 Specification
-(Maintenance Release 1)]
-* The http://www.jcp.org/en/jsr/detail?id=243[JDO 2.0 Specification
-(Final)]
-* The http://www.jcp.org/en/jsr/detail?id=12[JDO 1.0 Specification
-(Final)]
+http://jcp.org/aboutJava/communityprocess/mrel/jsr243/index2.html[JDO 2.2 Specification (Maintenance Release 2)]
+* The
+https://jcp.org/aboutJava/communityprocess/mrel/jsr243/index.html[JDO 2.1 Specification (Maintenance Release 1)]
+* The
+https://jcp.org/aboutJava/communityprocess/final/jsr243/index.html[JDO 2.0 Specification (Final)]
+* The
+http://www.jcp.org/en/jsr/detail?id=12[JDO 1.0 Specification(Final)]
 
 === JDO Draft Specificationsanchor:JDO_Draft_Specifications[]
 
