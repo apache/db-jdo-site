@@ -26,7 +26,7 @@ https://jcp.org/aboutJava/communityprocess/mrel/jsr243/index.html[JDO 2.1 Specif
 * The
 https://jcp.org/aboutJava/communityprocess/final/jsr243/index.html[JDO 2.0 Specification (Final)]
 * The
-http://www.jcp.org/en/jsr/detail?id=12[JDO 1.0 Specification(Final)]
+http://www.jcp.org/en/jsr/detail?id=12[JDO 1.0 Specification (Final)]
 
 === JDO Draft Specificationsanchor:JDO_Draft_Specifications[]
 
