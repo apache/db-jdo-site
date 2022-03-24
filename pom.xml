@@ -96,6 +96,10 @@ This repository contains the sources for the Apache DB JDO website</description>
                                     <directory>src/main/resources/quickref</directory>
                                     <filtering>false</filtering>
                                 </resource>
+                                <resource>
+                                    <directory>src/main/resources/other</directory>
+                                    <filtering>false</filtering>
+                                </resource>
                             </resources>
                         </configuration>
                     </execution>
