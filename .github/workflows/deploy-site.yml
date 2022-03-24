@@ -18,6 +18,7 @@ on:
     paths:
       - 'src/main/asciidoc/**'
       - 'src/main/template/**'
+      - 'src/main/resources/**'
       - '.asf.yaml.publish'
       - '.htaccess'
 

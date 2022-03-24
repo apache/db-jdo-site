@@ -32,7 +32,7 @@ If you are new to this project, please have a look at our [Get Involved](https:/
 
 This repository contains the JDO website source.
 
- * The AsciiDoc sources can be found in `src/main/asciidoc`.
+ * The AsciiDoc sources can be found in `src/main/asciidoc`. 
  * The website menu is defined in `src/main/template`.
  * The converter for migrating the old HTML files to AsciiDoc can be found in `src/main/java`.
  * Additional pre-compiled resources are located in `src/main/resources`.
