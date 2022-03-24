@@ -5,7 +5,7 @@
 :notitle:
 :metadata:
 
-[[index]] 
+[[index]]
 
 == JDO : Annotationsanchor:JDO_:_Annotations[]
 
