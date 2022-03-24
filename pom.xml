@@ -97,7 +97,8 @@ This repository contains the sources for the Apache DB JDO website</description>
                                     <filtering>false</filtering>
                                 </resource>
                                 <resource>
-                                    <directory>src/main/resources/other</directory>
+                                    <directory>src/main/resources/other
+</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>

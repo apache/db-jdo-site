@@ -1,3 +1,1 @@
 This is the location of the xmlns metadata.
-
-Here are the current files:
