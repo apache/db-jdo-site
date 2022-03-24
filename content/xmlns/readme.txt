@@ -1,1 +1,1 @@
-This is the location of the xmlns metadata.
+This directory contains DTD and XSD files that define the metadata structure of JDO files.
