@@ -1,0 +1,10 @@
+:_basedir: 
+:_imagesdir: images/
+:grid: cols
+:usage:
+
+[[index]]
+
+== Schema Descriptors
+
+== Document Type Descriptors
