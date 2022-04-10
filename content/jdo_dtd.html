@@ -316,10 +316,16 @@ or SYSTEM versions of these.</p>
 <div class="literalblock">
 <div class="content">
 <pre>&lt;!DOCTYPE jdo PUBLIC
-    "-//Sun Microsystems, Inc.//DTD Java Data Objects Metadata 3.0//EN"
-    "http://xmlns.jcp.org/dtd/jdo_3_0.dtd"&gt;
-
-&lt;!DOCTYPE jdo SYSTEM "file:/javax/jdo/jdo.dtd"&gt;</pre>
+    "-//The Apache Software Foundation//DTD Java Data Objects Metadata 3.2//EN"
+    "https://db.apache.org/jdo/xmlns/jdo_3_2.dtd"&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;!DOCTYPE jdo SYSTEM "file:/javax/jdo/jdo.dtd"&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -331,18 +337,17 @@ or SYSTEM versions of these.</p>
 <div class="literalblock">
 <div class="content">
 <pre>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
-&lt;jdo xmlns="http://xmlns.jcp.org/xml/ns/jdo/jdo"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/jdo/jdo
-        http://xmlns.jcp.org/xml/ns/jdo/jdo_3_0.xsd"&gt;
+&lt;jdo xmlns="https://db.apache.org/jdo/xmlns/jdo"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://db.apache.org/jdo/xmlns/jdo https://db.apache.org/jdo/xmlns/jdo_3_2.xsd" version="3.2"&gt;
     ...
 &lt;/jdo&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Your MetaData should match either the
-<a href="http://xmlns.jcp.org/dtd/jdo_3_0.dtd">DTD</a> or the
-<a href="http://xmlns.jcp.org/xml/ns/jdo/jdo_3_0.xsd">XSD</a> specification.</p>
+<a href="http://db.apache.org/jdo/xmlns/jdo_3_2.dtd">DTD</a> or the
+<a href="http://db.apache.org/jdo/xmlns/jdo_3_2.xsd">XSD</a> specification.</p>
 </div>
 </div>
 </div>
