@@ -7,9 +7,8 @@
 
 == Persistence MetaDataanchor:Persistence_MetaData[]
 
-JDO 1.0 and JDO 2.0 support specification of persistence using XML
-MetaData. JDO 2.1 adds on the ability to specify persistence using Java5
-annotations.
+JDO 1.0 and JDO 2.0 support specification of persistence using XML MetaData. 
+JDO 2.1+ adds on the ability to specify persistence using Java annotations.
 
 === XML MetaDataanchor:XML_MetaData[]
 
@@ -51,7 +50,7 @@ information for Oracle datastores, and so on.
 
 === Annotationsanchor:Annotations[]
 
-JDO 2.1 provides support for annotations. Classes and fields/properties
+JDO 2.1+ provides support for annotations. Classes and fields/properties
 can be annotated defining the persistence and, optionally, any ORM
 information.
 

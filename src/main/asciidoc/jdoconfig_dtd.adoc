@@ -20,9 +20,9 @@ Here are a few examples valid for *jdoconfig* files with DTD
 specifications
 
 ....
-<!DOCTYPE jdoconfig PUBLIC 
-    "-//Sun Microsystems, Inc.//DTD Java Data Objects Configuration 3.0//EN"
-    "http://xmlns.jcp.org/dtd/jdoconfig_3_0.dtd">
+<!DOCTYPE jdoconfig PUBLIC
+    "-//The Apache Software Foundation//DTD Java Data Objects Configuration 3.2//EN"
+    "https://db.apache.org/jdo/xmlns/jdoconfig_3_2.dtd">
 
 <!DOCTYPE jdoconfig SYSTEM "file:/javax/jdo/jdoconfig.dtd">
 ....
@@ -34,15 +34,14 @@ Here is an example valid for *jdoconfig* files with XSD specification
 
 ....
 <?xml version="1.0" encoding="UTF-8" ?>
-<jdoconfig xmlns="http://xmlns.jcp.org/xml/ns/jdo/jdoconfig"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/jdo/jdoconfig
-        http://xmlns.jcp.org/xml/ns/jdo/jdoconfig_3_0.xsd">
+<jdoconfig xmlns="https://db.apache.org/jdo/xmlns/jdoconfig"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://db.apache.org/jdo/xmlns/jdoconfig https://db.apache.org/jdo/xmlns/jdoconfig_3_2.xsd" version="3.2">
     ...
 </jdoconfig>
 ....
 
 Your MetaData should match either the
-http://xmlns.jcp.org/dtd/jdoconfig_3_0.dtd[DTD] or the
-http://xmlns.jcp.org/xml/ns/jdo/jdoconfig_3_0.xsd[XSD] specification.
+https://db.apache.org/jdo/xmlns/jdoconfig_3_2.dtd[DTD] or the
+https://db.apache.org/jdo/xmlns/jdoconfig_3_2.xsd[XSD] specification.
 
