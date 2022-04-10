@@ -21,9 +21,13 @@ specification
 
 ....
 <!DOCTYPE jdoquery PUBLIC
-    "-//Sun Microsystems, Inc.//DTD Java Data Objects Query Metadata 3.0//EN"
-    "http://xmlns.jcp.org/dtd/jdoquery_3_0.dtd">
+    "-//The Apache Software Foundation//DTD Java Data Objects Query Metadata 3.2//EN"
+    "https://db.apache.org/jdo/xmlns/jdoquery_3_2.dtd">
+....
 
+or
+
+....
 <!DOCTYPE jdoquery SYSTEM "file:/javax/jdo/jdoquery.dtd">
 ....
 
@@ -34,15 +38,14 @@ Here is an example valid for *jdoquery* files with XSD specification
 
 ....
 <?xml version="1.0" encoding="UTF-8" ?>
-<jdo xmlns="http://xmlns.jcp.org/xml/ns/jdo/jdo"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/jdo/jdoquery
-        http://xmlns.jcp.org/xml/ns/jdo/jdoquery_3_0.xsd">
+<jdoquery xmlns="https://db.apache.org/jdo/xmlns/jdoquery"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://db.apache.org/jdo/xmlns/jdoquery https://db.apache.org/jdo/xmlns/jdoquery_3_2.xsd" version="3.2">
     ...
-</jdo>
+</jdoquery>
 ....
 
 Your MetaData should match either the
-http://xmlns.jcp.org/dtd/jdoquery_3_0.dtd[DTD] or the
-http://xmlns.jcp.org/xml/ns/jdo/jdoquery_3_0.xsd[XSD] specification.
+https://db.apache.org/jdo/xmlns/jdoquery_3_2.dtd[DTD] or the
+https://db.apache.org/jdo/xmlns/jdoquery_3_2.xsd[XSD] specification.
 
