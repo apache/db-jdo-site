@@ -20,36 +20,44 @@ the ones that are available are typically of much use.
 [cols=",",options="header",]
 |===
 |Method |Description
-|startsWith(String) |Returns if the string starts with the passed string
+|startsWith(String) 
+|Returns if the string starts with the passed string
 
-|startsWith(String, int) |Returns if the string starts with the passed
-string, after the specified position
+|startsWith(String, int) 
+|Returns if the string starts with the passed string, after the specified position
 
-|endsWith(String) |Returns if the string ends with the passed string
+|endsWith(String) 
+|Returns if the string ends with the passed string
 
-|indexOf(String) |Returns the first position of the passed string
+|indexOf(String) 
+|Returns the first position of the passed string
 
-|indexOf(String, int) |Returns the position of the passed string, after
-the passed position
+|indexOf(String, int) 
+|Returns the position of the passed string, after the passed position
 
-|substring(int) |Returns the substring starting from the passed position
+|substring(int) 
+|Returns the substring starting from the passed position
 
-|substring(int, int) |Returns the substring between the passed positions
+|substring(int, int) 
+|Returns the substring between the passed positions
 
-|toLowerCase() |Returns the string in lowercase
+|toLowerCase() 
+|Returns the string in lowercase
 
-|toUpperCase() |Returns the string in UPPERCASE
+|toUpperCase() 
+|Returns the string in UPPERCASE
 
-|matches(String pattern) |Returns whether string matches the passed
-expression. The pattern argument follows the rules of
-java.lang.String.matches method.
+|matches(String pattern) 
+|Returns whether string matches the passed expression. The pattern argument follows the rules of java.lang.String.matches method.
 
-|trim() |Returns the string with leading/trailing spaces trimmed
+|trim() 
+|Returns the string with leading/trailing spaces trimmed
 
-|length() |Returns the length of the string
+|length() 
+|Returns the length of the string
 
-|charAt(int) |Returns the character at the specified position of the
-string
+|charAt(int) 
+|Returns the character at the specified position of the string
 |===
 
 Here's an example using a Product class, looking for objects whose
@@ -96,13 +104,17 @@ List results = (List)query.execute();
 
 [cols=",",options="header",]
 |===
-|Method |Description
-|isEmpty() |Returns whether the collection is empty
+|Method 
+|Description
 
-|contains(value) |Returns whether the collection contains the passed
-element
+|isEmpty() 
+|Returns whether the collection is empty
 
-|size() |Returns the number of elements in the collection
+|contains(value) 
+|Returns whether the collection contains the passed element
+
+|size() 
+|Returns the number of elements in the collection
 |===
 
 Here's an example demonstrating use of contains(). We have an Inventory
@@ -130,9 +142,12 @@ List results = (List)query.execute();
 
 [cols=",",options="header",]
 |===
-|Method |Description
-|get(position) |Returns the element at that position in the List
-(JDO3.1)
+|Method 
+|Description
+
+|get(position) 
+|Returns the element at that position in the List (JDO3.1)
+
 |===
 
 {empty} +
@@ -142,12 +157,24 @@ List results = (List)query.execute();
 
 [cols=",",options="header",]
 |===
-|Method |Description
-|isEmpty() |Returns whether the map is empty
-|containsKey(key) |Returns whether the map contains the passed key
-|containsValue(value) |Returns whether the map contains the passed value
-|get(key) |Returns the value from the map with the passed key
-|size() |Returns the number of entries in the map
+|Method 
+|Description
+
+|isEmpty() 
+|Returns whether the map is empty
+
+|containsKey(key) 
+|Returns whether the map contains the passed key
+
+|containsValue(value) 
+|Returns whether the map contains the passed value
+
+|get(key) 
+|Returns the value from the map with the passed key
+
+|size() 
+|Returns the number of entries in the map
+
 |===
 
 Here's an example using a Product class as a value in a Map. Our example
@@ -173,15 +200,86 @@ List results = (List)query.execute();
 
 === Temporal Methodsanchor:Temporal_Methods[]
 
-[cols=",",options="header",]
+The following methods apply to fields of temporal types.
+
+[cols=",,",options="header",]
 |===
-|Method |Description
-|getDay() |Returns the day of the month
-|getMonth() |Returns the month of the year
-|getYear() |Returns the year
-|getHour() |Returns the hour
-|getMinute() |Returns the minute
-|getSecond() |Returns the second
+|Class 
+|Method 
+|Description
+
+|java.util.Date 
+|getDate() 
+|Returns the day of the month
+
+|java.util.Date 
+|getMonth() 
+|Returns the month of the year
+
+|java.util.Date 
+|getYear() 
+|Returns the year
+
+|java.util.Date 
+|getHour() 
+|Returns the hour
+
+|java.util.Date 
+|getMinute() 
+|Returns the minute
+
+|java.util.Date 
+|getSecond() 
+|Returns the second
+
+|java.time.LocalDate
+|getDayOfMonth()
+|Returns the day (of the month) for the date (1-31) in the timezone it was stored
+
+|java.time.LocalDate
+|getMonthValue()
+|Returns the month for the date (1-12) in the timezone it was stored
+
+|java.time.LocalDate
+|getYear()
+|Returns the year for the date in the timezone it was stored
+
+|java.time.LocalDateTime
+|getDayOfMonth()
+|Returns the day (of the month) for the date in the timezone it was stored
+
+|java.time.LocalDateTime
+|getMonthValue()
+|Returns the month for the date (1-12) in the timezone it was stored
+
+|java.time.LocalDateTime
+|getYear()
+|Returns the year for the date in the timezone it was stored
+
+|java.time.LocalDateTime
+|getHour()
+|Returns the hour for the time in the timezone it was stored
+
+|java.time.LocalDateTime
+|getMinute()
+|Returns the minute for the time in the timezone it was stored
+
+|java.time.LocalDateTime
+|getSecond()
+|Returns the second for the time in the timezone it was stored
+
+|java.time.LocalTime
+|getHour()
+|Returns the hour for the time in the timezone it was stored
+
+|java.time.LocalTime
+|getMinute()
+|Returns the minute for the time in the timezone it was stored
+
+|java.time.LocalTime
+|getSecond()
+|Returns the second for the time in the timezone it was stored
+
 |===
 
 {empty} +
@@ -189,11 +287,41 @@ List results = (List)query.execute();
 
 === Enum Methodsanchor:Enum_Methods[]
 
+The following methods apply to fields of type _Enum_
+
 [cols=",",options="header",]
 |===
-|Method |Description
-|ordinal() |Returns the ordinal of the enum
-|toString() |Returns the string form of the enum
+|Method 
+|Description
+
+|ordinal() 
+|Returns the ordinal of the enum
+
+|toString() 
+|Returns the string form of the enum
+
+|===
+
+{empty} +
+
+=== Optional Methodsanchor:Optional_Methods[]
+
+The following methods apply to fields of type _Optional_
+
+[cols=",",options="header",]
+|===
+|Method 
+|Description
+
+|get() 
+|Returns the value of the field
+
+|isPresent() 
+|Returns TRUE if the field is not null, and FALSE otherwise
+
+|orElse(subst) 
+|Returns the value of the object if present, otherwise the "subst"
+
 |===
 
 {empty} +
@@ -204,20 +332,47 @@ List results = (List)query.execute();
 [cols=",",options="header",]
 |===
 |Method |Description
-|Math.abs(number) |Returns the absolute value of the passed number
+|Math.abs(number) 
+|Returns the absolute value of the passed number
 
-|Math.sqrt(number) |Returns the square root of the passed number
+|Math.sqrt(number) 
+|Returns the square root of the passed number
 
-|Math.cos(number) |Returns the cosine of the passed number
+|Math.cos(number) 
+|Returns the cosine of the passed number
 
-|Math.sin(number) |Returns the sine of the passed number
+|Math.sin(number) 
+|Returns the sine of the passed number
 
-|Math.tan(number) |Returns the tangent of the passed number
+|Math.tan(number) 
+|Returns the tangent of the passed number
 
-|JDOHelper.getObjectId(object) |Returns the object identity of the
-passed persistent object
+|Math.acos(number) 
+|Returns the arc cosine of the passed number
 
-|JDOHelper.getVersion(object) |Returns the version of the passed
-persistent object
+|Math.asin(number) 
+|Returns the arc sine of the passed number
+
+|Math.atan(number) 
+|Returns the arc tangent of the passed number
+
+|Math.ceil(number) 
+|Returns the ceiling of the passed number
+
+|Math.floor(number) 
+|Returns the floor of the passed number
+
+|Math.log(number) 
+|Returns the natural log of the passed number
+
+|Math.exp(number) 
+|Returns the exponent of the passed number
+
+|JDOHelper.getObjectId(object) 
+|Returns the object identity of the passed persistent object
+
+|JDOHelper.getVersion(object) 
+|Returns the version of the passed persistent object
+
 |===
 
