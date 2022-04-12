@@ -331,8 +331,7 @@ the ones that are available are typically of much use.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">startsWith(String, int)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns if the string starts with the passed
-string, after the specified position</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns if the string starts with the passed string, after the specified position</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">endsWith(String)</p></td>
@@ -344,8 +343,7 @@ string, after the specified position</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">indexOf(String, int)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the position of the passed string, after
-the passed position</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the position of the passed string, after the passed position</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">substring(int)</p></td>
@@ -365,9 +363,7 @@ the passed position</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">matches(String pattern)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns whether string matches the passed
-expression. The pattern argument follows the rules of
-java.lang.String.matches method.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns whether string matches the passed expression. The pattern argument follows the rules of java.lang.String.matches method.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">trim()</p></td>
@@ -379,8 +375,7 @@ java.lang.String.matches method.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">charAt(int)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the character at the specified position of the
-string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the character at the specified position of the string</p></td>
 </tr>
 </tbody>
 </table>
@@ -449,8 +444,7 @@ List results = (List)query.execute();</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">contains(value)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns whether the collection contains the passed
-element</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns whether the collection contains the passed element</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">size()</p></td>
@@ -498,8 +492,7 @@ List results = (List)query.execute();</pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">get(position)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the element at that position in the List
-(JDO3.1)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the element at that position in the List (JDO3.1)</p></td>
 </tr>
 </tbody>
 </table>
@@ -569,41 +562,112 @@ List results = (List)query.execute();</pre>
 </div>
 <div class="sect2">
 <h3 id="_temporal_methods">Temporal Methods<a id="Temporal_Methods"></a></h3>
+<div class="paragraph">
+<p>The following methods apply to fields of temporal types.</p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
+<th class="tableblock halign-left valign-top">Class</th>
 <th class="tableblock halign-left valign-top">Method</th>
 <th class="tableblock halign-left valign-top">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">getDay()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getDate()</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns the day of the month</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Date</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">getMonth()</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns the month of the year</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Date</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">getYear()</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns the year</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Date</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">getHour()</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns the hour</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Date</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">getMinute()</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns the minute</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Date</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">getSecond()</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns the second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalDate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getDayOfMonth()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the day (of the month) for the date (1-31) in the timezone it was stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalDate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getMonthValue()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the month for the date (1-12) in the timezone it was stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalDate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getYear()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the year for the date in the timezone it was stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalDateTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getDayOfMonth()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the day (of the month) for the date in the timezone it was stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalDateTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getMonthValue()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the month for the date (1-12) in the timezone it was stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalDateTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getYear()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the year for the date in the timezone it was stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalDateTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getHour()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the hour for the time in the timezone it was stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalDateTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getMinute()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the minute for the time in the timezone it was stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalDateTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getSecond()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the second for the time in the timezone it was stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getHour()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the hour for the time in the timezone it was stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getMinute()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the minute for the time in the timezone it was stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.LocalTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">getSecond()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the second for the time in the timezone it was stored</p></td>
 </tr>
 </tbody>
 </table>
@@ -613,6 +677,9 @@ List results = (List)query.execute();</pre>
 </div>
 <div class="sect2">
 <h3 id="_enum_methods">Enum Methods<a id="Enum_Methods"></a></h3>
+<div class="paragraph">
+<p>The following methods apply to fields of type <em>Enum</em></p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -632,6 +699,41 @@ List results = (List)query.execute();</pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">toString()</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns the string form of the enum</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><br></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optional_methods">Optional Methods<a id="Optional_Methods"></a></h3>
+<div class="paragraph">
+<p>The following methods apply to fields of type <em>Optional</em></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Method</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the value of the field</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">isPresent()</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns TRUE if the field is not null, and FALSE otherwise</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">orElse(subst)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the value of the object if present, otherwise the "subst"</p></td>
 </tr>
 </tbody>
 </table>
@@ -674,14 +776,40 @@ List results = (List)query.execute();</pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Returns the tangent of the passed number</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Math.acos(number)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the arc cosine of the passed number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Math.asin(number)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the arc sine of the passed number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Math.atan(number)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the arc tangent of the passed number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Math.ceil(number)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the ceiling of the passed number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Math.floor(number)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the floor of the passed number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Math.log(number)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the natural log of the passed number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Math.exp(number)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the exponent of the passed number</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JDOHelper.getObjectId(object)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the object identity of the
-passed persistent object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the object identity of the passed persistent object</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JDOHelper.getVersion(object)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the version of the passed
-persistent object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Returns the version of the passed persistent object</p></td>
 </tr>
 </tbody>
 </table>
