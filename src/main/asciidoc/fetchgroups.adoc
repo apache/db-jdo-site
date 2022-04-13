@@ -24,7 +24,7 @@ that are part of that fetch group. The definition here is _static_
 groups at runtime via an API
 
 The *fetch group* in use for a class is controled via the _FetchPlan_
-http://db.apache.org/jdo/api20/apidocs/javax/jdo/FetchPlan.html[image:images/javadoc.png[image]]
+http://db.apache.org/jdo/api32/apidocs/javax/jdo/FetchPlan.html[image:images/javadoc.png[image]]
 interface. To get a handle on the current _FetchPlan_ we do
 
 ....

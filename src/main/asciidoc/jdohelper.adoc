@@ -10,7 +10,7 @@
 JDO provides a standard utility that gives access to useful parts of the
 JDO persistence process. This is known as *JDOHelper*
 (javax.jdo.JDOHelper)
-link:api20/apidocs/javax/jdo/JDOHelper.html[image:images/javadoc.png[image]]
+link:api32/apidocs/javax/jdo/JDOHelper.html[image:images/javadoc.png[image]]
 
 === PersistenceManagerFactory methodsanchor:PersistenceManagerFactory_methods[]
 

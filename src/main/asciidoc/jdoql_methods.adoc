@@ -5,7 +5,8 @@
 
 [[index]]
 
-== JDOQL : Methodsanchor:JDOQL_:_Methods[]
+[[JDOQL_:_Methods]]
+== JDOQL : Methods
 
 When writing the "filter" for a JDOQL Query you can make use of some
 methods on the various Java types. The range of methods included as
@@ -15,7 +16,9 @@ the ones that are available are typically of much use.
 {empty} +
 
 
-=== String Methodsanchor:String_Methods[]
+[[String_Methods]]
+=== String Methods
+
 
 [cols=",",options="header",]
 |===
@@ -100,7 +103,8 @@ List results = (List)query.execute();
 {empty} +
 
 
-=== Collection Methodsanchor:Collection_Methods[]
+[[Collection_Methods]]
+=== Collection Methods
 
 [cols=",",options="header",]
 |===
@@ -138,7 +142,8 @@ List results = (List)query.execute();
 {empty} +
 
 
-=== List Methodsanchor:List_Methods[]
+[[List_Methods]]
+=== List Methods
 
 [cols=",",options="header",]
 |===
@@ -153,7 +158,8 @@ List results = (List)query.execute();
 {empty} +
 
 
-=== Map Methodsanchor:Map_Methods[]
+[[Map_Methods]]
+=== Map Methods
 
 [cols=",",options="header",]
 |===
@@ -198,7 +204,8 @@ List results = (List)query.execute();
 {empty} +
 
 
-=== Temporal Methodsanchor:Temporal_Methods[]
+[[Temporal_Methods]]
+=== Temporal Methods
 
 The following methods apply to fields of temporal types.
 
@@ -285,7 +292,8 @@ The following methods apply to fields of temporal types.
 {empty} +
 
 
-=== Enum Methodsanchor:Enum_Methods[]
+[[Enum_Methods]]
+=== Enum Methods
 
 The following methods apply to fields of type _Enum_
 
@@ -304,7 +312,8 @@ The following methods apply to fields of type _Enum_
 
 {empty} +
 
-=== Optional Methodsanchor:Optional_Methods[]
+[[Optional_Methods]]
+=== Optional Methods
 
 The following methods apply to fields of type _Optional_
 
@@ -327,7 +336,8 @@ The following methods apply to fields of type _Optional_
 {empty} +
 
 
-=== Other Methodsanchor:Other_Methods[]
+[[Other_Methods]]
+=== Other Methods
 
 [cols=",",options="header",]
 |===

@@ -17,7 +17,7 @@ retrieved. The _PersistenceManagerFactory_ can be configured to provide
 particular behaviour.
 
 The simplest way of creating a _PersistenceManagerFactory_
-link:api20/apidocs/javax/jdo/PersistenceManagerFactory.html[image:images/javadoc.png[image]]
+link:api32/apidocs/javax/jdo/PersistenceManagerFactory.html[image:images/javadoc.png[image]]
 is as follows
 
 ....

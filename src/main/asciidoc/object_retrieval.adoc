@@ -5,32 +5,45 @@
 
 [[index]]
 
-== Object Retrievalanchor:Object_Retrieval[]
+[[Object_Retrieval]]
+== Object Retrieval
 
-JDO provides persistence of objects. The logical next step after
-persisting objects is to retrieve them for use in your application.
-There are several ways to do this
+Any application will require access to persisted objects.
+The JDO API provides several ways to do this
 
-=== Retrieve an object from its identityanchor:Retrieve_an_object_from_its_identity[]
+
+[[get_object_by_id]]
+=== Retrieve an object from its identity
 
 The simplest form of object retrieval is where we have the identity.
 This is simply
 
+[source,java]
 ....
-Object obj = pm.getObjectById(identity);
-                
+Person per = (Person)pm.getObjectById(identity);
 ....
 
-If the object is in the JDO cache then it is retrieved from there,
-otherwise the JDO implementation goes to the datastore. When the object
-is retrieved its fields are populated according to its Fetch Group.
+or 
 
-=== Retrieve an object based on its Extentanchor:Retrieve_an_object_based_on_its_Extent[]
+[source,java]
+....
+Person per = pm.getObjectById(Person.class, identity);
+....
 
-A persistable class can be persisted with an *Extent* of all instances
-of that type. You can use this to retrieve objects of the required type,
-like this
+If the object is in the JDO cache (Level 1 or Level 2) then it is retrieved from there,
+otherwise the JDO implementation goes to the datastore. 
+When the object is retrieved its fields are populated according to its Fetch Group.
 
+
+
+[[extent]]
+=== Retrieve an object based on its Extent
+
+An *Extent* is a collection of objects of a particular type of object that have been persisted. 
+When you define the MetaData for a class you can define if the class requires an Extent. 
+The default is true. You access the Extent as follows
+
+[source,java]
 ....
 Extent ex = pm.getExtent(MyClass.class, true);
 Iterator iter = ex.iterator();
@@ -41,23 +54,25 @@ while (iter.hasNext())
 }
 ....
 
-The second argument in the _getExtent_ call is whether to include
-instances of subclasses.
+The second argument in the _getExtent_ call is whether to include instances of subclasses.
+An Extent is useful where you want to restrict a Query to query over just that set of objects. 
+It can also be used where you just want to retrieve all persisted objects of a type (as an alternative to using a Query).
 
 {empty} +
 
 
-=== Retrieve an object based on a criteriaanchor:Retrieve_an_object_based_on_a_criteria[]
+[[query]]
+=== Retrieve an object based on a query criteria
 
-Where we want to retrieve all objects based on some criteria (e.g all
-objects of class A where field 'x' of A is a certain value) we need to
-use a query language. JDO2 provides 2 options here. JDOQL is
-object-based and allows you to express your query in terms of the
-classes and fields you are using. SQL is datastore-based and allows you
-to express your query in terms of the datastore tables and columns.
+Where we want to retrieve all objects based on some criteria (e.g all objects of class A where field 'x' of A is a certain value) we need to
+use a query language. 
+The JDO API provides the JDOQL object-based query language where you express your query in terms of classes and fields you are using.
+Dependent on your JDO provider and the datastore being used you may also be able to use a (native) query language such as SQL, expressing
+your query in terms of datastore tables/columns.
 
 To give an example of a JDOQL query
 
+[source,java]
 ....
 Query q = pm.newQuery(MyClass.class, "field1 < value");
 q.declareParameters("int value");
@@ -70,7 +85,6 @@ while (iter.hasNext())
 ....
 
 If the objects found by the query are in the JDO cache then they are
-retrieved from there, otherwise the JDO implementation goes to the
-datastore. When the objects are retrieved their fields are populated
-according to the Fetch Group.
+retrieved from there, otherwise the JDO implementation goes to the datastore. 
+When the objects are retrieved their fields are populated according to the Fetch Group.
 

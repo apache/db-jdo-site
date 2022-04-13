@@ -12,7 +12,7 @@ _PersistenceManager_ (PM). This is obtained from the
 xref:pmf.adoc[PersistenceManagerFactory] for the datastore.
 
 The simplest way of creating a _PersistenceManager_
-link:api20/apidocs/javax/jdo/PersistenceManager.html[image:images/javadoc.png[image]]
+link:api32/apidocs/javax/jdo/PersistenceManager.html[image:images/javadoc.png[image]]
 is as follows
 
 ....
