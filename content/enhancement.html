@@ -204,7 +204,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="pm.html">PersistenceManager</a></li>
                         <li><a href="transactions.html">Transactions</a></li>
                         <li><a href="attach_detach.html">Attach-Detach</a></li>
-                        <li><a href="fetchgroups.html">Fetch Groups</a></li>
+                        <li><a href="fetchgroups.html">Fetch Plan/Groups</a></li>
                         <li><a href="state_transition.html">Object States</a></li>
                         <li><a href="object_retrieval.html">Object Retrieval</a></li>
                         <li><a href="exceptions.html">Exceptions</a></li>
@@ -248,6 +248,9 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="jdoql_methods.html">Methods</a></li>
                         <li><a href="jdoql_result.html">Result</a></li>
                         <li><a href="jdoql_quickref.pdf">Quick Ref PDF</a></li>
+                        <li><a href="jdoql_typed.html">JDOQL Typed API</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="query_sql.html">SQL</a></li>
                     </ul>
                </li>
 
@@ -300,560 +303,556 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                 
                 <div id="doc-content">
                     <div class="sect1">
-<h2 id="index">JDO Bytecode Enhancement<a id="JDO_Bytecode_Enhancement"></a></h2>
+<h2 id="JDO_Bytecode_Enhancement">JDO Bytecode Enhancement</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>JDO defines a byte-code enhancement process that provides for dirty
-detection of fields. Before a class is used at runtime it is compiled
-and then "enhanced" to implement the interface <em>PersistenceCapable</em>, and
-optionally also <em>Detachable</em>.</p>
+<p>JDO defines a byte-code enhancement process that provides for dirty detection of fields.
+Before a class is used at runtime it is compiled and then "enhanced" to implement the interface <em>PersistenceCapable</em>, and optionally also <em>Detachable</em>.</p>
 </div>
 <div class="paragraph">
-<p>We can demonstrate this by taking a sample class, and seeing it before
-and after enhancement. We start with the following class</p>
+<p>We can demonstrate this by taking a sample class, and seeing it before and after enhancement.
+We start with the following class</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>package org.apache.jdo.test;
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.apache.jdo.test</span>;
 
-public class A
+<span class="directive">public</span> <span class="type">class</span> <span class="class">A</span>
 {
-    long id;
-    String name;
+    <span class="type">long</span> id;
+    <span class="predefined-type">String</span> name;
     B b;
 
-    public A(String name)
+    <span class="directive">public</span> A(<span class="predefined-type">String</span> name)
     {
-        this.name = name;
+        <span class="local-variable">this</span>.name = name;
     }
 
-    public void setId(long id)
+    <span class="directive">public</span> <span class="type">void</span> setId(<span class="type">long</span> id)
     {
-        this.id = id;
+        <span class="local-variable">this</span>.id = id;
     }
 
-    public void setB(B b)
+    <span class="directive">public</span> <span class="type">void</span> setB(B b)
     {
-        this.b = b;
+        <span class="local-variable">this</span>.b = b;
     }
 
-    public String getName()
+    <span class="directive">public</span> <span class="predefined-type">String</span> getName()
     {
-        return name;
+        <span class="keyword">return</span> name;
     }
 
-    public B getB()
+    <span class="directive">public</span> B getB()
     {
-        return b;
+        <span class="keyword">return</span> b;
     }
 
-    public long getId()
+    <span class="directive">public</span> <span class="type">long</span> getId()
     {
-        return id;
+        <span class="keyword">return</span> id;
     }
 
-    public String toString()
+    <span class="directive">public</span> <span class="predefined-type">String</span> toString()
     {
-        return "A : id=" + id + " [" + name + "] b=\"" + b + "\"";
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">A : id=</span><span class="delimiter">&quot;</span></span> + id + <span class="string"><span class="delimiter">&quot;</span><span class="content"> [</span><span class="delimiter">&quot;</span></span> + name + <span class="string"><span class="delimiter">&quot;</span><span class="content">] b=</span><span class="char">\&quot;</span><span class="delimiter">&quot;</span></span> + b + <span class="string"><span class="delimiter">&quot;</span><span class="char">\&quot;</span><span class="delimiter">&quot;</span></span>;
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>and require it to be <em>PersistenceCapable</em> and <em>Detachable</em>. The
-enhancement process needs to intercept all updates of the fields of the
-class (id, name, b) as well as add on the necessary
-<em>PersistenceCapable</em>, <em>Detachable</em> methods. After "enhancement" it
-becomes</p>
+<p>and require it to be <em>PersistenceCapable</em> and <em>Detachable</em>.
+The enhancement process needs to intercept all updates of the fields of the
+class (id, name, b) as well as add on the necessary <em>PersistenceCapable</em>, <em>Detachable</em> methods. After "enhancement" it becomes</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>package org.apache.jdo.test;
-import java.util.BitSet;
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.apache.jdo.test</span>;
+<span class="keyword">import</span> <span class="include">java.util.BitSet</span>;
 
-import javax.jdo.JDODetachedFieldAccessException;
-import javax.jdo.JDOFatalInternalException;
-import javax.jdo.PersistenceManager;
-import javax.jdo.identity.LongIdentity;
-import javax.jdo.spi.Detachable;
-import javax.jdo.spi.JDOImplHelper;
-import javax.jdo.spi.JDOPermission;
-import javax.jdo.spi.PersistenceCapable;
-import javax.jdo.spi.StateManager;
+<span class="keyword">import</span> <span class="include">javax.jdo.JDODetachedFieldAccessException</span>;
+<span class="keyword">import</span> <span class="include">javax.jdo.JDOFatalInternalException</span>;
+<span class="keyword">import</span> <span class="include">javax.jdo.PersistenceManager</span>;
+<span class="keyword">import</span> <span class="include">javax.jdo.identity.LongIdentity</span>;
+<span class="keyword">import</span> <span class="include">javax.jdo.spi.Detachable</span>;
+<span class="keyword">import</span> <span class="include">javax.jdo.spi.JDOImplHelper</span>;
+<span class="keyword">import</span> <span class="include">javax.jdo.spi.JDOPermission</span>;
+<span class="keyword">import</span> <span class="include">javax.jdo.spi.PersistenceCapable</span>;
+<span class="keyword">import</span> <span class="include">javax.jdo.spi.StateManager</span>;
 
-public class A implements PersistenceCapable, Detachable
+<span class="directive">public</span> <span class="type">class</span> <span class="class">A</span> <span class="directive">implements</span> PersistenceCapable, Detachable
 {
-    long id;
-    String name;
+    <span class="type">long</span> id;
+    <span class="predefined-type">String</span> name;
     B b;
-    protected transient StateManager jdoStateManager;
-    protected transient byte jdoFlags;
-    protected Object[] jdoDetachedState;
-    private static final byte[] jdoFieldFlags;
-    private static final Class jdoPersistenceCapableSuperclass;
-    private static final Class[] jdoFieldTypes;
-    private static final String[] jdoFieldNames = __jdoFieldNamesInit();
-    private static final int jdoInheritedFieldCount;
+    <span class="directive">protected</span> <span class="directive">transient</span> StateManager jdoStateManager;
+    <span class="directive">protected</span> <span class="directive">transient</span> <span class="type">byte</span> jdoFlags;
+    <span class="directive">protected</span> <span class="predefined-type">Object</span><span class="type">[]</span> jdoDetachedState;
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">byte</span><span class="type">[]</span> jdoFieldFlags;
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Class</span> jdoPersistenceCapableSuperclass;
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Class</span><span class="type">[]</span> jdoFieldTypes;
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span><span class="type">[]</span> jdoFieldNames = __jdoFieldNamesInit();
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">int</span> jdoInheritedFieldCount;
 
-    static
+    <span class="directive">static</span>
     {
         jdoFieldTypes = __jdoFieldTypesInit();
         jdoFieldFlags = __jdoFieldFlagsInit();
         jdoInheritedFieldCount = __jdoGetInheritedFieldCount();
         jdoPersistenceCapableSuperclass = __jdoPersistenceCapableSuperclassInit();
-        JDOImplHelper.registerClass(___jdo$loadClass("org.apache.jdo.test.A"),
+        JDOImplHelper.registerClass(___jdo<span class="error">$</span>loadClass(<span class="string"><span class="delimiter">&quot;</span><span class="content">org.apache.jdo.test.A</span><span class="delimiter">&quot;</span></span>),
                     jdoFieldNames, jdoFieldTypes,
                     jdoFieldFlags,
-                    jdoPersistenceCapableSuperclass, new A());
+                    jdoPersistenceCapableSuperclass, <span class="keyword">new</span> A());
     }
 
-    public void setId(long id)
+    <span class="directive">public</span> <span class="type">void</span> setId(<span class="type">long</span> id)
     {
-        jdoSetid(this, id);
+        jdoSetid(<span class="local-variable">this</span>, id);
     }
 
-    public void setB(B b)
+    <span class="directive">public</span> <span class="type">void</span> setB(B b)
     {
-        jdoSetb(this, b);
+        jdoSetb(<span class="local-variable">this</span>, b);
     }
 
-    public String getName()
+    <span class="directive">public</span> <span class="predefined-type">String</span> getName()
     {
-        return jdoGetname(this);
+        <span class="keyword">return</span> jdoGetname(<span class="local-variable">this</span>);
     }
 
-    public B getB()
+    <span class="directive">public</span> B getB()
     {
-        return jdoGetb(this);
+        <span class="keyword">return</span> jdoGetb(<span class="local-variable">this</span>);
     }
 
-    public long getId()
+    <span class="directive">public</span> <span class="type">long</span> getId()
     {
-        return jdoGetid(this);
+        <span class="keyword">return</span> jdoGetid(<span class="local-variable">this</span>);
     }
 
-    public String toString()
+    <span class="directive">public</span> <span class="predefined-type">String</span> toString()
     {
-        return new StringBuilder().append("A : id=").append(jdoGetid(this))
-           .append(" [").append(jdoGetname(this))
-           .append("] b=\"").append(jdoGetb(this))
-           .append("\"").toString();
+        <span class="keyword">return</span> <span class="keyword">new</span> <span class="predefined-type">StringBuilder</span>().append(<span class="string"><span class="delimiter">&quot;</span><span class="content">A : id=</span><span class="delimiter">&quot;</span></span>).append(jdoGetid(<span class="local-variable">this</span>))
+           .append(<span class="string"><span class="delimiter">&quot;</span><span class="content"> [</span><span class="delimiter">&quot;</span></span>).append(jdoGetname(<span class="local-variable">this</span>))
+           .append(<span class="string"><span class="delimiter">&quot;</span><span class="content">] b=</span><span class="char">\&quot;</span><span class="delimiter">&quot;</span></span>).append(jdoGetb(<span class="local-variable">this</span>))
+           .append(<span class="string"><span class="delimiter">&quot;</span><span class="char">\&quot;</span><span class="delimiter">&quot;</span></span>).toString();
     }
 
-    public void jdoCopyKeyFieldsFromObjectId(PersistenceCapable.ObjectIdFieldConsumer fc, Object oid)
+    <span class="directive">public</span> <span class="type">void</span> jdoCopyKeyFieldsFromObjectId(PersistenceCapable.ObjectIdFieldConsumer fc, <span class="predefined-type">Object</span> oid)
     {
-        if (fc == null)
-            throw new IllegalArgumentException
-              ("ObjectIdFieldConsumer is null");
-        if (!(oid instanceof LongIdentity))
-            throw new ClassCastException
-              ("oid is not instanceof javax.jdo.identity.LongIdentity");
+        <span class="keyword">if</span> (fc == <span class="predefined-constant">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>
+              (<span class="string"><span class="delimiter">&quot;</span><span class="content">ObjectIdFieldConsumer is null</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">if</span> (!(oid <span class="keyword">instanceof</span> LongIdentity))
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ClassCastException</span>
+              (<span class="string"><span class="delimiter">&quot;</span><span class="content">oid is not instanceof javax.jdo.identity.LongIdentity</span><span class="delimiter">&quot;</span></span>);
         LongIdentity o = (LongIdentity) oid;
-        fc.storeLongField(1, o.getKey());
+        fc.storeLongField(<span class="integer">1</span>, o.getKey());
     }
 
-    protected void jdoCopyKeyFieldsFromObjectId(Object oid)
+    <span class="directive">protected</span> <span class="type">void</span> jdoCopyKeyFieldsFromObjectId(<span class="predefined-type">Object</span> oid)
     {
-        if (!(oid instanceof LongIdentity))
-            throw new ClassCastException
-              ("key class is not javax.jdo.identity.LongIdentity or null");
+        <span class="keyword">if</span> (!(oid <span class="keyword">instanceof</span> LongIdentity))
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ClassCastException</span>
+              (<span class="string"><span class="delimiter">&quot;</span><span class="content">key class is not javax.jdo.identity.LongIdentity or null</span><span class="delimiter">&quot;</span></span>);
         LongIdentity o = (LongIdentity) oid;
         id = o.getKey();
     }
 
-    public final void jdoCopyKeyFieldsToObjectId(Object oid)
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">void</span> jdoCopyKeyFieldsToObjectId(<span class="predefined-type">Object</span> oid)
     {
-        throw new JDOFatalInternalException
-          ("It's illegal to call jdoCopyKeyFieldsToObjectId for a class with Single Field Identity.");
+        <span class="keyword">throw</span> <span class="keyword">new</span> JDOFatalInternalException
+          (<span class="string"><span class="delimiter">&quot;</span><span class="content">It's illegal to call jdoCopyKeyFieldsToObjectId for a class with Single Field Identity.</span><span class="delimiter">&quot;</span></span>);
     }
 
-    public final void jdoCopyKeyFieldsToObjectId
-    (PersistenceCapable.ObjectIdFieldSupplier fs, Object oid) {
-    throw new JDOFatalInternalException
-          ("It's illegal to call jdoCopyKeyFieldsToObjectId for a class with Single Field Identity.");
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">void</span> jdoCopyKeyFieldsToObjectId
+    (PersistenceCapable.ObjectIdFieldSupplier fs, <span class="predefined-type">Object</span> oid) {
+    <span class="keyword">throw</span> <span class="keyword">new</span> JDOFatalInternalException
+          (<span class="string"><span class="delimiter">&quot;</span><span class="content">It's illegal to call jdoCopyKeyFieldsToObjectId for a class with Single Field Identity.</span><span class="delimiter">&quot;</span></span>);
     }
 
-    public final Object jdoGetObjectId()
+    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">Object</span> jdoGetObjectId()
     {
-        if (jdoStateManager != null)
-            return jdoStateManager.getObjectId(this);
-        if (this.jdoIsDetached() != true)
-            return null;
-        return jdoDetachedState[0];
+        <span class="keyword">if</span> (jdoStateManager != <span class="predefined-constant">null</span>)
+            <span class="keyword">return</span> jdoStateManager.getObjectId(<span class="local-variable">this</span>);
+        <span class="keyword">if</span> (<span class="local-variable">this</span>.jdoIsDetached() != <span class="predefined-constant">true</span>)
+            <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+        <span class="keyword">return</span> jdoDetachedState[<span class="integer">0</span>];
     }
 
-    public final Object jdoGetVersion()
+    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">Object</span> jdoGetVersion()
     {
-        if (jdoStateManager != null)
-            return jdoStateManager.getVersion(this);
-        if (this.jdoIsDetached() != true)
-            return null;
-        return jdoDetachedState[1];
+        <span class="keyword">if</span> (jdoStateManager != <span class="predefined-constant">null</span>)
+            <span class="keyword">return</span> jdoStateManager.getVersion(<span class="local-variable">this</span>);
+        <span class="keyword">if</span> (<span class="local-variable">this</span>.jdoIsDetached() != <span class="predefined-constant">true</span>)
+            <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+        <span class="keyword">return</span> jdoDetachedState[<span class="integer">1</span>];
     }
 
-    protected final void jdoPreSerialize()
+    <span class="directive">protected</span> <span class="directive">final</span> <span class="type">void</span> jdoPreSerialize()
     {
-        if (jdoStateManager != null)
-            jdoStateManager.preSerialize(this);
+        <span class="keyword">if</span> (jdoStateManager != <span class="predefined-constant">null</span>)
+            jdoStateManager.preSerialize(<span class="local-variable">this</span>);
     }
 
-    public final PersistenceManager jdoGetPersistenceManager()
+    <span class="directive">public</span> <span class="directive">final</span> PersistenceManager jdoGetPersistenceManager()
     {
-        return (jdoStateManager != null
-            ? jdoStateManager.getPersistenceManager(this) : null);
+        <span class="keyword">return</span> (jdoStateManager != <span class="predefined-constant">null</span>
+            ? jdoStateManager.getPersistenceManager(<span class="local-variable">this</span>) : <span class="predefined-constant">null</span>);
     }
 
-    public final Object jdoGetTransactionalObjectId()
+    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">Object</span> jdoGetTransactionalObjectId()
     {
-        return (jdoStateManager != null
-           ? jdoStateManager.getTransactionalObjectId(this) : null);
+        <span class="keyword">return</span> (jdoStateManager != <span class="predefined-constant">null</span>
+           ? jdoStateManager.getTransactionalObjectId(<span class="local-variable">this</span>) : <span class="predefined-constant">null</span>);
     }
 
-    public final boolean jdoIsDeleted()
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">boolean</span> jdoIsDeleted()
     {
-        return (jdoStateManager != null ? jdoStateManager.isDeleted(this): false);
+        <span class="keyword">return</span> (jdoStateManager != <span class="predefined-constant">null</span> ? jdoStateManager.isDeleted(<span class="local-variable">this</span>): <span class="predefined-constant">false</span>);
     }
 
-    public final boolean jdoIsDirty()
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">boolean</span> jdoIsDirty()
     {
-        if (jdoStateManager != null)
-            return jdoStateManager.isDirty(this);
-        if (this.jdoIsDetached() != true)
-            return false;
-        if (((BitSet) jdoDetachedState[3]).length() &lt;= 0)
-            return false;
-        return true;
+        <span class="keyword">if</span> (jdoStateManager != <span class="predefined-constant">null</span>)
+            <span class="keyword">return</span> jdoStateManager.isDirty(<span class="local-variable">this</span>);
+        <span class="keyword">if</span> (<span class="local-variable">this</span>.jdoIsDetached() != <span class="predefined-constant">true</span>)
+            <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+        <span class="keyword">if</span> (((<span class="predefined-type">BitSet</span>) jdoDetachedState[<span class="integer">3</span>]).length() &lt;= <span class="integer">0</span>)
+            <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+        <span class="keyword">return</span> <span class="predefined-constant">true</span>;
     }
 
-    public final boolean jdoIsNew()
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">boolean</span> jdoIsNew()
     {
-        return jdoStateManager != null ? jdoStateManager.isNew(this) : false;
+        <span class="keyword">return</span> jdoStateManager != <span class="predefined-constant">null</span> ? jdoStateManager.isNew(<span class="local-variable">this</span>) : <span class="predefined-constant">false</span>;
     }
 
-    public final boolean jdoIsPersistent()
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">boolean</span> jdoIsPersistent()
     {
-        return (jdoStateManager != null ? jdoStateManager.isPersistent(this): false);
+        <span class="keyword">return</span> (jdoStateManager != <span class="predefined-constant">null</span> ? jdoStateManager.isPersistent(<span class="local-variable">this</span>): <span class="predefined-constant">false</span>);
     }
 
-    public final boolean jdoIsTransactional()
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">boolean</span> jdoIsTransactional()
     {
-        return (jdoStateManager != null ? jdoStateManager.isTransactional(this): false);
+        <span class="keyword">return</span> (jdoStateManager != <span class="predefined-constant">null</span> ? jdoStateManager.isTransactional(<span class="local-variable">this</span>): <span class="predefined-constant">false</span>);
     }
 
-    public final boolean jdoIsDetached()
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">boolean</span> jdoIsDetached()
     {
-        if (jdoStateManager == null) {
-            if (jdoDetachedState == null)
-                return false;
-            return true;
+        <span class="keyword">if</span> (jdoStateManager == <span class="predefined-constant">null</span>) {
+            <span class="keyword">if</span> (jdoDetachedState == <span class="predefined-constant">null</span>)
+                <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+            <span class="keyword">return</span> <span class="predefined-constant">true</span>;
         }
-        return false;
+        <span class="keyword">return</span> <span class="predefined-constant">false</span>;
     }
 
-    public final void jdoMakeDirty(String fieldName)
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">void</span> jdoMakeDirty(<span class="predefined-type">String</span> fieldName)
     {
-        if (jdoStateManager != null)
-            jdoStateManager.makeDirty(this, fieldName);
+        <span class="keyword">if</span> (jdoStateManager != <span class="predefined-constant">null</span>)
+            jdoStateManager.makeDirty(<span class="local-variable">this</span>, fieldName);
     }
 
-    public final Object jdoNewObjectIdInstance()
+    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">Object</span> jdoNewObjectIdInstance()
     {
-        return new LongIdentity(getClass(), id);
+        <span class="keyword">return</span> <span class="keyword">new</span> LongIdentity(getClass(), id);
     }
 
-    public final Object jdoNewObjectIdInstance(Object key)
+    <span class="directive">public</span> <span class="directive">final</span> <span class="predefined-type">Object</span> jdoNewObjectIdInstance(<span class="predefined-type">Object</span> key)
     {
-        if (key == null)
-            throw new IllegalArgumentException("key is null");
-        if (key instanceof String != true)
-            return new LongIdentity(this.getClass(), (Long) key);
-        return new LongIdentity(this.getClass(), (String) key);
+        <span class="keyword">if</span> (key == <span class="predefined-constant">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">key is null</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">if</span> (key <span class="keyword">instanceof</span> <span class="predefined-type">String</span> != <span class="predefined-constant">true</span>)
+            <span class="keyword">return</span> <span class="keyword">new</span> LongIdentity(<span class="local-variable">this</span>.getClass(), (<span class="predefined-type">Long</span>) key);
+        <span class="keyword">return</span> <span class="keyword">new</span> LongIdentity(<span class="local-variable">this</span>.getClass(), (<span class="predefined-type">String</span>) key);
     }
 
-    public final void jdoProvideFields(int[] fieldId)
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">void</span> jdoProvideFields(<span class="type">int</span><span class="type">[]</span> fieldId)
     {
-        if (fieldId == null)
-            throw new IllegalArgumentException("argment is null");
-        int i = fieldId.length - 1;
-        if (i &gt;= 0)
+        <span class="keyword">if</span> (fieldId == <span class="predefined-constant">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">argment is null</span><span class="delimiter">&quot;</span></span>);
+        <span class="type">int</span> i = fieldId.length - <span class="integer">1</span>;
+        <span class="keyword">if</span> (i &gt;= <span class="integer">0</span>)
         {
-            do
+            <span class="keyword">do</span>
                 jdoProvideField(fieldId[i]);
-            while (--i &gt;= 0);
+            <span class="keyword">while</span> (--i &gt;= <span class="integer">0</span>);
         }
     }
 
-    public final void jdoReplaceFields(int[] fieldId)
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">void</span> jdoReplaceFields(<span class="type">int</span><span class="type">[]</span> fieldId)
     {
-        if (fieldId == null)
-            throw new IllegalArgumentException("argument is null");
-        int i = fieldId.length;
-        if (i &gt; 0)
+        <span class="keyword">if</span> (fieldId == <span class="predefined-constant">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">argument is null</span><span class="delimiter">&quot;</span></span>);
+        <span class="type">int</span> i = fieldId.length;
+        <span class="keyword">if</span> (i &gt; <span class="integer">0</span>)
         {
-            int i_0_ = 0;
-            do
+            <span class="type">int</span> i_0_ = <span class="integer">0</span>;
+            <span class="keyword">do</span>
                 jdoReplaceField(fieldId[i_0_]);
-            while (++i_0_ &lt; i);
+            <span class="keyword">while</span> (++i_0_ &lt; i);
         }
     }
 
-    public final void jdoReplaceFlags()
+    <span class="directive">public</span> <span class="directive">final</span> <span class="type">void</span> jdoReplaceFlags()
     {
-        if (jdoStateManager != null)
+        <span class="keyword">if</span> (jdoStateManager != <span class="predefined-constant">null</span>)
         {
-            A a = this;
-            a.jdoFlags = a.jdoStateManager.replacingFlags(this);
+            A a = <span class="local-variable">this</span>;
+            a.jdoFlags = a.jdoStateManager.replacingFlags(<span class="local-variable">this</span>);
         }
     }
 
-    public final synchronized void jdoReplaceStateManager(StateManager stateManager)
+    <span class="directive">public</span> <span class="directive">final</span> <span class="directive">synchronized</span> <span class="type">void</span> jdoReplaceStateManager(StateManager stateManager)
     {
-        if (jdoStateManager != null)
+        <span class="keyword">if</span> (jdoStateManager != <span class="predefined-constant">null</span>)
         {
-            A a = this;
-            a.jdoStateManager = a.jdoStateManager.replacingStateManager(this, stateManager);
+            A a = <span class="local-variable">this</span>;
+            a.jdoStateManager = a.jdoStateManager.replacingStateManager(<span class="local-variable">this</span>, stateManager);
         }
-        else
+        <span class="keyword">else</span>
         {
             JDOImplHelper.checkAuthorizedStateManager(sm);
             jdoStateManager = stateManager;
-            jdoFlags = (byte) 1;
+            jdoFlags = (<span class="type">byte</span>) <span class="integer">1</span>;
         }
     }
 
-    public final synchronized void jdoReplaceDetachedState()
+    <span class="directive">public</span> <span class="directive">final</span> <span class="directive">synchronized</span> <span class="type">void</span> jdoReplaceDetachedState()
     {
-        if (jdoStateManager == null)
-            throw new IllegalStateException("state manager is null");
-        A a = this;
-        a.jdoDetachedState = a.jdoStateManager.replacingDetachedState(this, jdoDetachedState);
+        <span class="keyword">if</span> (jdoStateManager == <span class="predefined-constant">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalStateException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">state manager is null</span><span class="delimiter">&quot;</span></span>);
+        A a = <span class="local-variable">this</span>;
+        a.jdoDetachedState = a.jdoStateManager.replacingDetachedState(<span class="local-variable">this</span>, jdoDetachedState);
     }
 
-    public PersistenceCapable jdoNewInstance(StateManager sm)
+    <span class="directive">public</span> PersistenceCapable jdoNewInstance(StateManager sm)
     {
-        A result = new A();
+        A result = <span class="keyword">new</span> A();
         A a = result;
-        a.jdoFlags = (byte) 1;
+        a.jdoFlags = (<span class="type">byte</span>) <span class="integer">1</span>;
         a.jdoStateManager = sm;
-        return a;
+        <span class="keyword">return</span> a;
     }
 
-    public PersistenceCapable jdoNewInstance(StateManager sm, Object o)
+    <span class="directive">public</span> PersistenceCapable jdoNewInstance(StateManager sm, <span class="predefined-type">Object</span> o)
     {
-        A result = new A();
+        A result = <span class="keyword">new</span> A();
         A a = result;
-        a.jdoFlags = (byte) 1;
+        a.jdoFlags = (<span class="type">byte</span>) <span class="integer">1</span>;
         a.jdoStateManager = sm;
         result.jdoCopyKeyFieldsFromObjectId(o);
-        return a;
+        <span class="keyword">return</span> a;
     }
 
-    public void jdoReplaceField(int fieldIndex)
+    <span class="directive">public</span> <span class="type">void</span> jdoReplaceField(<span class="type">int</span> fieldIndex)
     {
-        if (jdoStateManager == null)
-            throw new IllegalStateException("state manager is null");
-        switch (fieldIndex)
+        <span class="keyword">if</span> (jdoStateManager == <span class="predefined-constant">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalStateException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">state manager is null</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">switch</span> (fieldIndex)
         {
-            case 0:
+            <span class="keyword">case</span> <span class="integer">0</span>:
             {
-                A a = this;
-                a.b = (B) a.jdoStateManager.replacingObjectField(this, fieldIndex);
-                break;
+                A a = <span class="local-variable">this</span>;
+                a.b = (B) a.jdoStateManager.replacingObjectField(<span class="local-variable">this</span>, fieldIndex);
+                <span class="keyword">break</span>;
             }
-            case 1:
+            <span class="keyword">case</span> <span class="integer">1</span>:
             {
-                A a = this;
-                a.id = a.jdoStateManager.replacingLongField(this, fieldIndex);
-                break;
+                A a = <span class="local-variable">this</span>;
+                a.id = a.jdoStateManager.replacingLongField(<span class="local-variable">this</span>, fieldIndex);
+                <span class="keyword">break</span>;
             }
-            case 2:
+            <span class="keyword">case</span> <span class="integer">2</span>:
             {
-                A a = this;
-                a.name = a.jdoStateManager.replacingStringField(this, fieldIndex);
-                break;
+                A a = <span class="local-variable">this</span>;
+                a.name = a.jdoStateManager.replacingStringField(<span class="local-variable">this</span>, fieldIndex);
+                <span class="keyword">break</span>;
             }
-            default:
-                throw new IllegalArgumentException("out of field index :" + fieldIndex);
+            <span class="keyword">default</span>:
+                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">out of field index :</span><span class="delimiter">&quot;</span></span> + fieldIndex);
         }
     }
 
-    public void jdoProvideField(int fieldIndex)
+    <span class="directive">public</span> <span class="type">void</span> jdoProvideField(<span class="type">int</span> fieldIndex)
     {
-        if (jdoStateManager == null)
-            throw new IllegalStateException("state manager is null");
-        switch (fieldIndex)
+        <span class="keyword">if</span> (jdoStateManager == <span class="predefined-constant">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalStateException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">state manager is null</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">switch</span> (fieldIndex)
         {
-            case 0:
-                jdoStateManager.providedObjectField(this, fieldIndex, b);
-                break;
-            case 1:
-                jdoStateManager.providedLongField(this, fieldIndex, id);
-                break;
-            case 2:
-                jdoStateManager.providedStringField(this, fieldIndex, name);
-                break;
-            default:
-                throw new IllegalArgumentException("out of field index :" + fieldIndex);
+            <span class="keyword">case</span> <span class="integer">0</span>:
+                jdoStateManager.providedObjectField(<span class="local-variable">this</span>, fieldIndex, b);
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> <span class="integer">1</span>:
+                jdoStateManager.providedLongField(<span class="local-variable">this</span>, fieldIndex, id);
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> <span class="integer">2</span>:
+                jdoStateManager.providedStringField(<span class="local-variable">this</span>, fieldIndex, name);
+                <span class="keyword">break</span>;
+            <span class="keyword">default</span>:
+                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">out of field index :</span><span class="delimiter">&quot;</span></span> + fieldIndex);
          }
     }
 
-    protected final void jdoCopyField(A obj, int index)
+    <span class="directive">protected</span> <span class="directive">final</span> <span class="type">void</span> jdoCopyField(A obj, <span class="type">int</span> index)
     {
-        switch (index)
+        <span class="keyword">switch</span> (index)
         {
-            case 0:
+            <span class="keyword">case</span> <span class="integer">0</span>:
                 b = obj.b;
-                break;
-            case 1:
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> <span class="integer">1</span>:
                 id = obj.id;
-                break;
-            case 2:
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> <span class="integer">2</span>:
                 name = obj.name;
-                break;
-            default:
-                throw new IllegalArgumentException("out of field index :" + index);
+                <span class="keyword">break</span>;
+            <span class="keyword">default</span>:
+                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">out of field index :</span><span class="delimiter">&quot;</span></span> + index);
         }
     }
 
-    public void jdoCopyFields(Object obj, int[] fieldNumbers)
+    <span class="directive">public</span> <span class="type">void</span> jdoCopyFields(<span class="predefined-type">Object</span> obj, <span class="type">int</span><span class="type">[]</span> fieldNumbers)
     {
-        if (jdoStateManager == null)
-            throw new IllegalStateException("state manager is null");
-        if (fieldNumbers == null)
-            throw new IllegalStateException("fieldNumbers is null");
-        if (obj instanceof A != true)
-            throw new IllegalArgumentException("object is not org.apache.jdo.test.A");
+        <span class="keyword">if</span> (jdoStateManager == <span class="predefined-constant">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalStateException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">state manager is null</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">if</span> (fieldNumbers == <span class="predefined-constant">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalStateException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">fieldNumbers is null</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> A != <span class="predefined-constant">true</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">object is not org.apache.jdo.test.A</span><span class="delimiter">&quot;</span></span>);
         A me = (A) obj;
-        if (jdoStateManager != me.jdoStateManager)
-            throw new IllegalArgumentException("state manager unmatch");
-        int i = fieldNumbers.length - 1;
-        if (i &gt;= 0)
+        <span class="keyword">if</span> (jdoStateManager != me.jdoStateManager)
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">state manager unmatch</span><span class="delimiter">&quot;</span></span>);
+        <span class="type">int</span> i = fieldNumbers.length - <span class="integer">1</span>;
+        <span class="keyword">if</span> (i &gt;= <span class="integer">0</span>)
         {
-            do
+            <span class="keyword">do</span>
                 jdoCopyField(me, fieldNumbers[i]);
-            while (--i &gt;= 0);
+            <span class="keyword">while</span> (--i &gt;= <span class="integer">0</span>);
         }
     }
 
-    private static final String[] __jdoFieldNamesInit()
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span><span class="type">[]</span> __jdoFieldNamesInit()
     {
-        return new String[] { "b", "id", "name" };
+        <span class="keyword">return</span> <span class="keyword">new</span> <span class="predefined-type">String</span><span class="type">[]</span> { <span class="string"><span class="delimiter">&quot;</span><span class="content">b</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span> };
     }
 
-    private static final Class[] __jdoFieldTypesInit()
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Class</span><span class="type">[]</span> __jdoFieldTypesInit()
     {
-        return new Class[] { ___jdo$loadClass("org.apache.jdo.test.B"), Long.TYPE,
-                 ___jdo$loadClass("java.lang.String") };
+        <span class="keyword">return</span> <span class="keyword">new</span> <span class="predefined-type">Class</span><span class="type">[]</span> { ___jdo<span class="error">$</span>loadClass(<span class="string"><span class="delimiter">&quot;</span><span class="content">org.apache.jdo.test.B</span><span class="delimiter">&quot;</span></span>), <span class="predefined-type">Long</span>.TYPE,
+                 ___jdo<span class="error">$</span>loadClass(<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span>) };
     }
 
-    private static final byte[] __jdoFieldFlagsInit()
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">byte</span><span class="type">[]</span> __jdoFieldFlagsInit()
     {
-        return new byte[] { 10, 24, 21 };
+        <span class="keyword">return</span> <span class="keyword">new</span> <span class="type">byte</span><span class="type">[]</span> { <span class="integer">10</span>, <span class="integer">24</span>, <span class="integer">21</span> };
     }
 
-    protected static int __jdoGetInheritedFieldCount()
+    <span class="directive">protected</span> <span class="directive">static</span> <span class="type">int</span> __jdoGetInheritedFieldCount()
     {
-        return 0;
+        <span class="keyword">return</span> <span class="integer">0</span>;
     }
 
-    protected static int jdoGetManagedFieldCount()
+    <span class="directive">protected</span> <span class="directive">static</span> <span class="type">int</span> jdoGetManagedFieldCount()
     {
-        return 3;
+        <span class="keyword">return</span> <span class="integer">3</span>;
     }
 
-    private static Class __jdoPersistenceCapableSuperclassInit()
+    <span class="directive">private</span> <span class="directive">static</span> <span class="predefined-type">Class</span> __jdoPersistenceCapableSuperclassInit()
     {
-        return null;
+        <span class="keyword">return</span> <span class="predefined-constant">null</span>;
     }
 
-    public static Class ___jdo$loadClass(String className)
+    <span class="directive">public</span> <span class="directive">static</span> <span class="predefined-type">Class</span> ___jdo<span class="error">$</span>loadClass(<span class="predefined-type">String</span> className)
     {
-        try
+        <span class="keyword">try</span>
         {
-            return Class.forName(className);
+            <span class="keyword">return</span> <span class="predefined-type">Class</span>.forName(className);
         }
-        catch (ClassNotFoundException e)
+        <span class="keyword">catch</span> (<span class="exception">ClassNotFoundException</span> e)
         {
-            throw new NoClassDefFoundError(e.getMessage());
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">NoClassDefFoundError</span>(e.getMessage());
         }
     }
 
-    private Object jdoSuperClone()
-    throws CloneNotSupportedException
+    <span class="directive">private</span> <span class="predefined-type">Object</span> jdoSuperClone()
+    <span class="directive">throws</span> <span class="exception">CloneNotSupportedException</span>
     {
-        A o = (A) super.clone();
-        o.jdoFlags = (byte) 0;
-        o.jdoStateManager = null;
-        return o;
+        A o = (A) <span class="local-variable">super</span>.clone();
+        o.jdoFlags = (<span class="type">byte</span>) <span class="integer">0</span>;
+        o.jdoStateManager = <span class="predefined-constant">null</span>;
+        <span class="keyword">return</span> o;
     }
 
-    public A()
+    <span class="directive">public</span> A()
     {
-        /* empty */
+        <span class="comment">/* empty */</span>
     }
 
-    static void jdoSetb(A objPC, B b_m)
+    <span class="directive">static</span> <span class="type">void</span> jdoSetb(A objPC, B b_m)
     {
-        if (objPC.jdoStateManager == null)
+        <span class="keyword">if</span> (objPC.jdoStateManager == <span class="predefined-constant">null</span>)
             objPC.b = b_m;
-        else
-            objPC.jdoStateManager.setObjectField(objPC, 0, objPC.b, b_m);
-        if (objPC.jdoIsDetached() == true)
-            ((BitSet) objPC.jdoDetachedState[3]).set(0);
+        <span class="keyword">else</span>
+            objPC.jdoStateManager.setObjectField(objPC, <span class="integer">0</span>, objPC.b, b_m);
+        <span class="keyword">if</span> (objPC.jdoIsDetached() == <span class="predefined-constant">true</span>)
+            ((<span class="predefined-type">BitSet</span>) objPC.jdoDetachedState[<span class="integer">3</span>]).set(<span class="integer">0</span>);
     }
 
-    static B jdoGetb(A objPC)
+    <span class="directive">static</span> B jdoGetb(A objPC)
     {
-        if (objPC.jdoStateManager != null
-        &amp;&amp; !objPC.jdoStateManager.isLoaded(objPC, 0))
-            return (B) objPC.jdoStateManager.getObjectField(objPC, 0, objPC.b);
-        if (objPC.jdoIsDetached() != false
-        &amp;&amp; ((BitSet) objPC.jdoDetachedState[2]).get(0) != true
-        &amp;&amp; ((BitSet) objPC.jdoDetachedState[3]).get(0) != true)
-            throw new JDODetachedFieldAccessException
-              ("You have just attempted to access field \"b\" yet this field was not detached when you detached the object. " +
-               "Either dont access this field, or detach the field when detaching the object.");
-        return objPC.b;
+        <span class="keyword">if</span> (objPC.jdoStateManager != <span class="predefined-constant">null</span>
+        &amp;&amp; !objPC.jdoStateManager.isLoaded(objPC, <span class="integer">0</span>))
+            <span class="keyword">return</span> (B) objPC.jdoStateManager.getObjectField(objPC, <span class="integer">0</span>, objPC.b);
+        <span class="keyword">if</span> (objPC.jdoIsDetached() != <span class="predefined-constant">false</span>
+        &amp;&amp; ((<span class="predefined-type">BitSet</span>) objPC.jdoDetachedState[<span class="integer">2</span>]).get(<span class="integer">0</span>) != <span class="predefined-constant">true</span>
+        &amp;&amp; ((<span class="predefined-type">BitSet</span>) objPC.jdoDetachedState[<span class="integer">3</span>]).get(<span class="integer">0</span>) != <span class="predefined-constant">true</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> JDODetachedFieldAccessException
+              (<span class="string"><span class="delimiter">&quot;</span><span class="content">You have just attempted to access field </span><span class="char">\&quot;</span><span class="content">b</span><span class="char">\&quot;</span><span class="content"> yet this field was not detached when you detached the object. </span><span class="delimiter">&quot;</span></span> +
+               <span class="string"><span class="delimiter">&quot;</span><span class="content">Either dont access this field, or detach the field when detaching the object.</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">return</span> objPC.b;
     }
 
-    static void jdoSetid(A objPC, long id_n)
+    <span class="directive">static</span> <span class="type">void</span> jdoSetid(A objPC, <span class="type">long</span> id_n)
     {
         objPC.id = id_n;
     }
 
-    static long jdoGetid(A objPC)
+    <span class="directive">static</span> <span class="type">long</span> jdoGetid(A objPC)
     {
-        return objPC.id;
+        <span class="keyword">return</span> objPC.id;
     }
 
-    static void jdoSetname(A objPC, String name_c)
+    <span class="directive">static</span> <span class="type">void</span> jdoSetname(A objPC, <span class="predefined-type">String</span> name_c)
     {
-        if (objPC.jdoFlags != 0 &amp;&amp; objPC.jdoStateManager != null)
-            objPC.jdoStateManager.setStringField(objPC, 2, objPC.name, name_c);
-        else
+        <span class="keyword">if</span> (objPC.jdoFlags != <span class="integer">0</span> &amp;&amp; objPC.jdoStateManager != <span class="predefined-constant">null</span>)
+            objPC.jdoStateManager.setStringField(objPC, <span class="integer">2</span>, objPC.name, name_c);
+        <span class="keyword">else</span>
         {
             objPC.name = name_c;
-            if (objPC.jdoIsDetached() == true)
-                ((BitSet) objPC.jdoDetachedState[3]).set(2);
+            <span class="keyword">if</span> (objPC.jdoIsDetached() == <span class="predefined-constant">true</span>)
+                ((<span class="predefined-type">BitSet</span>) objPC.jdoDetachedState[<span class="integer">3</span>]).set(<span class="integer">2</span>);
         }
     }
 
-    static String jdoGetname(A objPC)
+    <span class="directive">static</span> <span class="predefined-type">String</span> jdoGetname(A objPC)
     {
-        if (objPC.jdoFlags &gt; 0 &amp;&amp; objPC.jdoStateManager != null &amp;&amp; !objPC.jdoStateManager.isLoaded(objPC, 2))
-            return objPC.jdoStateManager.getStringField(objPC, 2, objPC.name);
-        if (objPC.jdoIsDetached() != false &amp;&amp; ((BitSet) objPC.jdoDetachedState[2]).get(2) != true)
-            throw new JDODetachedFieldAccessException
-              ("You have just attempted to access field \"name\" yet this field was not detached when you detached the object." +
-               "Either dont access this field, or detach the field when detaching the object.");
-        return objPC.name;
+        <span class="keyword">if</span> (objPC.jdoFlags &gt; <span class="integer">0</span> &amp;&amp; objPC.jdoStateManager != <span class="predefined-constant">null</span> &amp;&amp; !objPC.jdoStateManager.isLoaded(objPC, <span class="integer">2</span>))
+            <span class="keyword">return</span> objPC.jdoStateManager.getStringField(objPC, <span class="integer">2</span>, objPC.name);
+        <span class="keyword">if</span> (objPC.jdoIsDetached() != <span class="predefined-constant">false</span> &amp;&amp; ((<span class="predefined-type">BitSet</span>) objPC.jdoDetachedState[<span class="integer">2</span>]).get(<span class="integer">2</span>) != <span class="predefined-constant">true</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> JDODetachedFieldAccessException
+              (<span class="string"><span class="delimiter">&quot;</span><span class="content">You have just attempted to access field </span><span class="char">\&quot;</span><span class="content">name</span><span class="char">\&quot;</span><span class="content"> yet this field was not detached when you detached the object.</span><span class="delimiter">&quot;</span></span> +
+               <span class="string"><span class="delimiter">&quot;</span><span class="content">Either dont access this field, or detach the field when detaching the object.</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">return</span> objPC.name;
     }
 
-    public A(String name)
+    <span class="directive">public</span> A(<span class="predefined-type">String</span> name)
     {
-        jdoSetname(this, name);
+        jdoSetname(<span class="local-variable">this</span>, name);
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 </div>

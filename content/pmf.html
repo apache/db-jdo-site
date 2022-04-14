@@ -204,7 +204,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="pm.html">PersistenceManager</a></li>
                         <li><a href="transactions.html">Transactions</a></li>
                         <li><a href="attach_detach.html">Attach-Detach</a></li>
-                        <li><a href="fetchgroups.html">Fetch Groups</a></li>
+                        <li><a href="fetchgroups.html">Fetch Plan/Groups</a></li>
                         <li><a href="state_transition.html">Object States</a></li>
                         <li><a href="object_retrieval.html">Object Retrieval</a></li>
                         <li><a href="exceptions.html">Exceptions</a></li>
@@ -248,6 +248,9 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="jdoql_methods.html">Methods</a></li>
                         <li><a href="jdoql_result.html">Result</a></li>
                         <li><a href="jdoql_quickref.pdf">Quick Ref PDF</a></li>
+                        <li><a href="jdoql_typed.html">JDOQL Typed API</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="query_sql.html">SQL</a></li>
                     </ul>
                </li>
 
@@ -300,31 +303,28 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                 
                 <div id="doc-content">
                     <div class="sect1">
-<h2 id="index">Persistence Manager Factory<a id="Persistence_Manager_Factory"></a></h2>
+<h2 id="Persistence_Manager_Factory">Persistence Manager Factory</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Any JDO-enabled application will require at least one
-<em>PersistenceManagerFactory</em>. Typically applications create one per
-datastore being utilised. A <em>PersistenceManagerFactory</em> provides access
-to <em>PersistenceManager</em>s which allow objects to be persisted, and
-retrieved. The <em>PersistenceManagerFactory</em> can be configured to provide
-particular behaviour.</p>
+<p>Any JDO-enabled application will require at least one <em>PersistenceManagerFactory</em>.
+Typically applications create one per datastore being utilised.
+A <em>PersistenceManagerFactory</em> provides access to <em>PersistenceManager</em>s which allow objects to be persisted, and retrieved.
+The <em>PersistenceManagerFactory</em> can be configured to provide particular behaviour.</p>
 </div>
 <div class="paragraph">
 <p>The simplest way of creating a <em>PersistenceManagerFactory</em>
 <a href="api32/apidocs/javax/jdo/PersistenceManagerFactory.html"><span class="image"><img src="images/javadoc.png" alt="image"></span></a>
 is as follows</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>Properties properties = new Properties();
-properties.setProperty("javax.jdo.PersistenceManagerFactoryClass",
-                "{my_implementation_pmf_class}");
-properties.setProperty("javax.jdo.option.ConnectionDriverName","com.mysql.jdbc.Driver");
-properties.setProperty("javax.jdo.option.ConnectionURL","jdbc:mysql://localhost/myDB");
-properties.setProperty("javax.jdo.option.ConnectionUserName","login");
-properties.setProperty("javax.jdo.option.ConnectionPassword","password");
-PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(properties);</pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Properties</span> properties = <span class="keyword">new</span> <span class="predefined-type">Properties</span>();
+properties.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.PersistenceManagerFactoryClass</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">{my_implementation_pmf_class}</span><span class="delimiter">&quot;</span></span>);
+properties.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.option.ConnectionDriverName</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">com.mysql.jdbc.Driver</span><span class="delimiter">&quot;</span></span>);
+properties.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.option.ConnectionURL</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">jdbc:mysql://localhost/myDB</span><span class="delimiter">&quot;</span></span>);
+properties.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.option.ConnectionUserName</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">login</span><span class="delimiter">&quot;</span></span>);
+properties.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.option.ConnectionPassword</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>);
+PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(properties);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -343,9 +343,9 @@ javax.jdo.option.ConnectionPassword=password</pre>
 <div class="paragraph">
 <p>and then to create the <em>PersistenceManagerFactory</em> using this file</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("jdo.properties");</pre>
+<pre class="CodeRay highlight"><code data-lang="java">PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(<span class="string"><span class="delimiter">&quot;</span><span class="content">jdo.properties</span><span class="delimiter">&quot;</span></span>);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -354,10 +354,8 @@ javax.jdo.option.ConnectionPassword=password</pre>
 accessing the properties via JNDI.</p>
 </div>
 <div class="paragraph">
-<p>Whichever way we wish to obtain the <em>PersistenceManagerFactory</em> we have
-defined a series of properties to give the behaviour of the
-<em>PersistenceManagerFactory</em>. The first property specifies to use PMF of
-the implementation required to be used, and the following 4 properties
+<p>Whichever way we wish to obtain the <em>PersistenceManagerFactory</em> we have defined a series of properties to give the behaviour of the <em>PersistenceManagerFactory</em>.
+The first property specifies to use PMF of the implementation required to be used, and the following 4 properties
 define the datastore that it should connect to.</p>
 </div>
 <div class="paragraph">
@@ -383,25 +381,23 @@ define the datastore that it should connect to.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.ConnectionFactory</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Instance of a connection factory. For RBDMS, it must be an instance of
-javax.sql.DataSource. <strong>This is for a transactional DataSource</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Instance of a connection factory. For RBDMS, it must be an instance of javax.sql.DataSource.
+<strong>This is for a transactional DataSource</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.ConnectionFactory2</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Instance of a connection factory. For RBDMS, it must be an instance of
-javax.sql.DataSource. <strong>This is for a non-transactional DataSource</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Instance of a connection factory. For RBDMS, it must be an instance of javax.sql.DataSource.
+<strong>This is for a non-transactional DataSource</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.ConnectionFactoryName</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The JNDI name for a connection factory. For RBDMS, it must be a JNDI
-name that points to a javax.sql.DataSource object. <strong>This is for a
-transactional DataSource</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The JNDI name for a connection factory. For RBDMS, it must be a JNDI name that points to a javax.sql.DataSource object.
+<strong>This is for a transactional DataSource</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.ConnectionFactory2Name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The JNDI name for a connection factory. For RBDMS, it must be a JNDI
-name that points to a javax.sql.DataSource object. <strong>This is for a
-non-transactional DataSource</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The JNDI name for a connection factory. For RBDMS, it must be a JNDI name that points to a javax.sql.DataSource object.
+<strong>This is for a non-transactional DataSource</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.ConnectionDriverName</strong></p></td>
@@ -440,88 +436,76 @@ Range of Values: true | false</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.Optimistic</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use <a href="transactions.html">Optimistic transactions</a>. Range of Values: true | false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use <a href="transactions.html">Optimistic transactions</a>.
+Range of Values: true | false</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.RetainValues</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to suppress the clearing of values from persistent instances on
-transaction completion. Range of Values: true | false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to suppress the clearing of values from persistent instances on transaction completion.
+Range of Values: true | false</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.RestoreValues</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether persistent object have transactional field values restored when
-transaction rollback occurs. Range of Values: true | false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether persistent object have transactional field values restored when transaction rollback occurs.
+Range of Values: true | false</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.Mapping</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name for the ORM MetaData mapping files to use with this PMF. For
-example if this is set to "mysql" then the implementation looks for
-MetaData mapping files called "{classname}-mysql.orm" or
-"package-mysql.orm". If this is not specified then the JDO
-implementation assumes that all is specified in the JDO MetaData file.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name for the ORM MetaData mapping files to use with this PMF.
+For example if this is set to "mysql" then the implementation looks for MetaData mapping files called "{classname}-mysql.orm" or "package-mysql.orm".
+If this is not specified then the JDO implementation assumes that all is specified in the JDO MetaData file.
 <em>ORM datastores only</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.mapping.Catalog</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the catalog to use by default for all classes persisted using
-this PMF. This can be overridden in the MetaData where required, and is
-optional. JPOX will prefix all table names with this catalog name if the
-RDBMS supports specification of catalog names in DDL. <em>ORM datastores
-only</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the catalog to use by default for all classes persisted using this PMF.
+This can be overridden in the MetaData where required, and is optional.
+<em>ORM datastores only</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.mapping.Schema</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the schema to use by default for all classes persisted using
-this PMF. This can be overridden in the MetaData where required, and is
-optional. JPOX will prefix all table names with this schema name if the
-RDBMS supports specification of schema names in DDL. <em>ORM datastores
-only</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the schema to use by default for all classes persisted using this PMF.
+This can be overridden in the MetaData where required, and is optional.
+<em>ORM datastores only</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.DetachAllOnCommit</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allows the user to select that when a transaction is committed all
-objects enlisted in that transaction will be automatically detached.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows the user to select that when a transaction is committed all objects enlisted in that transaction will be automatically detached.
 Range of Values: true | <strong>false</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.CopyOnAttach</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether, when attaching a detached object, we create an attached copy or
-simply migrate the detached object to attached state. This is from JDO
-2.1. Range of Values: <strong>true</strong> | false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether, when attaching a detached object, we create an attached copy or simply migrate the detached object to attached state.
+Range of Values: <strong>true</strong> | false</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.TransactionType</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type of transaction to use. If running under J2SE the default is
-RESOURCE_LOCAL, and if running under J2EE the default is JTA.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of transaction to use. If running under JavaSE the default is RESOURCE_LOCAL, and if running under JavaEE/JakartaEE the default is JTA.
 Range of Values: RESOURCE_LOCAL | JTA</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.PersistenceUnitName</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the "persistence-unit" to use with this PMF. This borrows the
-"persistence-unit" concept from JPA for use with JDO 2.1.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the "persistence-unit" to use with this PMF. This borrows the "persistence-unit" concept from JPA for use with JDO.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.ServerTimeZoneID</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Id of the TimeZone under which the datastore server is running. If this
-is not specified or is set to null it is assumed that the datastore
-server is running in the same timezone as the JVM under which the
+<td class="tableblock halign-left valign-top"><p class="tableblock">Id of the TimeZone under which the datastore server is running.
+If this is not specified or is set to null it is assumed that the datastore server is running in the same timezone as the JVM under which the
 implementation is running.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.Name</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the PMF. This is for use with "named PMF" functionality in JDO
-2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the PMF. This is for use with "named PMF" functionality (see jdoconfig.xml).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.ReadOnly</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether this datastore should be treated as read only. Added in JDO 2.2
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether this datastore should be treated as read only.
 Range of Values: true | <strong>false</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.TransactionIsolationLevel</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Isolation level to use for connections in the current transaction. Added
-in JDO 2.2. Range of Values: none | read-committed | read-uncommitted |
-repeatable-read | snapshot | serializable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Isolation level to use for connections in the current transaction.
+Range of Values: none | read-committed | read-uncommitted | repeatable-read | snapshot | serializable</p></td>
 </tr>
 </tbody>
 </table>

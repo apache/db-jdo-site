@@ -11,7 +11,7 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>Coding Standards</title>
+    <title>SQL Queries</title>
 
     <link rel="icon" type="image/png" href="images/JDOx150.png"/>
 
@@ -239,7 +239,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 
                 <li class="dropdown">
                   
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Query<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:#2385c6">Query<span class="caret"></span></a>
                   
                     <ul class="dropdown-menu">
                         <li><a href="query_api.html">Query API</a></li>
@@ -272,7 +272,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 
                <li class="dropdown">
                   
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:#2385c6">Development<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Development<span class="caret"></span></a>
                   
                     <ul class="dropdown-menu">
                         <li><a href="roadmap.html">RoadMap / TODO</a></li>
@@ -295,26 +295,181 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 </nav>
 <div class="container">
     
-        <!-- No TOC -->
         <div class="row-fluid">
-            <div class="col-sm-12">
-                
-                    <!-- no heading -->
-                
+            <div class="col-sm-9">
+<!--                <div class="page-title">
+                    <h3>SQL Queries</h3>
+                </div>
+-->
                 <div id="doc-content">
                     <div class="sect1">
-<h2 id="index">Coding Standards<a id="Codeing_Standars"></a></h2>
+<h2 id="SQL">SQL</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The JDO development team follows the <a href="http://cwiki.apache.org/GMOxDEV/Coding+standards">Apache Geronimo coding style</a>.
-Please use this coding style for contributions (pull request, patches or extensions) to JDO.</p>
+<p>As we have described earlier, JDO allows access to many query languages to give the user full flexibility over what they utilise.
+To demonstrate how you would utilise a different query language with JDO, take the example that you are using an RDBMS (i.e your JDO provider supports RDBMS)
+it is sometimes desirable to query using <strong>SQL</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Please be aware that the SQL query that you invoke has to be valid for your RDBMS, and that the SQL syntax differs across almost all RDBMS.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p><br></p>
+<p>To utilise <strong>SQL</strong> syntax in queries, you create a Query as follows</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Query</span> q = pm.newQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.query.SQL</span><span class="delimiter">&quot;</span></span>, the_sql_query);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You have several forms of SQL queries, depending on what form of output you require.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>No candidate class and no result class</strong> - the result will be a List of Objects (when there is a single column in the query),
+or a List of Object[]s (when there are multiple columns in the query)</p>
+</li>
+<li>
+<p><strong>Candidate class specified, no result class</strong> - the result will be a List of candidate class objects, or will be a single candidate class object (when you have specified "unique").
+The columns of the querys result set are matched up to the fields of the candidate class by name. You need to select a minimum of the PK columns in the SQL statement.</p>
+</li>
+<li>
+<p><strong>No candidate class, result class specified</strong> - the result will be a List of result class objects, or will be a single result class object (when you have specified "unique").
+Your result class has to abide by the rules of JDO result classes (see <a href="query_api.html#resultclass">Result Class specification</a>) - this
+typically means either providing public fields matching the columns of the result, or providing setters/getters for the columns of the result.</p>
+</li>
+<li>
+<p><strong>Candidate class and result class specified</strong> - the result will be a List of result class objects, or will be a single result class object (when you have specified "unique").
+The result class has to abide by the rules of JDO result classes (see <a href="query_api.html#resultclass">Result Class specification</a>).</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="candidate">Setting candidate class</h3>
+<div class="paragraph">
+<p>If you want to return instances of persistable types, then you can set the candidate class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Query</span> query = pm.newQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.query.SQL</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT MY_ID, MY_NAME FROM MYTABLE</span><span class="delimiter">&quot;</span></span>);
+query.setClass(MyClass.class);
+<span class="predefined-type">List</span>&lt;MyClass&gt; results = query.executeList();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unique">Unique results</h3>
+<div class="paragraph">
+<p>If you know that there will only be a single row returned from the SQL query then you can set the query as <em>unique</em>.
+Note that the query will return null if the SQL has no results.</p>
+</div>
+<div class="paragraph">
+<p>Sometimes you know that the query can only every return 0 or 1 objects. In this case you can simplify your job by adding</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Using traditional JDO Query API</span>
+<span class="predefined-type">Query</span> query = pm.newQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.query.SQL</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT MY_ID, MY_NAME FROM MYTABLE</span><span class="delimiter">&quot;</span></span>);
+query.setClass(MyClass.class);
+query.setUnique(<span class="predefined-constant">true</span>);
+MyClass obj = (MyClass) query.execute();
+
+<span class="comment">// Using JDO3.2 Query API</span>
+<span class="predefined-type">Query</span> query = pm.newQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.query.SQL</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT MY_ID, MY_NAME FROM MYTABLE</span><span class="delimiter">&quot;</span></span>);
+query.setClass(MyClass.class);
+MyClass obj = query.executeUnique();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="result_class">Defining a result type</h3>
+<div class="paragraph">
+<p>If you want to dump each row of the SQL query results into an object of a particular type then you can set the result class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Using traditional JDO Query API</span>
+<span class="predefined-type">Query</span> query = pm.newQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.query.SQL</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT MY_ID, MY_NAME FROM MYTABLE</span><span class="delimiter">&quot;</span></span>);
+query.setResultClass(MyResultClass.class);
+<span class="predefined-type">List</span>&lt;MyResultClass&gt; results = (<span class="predefined-type">List</span>&lt;MyResultClass&gt;) query.execute();
+
+
+<span class="comment">// Using JDO3.2 Query API</span>
+<span class="predefined-type">Query</span> query = pm.newQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.query.SQL</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT MY_ID, MY_NAME FROM MYTABLE</span><span class="delimiter">&quot;</span></span>);
+<span class="predefined-type">List</span>&lt;MyResultClass&gt; results = query.executeResultList(MyResultClass.class);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <em>Result Class</em> has to meet certain requirements. These are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Can be one of Integer, Long, Short, Float, Double, Character, Byte, Boolean, String, java.math.BigInteger, java.math.BigDecimal,
+java.util.Date, java.sql.Date, java.sql.Time, java.sql.Timestamp, or Object[]</p>
+</li>
+<li>
+<p>Can be a user defined class, that has either a constructor taking arguments of the same type as those returned by the query (in the same order),
+or has a public put(Object, Object) method, or public setXXX() methods, or public fields.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example, if we are returning two columns like above, an <em>int</em> and a <em>String</em> then we define our result class like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MyResultClass</span>
+{
+    <span class="directive">protected</span> <span class="type">int</span> id = <span class="integer">0</span>;
+    <span class="directive">protected</span> <span class="predefined-type">String</span> name = <span class="predefined-constant">null</span>;
+
+    <span class="directive">public</span> MyResultClass(<span class="type">int</span> id, <span class="predefined-type">String</span> name)
+    {
+        <span class="local-variable">this</span>.id = id;
+        <span class="local-variable">this</span>.name = name;
+    }
+
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So here we have a result class using the constructor arguments.
+We could equally have provided a class with public fields instead, or provided <em>setXXX</em> methods, or just provide a <em>put</em> method. They all work in the same way.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="parameters">Parameters</h3>
+<div class="paragraph">
+<p>In JDO SQL queries can have parameters but must be <em>positional</em>. This means that you do as follows</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Query</span> q = pm.newQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.query.SQL</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT col1, col2 FROM MYTABLE WHERE col3 = ? AND col4 = ? and col5 = ?</span><span class="delimiter">&quot;</span></span>);
+<span class="predefined-type">List</span> results = q.setParameters(val1, val2, val3).executeList();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So we used traditional JDBC form of parametrisation, using "?".</p>
+</div>
 </div>
 </div>
 </div>
                 </div>
+            </div>
+            <div class="col-sm-3">
+                <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
             </div>
         </div>
     

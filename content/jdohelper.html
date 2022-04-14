@@ -204,7 +204,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="pm.html">PersistenceManager</a></li>
                         <li><a href="transactions.html">Transactions</a></li>
                         <li><a href="attach_detach.html">Attach-Detach</a></li>
-                        <li><a href="fetchgroups.html">Fetch Groups</a></li>
+                        <li><a href="fetchgroups.html">Fetch Plan/Groups</a></li>
                         <li><a href="state_transition.html">Object States</a></li>
                         <li><a href="object_retrieval.html">Object Retrieval</a></li>
                         <li><a href="exceptions.html">Exceptions</a></li>
@@ -248,6 +248,9 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="jdoql_methods.html">Methods</a></li>
                         <li><a href="jdoql_result.html">Result</a></li>
                         <li><a href="jdoql_quickref.pdf">Quick Ref PDF</a></li>
+                        <li><a href="jdoql_typed.html">JDOQL Typed API</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="query_sql.html">SQL</a></li>
                     </ul>
                </li>
 
@@ -303,17 +306,15 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <h2 id="index">JDOHelper<a id="JDOHelper"></a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>JDO provides a standard utility that gives access to useful parts of the
-JDO persistence process. This is known as <strong>JDOHelper</strong>
-(javax.jdo.JDOHelper)
-<a href="api32/apidocs/javax/jdo/JDOHelper.html"><span class="image"><img src="images/javadoc.png" alt="image"></span></a></p>
+<p>JDO provides a standard utility that gives access to useful parts of the JDO persistence process.
+This is known as <strong>JDOHelper</strong>
+(javax.jdo.JDOHelper)<a href="api32/apidocs/javax/jdo/JDOHelper.html"><span class="image"><img src="images/javadoc.png" alt="image"></span></a></p>
 </div>
 <div class="sect2">
-<h3 id="_persistencemanagerfactory_methods">PersistenceManagerFactory methods<a id="PersistenceManagerFactory_methods"></a></h3>
+<h3 id="pmf">PersistenceManagerFactory methods</h3>
 <div class="paragraph">
-<p>The methods in JDOHelper can be split into categories. Here we start
-with the methods for creating the starting point for persistence, the
-PersistenceManagerFactory (PMF)</p>
+<p>The methods in JDOHelper can be split into categories.
+Here we start with the methods for creating the starting point for persistence, the PersistenceManagerFactory (PMF)</p>
 </div>
 <div class="ulist">
 <ul>
@@ -365,7 +366,7 @@ creates a PMF given an InputStream and a ClassLoader to use</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_persistence_methods">Persistence methods<a id="Persistence_methods"></a></h3>
+<h3 id="pm">Persistence methods</h3>
 <div class="paragraph">
 <p>Now we move onto the operations for persistence.</p>
 </div>
@@ -377,24 +378,19 @@ associated with the passed object (if any)</p>
 </li>
 <li>
 <p><strong>makeDirty(Object pc, String fieldName)</strong> - marks the field of the
-passed object as dirty (meaning that it needs updating in its
-datastore)</p>
+passed object as dirty (meaning that it needs updating in its datastore)</p>
 </li>
 <li>
-<p><strong>getObjectId(Object pc)</strong> - returns the object identity for the passed
-object (if persistent)</p>
+<p><strong>getObjectId(Object pc)</strong> - returns the object identity for the passed object (if persistent)</p>
 </li>
 <li>
-<p><strong>getObjectIds(Collection pc)</strong> - returns the object identities for the
-passed objects (if persistent)</p>
+<p><strong>getObjectIds(Collection pc)</strong> - returns the object identities for the passed objects (if persistent)</p>
 </li>
 <li>
-<p><strong>getObjectIds(Object[] pc)</strong> - returns the object identities for the
-passed objects (if persistent)</p>
+<p><strong>getObjectIds(Object[] pc)</strong> - returns the object identities for the passed objects (if persistent)</p>
 </li>
 <li>
-<p><strong>getVersion(Object pc)</strong> - returns the version for the passed object
-(if persistent)</p>
+<p><strong>getVersion(Object pc)</strong> - returns the version for the passed object (if persistent)</p>
 </li>
 </ul>
 </div>
@@ -403,26 +399,23 @@ passed objects (if persistent)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_lifecycle_methods">Lifecycle methods<a id="Lifecycle_methods"></a></h3>
+<h3 id="lifecycle">Lifecycle methods</h3>
 <div class="paragraph">
 <p>Now we move onto lifecycle operations</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>getObjectState(Object pc)</strong> - returns the object state (JDO2.1 JDK1.5+
-only)</p>
+<p><strong>getObjectState(Object pc)</strong> - returns the object state</p>
 </li>
 <li>
 <p><strong>isDirty(Object pc)</strong> - returns whether the passed object is dirty</p>
 </li>
 <li>
-<p><strong>isTransactional(Object pc)</strong> - returns whether the passed object is
-transactional</p>
+<p><strong>isTransactional(Object pc)</strong> - returns whether the passed object is transactional</p>
 </li>
 <li>
-<p><strong>isPersistent(Object pc)</strong> - returns whether the passed object is
-persistent</p>
+<p><strong>isPersistent(Object pc)</strong> - returns whether the passed object is persistent</p>
 </li>
 <li>
 <p><strong>isNew(Object pc)</strong> - returns whether the passed object is new</p>
@@ -431,8 +424,7 @@ persistent</p>
 <p><strong>isDeleted(Object pc)</strong> - returns whether the passed object is deleted</p>
 </li>
 <li>
-<p><strong>isDetached(Object pc)</strong> - returns whether the passed object is
-detached</p>
+<p><strong>isDetached(Object pc)</strong> - returns whether the passed object is detached</p>
 </li>
 </ul>
 </div>

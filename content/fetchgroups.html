@@ -11,7 +11,7 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>Fetch Groups</title>
+    <title>Fetch Plan / Groups</title>
 
     <link rel="icon" type="image/png" href="images/JDOx150.png"/>
 
@@ -204,7 +204,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="pm.html">PersistenceManager</a></li>
                         <li><a href="transactions.html">Transactions</a></li>
                         <li><a href="attach_detach.html">Attach-Detach</a></li>
-                        <li><a href="fetchgroups.html">Fetch Groups</a></li>
+                        <li><a href="fetchgroups.html">Fetch Plan/Groups</a></li>
                         <li><a href="state_transition.html">Object States</a></li>
                         <li><a href="object_retrieval.html">Object Retrieval</a></li>
                         <li><a href="exceptions.html">Exceptions</a></li>
@@ -248,6 +248,9 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="jdoql_methods.html">Methods</a></li>
                         <li><a href="jdoql_result.html">Result</a></li>
                         <li><a href="jdoql_quickref.pdf">Quick Ref PDF</a></li>
+                        <li><a href="jdoql_typed.html">JDOQL Typed API</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="query_sql.html">SQL</a></li>
                     </ul>
                </li>
 
@@ -295,43 +298,38 @@ table.CodeRay td.code{padding:0 0 0 .75em}
         <div class="row-fluid">
             <div class="col-sm-9">
 <!--                <div class="page-title">
-                    <h3>Fetch Groups<a id="Fetch_Groups"></a></h3>
+                    <h3>Fetch Plan / Groups</h3>
                 </div>
 -->
                 <div id="doc-content">
                     <div class="sect1">
-<h2 id="index">Fetch Groups<a id="Fetch_Groups"></a></h2>
+<h2 id="Fetch_Groups">Fetch Plan / Groups</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When an object is retrieved from the datastore by JDO typically not all
-fields are retrieved immediately. This is because for efficiency
-purposes only particular field types are retrieved in the initial access
-of the object, and then any other objects are retrieved when accessed
-(lazy loading). The group of fields that are loaded is called a <strong>fetch
-group</strong>. There are 3 types of "fetch groups" to consider</p>
+<p>When an object is retrieved from the datastore by JDO typically not all fields are retrieved immediately.
+This is because for efficiency purposes only particular field types are retrieved in the initial access of the object,
+and then any other objects are retrieved when accessed (lazy loading).
+The group of fields that are loaded is defined by a <strong>FetchPlan</strong> and is comprised of multiple *fetch group*s.
+There are 3 types of "fetch groups" to consider</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#dfg">Default Fetch Group</a> : defined in all JDO specs, containing
-the fields of a class that will be retrieved by default (with no user
-specification).</p>
+<p><a href="#dfg">Default Fetch Group</a> : defined in the JDO spec, containing the fields of a class that will be retrieved by default (with no user specification).</p>
 </li>
 <li>
-<p><a href="#static">Named Fetch Groups</a> : defined by the JDO2 specification,
-and defined in MetaData (XML/annotations) with the fields of a class
-that are part of that fetch group. The definition here is <em>static</em></p>
+<p><a href="#static">Named Fetch Groups</a> : defined in MetaData (XML/annotations) with the fields of a class that are part of that fetch group. The definition here is <em>static</em>.</p>
 </li>
 <li>
-<p><a href="#dynamic">Dynamic Fetch Groups</a> : Programmatic definition of fetch
-groups at runtime via an API</p>
+<p><a href="#dynamic">Dynamic Fetch Groups</a> : Programmatic definition of fetch groups at runtime via an API</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The <strong>fetch group</strong> in use for a class is controled via the <em>FetchPlan</em>
+<p>The <strong>fetch group</strong>(s) in use for a class is controlled via the <em>FetchPlan</em>
 <a href="http://db.apache.org/jdo/api32/apidocs/javax/jdo/FetchPlan.html"><span class="image"><img src="images/javadoc.png" alt="image"></span></a>
-interface. To get a handle on the current <em>FetchPlan</em> we do</p>
+interface.
+To get a handle on the current <em>FetchPlan</em> we do</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -341,16 +339,12 @@ interface. To get a handle on the current <em>FetchPlan</em> we do</p>
 <div class="paragraph">
 <p><br></p>
 </div>
-<div class="paragraph">
-<p><a id="dfg"></a></p>
-</div>
 <div class="sect2">
-<h3 id="_default_fetch_group">Default Fetch Group<a id="Default_Fetch_Group"></a></h3>
+<h3 id="dfg">Default Fetch Group</h3>
 <div class="paragraph">
-<p>JDO provides an initial fetch group, comprising the fields that will be
-retrieved when an object is retrieved if the user does nothing to define
-the required behaviour. By default the <em>default fetch group</em> comprises
-all fields of the following types :</p>
+<p>JDO provides an initial fetch group, comprising the fields that will be retrieved when an object is retrieved
+if the user does nothing to define the required behaviour.
+By default the <em>default fetch group</em> comprises all fields of the following types :</p>
 </div>
 <div class="ulist">
 <ul>
@@ -358,8 +352,7 @@ all fields of the following types :</p>
 <p>primitives : boolean, byte, char, double, float, int, long, short</p>
 </li>
 <li>
-<p>Object wrappers of primitives : Boolean, Byte, Character, Double,
-Float, Integer, Long, Short</p>
+<p>Object wrappers of primitives : Boolean, Byte, Character, Double, Float, Integer, Long, Short</p>
 </li>
 <li>
 <p>java.lang.String, java.lang.Number, java.lang.Enum</p>
@@ -373,116 +366,107 @@ Float, Integer, Long, Short</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>If you wish to change the <strong>Default Fetch Group</strong> for a class you can
-update the Meta-Data for the class as follows (for XML)</p>
+<p>If you wish to change the <strong>Default Fetch Group</strong> for a class you can update the Meta-Data for the class as follows (using XML)</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>&lt;class name="MyClass"&gt;
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;class</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">MyClass</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     ...
-    &lt;field name="fieldX" default-fetch-group="true"/&gt;
-&lt;/class&gt;</pre>
+    <span class="tag">&lt;field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">fieldX</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">default-fetch-group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/class&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>or using annotations</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>@Persistent(defaultFetchGroup="true")
-SomeType fieldX;</pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Persistent</span>(defaultFetchGroup=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>)
+SomeType fieldX;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When a <em>PersistenceManager</em> is created it starts with a FetchPlan of the
-"default" fetch group. That is, if we call</p>
+<p>When a <em>PersistenceManager</em> is created it starts with a FetchPlan of the "default" fetch group. That is, if we call</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>Collection fetchGroups = fp.getGroups();</pre>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Collection</span> fetchGroups = fp.getGroups();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>this will have one group, called "default". At runtime, if you have been
-using other fetch groups and want to revert back to the default fetch
-group at any time you simply do</p>
+<p>this will have one group, called "default".
+At runtime, if you have been using other fetch groups and want to revert back to the default fetch group at any time you simply do</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>fp.setGroup(FetchPlan.DEFAULT);</pre>
+<pre class="CodeRay highlight"><code data-lang="java">fp.setGroup(FetchPlan.DEFAULT);</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p><br></p>
 </div>
-<div class="paragraph">
-<p><a id="static"></a></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="_named_fetch_groups">Named Fetch Groups<a id="Named_Fetch_Groups"></a></h3>
+<h3 id="static">Named Fetch Groups</h3>
 <div class="paragraph">
 <p>As mentioned above, JDO allows specification of users own fetch groups.
-These are specified in the MetaData of the class. For example, if we
-have the following class</p>
+These are specified in the MetaData of the class. For example, if we have the following class</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>class MyClass
+<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">MyClass</span>
 {
-    String name;
-    HashSet coll;
+    <span class="predefined-type">String</span> name;
+    <span class="predefined-type">HashSet</span> coll;
     MyOtherClass other;
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>and we want to have the <span class="underline">other</span> field loaded whenever we
-load objects of this class, we define our MetaData as</p>
+<p>and we want to have the <span class="underline">other</span> field loaded whenever we load objects of this class, we define our MetaData as</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>&lt;package name="mydomain"&gt;
-    &lt;class name="MyClass"&gt;
-        &lt;field name="name"&gt;
-            &lt;column length="100" jdbc-type="VARCHAR"/&gt;
-        &lt;/field&gt;
-        &lt;field name="coll" persistence-modifier="persistent"&gt;
-            &lt;collection element-type="mydomain.Address"/&gt;
-            &lt;join/&gt;
-        &lt;/field&gt;
-        &lt;field name="other" persistence-modifier="persistent"/&gt;
-        &lt;fetch-group name="otherfield"&gt;
-            &lt;field name="other"/&gt;
-        &lt;/fetch-group&gt;
-    &lt;/class&gt;
-&lt;/package&gt;</pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;package</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mydomain</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;class</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">MyClass</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;column</span> <span class="attribute-name">length</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">jdbc-type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">VARCHAR</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/field&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">coll</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">persistence-modifier</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">persistent</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;collection</span> <span class="attribute-name">element-type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mydomain.Address</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;join</span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/field&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">other</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">persistence-modifier</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">persistent</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;fetch-group</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">otherfield</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">other</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/fetch-group&gt;</span>
+    <span class="tag">&lt;/class&gt;</span>
+<span class="tag">&lt;/package&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>or using annotations</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>@PersistenceCapable
-@FetchGroup(name="otherfield", members={@Persistent(name="other")})
-public class MyClass
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@PersistenceCapable</span>
+<span class="annotation">@FetchGroup</span>(name=<span class="string"><span class="delimiter">&quot;</span><span class="content">otherfield</span><span class="delimiter">&quot;</span></span>, members={<span class="annotation">@Persistent</span>(name=<span class="string"><span class="delimiter">&quot;</span><span class="content">other</span><span class="delimiter">&quot;</span></span>)})
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MyClass</span>
 {
     ...
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So we have defined a fetch group called "otherfield" that just includes
-the field with name <em>other</em>. We can then use this at runtime in our
-persistence code.</p>
+<p>So we have defined a fetch group called "otherfield" that just includes the field with name <em>other</em>.
+We can then use this at runtime in our persistence code.</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>PersistenceManager pm = pmf.getPersistenceManager();
-pm.getFetchPlan().addGroup("otherfield");
+<pre class="CodeRay highlight"><code data-lang="java">PersistenceManager pm = pmf.getPersistenceManager();
+pm.getFetchPlan().addGroup(<span class="string"><span class="delimiter">&quot;</span><span class="content">otherfield</span><span class="delimiter">&quot;</span></span>);
 
-... (load MyClass object)</pre>
+... (load MyClass object)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -498,168 +482,153 @@ full flexibility to add many groups to the current <strong>Fetch Plan</strong>. 
 gives much power and control over what will be loaded and when.</p>
 </div>
 <div class="paragraph">
-<p>The <em>FetchPlan</em> applies not just to calls to
-<em>PersistenceManager.getObjectById()</em>, but also to
-<em>PersistenceManager.newQuery()</em>, <em>PersistenceManager.getExtent()</em>,
-<em>PersistenceManager.detachCopy</em> and much more besides.</p>
+<p>The <em>FetchPlan</em> applies not just to calls to <em>PersistenceManager.getObjectById()</em>,
+but also to <em>PersistenceManager.newQuery()</em>, <em>PersistenceManager.getExtent()</em>, <em>PersistenceManager.detachCopy</em> and much more besides.</p>
 </div>
 <div class="paragraph">
-<p>You can read more about <strong>named fetch-groups</strong> and how to use it with
-<a href="attach_detach.html"><strong>attach/detach</strong></a></p>
-</div>
-<div class="paragraph">
-<p><a id="dynamic"></a></p>
+<p>You can read more about <strong>named fetch-groups</strong> and how to use it with <a href="attach_detach.html"><strong>attach/detach</strong></a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_dynamic_fetch_groups">Dynamic Fetch Groups<a id="Dynamic_Fetch_Groups"></a></h3>
+<h3 id="dynamic">Dynamic Fetch Groups</h3>
 <div class="paragraph">
-<p>The mechanism above provides static fetch groups defined in XML or
-annotations. That is great when you know in advance what fields you want
-to fetch. In some situations you may want to define your fields to fetch
-at run time. This became standard in JDO2.2 It operates as follows</p>
+<p>The mechanism above provides static fetch groups defined in XML or annotations.
+That is great when you know in advance what fields you want to fetch.
+In some situations you may want to define your fields to fetch at run time.
+It operates as follows</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>import org.datanucleus.FetchGroup;
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">org.datanucleus.FetchGroup</span>;
 
-// Create a FetchGroup on the PMF called "TestGroup" for MyClass
-FetchGroup grp = myPMF.getFetchGroup("TestGroup", MyClass.class);
-grp.addMember("field1").addMember("field2");
+<span class="comment">// Create a FetchGroup on the PMF called &quot;TestGroup&quot; for MyClass</span>
+FetchGroup grp = myPMF.getFetchGroup(<span class="string"><span class="delimiter">&quot;</span><span class="content">TestGroup</span><span class="delimiter">&quot;</span></span>, MyClass.class);
+grp.addMember(<span class="string"><span class="delimiter">&quot;</span><span class="content">field1</span><span class="delimiter">&quot;</span></span>).addMember(<span class="string"><span class="delimiter">&quot;</span><span class="content">field2</span><span class="delimiter">&quot;</span></span>);
 
-// Add this group to the fetch plan (using its name)
-fp.addGroup("TestGroup");</pre>
+<span class="comment">// Add this group to the fetch plan (using its name)</span>
+fp.addGroup(<span class="string"><span class="delimiter">&quot;</span><span class="content">TestGroup</span><span class="delimiter">&quot;</span></span>);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So we use the DataNucleus PMF as a way of creating a FetchGroup, and
-then register that FetchGroup with the PMF for use by all PMs. We then
-enable our FetchGroup for use in the FetchPlan by using its group name
-(as we do for a static group). The FetchGroup allows you to add/remove
-the fields necessary so you have full API control over the fields to be
-fetched.</p>
+<p>So we use the PMF as a way of creating a FetchGroup, and then register that FetchGroup with the PMF for use by all PMs.
+We then enable our FetchGroup for use in the FetchPlan by using its group name (as we do for a static group).
+The FetchGroup allows you to add/remove the fields necessary so you have full API control over the fields to be fetched.</p>
 </div>
 <div class="paragraph">
 <p><br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_fetch_depth">Fetch Depth<a id="Fetch_Depth"></a></h3>
+<h3 id="fetch_depth">Fetch Depth</h3>
 <div class="paragraph">
-<p>The basic fetch group defines which fields are to be fetched. It doesn&#8217;t
-explicitly define how far down an object graph is to be fetched. JDO
-provides two ways of controlling this.</p>
+<p>The basic fetch group defines which fields are to be fetched.
+It doesn&#8217;t explicitly define how far down an object graph is to be fetched.
+JDO provides two ways of controlling this.</p>
 </div>
 <div class="paragraph">
-<p>The first is to set the <strong>maxFetchDepth</strong> for the <em>FetchPlan</em>. This value
-specifies how far out from the root object the related objects will be
-fetched. A positive value means that this number of relationships will
-be traversed from the root object. A value of -1 means that no limit
-will be placed on the fetching traversal. The default is 1. Let&#8217;s take
-an example</p>
+<p>The first is to set the <strong>maxFetchDepth</strong> for the <em>FetchPlan</em>.
+This value specifies how far out from the root object the related objects will be fetched.
+A positive value means that this number of relationships will be traversed from the root object.
+A value of -1 means that no limit will be placed on the fetching traversal. The default is 1.
+Let&#8217;s take an example</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>public class MyClass1
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MyClass1</span>
 {
     MyClass2 field1;
     ...
 }
 
-public class MyClass2
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MyClass2</span>
 {
     MyClass3 field2;
     ...
 }
 
-public class MyClass3
+<span class="directive">public</span> <span class="type">class</span> <span class="class">MyClass3</span>
 {
     MyClass4 field3;
     ...
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>and we want to detach <em>field1</em> of instances of <em>MyClass1</em>, down 2 levels
-- so detaching the initial "field1" <em>MyClass2</em> object, and its "field2"
-<em>MyClass3</em> instance. So we define our fetch-groups like this</p>
+<p>and we want to detach <em>field1</em> of instances of <em>MyClass1</em>, down 2 levels - so detaching the initial "field1" <em>MyClass2</em> object,
+and its "field2" <em>MyClass3</em> instance. So we define our fetch-groups like this</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>&lt;class name="MyClass1"&gt;
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;class</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">MyClass1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     ...
-    &lt;fetch-group name="includingField1"&gt;
-        &lt;field name="field1"/&gt;
-    &lt;/fetch-group&gt;
-&lt;/class&gt;
-&lt;class name="MyClass2"&gt;
+    <span class="tag">&lt;fetch-group</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">includingField1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">field1</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/fetch-group&gt;</span>
+<span class="tag">&lt;/class&gt;</span>
+<span class="tag">&lt;class</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">MyClass2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     ...
-    &lt;fetch-group name="includingField2"&gt;
-        &lt;field name="field2"/&gt;
-    &lt;/fetch-group&gt;
-&lt;/class&gt;</pre>
+    <span class="tag">&lt;fetch-group</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">includingField2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">field2</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/fetch-group&gt;</span>
+<span class="tag">&lt;/class&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>and we then define the <strong>maxFetchDepth</strong> as 2, like this</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>pm.getFetchPlan().setMaxFetchDepth(2);</pre>
+<pre class="CodeRay highlight"><code data-lang="java">pm.getFetchPlan().setMaxFetchDepth(<span class="integer">2</span>);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A further refinement to this global fetch depth setting is to control
-the fetching of recursive fields. This is performed via a MetaData
-setting "recursion-depth". A value of 1 means that only 1 level of
-objects will be fetched. A value of -1 means there is no limit on the
-amount of recursion. The default is 1. Let&#8217;s take an example</p>
+<p>A further refinement to this global fetch depth setting is to control the fetching of recursive fields.
+This is performed via a MetaData setting "recursion-depth".
+A value of 1 means that only 1 level of objects will be fetched.
+A value of -1 means there is no limit on the amount of recursion. The default is 1.
+Let&#8217;s take an example</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>public class Directory
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Directory</span>
 {
-    Collection children;
+    <span class="predefined-type">Collection</span> children;
     ...
-}</pre>
+}</code></pre>
 </div>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>&lt;class name="Directory"&gt;
-    &lt;field name="children"&gt;
-        &lt;collection element-type="Directory"/&gt;
-    &lt;/field&gt;
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;class</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Directory</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">children</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;collection</span> <span class="attribute-name">element-type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Directory</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/field&gt;</span>
 
-    &lt;fetch-group name="grandchildren"&gt;
-        &lt;field name="children" recursion-depth="2"/&gt;
-    &lt;/fetch-group&gt;
+    <span class="tag">&lt;fetch-group</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">grandchildren</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;field</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">children</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">recursion-depth</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/fetch-group&gt;</span>
     ...
-&lt;/class&gt;</pre>
+<span class="tag">&lt;/class&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So when we fetch a Directory, it will fetch 2 levels of the <em>children</em>
-field, hence fetching the children and the grandchildren.</p>
+<p>So when we fetch a Directory, it will fetch 2 levels of the <em>children</em> field, hence fetching the children and the grandchildren.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_fetch_size">Fetch Size<a id="Fetch_Size"></a></h3>
+<h3 id="fetch_size">Fetch Size</h3>
 <div class="paragraph">
-<p>A FetchPlan can also be used for defining the fetching policy when using
-queries. This can be set using</p>
+<p>A FetchPlan can also be used for defining the fetching policy when using queries. This can be set using</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>pm.getFetchPlan().setFetchSize(value);</pre>
+<pre class="CodeRay highlight"><code data-lang="java">pm.getFetchPlan().setFetchSize(value);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The default is <em>FetchPlan.FETCH_SIZE_OPTIMAL</em> which leaves it to
-DataNucleus to optimise the fetching of instances. A positive value
-defines the number of instances to be fetched. Using
-<em>FetchPlan.FETCH_SIZE_GREEDY</em> means that all instances will be fetched
-immediately.</p>
+<p>The default is <em>FetchPlan.FETCH_SIZE_OPTIMAL</em> which leaves it to the JDO provider to optimise the fetching of instances.
+A positive value defines the number of instances to be fetched.
+Using <em>FetchPlan.FETCH_SIZE_GREEDY</em> means that all instances will be fetched immediately.</p>
 </div>
 </div>
 </div>

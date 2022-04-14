@@ -204,7 +204,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="pm.html">PersistenceManager</a></li>
                         <li><a href="transactions.html">Transactions</a></li>
                         <li><a href="attach_detach.html">Attach-Detach</a></li>
-                        <li><a href="fetchgroups.html">Fetch Groups</a></li>
+                        <li><a href="fetchgroups.html">Fetch Plan/Groups</a></li>
                         <li><a href="state_transition.html">Object States</a></li>
                         <li><a href="object_retrieval.html">Object Retrieval</a></li>
                         <li><a href="exceptions.html">Exceptions</a></li>
@@ -248,6 +248,9 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="jdoql_methods.html">Methods</a></li>
                         <li><a href="jdoql_result.html">Result</a></li>
                         <li><a href="jdoql_quickref.pdf">Quick Ref PDF</a></li>
+                        <li><a href="jdoql_typed.html">JDOQL Typed API</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="query_sql.html">SQL</a></li>
                     </ul>
                </li>
 
@@ -295,75 +298,70 @@ table.CodeRay td.code{padding:0 0 0 .75em}
         <div class="row-fluid">
             <div class="col-sm-9">
 <!--                <div class="page-title">
-                    <h3>JDO Attach/Detach<a id="JDO_AttachDetach"></a></h3>
+                    <h3>JDO Attach/Detach</h3>
                 </div>
 -->
                 <div id="doc-content">
                     <div class="sect1">
-<h2 id="index">JDO Attach/Detach<a id="JDO_AttachDetach"></a></h2>
+<h2 id="JDO_AttachDetach">JDO Attach/Detach</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>JDO provides an interface to the persistence of objects. JDO 1.0 doesn&#8217;t
-provide a way of taking an object that was just persisted and just work
-on it and update the persisted object later. The user has to copy the
-fields manually and copy them back to the persisted object later. JDO
-2.0 introduces a new way of handling this situation, by <strong>detaching</strong> an
-object from the persistence graph, allowing it to be worked on in the
-users application. It can then be <strong>attached</strong> to the persistence graph
-later. Please refer to <a href="state_transition.html">Object Lifecycle</a> for
-where this fits in. The first thing to do to use a class with this
-facility is to tag it as "detachable". This is done by adding the
-attribute</p>
+<p>JDO provides an interface to the persistence of objects.
+JDO 1.0 didn&#8217;t provide a way of taking an object that was just persisted and just work on it and update the persisted object later;
+the user had to copy the fields manually and copy them back to the persisted object later.
+JDO 2.0 introduced a new way of handling this situation, by <strong>detaching</strong> an object from the persistence graph,
+allowing it to be worked on in the users application. It could then be <strong>attached</strong> to the persistence graph later.
+Please refer to <a href="state_transition.html">Object Lifecycle</a> for where this fits in.
+The first thing to do to use a class with this facility is to tag it as "detachable".
+This is done by adding the attribute</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>&lt;class name="MyClass" detachable="true"&gt;</pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;class</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">MyClass</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">detachable</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This acts as an instruction to the <a href="enhancement.html">enhancement
-process</a> to add methods necessary to utilise the attach/detach process.</p>
+<p>This acts as an instruction to the <a href="enhancement.html">enhancement process</a> to add methods necessary to utilise the attach/detach process.</p>
 </div>
 <div class="paragraph">
-<p>The following code fragment highlights how to use the attach/detach
-mechanism</p>
+<p>The following code fragment highlights how to use the attach/detach mechanism</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>Product working_product=null;
+<pre class="CodeRay highlight"><code data-lang="java">Product working_product=<span class="predefined-constant">null</span>;
 Transaction tx=pm.currentTransaction();
-try
+<span class="keyword">try</span>
 {
     tx.begin();
 
-    Product prod=new Product(name,description,price);
+    Product prod=<span class="keyword">new</span> Product(name,description,price);
     pm.makePersistent(prod);
 
-    // Detach the product for use
+    <span class="comment">// Detach the product for use</span>
     working_product = (Product)pm.detachCopy(prod);
 
     tx.commit();
 }
-catch (Exception e)
+<span class="keyword">catch</span> (<span class="exception">Exception</span> e)
 {
-    // Handle the exception
+    <span class="comment">// Handle the exception</span>
 }
-finally
+<span class="keyword">finally</span>
 {
-    if (tx.isActive())
+    <span class="keyword">if</span> (tx.isActive())
     {
         tx.rollback();
     }
 }
 
-// Work on the detached object in our application
+<span class="comment">// Work on the detached object in our application</span>
 working_product.setPrice(new_price);
 
 ...
 
-// Reattach the updated object
+<span class="comment">// Reattach the updated object</span>
 tx = pm.currentTransaction();
-try
+<span class="keyword">try</span>
 {
     tx.begin();
 
@@ -371,174 +369,144 @@ try
 
     tx.commit();
 }
-catch (Exception e)
+<span class="keyword">catch</span> (<span class="exception">Exception</span> e)
 {
-    // Handle the exception
+    <span class="comment">// Handle the exception</span>
 }
-finally
+<span class="keyword">finally</span>
 {
-    if (tx.isActive())
+    <span class="keyword">if</span> (tx.isActive())
     {
         tx.rollback();
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So we now don&#8217;t need to do any manual copying of object fields just
-using a simple call to detach the object, and then attach it again
-later. Here are a few things to note with <em>attach/detach</em> :</p>
+<p>So we now don&#8217;t need to do any manual copying of object fields just using a simple call to detach the object, and then attach it again later.
+Here are a few things to note with <em>attach/detach</em> :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Calling <em>detachCopy</em> on an object that is not detachable will return a
-<strong>transient</strong> instance that is a COPY of the original, so use the COPY
-thereafter.</p>
+<p>Calling <em>detachCopy</em> on an object that is not detachable will return a <strong>transient</strong> instance that is a COPY of the original, so use the COPY thereafter.</p>
 </li>
 <li>
-<p>Calling <em>detachCopy</em> on an object that is detachable will return a
-<strong>detached</strong> instance that is a COPY of the original, so use this COPY
-thereafter</p>
+<p>Calling <em>detachCopy</em> on an object that is detachable will return a <strong>detached</strong> instance that is a COPY of the original, so use this COPY thereafter</p>
 </li>
 <li>
-<p>A <em>detached</em> object retain the id of its datastore entity. Detached
-objects should be used where you want to update the objects and attach
-them later (updating the associated object in the datastore. If you want
-to create copies of the objects in the datastore with their own
-identities you should use <em>makeTransient</em> instead of <em>detachCopy</em>.</p>
+<p>A <em>detached</em> object retain the id of its datastore entity.
+Detached objects should be used where you want to update the objects and attach them later (updating the associated object in the datastore.
+If you want to create copies of the objects in the datastore with their own identities you should use <em>makeTransient</em> instead of <em>detachCopy</em>.</p>
 </li>
 <li>
-<p>Calling <em>detachCopy</em> will detach all fields of that object that are in
-the current <a href="fetchgroups.html">Fetch Group</a> for that class for that
-<em>PersistenceManager</em>.</p>
+<p>Calling <em>detachCopy</em> will detach all fields of that object that are in the current <a href="fetchgroups.html">Fetch Group</a> for that class for that <em>PersistenceManager</em>.</p>
 </li>
 <li>
-<p>By default the fields of the object that will be detached are those in
-the <em>Default Fetch Group</em>.</p>
+<p>By default the fields of the object that will be detached are those in the <em>Default Fetch Group</em>.</p>
 </li>
 <li>
-<p>You should choose your <a href="fetchgroups.html">Fetch Group</a> carefully,
-bearing in mind which object(s) you want to access whilst detached.
+<p>You should choose your <a href="fetchgroups.html">Fetch Group</a> carefully, bearing in mind which object(s) you want to access whilst detached.
 Detaching a relation field will detach the related object as well.</p>
 </li>
 <li>
-<p>If you don&#8217;t detach a field of an object, you <span class="underline">cannot</span>
-access the value for that field while the object is detached.</p>
+<p>If you don&#8217;t detach a field of an object, you <span class="underline">cannot</span> access the value for that field while the object is detached.</p>
 </li>
 <li>
-<p>If you don&#8217;t detach a field of an object, you <span class="underline">can</span> update
-the value for that field while detached, and thereafter you can access
-the value for that field.</p>
+<p>If you don&#8217;t detach a field of an object, you <span class="underline">can</span> update the value for that field while detached, and thereafter you can access the value for that field.</p>
 </li>
 <li>
-<p>Calling <em>makePersistent</em> will return an (attached) copy of the
-detached object. It will attach all fields that were originally
-detached, and will also attach any other fields that were modified
-whilst detached.</p>
+<p>Calling <em>makePersistent</em> will return an (attached) copy of the detached object.
+It will attach all fields that were originally detached, and will also attach any other fields that were modified whilst detached.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><a id="detach_all_on_commit"></a></p>
-</div>
 <div class="sect2">
-<h3 id="_detach_all_on_commit">Detach All On Commit<a id="Detach_All_On_Commit"></a></h3>
+<h3 id="detach_all_on_commit">Detach All On Commit</h3>
 <div class="paragraph">
-<p>JDO2 also provides a mechanism whereby all objects that were enlisted in
-a transaction are automatically detached when the transaction is
-committed. You can enable this in one of 3 ways. If you want to use this
-mode globally for all <em>PersistenceManager</em>s (PMs) from a
-<em>PersistenceManagerFactory</em> (PMF) you could either set the PMF property
-"datanucleus.DetachAllOnCommit", or you could create your PMF and call
-the PMF method <strong>setDetachAllOnCommit(true)</strong>. If instead you wanted to
-use this mode only for a particular PM, or only for a particular
-transaction for a particular PM, then you can call the PM method
-<strong>setDetachAllOnCommit(true)</strong> before the commit of the transaction, and
-it will apply for all transaction commits thereafter, until turned off
-(<strong>setDetachAllOnCommit(false)</strong>. Here&#8217;s an example</p>
+<p>JDO also provides a mechanism whereby all objects that were enlisted in a transaction are automatically detached when the transaction is committed.
+You can enable this in one of 3 ways.
+If you want to use this mode globally for all <em>PersistenceManager</em>s (PMs) from a <em>PersistenceManagerFactory</em> (PMF) you could
+either set the PMF property "datanucleus.DetachAllOnCommit", or you could create your PMF and call the PMF method <strong>setDetachAllOnCommit(true)</strong>.
+If instead you wanted to use this mode only for a particular PM, or only for a particular transaction for a particular PM, then you can call the PM method
+<strong>setDetachAllOnCommit(true)</strong> before the commit of the transaction,
+and it will apply for all transaction commits thereafter, until turned off (<strong>setDetachAllOnCommit(false)</strong>.
+Here&#8217;s an example</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>// Create a PMF
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Create a PMF</span>
 ...
 
-// Create an object
-MyObject my = new MyObject();
+<span class="comment">// Create an object</span>
+MyObject my = <span class="keyword">new</span> MyObject();
 
 PersistenceManager pm = pmf.getPersistenceManager();
 Transaction tx = pm.currentTransaction();
-try
+<span class="keyword">try</span>
 {
     tx.begin();
 
-    // We want our object to be detached when it's been persisted
-    pm.setDetachAllOnCommit(true);
+    <span class="comment">// We want our object to be detached when it's been persisted</span>
+    pm.setDetachAllOnCommit(<span class="predefined-constant">true</span>);
 
-    // Persist the object that we created earlier
+    <span class="comment">// Persist the object that we created earlier</span>
     pm.makePersistent(my);
 
     tx.commit();
-    // The object "my" is now in detached state and can be used further
+    <span class="comment">// The object &quot;my&quot; is now in detached state and can be used further</span>
 }
-finally
+<span class="keyword">finally</span>
 {
-    if (tx.isActive)
+    <span class="keyword">if</span> (tx.isActive)
     {
         tx.rollback();
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p><br></p>
 </div>
-<div class="paragraph">
-<p><a id="copy_on_attach"></a></p>
-</div>
 </div>
 <div class="sect2">
-<h3 id="_copy_on_attach">Copy On Attach<a id="Copy_On_Attach"></a></h3>
+<h3 id="copy_on_attach">Copy On Attach</h3>
 <div class="paragraph">
-<p>By default when you are attaching a detached object it will return an
-attached copy of the detached object. JDO2.1 provides a new feature that
-allows this attachment to just migrate the existing detached object into
-attached state.</p>
+<p>By default when you are attaching a detached object it will return an attached copy of the detached object.
+JDO2.1 provides a new feature that allows this attachment to just migrate the existing detached object into attached state.</p>
 </div>
 <div class="paragraph">
-<p>You enable this by setting the <em>PersistenceManagerFactory</em> (PMF)
-property <strong>datanucleus.CopyOnAttach</strong> to false. Alternatively you can use
-the methods <em>PersistenceManagerFactory.setCopyOnAttach(boolean flag)</em> or
-<em>PersistenceManager.setCopyOnAttach(boolean flag)</em>. If we return to the
-example at the start of this page, this now becomes</p>
+<p>You enable this by setting the <em>PersistenceManagerFactory</em> (PMF) property <strong>datanucleus.CopyOnAttach</strong> to false.
+Alternatively you can use the methods <em>PersistenceManagerFactory.setCopyOnAttach(boolean flag)</em> or <em>PersistenceManager.setCopyOnAttach(boolean flag)</em>.
+If we return to the example at the start of this page, this now becomes</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>// Reattach the updated object
-pm.setCopyOnAttach(false);
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Reattach the updated object</span>
+pm.setCopyOnAttach(<span class="predefined-constant">false</span>);
 tx = pm.currentTransaction();
-try
+<span class="keyword">try</span>
 {
     tx.begin();
 
-    // working product is currently in detached state
+    <span class="comment">// working product is currently in detached state</span>
 
     pm.makePersistent(working_product);
-    // working_product is now in persistent (attached) state
+    <span class="comment">// working_product is now in persistent (attached) state</span>
 
     tx.commit();
 }
-catch (Exception e)
+<span class="keyword">catch</span> (<span class="exception">Exception</span> e)
 {
-    // Handle the exception
+    <span class="comment">// Handle the exception</span>
 }
-finally
+<span class="keyword">finally</span>
 {
-    if (tx.isActive())
+    <span class="keyword">if</span> (tx.isActive())
     {
         tx.rollback();
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -552,36 +520,31 @@ cache), then a JDOUserException will be thrown.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_serialization_of_detachable_classes">Serialization of Detachable classes<a id="Serialization_of_Detachable_classes"></a></h3>
+<h3 id="serailization">Serialization of Detachable classes</h3>
 <div class="paragraph">
-<p>During enhancement of Detachable classes, a field called
-<em>jdoDetachedState</em> is added to the class definition. This field allows
-reading and changing tracking of detached objects while they are not
-managed by a PersistenceManager.</p>
+<p>During enhancement of Detachable classes, a field called <em>jdoDetachedState</em> is added to the class definition.
+This field allows reading and changing tracking of detached objects while they are not managed by a PersistenceManager.</p>
 </div>
 <div class="paragraph">
-<p>When serialization occurs on a Detachable object, the <em>jdoDetachedState</em>
-field is written to the serialized object stream. On deserialize, this
-field is written back to the new deserialized instance. This process
-occurs transparently to the application. However, if deserialization
-occurs with an un-enhanced version of the class, the detached state is
-lost.</p>
+<p>When serialization occurs on a Detachable object, the <em>jdoDetachedState</em> field is written to the serialized object stream.
+On deserialize, this field is written back to the new deserialized instance.
+This process occurs transparently to the application.
+However, if deserialization occurs with an un-enhanced version of the class, the detached state is lost.</p>
 </div>
 <div class="paragraph">
 <p>Serialization and deserialization of Detachable classes and un-enhanced
-versions of the same class is only possible if the field
-<em>serialVersionUID</em> is added. It&#8217;s recommended during development of the
-class, to define the <em>serialVersionUID</em> and make the class to implement
+versions of the same class is only possible if the field <em>serialVersionUID</em> is added.
+It&#8217;s recommended during development of the class, to define the <em>serialVersionUID</em> and make the class to implement
 the <em>java.io.Serializable</em> interface, as the following example:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>class MyClass implements java.io.Serializable
+<pre class="CodeRay highlight"><code data-lang="java"><span class="type">class</span> <span class="class">MyClass</span> <span class="directive">implements</span> java.io.Serializable
 {
-    private static final long serialVersionUID = 2765740961462495537L; // any random value here
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = <span class="integer">2765740961462495537L</span>; <span class="comment">// any random value here</span>
 
-    //.... other fields
-}</pre>
+    <span class="comment">//.... other fields</span>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">

@@ -204,7 +204,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="pm.html">PersistenceManager</a></li>
                         <li><a href="transactions.html">Transactions</a></li>
                         <li><a href="attach_detach.html">Attach-Detach</a></li>
-                        <li><a href="fetchgroups.html">Fetch Groups</a></li>
+                        <li><a href="fetchgroups.html">Fetch Plan/Groups</a></li>
                         <li><a href="state_transition.html">Object States</a></li>
                         <li><a href="object_retrieval.html">Object Retrieval</a></li>
                         <li><a href="exceptions.html">Exceptions</a></li>
@@ -248,6 +248,9 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="jdoql_methods.html">Methods</a></li>
                         <li><a href="jdoql_result.html">Result</a></li>
                         <li><a href="jdoql_quickref.pdf">Quick Ref PDF</a></li>
+                        <li><a href="jdoql_typed.html">JDOQL Typed API</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="query_sql.html">SQL</a></li>
                     </ul>
                </li>
 
@@ -702,7 +705,8 @@ This can be efficient for queries with few results, and very inefficient for que
 </ul>
 </div>
 <div class="paragraph">
-<p>In addition to the number of objects fetched, you can also control which fields are fetched for each object of the candidate type. This is controlled via the <em>FetchPlan</em>.</p>
+<p>In addition to the number of objects fetched, you can also control which fields are fetched for each object of the candidate type.
+This is controlled via the <a href="fetchgroups.html#singlestring">FetchPlan</a>.</p>
 </div>
 </div>
 <div class="sect2">

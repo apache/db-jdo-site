@@ -204,7 +204,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="pm.html">PersistenceManager</a></li>
                         <li><a href="transactions.html">Transactions</a></li>
                         <li><a href="attach_detach.html">Attach-Detach</a></li>
-                        <li><a href="fetchgroups.html">Fetch Groups</a></li>
+                        <li><a href="fetchgroups.html">Fetch Plan/Groups</a></li>
                         <li><a href="state_transition.html">Object States</a></li>
                         <li><a href="object_retrieval.html">Object Retrieval</a></li>
                         <li><a href="exceptions.html">Exceptions</a></li>
@@ -248,6 +248,9 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="jdoql_methods.html">Methods</a></li>
                         <li><a href="jdoql_result.html">Result</a></li>
                         <li><a href="jdoql_quickref.pdf">Quick Ref PDF</a></li>
+                        <li><a href="jdoql_typed.html">JDOQL Typed API</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="query_sql.html">SQL</a></li>
                     </ul>
                </li>
 
@@ -300,34 +303,33 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                 
                 <div id="doc-content">
                     <div class="sect1">
-<h2 id="index">Transactions<a id="Transactions"></a></h2>
+<h2 id="Transactions">Transactions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When managing the persistence of objects using a
-<a href="pm.html">PersistenceManager</a> it is normal to handle all datastore
-operations in a transaction. For this reason each <em>PersistenceManager</em>
-has its own transaction. Consequently a typical JDO persistence method
-will look something like this</p>
+<p>When managing the persistence of objects using a <a href="pm.html">PersistenceManager</a> it is normal to handle all datastore
+operations in a transaction.
+For this reason each <em>PersistenceManager</em> has its own transaction.
+Consequently a typical JDO persistence method will look something like this</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>PersistenceManager pm = pmf.getPersistenceManager();
+<pre class="CodeRay highlight"><code data-lang="java">PersistenceManager pm = pmf.getPersistenceManager();
 Transaction tx = pm.currentTransaction();
-try
+<span class="keyword">try</span>
 {
-    tx.begin(); // Start the PM transaction
+    tx.begin(); <span class="comment">// Start the PM transaction</span>
 
     ... perform some persistence operations
 
-    tx.commit(); // Commit the PM transaction
+    tx.commit(); <span class="comment">// Commit the PM transaction</span>
 }
-finally
+<span class="keyword">finally</span>
 {
-    if (tx.isActive())
+    <span class="keyword">if</span> (tx.isActive())
     {
-        tx.rollback(); // Error occurred so rollback the PM transaction
+        tx.rollback(); <span class="comment">// Error occurred so rollback the PM transaction</span>
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -336,26 +338,23 @@ finally
 <div class="ulist">
 <ul>
 <li>
-<p>Transactions can lock all records in a datastore and keep them locked
-until they are ready to commit their changes. These are known as
-Pessimistic (or datastore) Transactions</p>
+<p>Transactions can lock all records in a datastore and keep them locked until they are ready to commit their changes.
+These are known as Pessimistic (or datastore) Transactions</p>
 </li>
 <li>
-<p>Transactions can simply assume that things in the datastore will not
-change until they are ready to commit, not lock any records and then
-just before committing make a check for changes. These are known as
-Optimistic Transactions.</p>
+<p>Transactions can simply assume that things in the datastore will not change until they are ready to commit,
+not lock any records and then just before committing make a check for changes.
+These are known as Optimistic Transactions.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>You select the type of transaction to be used by a <em>PersistenceManager</em>
-(PM) either by setting the PMF property <strong>javax.jdo.option.Optimistic</strong>,
-or on the transaction you call</p>
+<p>You select the type of transaction to be used by a <em>PersistenceManager</em> (PM)
+either by setting the PMF property <strong>javax.jdo.option.Optimistic</strong>, or on the transaction you call</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>pm.currentTransaction().setOptimistic(true);</pre>
+<pre class="CodeRay highlight"><code data-lang="java">pm.currentTransaction().setOptimistic(<span class="predefined-constant">true</span>);</code></pre>
 </div>
 </div>
 </div>

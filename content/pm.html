@@ -204,7 +204,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="pm.html">PersistenceManager</a></li>
                         <li><a href="transactions.html">Transactions</a></li>
                         <li><a href="attach_detach.html">Attach-Detach</a></li>
-                        <li><a href="fetchgroups.html">Fetch Groups</a></li>
+                        <li><a href="fetchgroups.html">Fetch Plan/Groups</a></li>
                         <li><a href="state_transition.html">Object States</a></li>
                         <li><a href="object_retrieval.html">Object Retrieval</a></li>
                         <li><a href="exceptions.html">Exceptions</a></li>
@@ -248,6 +248,9 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="jdoql_methods.html">Methods</a></li>
                         <li><a href="jdoql_result.html">Result</a></li>
                         <li><a href="jdoql_quickref.pdf">Quick Ref PDF</a></li>
+                        <li><a href="jdoql_typed.html">JDOQL Typed API</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="query_sql.html">SQL</a></li>
                     </ul>
                </li>
 
@@ -295,118 +298,109 @@ table.CodeRay td.code{padding:0 0 0 .75em}
         <div class="row-fluid">
             <div class="col-sm-9">
 <!--                <div class="page-title">
-                    <h3>Persistence Manager<a id="Persistence_Manager"></a></h3>
+                    <h3>Persistence Manager</h3>
                 </div>
 -->
                 <div id="doc-content">
                     <div class="sect1">
-<h2 id="index">Persistence Manager<a id="Persistence_Manager"></a></h2>
+<h2 id="Persistence_Manager">Persistence Manager</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Any JDO-enabled application will require at least one
-<em>PersistenceManager</em> (PM). This is obtained from the
-<a href="pmf.html">PersistenceManagerFactory</a> for the datastore.</p>
+<p>Any JDO-enabled application will require at least one <em>PersistenceManager</em> (PM).
+This is obtained from the <a href="pmf.html">PersistenceManagerFactory</a> for the datastore.</p>
 </div>
 <div class="paragraph">
 <p>The simplest way of creating a <em>PersistenceManager</em>
 <a href="api32/apidocs/javax/jdo/PersistenceManager.html"><span class="image"><img src="images/javadoc.png" alt="image"></span></a>
 is as follows</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(props);
-PersistenceManager pm = pmf.getPersistenceManager();</pre>
+<pre class="CodeRay highlight"><code data-lang="java">PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(props);
+PersistenceManager pm = pmf.getPersistenceManager();</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>A <em>PersistenceManager</em> is the key to all persistence operations in JDO.
-With it you can persist, update, delete, and retrieve objects from the
-datastore. A <em>PersistenceManager</em> has a single transaction.</p>
+With it you can persist, update, delete, and retrieve objects from the datastore.
+A <em>PersistenceManager</em> has a single transaction.</p>
 </div>
 <div class="paragraph">
 <p><br></p>
 </div>
 <div class="sect2">
-<h3 id="_persist_objects">Persist Objects<a id="Persist_Objects"></a></h3>
+<h3 id="persist">Persist Objects</h3>
 <div class="paragraph">
-<p>To persist an object, the object must first be marked as persistable
-using <a href="metadata.html">MetaData (XML/Annotations)</a>. Then you would
-start the PM transaction, and use <em>makePersistent</em> as follows</p>
+<p>To persist an object, the object must first be marked as persistable using <a href="metadata.html">MetaData (XML/Annotations)</a>.
+Then you would start the PM transaction, and use <em>makePersistent</em> as follows</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>PersistenceManager pm = pmf.getPersistenceManager();
+<pre class="CodeRay highlight"><code data-lang="java">PersistenceManager pm = pmf.getPersistenceManager();
 Transaction tx = pm.currentTransaction();
-try
+<span class="keyword">try</span>
 {
-    // Start the transaction
+    <span class="comment">// Start the transaction</span>
     tx.begin();
 
-    // Create the object to persist
-    MyClass obj = new MyClass();
+    <span class="comment">// Create the object to persist</span>
+    MyClass obj = <span class="keyword">new</span> MyClass();
 
-    // Persist it to the datastore
+    <span class="comment">// Persist it to the datastore</span>
     pm.makePersistent(obj);
 
-    // Commit the transaction, flushing the object to the datastore
+    <span class="comment">// Commit the transaction, flushing the object to the datastore</span>
     tx.commit();
 }
-catch (Exception e)
+<span class="keyword">catch</span> (<span class="exception">Exception</span> e)
 {
     ... handle exceptions
 }
-finally
+<span class="keyword">finally</span>
 {
-    if (tx.isActive())
+    <span class="keyword">if</span> (tx.isActive())
     {
-        // Error occurred so rollback the transaction
+        <span class="comment">// Error occurred so rollback the transaction</span>
         tx.rollback();
     }
     pm.close();
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <em>makePersistent</em> method of <strong>PersistenceManager</strong> makes the object
-persistent in the datastore, and updates the 'state' of the object from
-<em>Transient</em> (at the start) to <em>Hollow</em> (after commit() of the
-transaction).</p>
+<p>The <em>makePersistent</em> method of <strong>PersistenceManager</strong> makes the object persistent in the datastore, and updates the 'state' of the object from
+<em>Transient</em> (at the start) to <em>Hollow</em> (after commit() of the transaction).</p>
 </div>
 <div class="paragraph">
-<p>When an object is persisted, if it has any other objects referenced from
-that object they also will be made persistent. This is referred to as
-<strong>persistence-by-reachability</strong>. The main benefit of this is that if you
-have an object graph to persist, then you don&#8217;t need to call
-<em>makePersistent()</em> on all objects, instead just using one that can be
-used to find all of the others. <strong>persistence-by-reachability</strong> is also
-run at the time of calling <em>commit()</em> on the transaction. This has the
-effect that if you had called <em>makePersistent()</em> on an object and that
-had persisted another object, and before commit you had removed the
-relation to this other object, then at <em>commit()</em> the reachability
-algorithm will find that this other object is no longer reachable and
-will remove it from persistence.</p>
+<p>When an object is persisted, if it has any other objects referenced from that object they also will be made persistent.
+This is referred to as <strong>persistence-by-reachability</strong>.
+The main benefit of this is that if you have an object graph to persist, then you don&#8217;t need to call <em>makePersistent()</em> on all objects,
+instead just using one that can be used to find all of the others.
+<strong>persistence-by-reachability</strong> is also run at the time of calling <em>commit()</em> on the transaction.
+This has the effect that if you had called <em>makePersistent()</em> on an object and that had persisted another object,
+and before commit you had removed the relation to this other object, then at <em>commit()</em> the reachability
+algorithm will find that this other object is no longer reachable and will remove it from persistence.</p>
 </div>
 <div class="paragraph">
 <p><br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_retrieve_objects">Retrieve Objects<a id="Retrieve_Objects"></a></h3>
+<h3 id="retrieve">Retrieve Objects</h3>
 <div class="paragraph">
-<p>So we&#8217;ve made some of our objects persistent, and now we want to
-retrieve them in our application. Here&#8217;s one way of retrieving objects
-of a particular type.</p>
+<p>So we&#8217;ve made some of our objects persistent, and now we want to retrieve them in our application.
+Here&#8217;s one way of retrieving objects of a particular type.</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>tx = pm.currentTransaction();
-try
+<pre class="CodeRay highlight"><code data-lang="java">tx = pm.currentTransaction();
+<span class="keyword">try</span>
 {
     tx.begin();
 
-    Extent e = pm.getExtent(mydomain.MyClass.class, true);
-    Iterator iter=e.iterator();
-    while (iter.hasNext())
+    Extent e = pm.getExtent(mydomain.MyClass.class, <span class="predefined-constant">true</span>);
+    <span class="predefined-type">Iterator</span> iter=e.iterator();
+    <span class="keyword">while</span> (iter.hasNext())
     {
         MyClass my_obj=(MyClass)iter.next();
         ...
@@ -414,60 +408,57 @@ try
 
     tx.commit();
 }
-catch (Exception e)
+<span class="keyword">catch</span> (<span class="exception">Exception</span> e)
 {
-    if (tx.isActive())
+    <span class="keyword">if</span> (tx.isActive())
     {
         tx.rollback();
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <strong>Extent</strong> interface is one of the ways to retrieve your objects. The
-others use the <strong>Query</strong> interface, allowing more precise filtering over
-the objects returned.</p>
+<p>The <strong>Extent</strong> interface is one of the ways to retrieve your objects.
+The others use the <strong>Query</strong> interface, allowing more precise filtering over the objects returned.</p>
 </div>
 <div class="paragraph">
 <p><br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_update_objects">Update Objects<a id="Update_Objects"></a></h3>
+<h3 id="update">Update Objects</h3>
 <div class="paragraph">
-<p>To update an object we firstly retrieve it, as above, and then we call
-any of its mutator methods. For example</p>
+<p>To update an object we firstly retrieve it, as above, and then we call any of its mutator methods. For example</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>tx = pm.currentTransaction();
-try
+<pre class="CodeRay highlight"><code data-lang="java">tx = pm.currentTransaction();
+<span class="keyword">try</span>
 {
     tx.begin();
 
-    Extent e = pm.getExtent(mydomain.MyClass.class, true);
-    Iterator iter=e.iterator();
-    while (iter.hasNext())
+    Extent e = pm.getExtent(mydomain.MyClass.class, <span class="predefined-constant">true</span>);
+    <span class="predefined-type">Iterator</span> iter=e.iterator();
+    <span class="keyword">while</span> (iter.hasNext())
     {
         MyClass my_obj=(MyClass)iter.next();
-        my_obj.setValue(25.0); // Change the value
+        my_obj.setValue(<span class="float">25.0</span>); <span class="comment">// Change the value</span>
         ...
     }
 
     tx.commit();
 }
-catch (Exception e)
+<span class="keyword">catch</span> (<span class="exception">Exception</span> e)
 {
-    if (tx.isActive())
+    <span class="keyword">if</span> (tx.isActive())
     {
         tx.rollback();
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When <em>setValue()</em> is called on the persistent object this change is
-intercepted by JDO and the value change will be automatically sent to
+<p>When <em>setValue()</em> is called on the persistent object this change is intercepted by JDO and the value change will be automatically sent to
 the datastore &#8230;&#8203; transparently!</p>
 </div>
 <div class="paragraph">
@@ -475,14 +466,13 @@ the datastore &#8230;&#8203; transparently!</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_delete_objects">Delete Objects<a id="Delete_Objects"></a></h3>
+<h3 id="delete">Delete Objects</h3>
 <div class="paragraph">
-<p>So we can persist objects, and retrieve them. Now we want to remove one
-from persistence.</p>
+<p>So we can persist objects, and retrieve them. Now we want to remove one from persistence.</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>try
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">try</span>
 {
     tx = pm.currentTransaction();
     tx.begin();
@@ -493,13 +483,13 @@ from persistence.</p>
 
     tx.commit();
 }
-catch (Exception e)
+<span class="keyword">catch</span> (<span class="exception">Exception</span> e)
 {
-    if (tx.isActive())
+    <span class="keyword">if</span> (tx.isActive())
     {
         tx.rollback();
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -507,17 +497,16 @@ catch (Exception e)
 </div>
 </div>
 <div class="sect2">
-<h3 id="_making_an_object_transient">Making an object transient<a id="Making_an_object_transient"></a></h3>
+<h3 id="make_transient">Making an object transient</h3>
 <div class="paragraph">
-<p>As we have seen in the <a href="state_transition.html">JDO States guide</a>, an
-object can have many possible states. When we want to take an object and
-work on it, but removing its identity we can make it <strong>transient</strong>. This
-means that it will retain the values of its fields, yet will no longer
-be associated with the object in the datastore. We do this as follows</p>
+<p>As we have seen in the <a href="state_transition.html">JDO States guide</a>, an object can have many possible states.
+When we want to take an object and work on it, but removing its identity we can make it <strong>transient</strong>.
+This means that it will retain the values of its fields, yet will no longer be associated with the object in the datastore.
+We do this as follows</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>try
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">try</span>
 {
     tx = pm.currentTransaction();
     tx.begin();
@@ -528,15 +517,15 @@ be associated with the object in the datastore. We do this as follows</p>
 
     tx.commit();
 }
-catch (Exception e)
+<span class="keyword">catch</span> (<span class="exception">Exception</span> e)
 {
-    if (tx.isActive())
+    <span class="keyword">if</span> (tx.isActive())
     {
         tx.rollback();
     }
 }
 
-... (code to work on "my_obj")</pre>
+... (code to work on <span class="string"><span class="delimiter">&quot;</span><span class="content">my_obj</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 </div>
