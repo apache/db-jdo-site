@@ -333,7 +333,8 @@ This can be efficient for queries with few results, and very inefficient for que
 * *A positive value* - Your JDO provider will read this number of objects at query execution. Thereafter it will read the objects when requested.
 
 
-In addition to the number of objects fetched, you can also control which fields are fetched for each object of the candidate type. This is controlled via the _FetchPlan_.
+In addition to the number of objects fetched, you can also control which fields are fetched for each object of the candidate type. 
+This is controlled via the link:fetchgroups.html#singlestring[FetchPlan].
 
 
 

@@ -7,14 +7,15 @@
 
 [[index]]
 
-== Transactionsanchor:Transactions[]
+[[Transactions]]
+== Transactions
 
-When managing the persistence of objects using a
-xref:pm.adoc[PersistenceManager] it is normal to handle all datastore
-operations in a transaction. For this reason each _PersistenceManager_
-has its own transaction. Consequently a typical JDO persistence method
-will look something like this
+When managing the persistence of objects using a xref:pm.adoc[PersistenceManager] it is normal to handle all datastore
+operations in a transaction. 
+For this reason each _PersistenceManager_ has its own transaction.
+Consequently a typical JDO persistence method will look something like this
 
+[source,java]
 ....
 PersistenceManager pm = pmf.getPersistenceManager();
 Transaction tx = pm.currentTransaction();
@@ -37,18 +38,16 @@ finally
 
 JDO supports the two main forms of transaction
 
-* Transactions can lock all records in a datastore and keep them locked
-until they are ready to commit their changes. These are known as
-Pessimistic (or datastore) Transactions
-* Transactions can simply assume that things in the datastore will not
-change until they are ready to commit, not lock any records and then
-just before committing make a check for changes. These are known as
-Optimistic Transactions.
+* Transactions can lock all records in a datastore and keep them locked until they are ready to commit their changes. 
+These are known as Pessimistic (or datastore) Transactions
+* Transactions can simply assume that things in the datastore will not change until they are ready to commit, 
+not lock any records and then just before committing make a check for changes. 
+These are known as Optimistic Transactions.
 
-You select the type of transaction to be used by a _PersistenceManager_
-(PM) either by setting the PMF property *javax.jdo.option.Optimistic*,
-or on the transaction you call
+You select the type of transaction to be used by a _PersistenceManager_ (PM) 
+either by setting the PMF property *javax.jdo.option.Optimistic*, or on the transaction you call
 
+[source,java]
 ....
 pm.currentTransaction().setOptimistic(true);
 ....

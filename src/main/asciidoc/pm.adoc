@@ -5,34 +5,36 @@
 
 [[index]]
 
-== Persistence Manageranchor:Persistence_Manager[]
+[[Persistence_Manager]]
+== Persistence Manager
 
-Any JDO-enabled application will require at least one
-_PersistenceManager_ (PM). This is obtained from the
-xref:pmf.adoc[PersistenceManagerFactory] for the datastore.
+Any JDO-enabled application will require at least one _PersistenceManager_ (PM). 
+This is obtained from the xref:pmf.adoc[PersistenceManagerFactory] for the datastore.
 
 The simplest way of creating a _PersistenceManager_
 link:api32/apidocs/javax/jdo/PersistenceManager.html[image:images/javadoc.png[image]]
 is as follows
 
+[source,java]
 ....
 PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(props);
 PersistenceManager pm = pmf.getPersistenceManager();
 ....
 
 A _PersistenceManager_ is the key to all persistence operations in JDO.
-With it you can persist, update, delete, and retrieve objects from the
-datastore. A _PersistenceManager_ has a single transaction.
+With it you can persist, update, delete, and retrieve objects from the datastore. 
+A _PersistenceManager_ has a single transaction.
 
 {empty} +
 
 
-=== Persist Objectsanchor:Persist_Objects[]
+[[persist]]
+=== Persist Objects
 
-To persist an object, the object must first be marked as persistable
-using xref:metadata.adoc[MetaData (XML/Annotations)]. Then you would
-start the PM transaction, and use _makePersistent_ as follows
+To persist an object, the object must first be marked as persistable using xref:metadata.adoc[MetaData (XML/Annotations)]. 
+Then you would start the PM transaction, and use _makePersistent_ as follows
 
+[source,java]
 ....
 PersistenceManager pm = pmf.getPersistenceManager();
 Transaction tx = pm.currentTransaction();
@@ -65,33 +67,28 @@ finally
 }
 ....
 
-The _makePersistent_ method of *PersistenceManager* makes the object
-persistent in the datastore, and updates the 'state' of the object from
-_Transient_ (at the start) to _Hollow_ (after commit() of the
-transaction).
+The _makePersistent_ method of *PersistenceManager* makes the object persistent in the datastore, and updates the 'state' of the object from
+_Transient_ (at the start) to _Hollow_ (after commit() of the transaction).
 
-When an object is persisted, if it has any other objects referenced from
-that object they also will be made persistent. This is referred to as
-*persistence-by-reachability*. The main benefit of this is that if you
-have an object graph to persist, then you don't need to call
-_makePersistent()_ on all objects, instead just using one that can be
-used to find all of the others. *persistence-by-reachability* is also
-run at the time of calling _commit()_ on the transaction. This has the
-effect that if you had called _makePersistent()_ on an object and that
-had persisted another object, and before commit you had removed the
-relation to this other object, then at _commit()_ the reachability
-algorithm will find that this other object is no longer reachable and
-will remove it from persistence.
+When an object is persisted, if it has any other objects referenced from that object they also will be made persistent. 
+This is referred to as *persistence-by-reachability*. 
+The main benefit of this is that if you have an object graph to persist, then you don't need to call _makePersistent()_ on all objects, 
+instead just using one that can be used to find all of the others. 
+*persistence-by-reachability* is also run at the time of calling _commit()_ on the transaction. 
+This has the effect that if you had called _makePersistent()_ on an object and that had persisted another object, 
+and before commit you had removed the relation to this other object, then at _commit()_ the reachability
+algorithm will find that this other object is no longer reachable and will remove it from persistence.
 
 {empty} +
 
 
-=== Retrieve Objectsanchor:Retrieve_Objects[]
+[[retrieve]]
+=== Retrieve Objects
 
-So we've made some of our objects persistent, and now we want to
-retrieve them in our application. Here's one way of retrieving objects
-of a particular type.
+So we've made some of our objects persistent, and now we want to retrieve them in our application. 
+Here's one way of retrieving objects of a particular type.
 
+[source,java]
 ....
 tx = pm.currentTransaction();
 try
@@ -117,18 +114,18 @@ catch (Exception e)
 }
 ....
 
-The *Extent* interface is one of the ways to retrieve your objects. The
-others use the *Query* interface, allowing more precise filtering over
-the objects returned.
+The *Extent* interface is one of the ways to retrieve your objects. 
+The others use the *Query* interface, allowing more precise filtering over the objects returned.
 
 {empty} +
 
 
-=== Update Objectsanchor:Update_Objects[]
+[[update]]
+=== Update Objects
 
-To update an object we firstly retrieve it, as above, and then we call
-any of its mutator methods. For example
+To update an object we firstly retrieve it, as above, and then we call any of its mutator methods. For example
 
+[source,java]
 ....
 tx = pm.currentTransaction();
 try
@@ -155,18 +152,18 @@ catch (Exception e)
 }
 ....
 
-When _setValue()_ is called on the persistent object this change is
-intercepted by JDO and the value change will be automatically sent to
+When _setValue()_ is called on the persistent object this change is intercepted by JDO and the value change will be automatically sent to
 the datastore ... transparently!
 
 {empty} +
 
 
-=== Delete Objectsanchor:Delete_Objects[]
+[[delete]]
+=== Delete Objects
 
-So we can persist objects, and retrieve them. Now we want to remove one
-from persistence.
+So we can persist objects, and retrieve them. Now we want to remove one from persistence.
 
+[source,java]
 ....
 try
 {
@@ -191,14 +188,15 @@ catch (Exception e)
 {empty} +
 
 
-=== Making an object transientanchor:Making_an_object_transient[]
+[[make_transient]]
+=== Making an object transient
 
-As we have seen in the xref:state_transition.adoc[JDO States guide], an
-object can have many possible states. When we want to take an object and
-work on it, but removing its identity we can make it *transient*. This
-means that it will retain the values of its fields, yet will no longer
-be associated with the object in the datastore. We do this as follows
+As we have seen in the xref:state_transition.adoc[JDO States guide], an object can have many possible states. 
+When we want to take an object and work on it, but removing its identity we can make it *transient*. 
+This means that it will retain the values of its fields, yet will no longer be associated with the object in the datastore.
+We do this as follows
 
+[source,java]
 ....
 try
 {

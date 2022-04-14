@@ -7,35 +7,34 @@
 
 == JDO Class Typesanchor:JDO_Class_Types[]
 
-JDO provides a means of transparent persistence of objects of user
-defined classes. With JDO there are actually 3 types of classes.
+JDO provides a means of transparent persistence of objects of user defined classes. 
+With JDO there are actually 3 types of classes.
 
-* *Persistence Capable* classes are classes whose instances can be
-persisted to a datastore. JDO provide the mechanism for persisting these
-instances, and they are core to JDO. These classes need to be _enhanced_
-according to a JDO Meta-Data specification before use within a JDO
-environment.
-* *Persistence Aware* classes are classes that manipulate Persistence
-Capable instances through direct attribute manipulation. These classes
-are typically enhanced with very minimal JDO Meta-Data. The enhancement
-process performs very little changes to these classes.
-* *Normal* classes are classes that aren't themselves persistable, and
-have no knowledge of persistence either. These classes are totally
-unchanged in JDO, and require no JDO Meta-Data whatsoever.
+* *Persistence Capable* classes are classes whose instances can be persisted to a datastore. 
+JDO provide the mechanism for persisting these instances, and they are core to JDO. 
+These classes need to be _enhanced_ according to a JDO Meta-Data specification before use within a JDO environment.
+* *Persistence Aware* classes are classes that manipulate PersistenceCapable instances through direct attribute manipulation. 
+These classes are typically enhanced with very minimal JDO Meta-Data. 
+The enhancement process performs very little changes to these classes.
+* *Normal* classes are classes that aren't themselves persistable, and have no knowledge of persistence either. 
+These classes are totally unchanged in JDO, and require no JDO Meta-Data whatsoever.
 
-=== PersistenceCapableanchor:PersistenceCapable[]
 
-Classes are defined as *PersistenceCapable* either by XML MetaData, like
-this
+[[PersistenceCapable]]
+=== PersistenceCapable
 
+Classes are defined as *PersistenceCapable*, either by XML MetaData, like this
+
+[source,xml]
 ....
 <class name="MyClass">
     ...
 </class>
 ....
 
-or, in JDO2.1, using Annotations. Like this
+or using Annotations, like this
 
+[source,java]
 ....
 @PersistenceCapable
 public class MyClass
@@ -47,17 +46,19 @@ public class MyClass
 {empty} +
 
 
-=== PersistenceAwareanchor:PersistenceAware[]
+[[PersistenceAware]]
+=== PersistenceAware
 
-Classes are defined as *PersistenceAware* either by XML MetaData, like
-this
+Classes are defined as *PersistenceAware* either by XML MetaData, like this
 
+[source,xml]
 ....
 <class name="MyClass" persistence-modifier="persistence-aware"/>
 ....
 
-or, in JDO2.1, using Annotations. Like this
+or using Annotations, like this
 
+[source,java]
 ....
 @PersistenceAware
 public class MyClass

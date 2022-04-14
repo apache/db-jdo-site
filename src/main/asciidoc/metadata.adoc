@@ -7,14 +7,14 @@
 
 == Persistence MetaDataanchor:Persistence_MetaData[]
 
-JDO 1.0 and JDO 2.0 support specification of persistence using XML MetaData. 
+All variants of JDO support specification of persistence using XML MetaData. 
 JDO 2.1+ adds on the ability to specify persistence using Java annotations.
 
-=== XML MetaDataanchor:XML_MetaData[]
+[[xml]]
+=== XML MetaData
 
-JDO expects any XML MetaData to be specified in a file or files in
-particular positions in the file system. For example, if you have a
-class _com.mycompany.sample.MyExample_, JDO will look for any of the
+JDO expects any XML MetaData to be specified in a file or files in particular positions in the file system. 
+For example, if you have a class _com.mycompany.sample.MyExample_, JDO will look for any of the
 following files until it finds one (in the order stated) :
 
 ....
@@ -48,9 +48,9 @@ information for Oracle datastores, and so on.
 {empty} +
 
 
-=== Annotationsanchor:Annotations[]
+[[Annotations]]
+=== Annotations
 
-JDO 2.1+ provides support for annotations. Classes and fields/properties
-can be annotated defining the persistence and, optionally, any ORM
-information.
+JDO 2.1+ added support for annotations. 
+Classes and fields/properties can be annotated defining the persistence and, optionally, any ORM information.
 

@@ -7,27 +7,26 @@
 
 [[index]]
 
-== Persistence Manager Factoryanchor:Persistence_Manager_Factory[]
+[[Persistence_Manager_Factory]]
+== Persistence Manager Factory
 
-Any JDO-enabled application will require at least one
-_PersistenceManagerFactory_. Typically applications create one per
-datastore being utilised. A _PersistenceManagerFactory_ provides access
-to __PersistenceManager__s which allow objects to be persisted, and
-retrieved. The _PersistenceManagerFactory_ can be configured to provide
-particular behaviour.
+Any JDO-enabled application will require at least one _PersistenceManagerFactory_. 
+Typically applications create one per datastore being utilised. 
+A _PersistenceManagerFactory_ provides access to __PersistenceManager__s which allow objects to be persisted, and retrieved. 
+The _PersistenceManagerFactory_ can be configured to provide particular behaviour.
 
 The simplest way of creating a _PersistenceManagerFactory_
 link:api32/apidocs/javax/jdo/PersistenceManagerFactory.html[image:images/javadoc.png[image]]
 is as follows
 
+[source,java]
 ....
 Properties properties = new Properties();
-properties.setProperty("javax.jdo.PersistenceManagerFactoryClass",
-                "{my_implementation_pmf_class}");
-properties.setProperty("javax.jdo.option.ConnectionDriverName","com.mysql.jdbc.Driver");
-properties.setProperty("javax.jdo.option.ConnectionURL","jdbc:mysql://localhost/myDB");
-properties.setProperty("javax.jdo.option.ConnectionUserName","login");
-properties.setProperty("javax.jdo.option.ConnectionPassword","password");
+properties.setProperty("javax.jdo.PersistenceManagerFactoryClass", "{my_implementation_pmf_class}");
+properties.setProperty("javax.jdo.option.ConnectionDriverName", "com.mysql.jdbc.Driver");
+properties.setProperty("javax.jdo.option.ConnectionURL", "jdbc:mysql://localhost/myDB");
+properties.setProperty("javax.jdo.option.ConnectionUserName", "login");
+properties.setProperty("javax.jdo.option.ConnectionPassword", "password");
 PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(properties);
 ....
 
@@ -44,6 +43,7 @@ javax.jdo.option.ConnectionPassword=password
 
 and then to create the _PersistenceManagerFactory_ using this file
 
+[source,java]
 ....
 PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("jdo.properties");
 ....
@@ -52,10 +52,8 @@ A final alternative would be to call
 _JDOHelper.getPersistenceManagerFactory(jndiLocation, context);_, hence
 accessing the properties via JNDI.
 
-Whichever way we wish to obtain the _PersistenceManagerFactory_ we have
-defined a series of properties to give the behaviour of the
-_PersistenceManagerFactory_. The first property specifies to use PMF of
-the implementation required to be used, and the following 4 properties
+Whichever way we wish to obtain the _PersistenceManagerFactory_ we have defined a series of properties to give the behaviour of the _PersistenceManagerFactory_. 
+The first property specifies to use PMF of the implementation required to be used, and the following 4 properties
 define the datastore that it should connect to.
 
 {empty} +
@@ -70,22 +68,20 @@ define the datastore that it should connect to.
 |The name of the PersistenceManager implementation
 
 |*javax.jdo.option.ConnectionFactory*
-| Instance of a connection factory. For RBDMS, it must be an instance of
-javax.sql.DataSource. *This is for a transactional DataSource*
+| Instance of a connection factory. For RBDMS, it must be an instance of javax.sql.DataSource. 
+*This is for a transactional DataSource*
 
 |*javax.jdo.option.ConnectionFactory2*
-|Instance of a connection factory. For RBDMS, it must be an instance of
-javax.sql.DataSource. *This is for a non-transactional DataSource*
+|Instance of a connection factory. For RBDMS, it must be an instance of javax.sql.DataSource. 
+*This is for a non-transactional DataSource*
 
 |*javax.jdo.option.ConnectionFactoryName*
-|The JNDI name for a connection factory. For RBDMS, it must be a JNDI
-name that points to a javax.sql.DataSource object. *This is for a
-transactional DataSource*
+|The JNDI name for a connection factory. For RBDMS, it must be a JNDI name that points to a javax.sql.DataSource object. 
+*This is for a transactional DataSource*
 
 |*javax.jdo.option.ConnectionFactory2Name*
-|The JNDI name for a connection factory. For RBDMS, it must be a JNDI
-name that points to a javax.sql.DataSource object. *This is for a
-non-transactional DataSource*
+|The JNDI name for a connection factory. For RBDMS, it must be a JNDI name that points to a javax.sql.DataSource object. 
+*This is for a non-transactional DataSource*
 
 |*javax.jdo.option.ConnectionDriverName*
 |The name of the driver to use for the DB
@@ -98,7 +94,6 @@ non-transactional DataSource*
 
 |*javax.jdo.option.ConnectionPassword*
 |Password to use for connecting to the DB
-
 
 |*javax.jdo.option.IgnoreCache*
 |Whether to ignore the cache for queries. Range of Values: true \| false
@@ -115,80 +110,65 @@ Range of Values: true \| false
 |Whether to allow nontransactional writes.
 Range of Values: true \| false
 
-
 |*javax.jdo.option.Optimistic*
-|Whether to use xref:transactions.html[Optimistic transactions]. Range of Values: true \| false
-
+|Whether to use xref:transactions.html[Optimistic transactions]. 
+Range of Values: true \| false
 
 |*javax.jdo.option.RetainValues*
-|Whether to suppress the clearing of values from persistent instances on
-transaction completion. Range of Values: true \| false
+|Whether to suppress the clearing of values from persistent instances on transaction completion. 
+Range of Values: true \| false
 
 |*javax.jdo.option.RestoreValues*
 
-|Whether persistent object have transactional field values restored when
-transaction rollback occurs. Range of Values: true \| false
+|Whether persistent object have transactional field values restored when transaction rollback occurs. 
+Range of Values: true \| false
 
 |*javax.jdo.option.Mapping*
-|Name for the ORM MetaData mapping files to use with this PMF. For
-example if this is set to "mysql" then the implementation looks for
-MetaData mapping files called "\{classname}-mysql.orm" or
-"package-mysql.orm". If this is not specified then the JDO
-implementation assumes that all is specified in the JDO MetaData file.
+|Name for the ORM MetaData mapping files to use with this PMF. 
+For example if this is set to "mysql" then the implementation looks for MetaData mapping files called "\{classname}-mysql.orm" or "package-mysql.orm". 
+If this is not specified then the JDO implementation assumes that all is specified in the JDO MetaData file.
 _ORM datastores only_
 
 |*javax.jdo.mapping.Catalog*
-|Name of the catalog to use by default for all classes persisted using
-this PMF. This can be overridden in the MetaData where required, and is
-optional. JPOX will prefix all table names with this catalog name if the
-RDBMS supports specification of catalog names in DDL. _ORM datastores
-only_
+|Name of the catalog to use by default for all classes persisted using this PMF. 
+This can be overridden in the MetaData where required, and is optional.
+_ORM datastores only_
 
 |*javax.jdo.mapping.Schema*
-|Name of the schema to use by default for all classes persisted using
-this PMF. This can be overridden in the MetaData where required, and is
-optional. JPOX will prefix all table names with this schema name if the
-RDBMS supports specification of schema names in DDL. _ORM datastores
-only_
+|Name of the schema to use by default for all classes persisted using this PMF.
+This can be overridden in the MetaData where required, and is optional. 
+_ORM datastores only_
 
 |*javax.jdo.option.DetachAllOnCommit*
-|Allows the user to select that when a transaction is committed all
-objects enlisted in that transaction will be automatically detached.
+|Allows the user to select that when a transaction is committed all objects enlisted in that transaction will be automatically detached.
 Range of Values: true \| *false*
 
 |*javax.jdo.option.CopyOnAttach*
-|Whether, when attaching a detached object, we create an attached copy or
-simply migrate the detached object to attached state. This is from JDO
-2.1. Range of Values: *true* \| false
+|Whether, when attaching a detached object, we create an attached copy or simply migrate the detached object to attached state. 
+Range of Values: *true* \| false
 
 |*javax.jdo.option.TransactionType*
-|Type of transaction to use. If running under J2SE the default is
-RESOURCE_LOCAL, and if running under J2EE the default is JTA.
+|Type of transaction to use. If running under JavaSE the default is RESOURCE_LOCAL, and if running under JavaEE/JakartaEE the default is JTA.
 Range of Values: RESOURCE_LOCAL \| JTA
 
 |*javax.jdo.option.PersistenceUnitName*
-|Name of the "persistence-unit" to use with this PMF. This borrows the
-"persistence-unit" concept from JPA for use with JDO 2.1.
+|Name of the "persistence-unit" to use with this PMF. This borrows the "persistence-unit" concept from JPA for use with JDO.
 
 |*javax.jdo.option.ServerTimeZoneID*
-|Id of the TimeZone under which the datastore server is running. If this
-is not specified or is set to null it is assumed that the datastore
-server is running in the same timezone as the JVM under which the
+|Id of the TimeZone under which the datastore server is running. 
+If this is not specified or is set to null it is assumed that the datastore server is running in the same timezone as the JVM under which the
 implementation is running.
 
 |*javax.jdo.option.Name*
-|Name of the PMF. This is for use with "named PMF" functionality in JDO
-2.1
+|Name of the PMF. This is for use with "named PMF" functionality (see jdoconfig.xml).
 
 |*javax.jdo.option.ReadOnly*
-|Whether this datastore should be treated as read only. Added in JDO 2.2
+|Whether this datastore should be treated as read only.
 Range of Values: true \| *false*
 
 |*javax.jdo.option.TransactionIsolationLevel*
-
-|Isolation level to use for connections in the current transaction. Added
-in JDO 2.2. Range of Values: none \| read-committed \| read-uncommitted \|
-repeatable-read \| snapshot \| serializable
+|Isolation level to use for connections in the current transaction. 
+Range of Values: none \| read-committed \| read-uncommitted \| repeatable-read \| snapshot \| serializable
 
 |===
 

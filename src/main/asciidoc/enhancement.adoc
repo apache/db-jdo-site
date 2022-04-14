@@ -7,16 +7,16 @@
 
 [[index]]
 
-== JDO Bytecode Enhancementanchor:JDO_Bytecode_Enhancement[]
+[[JDO_Bytecode_Enhancement]]
+== JDO Bytecode Enhancement
 
-JDO defines a byte-code enhancement process that provides for dirty
-detection of fields. Before a class is used at runtime it is compiled
-and then "enhanced" to implement the interface _PersistenceCapable_, and
-optionally also _Detachable_.
+JDO defines a byte-code enhancement process that provides for dirty detection of fields. 
+Before a class is used at runtime it is compiled and then "enhanced" to implement the interface _PersistenceCapable_, and optionally also _Detachable_.
 
-We can demonstrate this by taking a sample class, and seeing it before
-and after enhancement. We start with the following class
+We can demonstrate this by taking a sample class, and seeing it before and after enhancement. 
+We start with the following class
 
+[source,java]
 ....
 package org.apache.jdo.test;
 
@@ -63,12 +63,11 @@ public class A
 }
 ....
 
-and require it to be _PersistenceCapable_ and _Detachable_. The
-enhancement process needs to intercept all updates of the fields of the
-class (id, name, b) as well as add on the necessary
-_PersistenceCapable_, _Detachable_ methods. After "enhancement" it
-becomes
+and require it to be _PersistenceCapable_ and _Detachable_. 
+The enhancement process needs to intercept all updates of the fields of the
+class (id, name, b) as well as add on the necessary _PersistenceCapable_, _Detachable_ methods. After "enhancement" it becomes
 
+[source,java]
 ....
 package org.apache.jdo.test;
 import java.util.BitSet;
