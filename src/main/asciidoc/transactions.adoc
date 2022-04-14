@@ -10,7 +10,7 @@
 [[Transactions]]
 == Transactions
 
-When managing the persistence of objects using a xref:pm.adoc[PersistenceManager] it is normal to handle all datastore
+When managing the persistence of objects using a xref:pm.adoc[PersistenceManager] it is common to handle all datastore
 operations in a transaction. 
 For this reason each _PersistenceManager_ has its own transaction.
 Consequently a typical JDO persistence method will look something like this
@@ -36,19 +36,42 @@ finally
 }
 ....
 
-JDO supports the two main forms of transaction
+[[locking]]
+=== Locking
 
-* Transactions can lock all records in a datastore and keep them locked until they are ready to commit their changes. 
-These are known as Pessimistic (or datastore) Transactions
-* Transactions can simply assume that things in the datastore will not change until they are ready to commit, 
+JDO supports the two main forms of transaction locking
+
+* Pessimistic (or datastore) locking is where you lock all records in a datastore affected by a transaction and keep them locked 
+until you are ready to commit their changes. This is suitable for short lived operations where no user interaction is taking place.
+* Optimistic locking is where you can simply assume that things in the datastore will not change until they are ready to commit, 
 not lock any records and then just before committing make a check for changes. 
-These are known as Optimistic Transactions.
+This is suitable for longer lived operations maybe where user interaction is taking place and where it would be undesirable to block access to 
+datastore entities for the duration of the transaction
 
-You select the type of transaction to be used by a _PersistenceManager_ (PM) 
-either by setting the PMF property *javax.jdo.option.Optimistic*, or on the transaction you call
+You select the type of locking used by the transaction of a _PersistenceManager_ (PM) 
+either by setting the persistence property *javax.jdo.option.Optimistic*, or on the transaction you call
 
 [source,java]
 ....
 pm.currentTransaction().setOptimistic(true);
 ....
+
+
+[[nontransactional]]
+=== Non-Transactional
+
+The JDO API also allows the ability to operate without transactions. 
+You have 2 persistence properties *javax.jdo.option.NontransactionalRead* and *javax.jdo.option.NontransactionalWrite* to enable this mode of operation
+assuming your JDO provider supports it.
+Use of these two properties mean that you can then read objects and make updates outside of transactions. 
+This is effectively an "auto-commit" mode.
+
+[source,java]
+-----
+PersistenceManager pm = pmf.getPersistenceManager();
+    
+{users code to persist objects}
+
+pm.close();
+-----
 
