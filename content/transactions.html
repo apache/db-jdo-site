@@ -306,7 +306,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <h2 id="Transactions">Transactions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When managing the persistence of objects using a <a href="pm.html">PersistenceManager</a> it is normal to handle all datastore
+<p>When managing the persistence of objects using a <a href="pm.html">PersistenceManager</a> it is common to handle all datastore
 operations in a transaction.
 For this reason each <em>PersistenceManager</em> has its own transaction.
 Consequently a typical JDO persistence method will look something like this</p>
@@ -332,29 +332,52 @@ Transaction tx = pm.currentTransaction();
 }</code></pre>
 </div>
 </div>
+<div class="sect2">
+<h3 id="locking">Locking</h3>
 <div class="paragraph">
-<p>JDO supports the two main forms of transaction</p>
+<p>JDO supports the two main forms of transaction locking</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Transactions can lock all records in a datastore and keep them locked until they are ready to commit their changes.
-These are known as Pessimistic (or datastore) Transactions</p>
+<p>Pessimistic (or datastore) locking is where you lock all records in a datastore affected by a transaction and keep them locked
+until you are ready to commit their changes. This is suitable for short lived operations where no user interaction is taking place.</p>
 </li>
 <li>
-<p>Transactions can simply assume that things in the datastore will not change until they are ready to commit,
+<p>Optimistic locking is where you can simply assume that things in the datastore will not change until they are ready to commit,
 not lock any records and then just before committing make a check for changes.
-These are known as Optimistic Transactions.</p>
+This is suitable for longer lived operations maybe where user interaction is taking place and where it would be undesirable to block access to
+datastore entities for the duration of the transaction</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>You select the type of transaction to be used by a <em>PersistenceManager</em> (PM)
-either by setting the PMF property <strong>javax.jdo.option.Optimistic</strong>, or on the transaction you call</p>
+<p>You select the type of locking used by the transaction of a <em>PersistenceManager</em> (PM)
+either by setting the persistence property <strong>javax.jdo.option.Optimistic</strong>, or on the transaction you call</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">pm.currentTransaction().setOptimistic(<span class="predefined-constant">true</span>);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="nontransactional">Non-Transactional</h3>
+<div class="paragraph">
+<p>The JDO API also allows the ability to operate without transactions.
+You have 2 persistence properties <strong>javax.jdo.option.NontransactionalRead</strong> and <strong>javax.jdo.option.NontransactionalWrite</strong> to enable this mode of operation
+assuming your JDO provider supports it.
+Use of these two properties mean that you can then read objects and make updates outside of transactions.
+This is effectively an "auto-commit" mode.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">PersistenceManager pm = pmf.getPersistenceManager();
+
+{users code to persist objects}
+
+pm.close();</code></pre>
+</div>
 </div>
 </div>
 </div>
