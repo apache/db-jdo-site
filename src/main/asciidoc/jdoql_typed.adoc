@@ -307,7 +307,7 @@ SELECT IF (this.id < 1000) "Domestic" ELSE "International" FROM mydomain.Product
 
 
 [[subquery]]
-=== Query API - Subqueries
+=== Subqueries
 
 Let's try to find all Products that have a value below the average of all Products. This means we need to use a subquery
 
