@@ -199,7 +199,6 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:#2385c6">API Usage<span class="caret"></span></a>
                   
                     <ul class="dropdown-menu">
-                        <li><a href="jdohelper.html">JDO Helper</a></li>
                         <li><a href="pmf.html">PersistenceManagerFactory</a></li>
                         <li><a href="pm.html">PersistenceManager</a></li>
                         <li><a href="transactions.html">Transactions</a></li>
@@ -208,6 +207,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="state_transition.html">Object States</a></li>
                         <li><a href="object_retrieval.html">Object Retrieval</a></li>
                         <li><a href="exceptions.html">Exceptions</a></li>
+                        <li><a href="jdohelper.html">JDO Helper</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="guides-replication.html">Data Replication</a></li>
                     </ul>
@@ -331,7 +331,7 @@ This is simply</p>
 <div class="paragraph">
 <p>If the object is in the JDO cache (Level 1 or Level 2) then it is retrieved from there,
 otherwise the JDO implementation goes to the datastore.
-When the object is retrieved its fields are populated according to its Fetch Group.</p>
+When the object is retrieved its fields are populated according to its <a href="fetchgroups.html">Fetch Plan</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -365,9 +365,9 @@ It can also be used where you just want to retrieve all persisted objects of a t
 <h3 id="query">Retrieve an object based on a query criteria</h3>
 <div class="paragraph">
 <p>Where we want to retrieve all objects based on some criteria (e.g all objects of class A where field 'x' of A is a certain value) we need to
-use a query language.
-The JDO API provides the JDOQL object-based query language where you express your query in terms of classes and fields you are using.
-Dependent on your JDO provider and the datastore being used you may also be able to use a (native) query language such as SQL, expressing
+use a query language and the <a href="query_api.html">JDO Query API</a>.
+The JDO API provides the <a href="jdoql.html">JDOQL</a> object-based query language where you express your query in terms of classes and fields you are using.
+Dependent on your JDO provider and the datastore being used you may also be able to use a (native) query language such as <a href="query_sql.html">SQL</a>, expressing
 your query in terms of datastore tables/columns.</p>
 </div>
 <div class="paragraph">
@@ -419,7 +419,7 @@ When the objects are retrieved their fields are populated according to the Fetch
                           <a href="api31/apidocs/index.html" title="Latest Javadocs">Latest Javadocs</a>
           </div>
       </div>
-      <p class="text-center" style="margin-top:16px">&copy; 2005-2021 Apache Software Foundation. All Rights Reserved.</p>
+      <p class="text-center" style="margin-top:16px">&copy; 2005-2022 Apache Software Foundation. All Rights Reserved.</p>
   </div>
   </footer>
 

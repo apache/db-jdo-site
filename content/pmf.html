@@ -11,7 +11,7 @@
     <meta name="keywords" content="JDO, Apache, Java, Data, Objects"/>
     <meta name="description" content="Apache JDO - Java Data Objects"/>
 
-    <title>Persistence Manager Factory</title>
+    <title>PersistenceManagerFactory</title>
 
     <link rel="icon" type="image/png" href="images/JDOx150.png"/>
 
@@ -199,7 +199,6 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="background-color:#2385c6">API Usage<span class="caret"></span></a>
                   
                     <ul class="dropdown-menu">
-                        <li><a href="jdohelper.html">JDO Helper</a></li>
                         <li><a href="pmf.html">PersistenceManagerFactory</a></li>
                         <li><a href="pm.html">PersistenceManager</a></li>
                         <li><a href="transactions.html">Transactions</a></li>
@@ -208,6 +207,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
                         <li><a href="state_transition.html">Object States</a></li>
                         <li><a href="object_retrieval.html">Object Retrieval</a></li>
                         <li><a href="exceptions.html">Exceptions</a></li>
+                        <li><a href="jdohelper.html">JDO Helper</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="guides-replication.html">Data Replication</a></li>
                     </ul>
@@ -306,21 +306,20 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <h2 id="Persistence_Manager_Factory">Persistence Manager Factory</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Any JDO-enabled application will require at least one <em>PersistenceManagerFactory</em>.
+<p>Any JDO-enabled application will require (at least) one <em>PersistenceManagerFactory</em>.
 Typically applications create one per datastore being utilised.
 A <em>PersistenceManagerFactory</em> provides access to <em>PersistenceManager</em>s which allow objects to be persisted, and retrieved.
 The <em>PersistenceManagerFactory</em> can be configured to provide particular behaviour.</p>
 </div>
 <div class="paragraph">
-<p>The simplest way of creating a <em>PersistenceManagerFactory</em>
+<p>A simple way of creating a <em>PersistenceManagerFactory</em>
 <a href="api32/apidocs/javax/jdo/PersistenceManagerFactory.html"><span class="image"><img src="images/javadoc.png" alt="image"></span></a>
-is as follows</p>
+is using a set of properties controlling its behaviour, as follows</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">Properties</span> properties = <span class="keyword">new</span> <span class="predefined-type">Properties</span>();
 properties.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.PersistenceManagerFactoryClass</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">{my_implementation_pmf_class}</span><span class="delimiter">&quot;</span></span>);
-properties.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.option.ConnectionDriverName</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">com.mysql.jdbc.Driver</span><span class="delimiter">&quot;</span></span>);
 properties.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.option.ConnectionURL</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">jdbc:mysql://localhost/myDB</span><span class="delimiter">&quot;</span></span>);
 properties.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.option.ConnectionUserName</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">login</span><span class="delimiter">&quot;</span></span>);
 properties.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.jdo.option.ConnectionPassword</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>);
@@ -328,13 +327,11 @@ PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(propertie
 </div>
 </div>
 <div class="paragraph">
-<p>A slight variation on this, is to use a file ("jdo.properties" for
-example) to specify these properties like this</p>
+<p>A slight variation on this, is to use a file containg these properties (<code>jdo.properties</code> for example) to create the PMF, like this</p>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre>javax.jdo.PersistenceManagerFactoryClass={my_implementation_pmf_class}
-javax.jdo.option.ConnectionDriverName=com.mysql.jdbc.Driver
 javax.jdo.option.ConnectionURL=jdbc:mysql://localhost/myDB
 javax.jdo.option.ConnectionUserName=login
 javax.jdo.option.ConnectionPassword=password</pre>
@@ -349,8 +346,40 @@ javax.jdo.option.ConnectionPassword=password</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A final alternative would be to call
-<em>JDOHelper.getPersistenceManagerFactory(jndiLocation, context);</em>, hence
+<p>You could alternatively make use of a JPA <code>persistence.xml</code> file to create a PMF, like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+<span class="tag">&lt;persistence</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://jakarta.ee/xml/ns/persistence</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://jakarta.ee/xml/ns/persistence</span>
+        <span class="content">https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">3.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="comment">&lt;!-- MyApp persistence unit --&gt;</span>
+    <span class="tag">&lt;persistence-unit</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">MyApp</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;class&gt;</span>mydomain.Product<span class="tag">&lt;/class&gt;</span>
+        <span class="tag">&lt;class&gt;</span>mydomain.Book<span class="tag">&lt;/class&gt;</span>
+        <span class="tag">&lt;class&gt;</span>mydomain.CompactDisc<span class="tag">&lt;/class&gt;</span>
+        <span class="tag">&lt;exclude-unlisted-classes</span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;properties&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">datanucleus.ConnectionURL</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">jdbc:mysql://localhost/myDB</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">datanucleus.ConnectionUserName</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mysql</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">datanucleus.ConnectionPassword</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;/properties&gt;</span>
+    <span class="tag">&lt;/persistence-unit&gt;</span>
+<span class="tag">&lt;/persistence&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and then instantiate the PMF using the <em>persistence unit name</em>, defining the classes that have JDO annotations that make up this application.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(<span class="string"><span class="delimiter">&quot;</span><span class="content">MyApp</span><span class="delimiter">&quot;</span></span>);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An alternative using JNDI would be to call <em>JDOHelper.getPersistenceManagerFactory(jndiLocation, context);</em>, hence
 accessing the properties via JNDI.</p>
 </div>
 <div class="paragraph">
@@ -362,7 +391,7 @@ define the datastore that it should connect to.</p>
 <p><br></p>
 </div>
 <div class="sect2">
-<h3 id="_standard_jdo_properties">Standard JDO Properties<a id="Standard_JDO_Properties"></a></h3>
+<h3 id="standard_properties">Standard JDO Properties</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -436,7 +465,7 @@ Range of Values: true | false</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>javax.jdo.option.Optimistic</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use <a href="transactions.html">Optimistic transactions</a>.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to use <a href="transactions.html#locking">Optimistic locking</a> on transactions.
 Range of Values: true | false</p></td>
 </tr>
 <tr>
@@ -535,7 +564,7 @@ Range of Values: none | read-committed | read-uncommitted | repeatable-read | sn
                           <a href="api31/apidocs/index.html" title="Latest Javadocs">Latest Javadocs</a>
           </div>
       </div>
-      <p class="text-center" style="margin-top:16px">&copy; 2005-2021 Apache Software Foundation. All Rights Reserved.</p>
+      <p class="text-center" style="margin-top:16px">&copy; 2005-2022 Apache Software Foundation. All Rights Reserved.</p>
   </div>
   </footer>
 
