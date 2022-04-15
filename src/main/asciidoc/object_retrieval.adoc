@@ -32,7 +32,7 @@ Person per = pm.getObjectById(Person.class, identity);
 
 If the object is in the JDO cache (Level 1 or Level 2) then it is retrieved from there,
 otherwise the JDO implementation goes to the datastore. 
-When the object is retrieved its fields are populated according to its Fetch Group.
+When the object is retrieved its fields are populated according to its link:fetchgroups.html[Fetch Plan].
 
 
 
@@ -65,9 +65,9 @@ It can also be used where you just want to retrieve all persisted objects of a t
 === Retrieve an object based on a query criteria
 
 Where we want to retrieve all objects based on some criteria (e.g all objects of class A where field 'x' of A is a certain value) we need to
-use a query language. 
-The JDO API provides the JDOQL object-based query language where you express your query in terms of classes and fields you are using.
-Dependent on your JDO provider and the datastore being used you may also be able to use a (native) query language such as SQL, expressing
+use a query language and the link:query_api.html[JDO Query API].
+The JDO API provides the link:jdoql.html[JDOQL] object-based query language where you express your query in terms of classes and fields you are using.
+Dependent on your JDO provider and the datastore being used you may also be able to use a (native) query language such as link:query_sql.html[SQL], expressing
 your query in terms of datastore tables/columns.
 
 To give an example of a JDOQL query

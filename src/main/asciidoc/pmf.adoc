@@ -1,3 +1,5 @@
+[[pmf]]
+= PersistenceManagerFactory
 :_basedir: 
 :_imagesdir: images/
 :notoc:
@@ -5,37 +7,34 @@
 :grid: cols
 :usage:
 
-[[index]]
-
 [[Persistence_Manager_Factory]]
 == Persistence Manager Factory
 
-Any JDO-enabled application will require at least one _PersistenceManagerFactory_. 
+Any JDO-enabled application will require (at least) one _PersistenceManagerFactory_. 
 Typically applications create one per datastore being utilised. 
 A _PersistenceManagerFactory_ provides access to __PersistenceManager__s which allow objects to be persisted, and retrieved. 
 The _PersistenceManagerFactory_ can be configured to provide particular behaviour.
 
-The simplest way of creating a _PersistenceManagerFactory_
+A simple way of creating a _PersistenceManagerFactory_
 link:api32/apidocs/javax/jdo/PersistenceManagerFactory.html[image:images/javadoc.png[image]]
-is as follows
+is using a set of properties controlling its behaviour, as follows
 
 [source,java]
 ....
 Properties properties = new Properties();
 properties.setProperty("javax.jdo.PersistenceManagerFactoryClass", "{my_implementation_pmf_class}");
-properties.setProperty("javax.jdo.option.ConnectionDriverName", "com.mysql.jdbc.Driver");
 properties.setProperty("javax.jdo.option.ConnectionURL", "jdbc:mysql://localhost/myDB");
 properties.setProperty("javax.jdo.option.ConnectionUserName", "login");
 properties.setProperty("javax.jdo.option.ConnectionPassword", "password");
 PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory(properties);
 ....
 
-A slight variation on this, is to use a file ("jdo.properties" for
-example) to specify these properties like this
+
+
+A slight variation on this, is to use a file containg these properties (`jdo.properties` for example) to create the PMF, like this
 
 ....
 javax.jdo.PersistenceManagerFactoryClass={my_implementation_pmf_class}
-javax.jdo.option.ConnectionDriverName=com.mysql.jdbc.Driver
 javax.jdo.option.ConnectionURL=jdbc:mysql://localhost/myDB
 javax.jdo.option.ConnectionUserName=login
 javax.jdo.option.ConnectionPassword=password
@@ -48,8 +47,41 @@ and then to create the _PersistenceManagerFactory_ using this file
 PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("jdo.properties");
 ....
 
-A final alternative would be to call
-_JDOHelper.getPersistenceManagerFactory(jndiLocation, context);_, hence
+
+
+You could alternatively make use of a JPA `persistence.xml` file to create a PMF, like this
+
+[source,xml]
+....
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+        https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd" version="3.0">
+    <!-- MyApp persistence unit -->
+    <persistence-unit name="MyApp">
+        <class>mydomain.Product</class>
+        <class>mydomain.Book</class>
+        <class>mydomain.CompactDisc</class>
+        <exclude-unlisted-classes/>
+        <properties>
+            <property name="datanucleus.ConnectionURL" value="jdbc:mysql://localhost/myDB"/>
+            <property name="datanucleus.ConnectionUserName" value="mysql"/>
+            <property name="datanucleus.ConnectionPassword" value=""/>
+        </properties>
+    </persistence-unit>
+</persistence>
+....
+
+and then instantiate the PMF using the _persistence unit name_, defining the classes that have JDO annotations that make up this application.
+
+[source,java]
+....
+PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("MyApp");
+....
+
+
+An alternative using JNDI would be to call _JDOHelper.getPersistenceManagerFactory(jndiLocation, context);_, hence
 accessing the properties via JNDI.
 
 Whichever way we wish to obtain the _PersistenceManagerFactory_ we have defined a series of properties to give the behaviour of the _PersistenceManagerFactory_. 
@@ -59,7 +91,8 @@ define the datastore that it should connect to.
 {empty} +
 
 
-=== Standard JDO Propertiesanchor:Standard_JDO_Properties[]
+[[standard_properties]]
+=== Standard JDO Properties
 
 [cols=",",options="header",]
 |===
@@ -111,7 +144,7 @@ Range of Values: true \| false
 Range of Values: true \| false
 
 |*javax.jdo.option.Optimistic*
-|Whether to use xref:transactions.html[Optimistic transactions]. 
+|Whether to use xref:transactions.html#locking[Optimistic locking] on transactions. 
 Range of Values: true \| false
 
 |*javax.jdo.option.RetainValues*
