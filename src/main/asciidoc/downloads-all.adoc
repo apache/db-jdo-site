@@ -32,6 +32,7 @@ For example:
 </dependency>
 
 === Source Downloads
+
 [cols=",,,,,",options="header",]
 |===
 |Release Notes | Date | Sources .tar.gz | asc / sha | Sources .zip | asc / sha
