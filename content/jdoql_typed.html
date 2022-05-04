@@ -632,9 +632,9 @@ This means we need to use a variable. Just like with a parameter, we obtain a <e
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">JDOQLTypedQuery&lt;Inventory&gt; tq = pm.newJDOQLTypedQuery(Inventory.class);
-QProduct var = QProduct.variable(<span class="string"><span class="delimiter">&quot;</span><span class="content">var</span><span class="delimiter">&quot;</span></span>);
+QProduct <span class="type">var</span> = QProduct.variable(<span class="string"><span class="delimiter">&quot;</span><span class="content">var</span><span class="delimiter">&quot;</span></span>);
 QInventory cand = QInventory.candidate();
-<span class="predefined-type">List</span>&lt;Inventory&gt; results = tq.filter(cand.products.contains(var).and(var.name.startsWith(<span class="string"><span class="delimiter">&quot;</span><span class="content">Wal</span><span class="delimiter">&quot;</span></span>))).executeList();</code></pre>
+<span class="predefined-type">List</span>&lt;Inventory&gt; results = tq.filter(cand.products.contains(<span class="type">var</span>).and(<span class="type">var</span>.name.startsWith(<span class="string"><span class="delimiter">&quot;</span><span class="content">Wal</span><span class="delimiter">&quot;</span></span>))).executeList();</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -642,7 +642,7 @@ QInventory cand = QInventory.candidate();
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">SELECT FROM mydomain.Inventory WHERE <span class="local-variable">this</span>.products.contains(var) &amp;&amp; var.name.startsWith(<span class="string"><span class="delimiter">&quot;</span><span class="content">Wal</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java">SELECT FROM mydomain.Inventory WHERE <span class="local-variable">this</span>.products.contains(<span class="type">var</span>) &amp;&amp; <span class="type">var</span>.name.startsWith(<span class="string"><span class="delimiter">&quot;</span><span class="content">Wal</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 </div>
