@@ -57,16 +57,16 @@ https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.zip.sha1[sha1]
 | https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12317950&styleName=Html&projectId=10630[3.0.1] TCK
 | 2011-11-13
 | https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-tck-3.0.1-src.zip[tck-src.zip]
-| http://www.apache.org/dist/db/jdo/3.0.1/jdo-tck-3.0.1-src.zip.asc[asc]
+| https://downloads.apache.org/db/jdo/3.0.1/jdo-tck-3.0.1-src.zip.asc[asc]
 | https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-tck-3.0.1-src.tar.gz[tck-src.tar.gz]
-| http://www.apache.org/dist/db/jdo/3.0.1/jdo-tck-3.0.1-src.tar.gz.asc[asc]
+| https://downloads.apache.org/db/jdo/3.0.1/jdo-tck-3.0.1-src.tar.gz.asc[asc]
 
 | https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12317950&styleName=Html&projectId=10630[3.0.1] API
 | 2011-11-13
 | https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-api-3.0.1-src.zip[api-src.zip]
-| http://www.apache.org/dist/db/jdo/3.0.1/jdo-api-3.0.1-src.zip.asc[asc]
+| https://downloads.apache.org/db/jdo/3.0.1/jdo-api-3.0.1-src.zip.asc[asc]
 | https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-api-3.0.1-src.tar.gz[api-src.tar.gz]
-| http://www.apache.org/dist/db/jdo/3.0.1/jdo-api-3.0.1-src.tar.gz.asc[asc]
+| https://downloads.apache.org/db/jdo/3.0.1/jdo-api-3.0.1-src.tar.gz.asc[asc]
 |===
 
 
@@ -93,10 +93,9 @@ It is essential that you verify the integrity of the downloaded files
 using the PGP signature.
 
 The PGP signatures can be verified using PGP or GPG. First download the
-link:https://www.apache.org/dist/db/jdo/KEYS[KEYS] as well as the `asc`
+link:https://downloads.apache.org/db/jdo/KEYS[KEYS] as well as the `asc`
 signature file for the particular distribution. Make sure you get these
-files from the link:https://www.apache.org/dist/db/jdo/[main distribution
-directory], rather than from a mirror. Then verify the signatures using
+files from the link:https://downloads.apache.org/db/jdo/[Apache downbload area], rather than from a mirror. Then verify the signatures using
 these commands (depending on your tool set):
 
 [source]
