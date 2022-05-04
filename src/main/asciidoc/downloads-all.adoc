@@ -33,8 +33,7 @@ For example:
 
 === Source Downloads
 
-
-[cols="16%,12%,24%,12%,24%,12%",options="header"]
+[width="100%",cols="~,~,~,~,~,~",options="header"]
 |===
 |Release Notes | Date | Sources .tar.gz | asc / sha | Sources .zip | asc / sha
 | https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12316653&styleName=Html&projectId=10630[3.2]
@@ -47,7 +46,7 @@ https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.tar.gz.sha512[sha
 https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.zip.sha512[sha512]
 |===
 
-[cols="~,~,~,~,~,~",options="header",%autowidth.stretch]
+[%autowidth.stretch,cols="~,~,~,~,~,~",options="header"]
 |===
 |Release Notes | Date | Sources .tar.gz | asc / sha | Sources .zip | asc / sha
 | https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12316653&styleName=Html&projectId=10630[3.2]
