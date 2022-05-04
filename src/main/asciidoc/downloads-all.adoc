@@ -1,0 +1,116 @@
+:_basedir: 
+:_imagesdir: images/
+:grid: cols
+:development:
+
+[[index]]
+
+== Downloadsanchor:Downloads[]
+
+To develop your own code to use or implement JDO, you can use the links below to download Apache JDO from an
+official ASF download site. If you are using Maven, you can declare a dependency using the instructions below.
+
+If you intend to develop JDO (make modifications to the JDO code), you should clone the
+xref:source-code.adoc[public repository] and submit pull requests if desired.
+
+Please see instruction below for xref:Verifying[verifying the integrity] of the
+distribution files after downloading any artifacts.
+
+
+=== Maven (convenience binary)anchor:Maven[]
+
+The most convenient way to use JDO is to configure your project using Maven.
+The JDO API can be downloaded
+automatically by maven and placed into your local maven repository if you
+include the proper dependency in your maven project definition.
+For example:
+[source,xml]
+<dependency>
+  <groupId>javax.jdo</groupId>
+  <artifactId>jdo-api</artifactId>
+  <version>3.2</version>
+</dependency>
+
+=== Source Downloads
+
+[cols=",,,,,",options="header",]
+|===
+|Release Notes | Date | Sources .tar.gz | asc / sha | Sources .zip | asc / sha
+| https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12316653&styleName=Html&projectId=10630[3.2]
+| February 1, 2022
+| https://www.apache.org/dyn/closer.lua/db/jdo/3.2/jdo-3.2-source-release.tar.gz[src.tar.gz (1.1 MB)]
+| https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.tar.gz.asc[asc] /
+ https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.tar.gz.sha512[sha512]
+| https://www.apache.org/dyn/closer.lua/db/jdo/3.2/jdo-3.2-source-release.zip[src.zip (2.8 MB)]
+| https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.zip.asc[asc] /
+ https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.zip.sha512[sha512]
+
+| https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12325878&styleName=Html&projectId=10630[3.1]
+| March 20, 2015
+| https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.tar.gz[src.tar.gz (1.1 MB)]
+| https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.tar.gz.asc[asc] /
+https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.tar.gz.sha1[sha1]
+| https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.zip[src.zip (2.8 MB)]
+| https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.zip.asc[asc] /
+https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.zip.sha1[sha1]
+
+| https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12317950&styleName=Html&projectId=10630[3.0.1] TCK
+| November 13, 2011
+| https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-tck-3.0.1-src.zip[tck-src.zip]
+| http://www.apache.org/dist/db/jdo/3.0.1/jdo-tck-3.0.1-src.zip.asc[asc]
+| https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-tck-3.0.1-src.tar.gz[tck-src.tar.gz]
+| http://www.apache.org/dist/db/jdo/3.0.1/jdo-tck-3.0.1-src.tar.gz.asc[asc]
+
+| https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12317950&styleName=Html&projectId=10630[3.0.1] API
+| November 13, 2011
+| https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-api-3.0.1-src.zip[api-src.zip]
+| http://www.apache.org/dist/db/jdo/3.0.1/jdo-api-3.0.1-src.zip.asc[asc]
+| https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-api-3.0.1-src.tar.gz[api-src.tar.gz]
+| http://www.apache.org/dist/db/jdo/3.0.1/jdo-api-3.0.1-src.tar.gz.asc[asc]
+|===
+
+**NOTE** I removed all MD5 files. I removed the separate API downloads for 3.1-rc1 and 3.1.
+
+
+=== About JDO Releasesanchor:About_JDO_Releases[]
+
+A release of JDO includes the JDO API and the Technology Compatibility
+Kit (TCK). The TCK is available only in source form. The API project is
+available as source and as a jar file using the standard Maven dependency protocol.
+
+* The `jdo-api.jar` file is the only artifact needed for users who wish to compile their programs
+using the JDO API. It can be downloaded from maven, or it can be built
+manually from the source code.
+* The TCK project contains the JDO Technology Compatibility Kit.
+
+The 3.0.1 release has separate downloads for API and TCK sources. Newer distributions have all code in
+in a single download.
+
+
+=== Verifying Releasesanchor:Verifying_Releases[]
+
+anchor:Verifying[]
+
+It is essential that you verify the integrity of the downloaded files
+using the PGP signature.
+
+The PGP signatures can be verified using PGP or GPG. First download the
+link:https://www.apache.org/dist/db/jdo/KEYS[KEYS] as well as the `asc`
+signature file for the particular distribution. Make sure you get these
+files from the link:https://www.apache.org/dist/db/jdo/[main distribution
+directory], rather than from a mirror. Then verify the signatures using
+these commands (depending on your tool set):
+
+[source]
+% pgpk -a KEYS
+% pgpv release_artifact.asc
+
+[source]
+% pgp -ka KEYS
+% pgp release_artifact.asc
+
+[source]
+% gpg --import KEYS
+% gpg --verify release_artifact.asc
+
+
