@@ -33,11 +33,11 @@ For example:
 
 === Source Downloads
 
-[cols=",,,,,",options="header",]
+[cols="~,~,~,~,~,~",options="header",]
 |===
 |Release Notes | Date | Sources .tar.gz | asc / sha | Sources .zip | asc / sha
 | https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12316653&styleName=Html&projectId=10630[3.2]
-| February 1, 2022
+| 2022-02-01
 | https://www.apache.org/dyn/closer.lua/db/jdo/3.2/jdo-3.2-source-release.tar.gz[src.tar.gz (1.1 MB)]
 | https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.tar.gz.asc[asc] /
  https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.tar.gz.sha512[sha512]
@@ -46,7 +46,7 @@ For example:
  https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.zip.sha512[sha512]
 
 | https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12325878&styleName=Html&projectId=10630[3.1]
-| March 20, 2015
+| 2015-03-20
 | https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.tar.gz[src.tar.gz (1.1 MB)]
 | https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.tar.gz.asc[asc] /
 https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.tar.gz.sha1[sha1]
@@ -55,21 +55,19 @@ https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.tar.gz.sha1[sha1]
 https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.zip.sha1[sha1]
 
 | https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12317950&styleName=Html&projectId=10630[3.0.1] TCK
-| November 13, 2011
+| 2011-11-13
 | https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-tck-3.0.1-src.zip[tck-src.zip]
 | http://www.apache.org/dist/db/jdo/3.0.1/jdo-tck-3.0.1-src.zip.asc[asc]
 | https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-tck-3.0.1-src.tar.gz[tck-src.tar.gz]
 | http://www.apache.org/dist/db/jdo/3.0.1/jdo-tck-3.0.1-src.tar.gz.asc[asc]
 
 | https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12317950&styleName=Html&projectId=10630[3.0.1] API
-| November 13, 2011
+| 2011-11-13
 | https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-api-3.0.1-src.zip[api-src.zip]
 | http://www.apache.org/dist/db/jdo/3.0.1/jdo-api-3.0.1-src.zip.asc[asc]
 | https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-api-3.0.1-src.tar.gz[api-src.tar.gz]
 | http://www.apache.org/dist/db/jdo/3.0.1/jdo-api-3.0.1-src.tar.gz.asc[asc]
 |===
-
-**NOTE** I removed all MD5 files. I removed the separate API downloads for 3.1-rc1 and 3.1.
 
 
 === About JDO Releasesanchor:About_JDO_Releases[]
