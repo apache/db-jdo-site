@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.apache</groupId>
         <artifactId>apache</artifactId>
-        <version>23</version>
+        <version>26</version>
     </parent>
     
     <groupId>org.apache.jdo</groupId>
@@ -49,7 +49,7 @@ This repository contains the sources for the Apache DB JDO website</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <asciidoctor.maven.plugin.version>2.1.0</asciidoctor.maven.plugin.version>
+        <asciidoctor.maven.plugin.version>2.2.1</asciidoctor.maven.plugin.version>
         <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
         <build.dir>${project.basedir}/target/site</build.dir>
     </properties>
