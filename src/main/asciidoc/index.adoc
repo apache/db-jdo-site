@@ -46,6 +46,18 @@ building a JDO application, see xref:impls.adoc[Implementations].
 
 == JDO Newsanchor:JDO_News[]
 
+*JDO 3.2.1 is released* +
+
+____
+JDO 3.2.1 has been released. This release contains minor bug fixes, such as support for Java 18, fixed warnings when using Java 9, and migration of schema descriptor URLs to db.apache.org. For a
+complete list of changes (features plus bug fixes) see
+https://issues.apache.org/jira/issues/?jql=project%20%3D%20JDO%20AND%20fixVersion%20%3D%20%22JDO%203.2.1%22[JDO 3.2.1
+changes]. You can download the release from the
+xref:downloads.adoc[downloads page]. You can also use the new release in
+maven projects simply by referencing the jdo-api artifact in your
+pom.xml.
+____
+
 *JDO 3.2 is released* +
 
 ____
