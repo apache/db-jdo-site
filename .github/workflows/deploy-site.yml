@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 1
 
@@ -53,7 +53,7 @@ jobs:
         id: short-sha
         run: |
           short_sha=$(git rev-parse --short=10 $GITHUB_SHA)
-          echo "::set-output name=SHORT_SHA::$short_sha"
+          echo "SHORT_SHA=$short_sha" >> "$GITHUB_OUTPUT"
 
 
       # Determines the author data of the HEAD commit
@@ -153,7 +153,7 @@ jobs:
               has_staged_changes=true
           fi
 
-          echo "::set-output name=HAS_STAGED_CHANGES::$has_staged_changes"
+          echo "HAS_STAGED_CHANGES=$has_staged_changes" >> "$GITHUB_OUTPUT"
 
 
       # Publishes the build results
