@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl"?>
+<rdf:RDF xml:lang="en"
+         xmlns="http://usefulinc.com/ns/doap#" 
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+         xmlns:asfext="http://projects.apache.org/ns/asfext#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         https://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+  <Project rdf:about="https://db.apache.org/jdo/">
+    <created>2023-09-06</created>
+    <license rdf:resource="https://spdx.org/licenses/Apache-2.0" />
+    <name>Apache  JDO</name>
+    <homepage rdf:resource="https://db.apache.org/jdo/" />
+    <asfext:pmc rdf:resource="https://db.apache.org" />
+    <shortdesc>Java Data Objects (JDO) is a standard way to access persistent data in databases, using plain old Java objects (POJO) to represent persistent data.</shortdesc>
+    <description>The POJO approach separates data manipulation (done by accessing Java data members in the Java domain objects) from database manipulation (done by calling the JDO interface methods). This separation of concerns leads to a high degree of independence of the Java view of data from the database view of the data.</description>
+    <bug-database rdf:resource="https://issues.apache.org/jira/projects/JDO" />
+    <mailing-list rdf:resource="https://db.apache.org/jdo/mail-lists.html" />
+    <download-page rdf:resource="https://db.apache.org/jdo/downloads.html" />
+    <programming-language>Java</programming-language>
+    <category rdf:resource="https://projects.apache.org/category/database" />
+    <release>
+      <Version>
+        <name>Java Data Objects</name>
+        <created>2022-05-04</created>
+        <revision>3.2.1</revision>
+      </Version>
+    </release>
+    <repository>
+      <GitRepository>
+        <location rdf:resource="https://github.com/apache/db-jdo"/>
+        <browse rdf:resource="https://github.com/apache/db-jdo-site"/>
+      </GitRepository>
+    </repository>
+    <maintainer>
+      <foaf:Person>
+        <foaf:name>JDO Project</foaf:name>
+          <foaf:mbox rdf:resource="mailto:jdo-dev@db.apache.org"/>
+      </foaf:Person>
+    </maintainer>
+    <asfext:implements><asfext:Standard>
+      <asfext:title>Java Data Objects</asfext:title>
+      <asfext:body>JCP</asfext:body>
+      <asfext:id>JSR-243</asfext:id>
+      <asfext:url rdf:resource="https://db.apache.org/jdo/specifications.html"/>
+    </asfext:Standard></asfext:implements>
+  </Project>
+</rdf:RDF>
+
