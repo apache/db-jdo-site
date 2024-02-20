@@ -72,8 +72,6 @@ link:api21-legacy/apidocs.zip[Download JDO 2.1-legacy javadoc]
 
 JDO 2.0 is the Apache JDO implementation of JSR-243.
 
-link:api20/apidocs/index.html[Browse JDO 2.0 javadoc online]
-
 link:api20/apidocs.zip[Download JDO 2.0 javadoc]
 
 === JDO 1.1 javadocanchor:JDO_1.1_javadoc[]
