@@ -54,28 +54,6 @@ https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.tar.gz.sha512[sha
 | https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.zip.asc[asc] /
 https://downloads.apache.org/db/jdo/3.2/jdo-3.2-source-release.zip.sha512[sha512]
 
-| https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12325878&styleName=Html&projectId=10630[3.1]
-| 2015-03-20
-| https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.tar.gz[src.tar.gz (1.1 MB)]
-| https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.tar.gz.asc[asc] /
-https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.tar.gz.sha1[sha1]
-| https://www.apache.org/dyn/closer.lua/db/jdo/3.1/jdo-3.1-src.zip[src.zip (2.8 MB)]
-| https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.zip.asc[asc] /
-https://downloads.apache.org/db/jdo/3.1/jdo-3.1-src.zip.sha1[sha1]
-
-| https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12317950&styleName=Html&projectId=10630[3.0.1] TCK
-| 2011-11-13
-| https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-tck-3.0.1-src.zip[tck-src.zip]
-| https://downloads.apache.org/db/jdo/3.0.1/jdo-tck-3.0.1-src.zip.asc[asc]
-| https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-tck-3.0.1-src.tar.gz[tck-src.tar.gz]
-| https://downloads.apache.org/db/jdo/3.0.1/jdo-tck-3.0.1-src.tar.gz.asc[asc]
-
-| https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12317950&styleName=Html&projectId=10630[3.0.1] API
-| 2011-11-13
-| https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-api-3.0.1-src.zip[api-src.zip]
-| https://downloads.apache.org/db/jdo/3.0.1/jdo-api-3.0.1-src.zip.asc[asc]
-| https://www.apache.org/dyn/closer.lua/db/jdo/3.0.1/jdo-api-3.0.1-src.tar.gz[api-src.tar.gz]
-| https://downloads.apache.org/db/jdo/3.0.1/jdo-api-3.0.1-src.tar.gz.asc[asc]
 |===
 
 
