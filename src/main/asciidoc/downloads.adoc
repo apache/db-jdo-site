@@ -68,9 +68,7 @@ using the JDO API. It can be downloaded from maven, or it can be built
 manually from the source code.
 * The TCK project contains the JDO Technology Compatibility Kit.
 
-The 3.0.1 release has separate downloads for API and TCK sources. Newer distributions have all code in
-in a single download.
-
+Distributions have all code in a single download.
 
 === Verifying Releasesanchor:Verifying_Releases[]
 
@@ -82,7 +80,8 @@ using the PGP signature.
 The PGP signatures can be verified using PGP or GPG. First download the
 link:https://downloads.apache.org/db/jdo/KEYS[KEYS] as well as the `asc`
 signature file for the particular distribution. Make sure you get these
-files from the link:https://downloads.apache.org/db/jdo/[Apache downbload area], rather than from a mirror. Then verify the signatures using
+files from the link:https://downloads.apache.org/db/jdo/[Apache downbload area], 
+rather than from a mirror. Then verify the signatures using
 these commands (depending on your tool set):
 
 [source]
