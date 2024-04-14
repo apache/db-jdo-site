@@ -49,8 +49,10 @@ building a JDO application, see xref:impls.adoc[Implementations].
 *JDO 3.2.1 is released* +
 
 ____
-JDO 3.2.1 has been released. This release contains minor bug fixes, such as support for Java 18, fixed warnings when using Java 9, and migration of schema descriptor URLs to db.apache.org. For a
-complete list of changes (features plus bug fixes) see
+JDO 3.2.1 has been released. This release contains minor bug fixes, such
+as support for Java 18, fixed warnings when using Java 9, and migration
+of schema descriptor URLs to db.apache.org. For a complete list of changes
+(features plus bug fixes) see
 https://issues.apache.org/jira/issues/?jql=project%20%3D%20JDO%20AND%20fixVersion%20%3D%20%22JDO%203.2.1%22[JDO 3.2.1
 changes]. You can download the release from the
 xref:downloads.adoc[downloads page]. You can also use the new release in
@@ -77,11 +79,8 @@ ____
 ____
 JDO 3.1 has been released. This release contains minor bug fixes. For a
 complete list of changes (features plus bug fixes) see
-https://issues.apache.org/jira/browse/JDO/fixforversion/12325878[JDO 3.1
-changes]. You can download the release from the
-xref:downloads.adoc[downloads page]. You can also use the new release in
-maven projects simply by referencing the jdo-api artifact in your
-pom.xml.
+https://issues.apache.org/jira/issues/?jql=project%20%3D%20JDO%20AND%20fixVersion%20%3D%20%22JDO%203.1%22[JDO 3.1
+changes].
 ____
 
 *JDO 3.1-rc1 is released* +
@@ -89,11 +88,8 @@ ____
 ____
 JDO 3.1-rc1 has been released. This release contains minor bug fixes.
 For a complete list of changes (features plus bug fixes) see
-https://issues.apache.org/jira/browse/JDO/fixforversion/12314921[JDO
-3.1-rc1 changes]. You can download the release from the
-xref:downloads.adoc[downloads page]. You can also use the new release in
-maven projects simply by referencing the jdo-api artifact in your
-pom.xml.
+https://issues.apache.org/jira/issues/?jql=project%20%3D%20JDO%20AND%20fixVersion%20%3D%20%22JDO%203.1-rc1%22[JDO
+3.1-rc1 changes].
 ____
 
 *JDO 3.0.1 is released* +
@@ -101,11 +97,8 @@ ____
 ____
 JDO 3.0.1 has been released. This release contains minor bug fixes. For
 a complete list of changes (features plus bug fixes) see
-https://issues.apache.org/jira/browse/JDO/fixforversion/12317950[JDO
-3.0.1 changes]. You can download the release from the
-xref:downloads.adoc[downloads page]. You can also use the new release in
-maven projects simply by referencing the jdo-api artifact in your
-pom.xml.
+https://issues.apache.org/jira/issues/?jql=project%20%3D%20JDO%20AND%20fixVersion%20%3D%20%22JDO%203%20update%201%20(3.0.1)%22[JDO
+3.0.1 changes]. 
 ____
 
 *JDO 3.0 is released* +
@@ -116,18 +109,14 @@ features for better support of tooling and runtime: enhancer API,
 dynamic class and metadata generation, locking, database timeouts, query
 cancel, and exact object ids. For a complete list of changes (features
 plus bug fixes) see
-https://issues.apache.org/jira/browse/JDO/fixforversion/12313404[JDO 3.0
-changes]. You can download the release from the
-xref:downloads.adoc[downloads page]. You can also use the new release in
-maven projects simply by referencing the jdo-api artifact in your
-pom.xml.
+https://issues.apache.org/jira/issues/?jql=project%20%3D%20JDO%20AND%20fixVersion%20%3D%20%22JDO%203%20(3.0)%22[JDO 3.0
+changes].
 ____
 
 *JDO 2.2 is released* +
 
 ____
-JDO 2.2 is now available for download from the
-xref:downloads.adoc[downloads page]. The JDO 2.2 maintenance release
+JDO 2.2 has been released. The JDO 2.2 maintenance release
 provides support for copyOnAttach control, dynamic fetch groups, level2
 caching control via metadata. For details, see
 http://jcp.org/aboutJava/communityprocess/maintenance/jsr243/243MR2.html[ChangeLog
@@ -137,15 +126,13 @@ ____
 *JDO 2.1.1 is released* +
 
 ____
-JDO 2.1.1 is now available for download from the
-xref:downloads.adoc[downloads page]. This is a minor bug fix release.
+JDO 2.1.1 has been released. This is a minor bug fix release.
 ____
 
 *JDO 2.1 is released* +
 
 ____
-JDO 2.1 is now available for download from the
-xref:downloads.adoc[downloads page]. The JDO 2.1 maintenance release
+JDO 2.1 has been released. The JDO 2.1 maintenance release
 provides support for JDK 1.5 features,including the use of annotations
 as a means of specifying mapping. It also includes many corrections and
 minor changes. For details, see
@@ -156,8 +143,7 @@ ____
 *JDO 2.0 has been approved by the JCP* +
 
 ____
-JDO 2.0 is now available for download from the
-xref:downloads.adoc[downloads page]. JDO 2.0 builds on JDO 1 and
+JDO 2.0 has been released.xs JDO 2.0 builds on JDO 1 and
 includes many features requested by users:
 
 * Standard mapping from objects to relational databases
