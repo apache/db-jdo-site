@@ -8,7 +8,7 @@
 == FAQanchor:FAQ[]
 
 === What is JDO?
-JDO is Java Data Objects, a datastore-agnostic interface
+Java Data Objects (JDO) is a datastore-agnostic interface
 for storing Java objects in transactional datastores.
 
 === I'd like to find out more about the project and possibly contribute. What do I do next?
