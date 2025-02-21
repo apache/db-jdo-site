@@ -35,8 +35,8 @@ github:
     #
     # set up branch protection for site publishing branch to avoid accidental deletion
     # force-pushes are still necessary as they are used to deploy new versions of the site
-    publish:
-      allow_force_pushes: true
+    #publish:
+    #  allow_force_pushes: true
 
   custom_subjects:
     # set custom subjects for automated mails for actions on GitHub
