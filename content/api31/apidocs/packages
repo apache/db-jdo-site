@@ -1,0 +1,7 @@
+javax.jdo.annotations
+javax.jdo
+javax.jdo.datastore
+javax.jdo.identity
+javax.jdo.listener
+javax.jdo.metadata
+javax.jdo.spi

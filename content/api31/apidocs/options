@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/Franky/Desktop/3.1-API/api/target/classes;C:/Users/Franky/.m2/repository/javax/transaction/transaction-api/1.1/transaction-api-1.1.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'C:/Users/Franky/Desktop/3.1-API/api/src/java'
+-author
+-bottom
+'Copyright &#169; 2005&#x2013;2020 <a href="http://www.apache.org">Apache Software Foundation</a>. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Franky/Desktop/3.1-API/api/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'JDO API 3.1'
+-linkoffline
+'http://docs.oracle.com/javase/1.5.0/docs/api' 'C:/Users/Franky/Desktop/3.1-API/api/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'JDO API 3.1'

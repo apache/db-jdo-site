@@ -1,0 +1,15 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+JDO API
+
+
+From: 'an unknown organization'
+  - Unnamed - javax.transaction:transaction-api:jar:1.1  javax.transaction:transaction-api:jar:1.1
+
+
+
+
+
