@@ -21,6 +21,7 @@ on:
       - 'src/main/resources/**'
       - '.asf.yaml.publish'
       - '.htaccess'
+      - 'pom.xml'
 
 
 jobs:
