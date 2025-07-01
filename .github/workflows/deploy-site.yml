@@ -20,7 +20,6 @@ on:
       - 'src/main/template/**'
       - 'src/main/resources/**'
       - '.asf.yaml.publish'
-      - '.htaccess'
       - 'pom.xml'
 
 
@@ -79,8 +78,6 @@ jobs:
         if: success()
         run: |
           cp -v .asf.yaml.publish target/site/.asf.yaml
-          cp -v .htaccess target/site/
-
 
       - name: Check Out Site Branch
         if: success()
@@ -107,7 +104,6 @@ jobs:
         if: success()
         run: |
           mv -v target/site/.asf.yaml ./
-          mv -v target/site/.htaccess ./
 
 
       # Moves the new site resources from the build directory to the content directory
@@ -115,7 +111,7 @@ jobs:
         if: success()
         run: |
           mkdir -v content
-          mv -v target/site/* content/
+          mv -v target/site/* ./
 
           # Explicitly removes build dir
           # This checks whether there are any remaining resources that were not moved to the correct location
