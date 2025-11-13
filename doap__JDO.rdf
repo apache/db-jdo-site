@@ -24,7 +24,7 @@
   <Project rdf:about="https://db.apache.org/jdo/">
     <created>2023-09-06</created>
     <license rdf:resource="https://spdx.org/licenses/Apache-2.0" />
-    <name>Apache  JDO</name>
+    <name>Apache JDO</name>
     <homepage rdf:resource="https://db.apache.org/jdo/" />
     <asfext:pmc rdf:resource="https://db.apache.org" />
     <shortdesc>Java Data Objects (JDO) is a standard way to access persistent data in databases, using plain old Java objects (POJO) to represent persistent data.</shortdesc>
